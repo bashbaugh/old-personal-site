@@ -15,7 +15,7 @@ baseurl: ""
 
 # Google tracking id
 
-google-tracking-id: ""
+google-tracking-id: "UA-122964022-1"
 
 # Forces https everywhere in your website, except when you serve it locally
 # If you are not hosted on Github Pages, and your host doesn't support https
@@ -197,6 +197,9 @@ keybase-in-footer: False
 # Other settings:
 #permalink: pretty
 
+#collections:
+#- categories
+
 ################################################################################
 
 # NB! Tread carefully if you want to change the variables below this point!
@@ -206,6 +209,8 @@ keybase-in-footer: False
 pages_list:
   About: 'about'
   Blog: 'latest-post'
+  #Categories: 'categories'
+  #Tags: 'tags'
   #Timeline: 'timeline'
   Contact: 'contact'
 
