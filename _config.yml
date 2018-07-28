@@ -51,16 +51,16 @@ dynamic-typing: True
 shuffle: True # Shuffle the lines.
 loop: True
 loop-count: False # Set False for infinite loop, or set any number for finite loop.
-type-speed: 5
+type-speed: 50
 start-delay: 200
 delete-delay: 5000
 lines: # You can add HTML Tags in the Text
   - text: "Programmer"
   - text: "Robot Builder"
   - text: "Maker"
-  - text: ""
+  - text: "Inventor"
 
-#me-img: "/img/jetpacktocat.png"
+me-img: "/img/author.jpg"
 
 # To use facebook profile pic comment the previous line and uncomment the following
 # line, and replace 'user_id' with your facebook user id.
@@ -73,7 +73,7 @@ lines: # You can add HTML Tags in the Text
 # To use github profile pic uncomment the following line and replace 'user_name'
 # with your github user name.
 
-me-img: "https://github.com/scitronboy.png?size=500"
+#me-img: "https://github.com/scitronboy.png?size=500"
 
 # To use gravatar profile pic uncomment the following line and replace 'email_hash'
 # with your gravatar profile email hash.
@@ -190,6 +190,12 @@ err-404-img: "/img/labtocat.png"
 keybase-username:
 keybase-in-social: False
 keybase-in-footer: False
+
+
+
+
+# Other settings:
+#permalink: pretty
 
 ################################################################################
 
