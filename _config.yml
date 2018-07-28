@@ -59,6 +59,7 @@ lines: # You can add HTML Tags in the Text
   - text: "Robot Builder"
   - text: "Maker"
   - text: "Inventor"
+  - text: "Student"
 
 me-img: "/img/author.jpg"
 
