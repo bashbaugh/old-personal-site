@@ -30,11 +30,11 @@
         {% assign categories_list = site.categories %}
         {% if categories_list.first[0] == null %}
             {% for category in categories_list %}
-            <a href="{{ category }}">{{ category | capitalize }} ({{ site.tags[category].size }})</a>
+            <a href="{{ category }}">{{ category | capitalize }} ({{ site.tags[category].size }})</a></br>
             {% endfor %}
         {% else %}
             {% for category in categories_list %}
-            <a href="{{ category[0] | downcase }}">{{ category[0] | capitalize }} ({{ category[1].size }})</a>
+            <a href="{{ category[0] | downcase }}">{{ category[0] | capitalize }} ({{ category[1].size }})</a></br>
             {% endfor %}
         {% endif %}
         {% assign categories_list = nil %}

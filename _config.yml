@@ -109,7 +109,7 @@ icon-192p: "/img/web-app/icon-192p.png"
 
 enable-gesture-navigation: False
 
-post-preview-words: 96
+post-preview-words: 80
 
 paginate: 10
 
@@ -172,6 +172,8 @@ social:
     #url: "https://twitter.com/"
   - title: "github"
     url: "https://github.com/scitronboy"
+  - title: "stack overflow"
+    url: "https://stackexchange.com/users/11955944/scitronboy?tab=accounts"
   #- title: "bitcoin"
     #url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
   - title: "rss"
@@ -209,6 +211,7 @@ keybase-in-footer: False
 pages_list:
   About: 'about'
   Blog: 'latest-post'
+  Tutorials: 'latest-tutorial'
   #Categories: 'categories'
   #Tags: 'tags'
   #Timeline: 'timeline'

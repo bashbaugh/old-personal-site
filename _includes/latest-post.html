@@ -10,7 +10,7 @@
         {% assign post = site.posts.first %}
         <h4> <strong> {{ post.date | date_to_string }} </strong>
           <small>.
-            <a class="category" href="{{site.baseurl}}/categories/{{post.category | downcase}}.html">
+            <a class="category" href="{{site.baseurl}}/categories/{{post.category | downcase}}">
               {{ post.category }}
             </a>
           .</small>
@@ -20,10 +20,16 @@
 
         <section class="text-justify">
           {{ post.content | strip_html | markdownify | truncatewords: site.post-preview-words }}
+          <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i>
         </section>
+        
+        <h4></h4></br>
 
-        <h4><a href="{{site.baseurl}}/blog/">All Blog Posts</a></h4>
-
+        <h4><a href="{{site.baseurl}}/blog">All Blog Posts</a></h4>
+        <h4><a href="{{site.baseurl}}/categories/projects">All My Projects</a></h4>
+        <h4><a href="{{site.baseurl}}/categories/">All Categories</a></h4>
+        <h4><a href="{{site.baseurl}}/tags/">All #Tags</a></h4>
+        
       </div>
     </div>
 </section>
