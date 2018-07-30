@@ -28,10 +28,10 @@ force-https: True
 #############
 
 lang: "en"
-author: "Benjamin Ashbaugh"
-title: "{ Benjamin Ashbaugh }"
-description: "Blog and website of Benjamin Ashbaugh."
-keywords: "Ashbaugh, Benjamin, scitronboy, personal, blog, tutorials"
+author: "Benjamin A."
+title: "{ Benjamin A. }"
+description: "Blog and website of Benjamin A."
+keywords: "A, Benjamin, scitronboy, personal, blog, tutorials, 13"
 favicon: "/img/favicon.ico"
 
 ################
@@ -158,7 +158,7 @@ email:
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "Benjamin Ashbaugh is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making."
+author_blurb: "Benjamin is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making."
 author_blurb_image: "/img/author.jpg"
 
 ##################

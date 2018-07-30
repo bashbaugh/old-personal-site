@@ -5,8 +5,9 @@ title: Radar Defense Game
 category: Projects
 tags: [ 'arduino', 'python', 'game' ]
 ---
+![Radar Defense v1.0-beta](/img/radar-defense/radar-defense-v1.0-beta.png "Radar Defense v1.0-beta")
 
-As my first (actual) post on my blog, I decided to write about a cool game I made this week, which I named _Radar Defense_.
+As my first (actual) post on my blog, I decided to write about a game I made this week, which I named _Radar Defense_.
 
 About a week ago I had found a picture of a cool game that was programmed in python with [pygame](https://www.pygame.org/docs/), a python library for making simple 2d games. What I thought was really cool about it was the guy had also built an external controller to control the on-screen game. When I saw it, I decided that I wanted to make something like that.
 
@@ -92,14 +93,14 @@ While writing this class, I had to calculate several cartesian distances to see 
     
     Pythagorean theorom: a^2 + b^2 = c^2, so 
     
-    x^2 + y^2 = hypotenuse^2, so
-    dist = squareroot(x^2 + y^2)
+    xDist^2 + yDist^2 = hypotenuse^2, so
+    dist = squareroot(xDist^2 + yDist^2)
     
-I also had to calculate whether a point is within a circle, which obviously was as simple as using the above formula and checking to see if the distance was less than the radius of the circle.
+I also had to calculate whether a point is within a circle, which obviously was as simple as using the above formula and checking to see if the distance between the point and the center of the circle was less than the radius of the circle.
 
 Overall, I am happy with how the game (my first big pygame project) turned out - and it was really fun making it. Of course, the game still needs quite a bit of work, for example, better graphics (:grimacing:) would be nice, but I'll probably work on those sometime in the future.
 
-If you would like to try out my game, go ahead! You can [download the source code here](https://github.com/scitronboy/radar-defense/archive/v1.1beta.zip "Radar Defense v1.1-beta.zip"), there are instructions in the [README](https://github.com/scitronboy/radar-defense/blob/master/README.md). If you like it, please star it on github, and please leave any feedback or questions in the comment section bellow.
+If you would like to try out my game, go ahead! You can [download the source code here](https://github.com/scitronboy/radar-defense/archive/v1.1beta.zip "Radar Defense v1.1-beta.zip"), there are instructions in the [README](https://github.com/scitronboy/radar-defense/blob/master/README.md). If you like it, please star or fork it on github, and please leave any feedback or questions in the comment section below.
 
 [View Radar Defense on Github.](https://github.com/scitronboy/radar-defense)
     
