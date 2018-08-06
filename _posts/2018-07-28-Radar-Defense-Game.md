@@ -63,8 +63,7 @@ arduino to manage all the buttons, switches, and knobs I was planning
 to integrate into my controller. I had some [74HC595](https://www.arduino.cc/en/tutorial/ShiftOut) shift registers that I had ordered for a previous project, and I realized that I could use one of those to reduce the pins needed to operate a rotary switch from eight to four.
 
 I would, using the shift register, individually turn each pin on the
-rotary switch HIGH, read the common pin, and then turn it LOW
-again. If the common pin was HIGH, it meant that the switch was switched to that pin, because voltage would flow into the pin and out the common pin only if the switch was rotated to that position.
+rotary switch logic-HIGH, read the common pin, and then turn it logic-LOWagain. If the common pin was logic-HIGH, it meant that the switch was switched to that pin, because voltage would flow into the pin and out the common pin only if the switch was rotated to that position.
 
 After solving that problem, I added a an eight-switch DIP micro-switch
 IC and two buttons, one to turn the radar on and one to activate a

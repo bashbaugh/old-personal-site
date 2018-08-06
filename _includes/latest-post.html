@@ -7,23 +7,26 @@
 
         {{ page.content | markdownify }}
 
-        {% assign post = site.posts.first %}
-        <h4> <strong> {{ post.date | date_to_string }} </strong>
-          <small>.
-            <a class="category" href="{{site.baseurl}}/categories/{{post.category | downcase}}">
-              {{ post.category }}
-            </a>
-          .</small>
-          <strong> <a href="{{site.baseurl}}{{ post.url }}">{{post.title}} </a> </strong>
-          <small> <a href="{{site.baseurl}}{{post.url}}#disqus_thread">Comments</a></small>
-        </h4>
-
-        <section class="text-justify">
-          {{ post.content | strip_html | markdownify | truncatewords: site.post-preview-words }}
-          <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i>
-        </section>
-        
-        <h4></h4></br>
+        {% assign posts = site.posts %}
+        {% for post in posts %}
+          {% if post.category != Tutorial %}
+            <h4> <strong> {{ post.date | date_to_string }} </strong>
+            <small>.
+                <a class="category" href="{{site.baseurl}}/categories/{{post.category | downcase}}.html">
+                {{ post.category }}
+                </a>
+            .</small>
+            <strong> <a href="{{site.baseurl}}{{ post.url }}">{{post.title}} </a> </strong>
+            <small> <a href="{{site.baseurl}}{{post.url}}#disqus_thread">Comments</a></small>
+            </h4>
+            
+            <section class="text-justify">
+            {{ post.content | strip_html | markdownify | truncatewords: site.post-preview-words }}
+            <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i>
+            </section>
+            {% break %}
+          {% endif %}
+        {% endfor %}
 
         <h4><a href="{{site.baseurl}}/blog">All Blog Posts</a></h4>
         <h4><a href="{{site.baseurl}}/categories/projects">All My Projects</a></h4>

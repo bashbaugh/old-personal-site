@@ -22,6 +22,7 @@
             
             <section class="text-justify">
             {{ post.content | strip_html | markdownify | truncatewords: site.post-preview-words }}
+            <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i>
             </section>
             {% break %}
           {% endif %}
