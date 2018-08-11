@@ -6,7 +6,7 @@ category: Blog
 tags: [ 'jekyll' ]
 ---
 
-Suppose you want to create a blog. But you don't want to use one of those drag-and-drop, Word-style, CMS (content management system) programs like [Wordpress](https://wordpress.org/) or [Blogger](www.blogger.com), because first of all you want more control and customization, and second of all you want to program your site, not just design it. You have several options.
+Suppose you want to create a blog. But you don't want to use one of those drag-and-drop, Word-style, CMS (content management system) programs like [Wordpress](https://wordpress.org/) or [Blogger](https://www.blogger.com/), because first of all you want more control and customization, and second of all you want to program your site, not just design it. You have several options.
 
 You could program the whole site, with a backend, using a framework in some language like python, java, go, or C - but writing a whole backend _and_ frontend just for a simple _blog_? Overkill. 
 
@@ -41,12 +41,11 @@ Static sites don't have servers with databases to maintain, because you can easi
 
 The only major downsides to using static sites are they can't accept user input/login, because there is no database to store that information. This means no forms, comments, logins, etc. However, you can get around this by using [external services](https://jekyllrb.com/docs/resources/#integrations) like [Disqus](https://disqus.com/) (for commenting) and [Formspree](https://formspree.io/) (to create forms).
 
-There is one last major reason why I think Jekkyl is so great (and why I chose to use it): Jekyll is the official engine that [Github Pages](https://pages.github.com/) uses. Github Pages is a free hosting service for static sites, and until I became a little more serious about my blogging, I had planned to host my site using Github Pages (which I'm still doing). 
+There is one last major reason why I think Jekkyl is so great (and why I chose to use it): Jekyll is the official engine that [Github Pages](https://pages.github.com/) uses. Github Pages is a free hosting service for static sites, and until I become a little more serious about my blogging, I plan to continue to host my site using Github Pages. 
 
 Because github pages already uses jekyll, all you need to do to publish (or update) a Jekyll site to github pages is push your source code to your github repository. and by naming that repo scitronboy.github.io, github automatically serves the site, using Jekyll, to [scitronboy.github.io](https://scitronboy.github.io/) :grinning:.
 
 If you're a coder looking to create an easy, simple, blog, I highly recommend [Jekyll](https://jekyllrb.com/) and [Github Pages](https://pages.github.com/).
-
 
 
 _ps. I am planning to write a tutorial on creating a jekyll blog sometime in the future._
