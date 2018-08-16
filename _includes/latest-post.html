@@ -20,13 +20,15 @@
             <small> <a href="{{site.baseurl}}{{post.url}}#disqus_thread">Comments</a></small>
             </h4>
             
-            <section class="text-justify small text-muted">
-            <blockquote>{{ post.content | strip_html  | truncatewords: site.post-preview-words}}
-            <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i></blockquote>
+            <section class="text-justify text-muted">
+            {{ post.content | strip_html  | truncatewords: site.post-preview-words}}
+            <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i>
             
             </section>
         </div>
         </div>
+        <br/>
+        <br/>
         <br/>
         {% endfor %}
         

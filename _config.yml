@@ -109,7 +109,7 @@ icon-192p: "/img/web-app/icon-192p.png"
 
 enable-gesture-navigation: False
 
-post-preview-words: 30
+post-preview-words: 60
 
 paginate: 10
 
