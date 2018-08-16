@@ -29,7 +29,7 @@ force-https: True
 
 lang: "en"
 author: "Benjamin A."
-title: "{ Benjamin A. }"
+title: "scitronboy.github.io"
 description: "Benjamin A's Blog and website"
 keywords: "A, Benjamin, scitronboy, personal, blog, tutorials, 13"
 favicon: "/img/favicon.ico"
@@ -109,7 +109,7 @@ icon-192p: "/img/web-app/icon-192p.png"
 
 enable-gesture-navigation: False
 
-post-preview-words: 80
+post-preview-words: 30
 
 paginate: 10
 
@@ -211,10 +211,6 @@ keybase-in-footer: False
 pages_list:
   Blog: 'latest-post'
   About: 'about'
-  Tutorials: 'latest-tutorial'
-  #Categories: 'categories'
-  #Tags: 'tags'
-  #Timeline: 'timeline'
   Contact: 'contact'
 
 # Exclusion list from the generated _site

@@ -1,15 +1,15 @@
 
 <!-- Latest Post Preview Start -->
 
-<section id="{{ page.section-type }}" class="container content-section text-center">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+<section id="{{ page.section-type }}" class="container content-section text-center no-top-margin">
 
         {{ page.content | markdownify }}
 
         {% assign posts = site.posts %}
-        {% for post in posts %}
-          {% if post.category != Tutorial %}
+        {% for post in posts limit:6 %}
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
             <h4> <strong> {{ post.date | date_to_string }} </strong>
             <small>.
                 <a class="category" href="{{site.baseurl}}/categories/{{post.category | downcase}}.html">
@@ -20,21 +20,19 @@
             <small> <a href="{{site.baseurl}}{{post.url}}#disqus_thread">Comments</a></small>
             </h4>
             
-            <section class="text-justify">
-            {{ post.content | strip_html | markdownify | truncatewords: site.post-preview-words }}
-            <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i>
+            <section class="text-justify small text-muted">
+            <blockquote>{{ post.content | strip_html  | truncatewords: site.post-preview-words}}
+            <i><a href="{{site.baseurl}}{{ post.url }}">Continue Reading</a></i></blockquote>
+            
             </section>
-            {% break %}
-          {% endif %}
+        </div>
+        </div>
+        <br/>
         {% endfor %}
-
-        <h4><a href="{{site.baseurl}}/blog">All Blog Posts</a></h4>
-        <h4><a href="{{site.baseurl}}/categories/projects">All My Projects</a></h4>
-        <h4><a href="{{site.baseurl}}/categories/">All Categories</a></h4>
-        <h4><a href="{{site.baseurl}}/tags/">All #Tags</a></h4>
         
-      </div>
-    </div>
+        {% if posts.size > 6 %}
+        <h5><a href="/blog">More Posts</a></h5>
+        {% endif %}
 </section>
 
 <!-- Latest Post Preview End -->

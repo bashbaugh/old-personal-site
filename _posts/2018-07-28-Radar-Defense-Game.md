@@ -84,7 +84,7 @@ know if a missile got past your shields. If a missile got past, you
 would then press a button, and then press the button again when the
 camera the missile was seen in was highlighted. You would do this again with a crosshair on the camera - your goal would be to aim right at the missile, but you have to get the timing just right.
 
-While writing this class, I had to calculate several cartesian distances to see if a missile was the right distance from the radar. This turned out to be super easy: You seperate the distances into the x and y planes, then use the Pythagorean theorom to calculate the hypotenuse:
+While writing this class, I had to calculate several cartesian distances to see if a missile was the right distance from the radar. This turned out to be super easy: You seperate the distances into the x and y axis, then use the Pythagorean theorom to calculate the hypotenuse:
 
     #psuedocode:
     xDist = x2 - x1

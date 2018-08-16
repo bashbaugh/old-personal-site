@@ -1,14 +1,16 @@
 ---
 ---
 
-@import "variables";
-@import "mixins";
-
 /*!
  * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+
+//Modfied by Panos Sakkos and Benjamin A.
+
+@import "variables";
+@import "mixins";
 
 body {
     width: 100%;
@@ -77,6 +79,10 @@ a {
         color: darken($secondary-color,20%);
     }
 }
+
+/*.header-content {
+    text-align: center;
+}*/
 
 .navbar-custom {
     margin-bottom: 0;
@@ -228,6 +234,15 @@ a {
     100% {
         -moz-transform: scale(1);
         transform: scale(1);
+    }
+}
+
+.no-top-margin {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+    @media(min-width:767px) {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
     }
 }
 

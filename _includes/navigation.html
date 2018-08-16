@@ -28,13 +28,18 @@
 
           <!-- Scroll to section for each page in index -->
           {% for p in site.pages_list %}
-            <li>
-              <a class="page-scroll" href="#{{ p[1] }}"> {{p[0]}} </a>
-            </li>
+            {% if p[1] != "latest-post" %}
+              <li>
+              <a class="page-scroll" href="#{{ p[1] }}">{{ p[0] }}</a>
+              </li>
+            {% else %}
+              <li>
+              <a href="{{site.baseurl}}/blog/"> Blog </a>
+              </li>
+            {% endif %}
           {% endfor %}
 
         {% else %}
-          <!-- Blog, Post, Tag and Error pages -->
           {% for p in site.pages_list %}
             <li>
             {% if p[1] == "latest-post" %}
