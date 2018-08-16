@@ -28,19 +28,13 @@
         </div>-->
         
         {% assign tag_list = site.tags %}
-        {% if tag_list.first[0] == null %}
+        
             {% for tag in tag_list %}
-            <a href="{{ tag }}">#{{ tag | capitalize }} ({{ site.tags[tag].size }})</a></br>
+            <h5><a href="{{ tag[0] | downcase }}">#{{ tag[0] | capitalize }} ({{ tag[1].size }})</a></h5>
             {% endfor %}
-        {% else %}
-            {% for tag in tag_list %}
-            <a href="{{ tag[0] | downcase }}">#{{ tag[0] | capitalize }} ({{ tag[1].size }})</a></br>
-            {% endfor %}
-        {% endif %}
+            
         {% assign tag_list = nil %}
         </ul>
-        
-        {% include pagination.html %}
 
         </div>
       </div>

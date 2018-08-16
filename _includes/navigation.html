@@ -24,36 +24,29 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
-        {% if page.section-type == "index" %}
-
           <!-- Scroll to section for each page in index -->
           {% for p in site.pages_list %}
-            {% if p[1] != "latest-post" %}
+            {% if p[0] != "Blog" %}
               <li>
               <a class="page-scroll" href="#{{ p[1] }}">{{ p[0] }}</a>
               </li>
             {% else %}
-              <li>
-              <a href="{{site.baseurl}}/blog/"> Blog </a>
+              <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              Blog</a>
+              <ul class="dropdown-menu">
+                <li><a href="/blog">All Posts</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Categories</li>
+                {% for cat in site.categories %}
+                <li><a href="/categories/{{ cat[0] | downcase}}">{{ cat[0] }} ({{ cat[1].size }})</a></li>
+                {% endfor %}
+                <li class="divider"></li>
+                <li><a href="/tags">All Tags</a></li>
+              </ul>
               </li>
             {% endif %}
           {% endfor %}
-
-        {% else %}
-          {% for p in site.pages_list %}
-            <li>
-            {% if p[1] == "latest-post" %}
-              {% if page.url == "/blog/index.html" | prepend: {{site.baseurl}} %}
-                <a class="page-scroll" href="#page"> {{p[0]}} </a>
-              {% else %}
-                <a href="{{site.baseurl}}/blog/"> {{p[0]}} </a>
-              {% endif %}
-            {% else %}
-                <a href="{{site.baseurl}}/#{{ p[1] }}"> {{p[0]}} </a>
-            {% endif %}
-            </li>
-          {% endfor %}
-        {% endif %}
       </ul>
     </div>
   </div>
