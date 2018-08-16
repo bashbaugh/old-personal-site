@@ -28,10 +28,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- Custom CSS -->
-  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
-  {% if page.section-type == "index" %}
+  {% if page.section-type == "about" %}
+  <link href="{{site.baseurl}}/css/darkstyle.css" rel="stylesheet">
+  {% else %}
+  <link href="{{site.baseurl}}/css/lightstyle.css" rel="stylesheet">
+  {% endif %}
+  
+  {% if page.section-type == "index" or page.section-type == "about" %}
   <link href="{{site.baseurl}}/css/timeline.css" rel="stylesheet">
   {% endif %}
+  
   <!-- Custom Fonts -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">

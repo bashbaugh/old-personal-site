@@ -1,0 +1,24 @@
+
+<!-- About Layout Start -->
+
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+  {% include head.html %}
+
+  <body id="page-top">
+
+    {% include navigation.html %}
+
+    {% include intro.html %}
+        
+    {{ site.me-desc  | markdownify }}
+
+    {% include footer.html %}
+
+    {% include js.html %}
+
+  </body>
+</html>
+
+<!-- About Layout End -->
