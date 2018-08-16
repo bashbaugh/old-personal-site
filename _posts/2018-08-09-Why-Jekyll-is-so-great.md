@@ -45,7 +45,7 @@ There is one last major reason why I think Jekkyl is so great (and why I chose t
 
 Because github pages already uses jekyll, all you need to do to publish (or update) a Jekyll site to github pages is push your source code to your github repository. and by naming that repo scitronboy.github.io, github automatically serves the site, using Jekyll, to [scitronboy.github.io](https://scitronboy.github.io/) :grinning:.
 
-If you're a coder looking to create an easy, simple, blog, I highly recommend [Jekyll](https://jekyllrb.com/) and [Github Pages](https://pages.github.com/).
+If you're a programmer looking to create an easy, simple, blog, I highly recommend [Jekyll](https://jekyllrb.com/) and [Github Pages](https://pages.github.com/).
 
 
 _ps. I am planning to write a tutorial on creating a jekyll blog sometime in the future._
