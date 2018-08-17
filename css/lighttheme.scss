@@ -85,15 +85,6 @@ a {
     text-align: center;
 }*/
 
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba($font-color, 0.3);
@@ -244,15 +235,6 @@ a {
     100% {
         -moz-transform: scale(1);
         transform: scale(1);
-    }
-}
-
-.no-top-margin {
-    margin-top: 10px !important;
-    padding-top: 10px !important;
-    @media(min-width:767px) {
-        margin-top: 10px !important;
-        padding-top: 10px !important;
     }
 }
 

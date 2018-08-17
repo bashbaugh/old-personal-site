@@ -1,0 +1,8 @@
+---
+---
+
+User-agent: *
+Allow: /
+
+
+Sitemap: https://scitronboy.github.io/sitemap.xml

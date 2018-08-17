@@ -10,6 +10,17 @@
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
+<script>
+              $(function(){ 
+                    var navMain = $(".navbar-collapse"); // avoid dependency on #id
+                    // "a:not([data-toggle])" - to avoid issues caused
+                    // when you have dropdown inside navbar
+                    navMain.on("click", "a:not([data-toggle])", null, function () {
+                        navMain.collapse('hide');
+                    });
+                });
+              </script>
+
 <!-- Custom Theme JavaScript -->
 <!--* Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
 * Code licensed under the Apache License v2.0.

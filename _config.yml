@@ -30,7 +30,8 @@ force-https: True
 lang: "en"
 author: "Benjamin A."
 title: "scitronboy.github.io"
-description: "Benjamin A's Blog and website"
+description: "Benjamin A.'s blog and website: cool projects, tutorials, and articles about tech.  I blog and write tutorials about anything from python programming and web development to arduino and raspberry pi, for beginners and advanced users."
+
 keywords: "A, Benjamin, scitronboy, personal, blog, tutorials, 13"
 favicon: "/img/favicon.ico"
 
@@ -113,7 +114,7 @@ icon-192p: "/img/web-app/icon-192p.png"
 
 enable-gesture-navigation: False
 
-post-preview-words: 60
+post-preview-words: 80
 
 paginate: 10
 

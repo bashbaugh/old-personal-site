@@ -18,25 +18,30 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content ="{% if page.title %} {{page.title}} | Benjamin's Blog
+  {% else %} Cool Projects, Tutorials, Tech Articles - Benjamin's Blog {% endif %}">
   <meta name="description" content="{{site.description}}">
   <meta name="author" content="{{site.author}}">
   <meta name="keywords" content="{{site.keywords}}">
   <link rel="canonical" href="{{page.url | replace:'index.html','' | prepend: site.baseurl}}">
-  <title>{% if page.title %} {{page.title}} | {% endif %}Benjamin's Blog</title>
+  <title>{% if page.title %} {{page.title}} | Benjamin's Blog
+  {% else %} Cool Projects, Tutorials, Tech Articles - Benjamin's Blog {% endif %}</title>
 
   <!-- Bootstrap Core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- Custom CSS -->
   {% if page.section-type == "about" %}
-  <link href="{{site.baseurl}}/css/darkstyle.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/css/darktheme.css" rel="stylesheet">
   {% else %}
-  <link href="{{site.baseurl}}/css/lightstyle.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/css/lighttheme.css" rel="stylesheet">
   {% endif %}
   
-  {% if page.section-type == "index" or page.section-type == "about" %}
+  {% if page.section-type == "about" %}
   <link href="{{site.baseurl}}/css/timeline.css" rel="stylesheet">
   {% endif %}
+  
+  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
   
   <!-- Responsive Social Buttons -->
   <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" />

@@ -1,0 +1,35 @@
+---
+---
+
+/*!
+ * The Custom Stylesheet for My Website
+ * Contains extra styling code to supplement the Grayscale  Bootstrap Theme
+ * 
+ * By Benjamin A.
+ * 
+ * Code copyright Benjamin A.
+ */
+
+@import "variables";
+
+.no-top-margin {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+    @media(min-width:767px) {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+    }
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.hidden {
+    display: none;
+}
