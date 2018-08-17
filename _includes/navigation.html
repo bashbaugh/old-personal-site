@@ -28,7 +28,7 @@
           {% for p in site.pages_list %}
             {% if p[0] != "Blog" %}
               <li>
-              <a class="page-scroll" href="#{{ p[1] }}">{{ p[0] }}</a>
+              <a class="page-scroll" href="/#{{ p[1] }}">{{ p[0] }}</a>
               </li>
             {% else %}
               <li class="dropdown">
@@ -43,6 +43,8 @@
                 {% endfor %}
                 <li class="divider"></li>
                 <li><a href="/tags">All Tags</a></li>
+                <li class="divider"></li>
+                <li><a href="/">Home Page</a></li>
               </ul>
               </li>
             {% endif %}
