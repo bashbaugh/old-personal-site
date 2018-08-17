@@ -85,6 +85,15 @@ a {
     text-align: center;
 }*/
 
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba($font-color, 0.3);

@@ -169,19 +169,19 @@ author_blurb_image: "/img/author.jpg"
 # Social Buttons #
 ##################
 
-social:
-  #- title: "facebook"
-    #url: "https://facebook.com/"
-  #- title: "twitter"
-    #url: "https://twitter.com/"
-  - title: "github"
-    url: "https://github.com/scitronboy"
-  - title: "stack overflow"
-    url: "https://stackexchange.com/users/11955944/scitronboy?tab=accounts"
-  #- title: "bitcoin"
-    #url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
-  - title: "rss"
-    url: "/feed.xml"
+#social:
+  ##- title: "facebook"
+    ##url: "https://facebook.com/"
+  ##- title: "twitter"
+    ##url: "https://twitter.com/"
+  #- title: "github"
+    #url: "https://github.com/scitronboy"
+  #- title: "stack overflow"
+    #url: "https://stackexchange.com/users/11955944/scitronboy?tab=accounts"
+  ##- title: "bitcoin"
+    ##url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
+  #- title: "rss"
+    #url: "/feed.xml"
 
 ############
 # 404 page #
@@ -209,13 +209,6 @@ keybase-in-footer: False
 ################################################################################
 
 # NB! Tread carefully if you want to change the variables below this point!
-
-# Sections shown in the index page
-
-pages_list:
-  Blog: 'latest-post'
-  About: 'quicksummary'
-  Contact: 'contact'
 
 # Exclusion list from the generated _site
 
