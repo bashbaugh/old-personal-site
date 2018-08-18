@@ -16,8 +16,8 @@
     margin-top: 10px !important;
     padding-top: 10px !important;
     @media(min-width:767px) {
-        margin-top: 10px !important;
-        padding-top: 10px !important;
+        margin-top: 15px !important;
+        padding-top: 15px !important;
     }
 }
 
@@ -32,4 +32,18 @@
 
 .hidden {
     display: none;
+}
+
+.darktheme-text {
+    color: $darktheme-font-color !important;
+}
+
+.about-description {
+    p {
+        font-size: 12px !important;
+    }
+}
+
+.jumbotron-transparent {
+    opacity: 0.7;
 }
