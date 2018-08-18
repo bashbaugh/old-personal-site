@@ -44,12 +44,21 @@
               </li>
               
           
+              {% if page.section-type == "index" %}
               <li>
-              <a href="/#about" class="page-scroll">About Me</a>
+              <a href="#about" class="page-scroll">About Me</a>
               </li>
               <li>
-              <a href="/#contact" class="page-scroll">Contact Me</a>
+              <a href="#contact" class="page-scroll">Contact Me</a>
               </li>
+              {% else %}
+              <li>
+              <a href="/#about">About Me</a>
+              </li>
+              <li>
+              <a href="/#contact">Contact Me</a>
+              </li>
+              {% endif %}
               
               <li>
                     <a href="https://github.com/scitronboy"
