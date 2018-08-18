@@ -1,7 +1,13 @@
 ---
 layout: post
 section-type: post
+
 title: "Easy Blogging for Programmers: Static Site Generators"
+
+description: "What is a static site generator? What are the benefits of using a static site generator? Learn how static site generators work and why you should use one. Also, learn how to use the jekyll ssg with github pages."
+
+keywords: "static site generator, static site generators, ssg, why use a static site generator, what is a static site generator, github pages, what is github pages, static website, static site generators review, static, jekyll, blog"
+
 category: Blog
 tags: [ 'jekyll' ]
 ---
