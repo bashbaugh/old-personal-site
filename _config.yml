@@ -154,6 +154,7 @@ timeline-img: "/img/timeline/default.png"
 ###########
 
 email:
+contact_email: false
 
 ################
 # Author Blurb #

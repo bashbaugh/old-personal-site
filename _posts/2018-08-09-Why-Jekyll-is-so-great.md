@@ -3,6 +3,7 @@ layout: post
 section-type: post
 
 title: "Easy Blogging for Programmers: Static Site Generators"
+titletag: "Static Site Generators"
 
 description: "What is a static site generator? What are the benefits of using a static site generator? Learn how static site generators work and why you should use one. Also, learn how to use the jekyll ssg with github pages."
 

@@ -4,5 +4,8 @@
 User-agent: *
 Allow: /
 
+User-agent: *
+Disallow: thankyou.html
+
 
 Sitemap: https://scitronboy.github.io/sitemap.xml

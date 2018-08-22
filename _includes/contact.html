@@ -6,9 +6,33 @@
     <div class="col-md-10 col-md-offset-1">
 
       <h2>Contact</h2>
-      <p>Feedback about this site is much appreciated, as it is very new and is definitely not finished. The contact feature is not finished yet, so please just comment on <a href="/random/2018/07/27/First-post.html">one of my blog posts</a> instead.</p>
+      <!--<p>Feedback about this site is much appreciated, as it is very new and is definitely not finished. The contact feature is not finished yet, so please just comment on <a href="/random/2018/07/27/First-post.html">one of my blog posts</a> instead.</p>-->
+      <p>Feedback about this site is much appreciated, as it is very new and is definitely not finished.</p>
+      <p>To contact me, just fill out the form below. If you  want me to reply back to you, leave your email in the Your Email field.</p>
+      
+      <form action="https://getsimpleform.com/messages?form_api_token=4923b1bd96b8bc654e1dd3eb8f0869cd" method="post">
 
-      {% if site.email %}
+        <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
+        <input type='hidden' name='redirect_to' value='https://scitronboy.github.io/thankyou.html' />
+        
+        <div class="form-group">
+        <input type='text' class="form-control" name='name' placeholder="Your Name" />
+        </div>
+
+        <div class="form-group">
+        <input type='email' class="form-control" name='email' placeholder="Your Email (for me to reply to)" />
+        </div>
+        
+        <div class="form-group">
+        <textarea type='text' rows="5" class="form-control" name='message' placeholder="Your Message" />
+        </div>
+
+        <div class="form-group">
+        <input type='submit' class="btn btn-default" value='Send Message' />
+        </div>
+      </form>
+
+      {% if site.contact_email %}
         {% if site.email contains '@' %}
           {% assign newemail = site.email | split: '@' %}
             <p>
