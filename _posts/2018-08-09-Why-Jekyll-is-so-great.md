@@ -9,7 +9,8 @@ description: "What is a static site generator? What are the benefits of using a 
 
 keywords: "static site generator, static site generators, ssg, why use a static site generator, what is a static site generator, github pages, what is github pages, static website, static site generators review, static, jekyll, blog, static site generators 2017, static site generators 2016, static site generators 2018"
 
-category: Blog
+slug: "static-site-generators"
+category: "Blog"
 tags: [ 'jekyll' ]
 ---
 

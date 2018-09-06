@@ -4,6 +4,9 @@ section-type: post
 title: Radar Defense Game
 category: Projects
 tags: [ 'arduino', 'python', 'game' ]
+
+year: "2018"
+urltitle: "radar-defense"
 ---
 ![Radar Defense v1.0-beta](/img/radar-defense/radar-defense-v1.0-beta.png "Radar Defense v1.0-beta")
 
