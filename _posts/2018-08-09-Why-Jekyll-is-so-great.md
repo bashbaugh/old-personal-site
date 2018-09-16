@@ -39,7 +39,7 @@ Jekyll is extremely simple - you won't get bogged down in hundreds of settings, 
 Jekyll generates amazingly fast sites because static sites don't need to query databases or render templates - they just return whichever page you request. Because of this, static sites don't crash as often as dynamic sites.
 </li>
 <li><strong>Security.</strong>
-Because static sites don't make database querys, they are extremely secure.
+Because static sites don't make database queries, they are extremely secure.
 </li>
 <li><strong>Easier to Maintain.</strong>
 Static sites don't have servers with databases to maintain, because you can easily, simply host them on services such as github pages or Amazon S3. Because of this, static sites are also much cheaper.

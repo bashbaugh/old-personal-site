@@ -2,24 +2,19 @@
 <!-- Javascript Start -->
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+ 
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-<script>
-              $(function(){ 
-                    var navMain = $(".navbar-collapse"); // avoid dependency on #id
-                    // "a:not([data-toggle])" - to avoid issues caused
-                    // when you have dropdown inside navbar
-                    navMain.on("click", "a:not([data-toggle])", null, function () {
-                        navMain.collapse('hide');
-                    });
-                });
-              </script>
 
 <!-- Custom Theme JavaScript -->
 <!--* Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
@@ -36,8 +31,10 @@ $(window).scroll(toggleNavCollapse);$(function(){$("a.page-scroll").bind("click"
   <!-- Collapse navbar when navbar-brand is clicked -->
 
   <script>
-  $(function(){$(".navbar-brand").click(function(){$(".collapse.in")&&$(".collapse.in").animate({height:"1px"},500,function(){$(".collapse.in").removeClass("in")})})});
+//   $(function(){$(".navbar-brand").click(function(){$(".collapse.in")&&$(".collapse.in").animate({height:"1px"},500,function(){$(".collapse.in").removeClass("in")})})});
   </script>
+  
+  <!--   prevent navbar from collapsing when clicked -->
 
 {% endif %}
 
@@ -150,122 +147,12 @@ $(window).scroll(toggleNavCollapse);$(function(){$("a.page-scroll").bind("click"
 
 {% endif %}
 
-<script>
+<!--<script>
 function addTohistory() {
   if (!window.location.host.startsWith("127.0.0.1")) {
     history.pushState({}, '{{page.title}}', '{{site.url}}{{site.baseurl}}{{page.url}}');
   }
 }
-</script>
-
-<!-- Gesture Navigation / Swipe Instruction Start -->
-{% if site.enable-gesture-navigation %}
-
-  {% if page.section-type == "post" %}
-
-    <!-- Post Gesture Navigation Start -->
-
-    <script type="text/javascript" src="{{site.baseurl}}/js/hammer.min.js"></script>
-
-    <script>
-      var post = document.getElementById('post');
-
-      new Hammer(post).on('swipeleft', function(event) {
-        addTohistory();
-        {% if site.baseurl == "" and page.previous == nil %}
-          document.location.replace("/");
-        {% else %}
-          document.location.replace("{{site.baseurl}}{{page.previous.url}}");
-        {% endif %}
-      });
-
-      new Hammer(post).on('swiperight', function(event) {
-        addTohistory();
-        {% if site.baseurl == "" and page.next == nil %}
-          document.location.replace("/");
-        {% else %}
-          document.location.replace("{{site.baseurl}}{{page.next.url}}");
-        {% endif %}
-      });
-    </script>
-
-    <!-- Post Gesture Navigation Start -->
-
-  {% endif %}
-
-  {% if page.section-type == "blog" %}
-
-    <!-- Blog Gesture Navigation Start -->
-
-    <script type="text/javascript" src="{{site.baseurl}}/js/hammer.min.js"></script>
-
-    <script>
-      var page = document.getElementById('page');
-
-      new Hammer(page).on('swipeleft', function(event) {
-        addTohistory();
-        {% if site.baseurl == "" and paginator.next_page_path == nil %}
-          document.location.replace("/");
-        {% else %}
-          document.location.replace("{{site.baseurl}}{{paginator.next_page_path}}");
-        {% endif %}
-      });
-      new Hammer(page).on('swiperight', function(event) {
-        addTohistory();
-        {% if site.baseurl == "" and paginator.previous_page_path == nil %}
-          document.location.replace("/");
-        {% else %}
-          document.location.replace("{{site.baseurl}}{{paginator.previous_page_path}}");
-        {% endif %}
-      });
-    </script>
-
-    <!-- Blog Gesture Navigation Start -->
-
-  {% endif %}
-
-  {% if page.section-type == "blog" %}
-
-    <!-- Swipe Instructions for Blog Start -->
-
-    <script>
-      $(document).ready(function(){
-        if(!localStorage.getItem('blog-swipeshowed')){
-          $("#swipe-instruction").fadeIn();
-          $("#swipe-instruction .close-swipe-instruction").click(function(){
-            $("#swipe-instruction").fadeOut();
-          });
-          localStorage.setItem('blog-swipeshowed', true);
-        }
-      });
-    </script>
-
-    <!-- Swipe Instructions for Blog End -->
-
-  {% endif %}
-
-  {% if page.section-type == "post" %}
-
-    <!-- Swipe Instructions for Post Start -->
-
-    <script>
-      $(document).ready(function(){
-        if(!localStorage.getItem('post-swipeshowed')){
-          $("#swipe-instruction").fadeIn();
-          $("#swipe-instruction .close-swipe-instruction").click(function(){
-            $("#swipe-instruction").fadeOut();
-          });
-          localStorage.setItem('post-swipeshowed', true);
-        }
-      });
-    </script>
-
-    <!-- Swipe Instructions for Post End -->
-
-  {% endif %}
-
-<!-- Gesture Navigation / Swipe Instruction End -->
-
-{% endif %}
+</script>-->
 
 <!-- Javascript End -->

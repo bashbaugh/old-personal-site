@@ -158,8 +158,8 @@ author_blurb_image: "/img/author.jpg"
     ##url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
   #- title: "rss"
     #url: "/feed.xml"
-    
-    
+
+
 permalink: /:categories/:year/:slug
 
     

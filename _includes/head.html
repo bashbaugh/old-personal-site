@@ -20,34 +20,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="CtSf12VFnM489h5Y6THZ1bZhWJPhc51-LsdniIAPMEU" />
   <meta name="title" content ="{% if page.title %} {{page.title}} | Benjamin's Blog
-  {% else %} Cool Projects, Tutorials, Tech Articles - Benjamin's Blog {% endif %}">
+  {% else %} Articles and Tutorials about Tech and Making - Benjamin's Blog {% endif %}">
   <meta name="description" content="{% if page.description %}
   {{ page.description }} {% else %} {{site.description}} {% endif %}">
   <meta name="author" content="{{site.author}}">
   <meta name="keywords" content="{% if page.keywords %}
   {{ page.keywords }} {% else %} {{site.keywords}} {% endif %}">
-  <link rel="canonical" href="{{page.url | replace:'index.html','' | prepend: site.baseurl}}">
+  {% if page.section-type == 'index' %}
+  <link rel="canonical" href="https://scitronboy.github.io/">
+  {% else %}
+  <link rel="canonical" href="{{ page.url | replace:'.html','/' }}">
+  {% endif %}
   <title>{% if page.title %} {{page.title}} | Benjamin's Blog
-  {% else %} Cool Projects, Tutorials, Tech Articles - Benjamin's Blog {% endif %}</title>
+  {% else %} Articles and Tutorials about Tech and Making - Benjamin's Blog {% endif %}</title>
 
   <!-- Bootstrap Core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- Custom CSS -->
-  {% if page.section-type == "about" %}
-  <link href="{{site.baseurl}}/css/darktheme.css" rel="stylesheet">
-  {% else %}
   <link href="{{site.baseurl}}/css/lighttheme.css" rel="stylesheet">
-  {% endif %}
-  
-  {% if page.section-type == "about" or page.section-type == "index"%}
+  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
+  {% if page.section-type == 'index' %}
   <link href="{{site.baseurl}}/css/timeline.css" rel="stylesheet">
   {% endif %}
-  
-  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
+
   
   <!-- Responsive Social Buttons -->
-  <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" />
+<!--   <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" /> -->
   
   
   <!-- Custom Fonts -->
@@ -65,11 +64,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}{{site.favicon}}">
   {% endif %}
 
-  {% if page.url == "/404.html" | prepend: {{site.baseurl}} %}
+  {% if page.url == "/404.html" or page.url == "/thankyou.html" %}
     <meta http-equiv="refresh" content="20; url={{site.baseurl}}/">
   {% endif %}
-
-  {% include web-app.html %}
 
   {% include color-browser.html %}
 
