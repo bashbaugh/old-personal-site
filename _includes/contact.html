@@ -9,10 +9,12 @@
       <p>Feedback about this site is much appreciated, as it is very new and is definitely not finished.</p>
       <p>To contact me, just fill out the form below. If you  want me to reply back to you, leave your email in the Your Email field.</p>
       
-      <form action="https://getsimpleform.com/messages?form_api_token=4923b1bd96b8bc654e1dd3eb8f0869cd" method="post">
+      <form action="https://getsimpleform.com/messages?form_api_token={{ site.form-api-token }}" method="post">
 
         <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
         <input type='hidden' name='redirect_to' value='https://scitronboy.github.io/thankyou.html' />
+        
+        <input type='hidden' name='form' value='Contact Form' />
         
         <div class="form-group">
         <input type='text' class="form-control" name='name' placeholder="Your Name" />
@@ -23,7 +25,7 @@
         </div>
         
         <div class="form-group">
-        <textarea type='text' rows="5" class="form-control" name='message' placeholder="Your Message" />
+        <textarea type='text' rows="5" class="form-control" name='message' placeholder="Your Message" required="required"/>
         </div>
 
         <div class="form-group">

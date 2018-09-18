@@ -14,6 +14,7 @@ baseurl: ""
 # Google tracking id
 
 google-tracking-id: "UA-123085505-1"
+form-api-token: "4923b1bd96b8bc654e1dd3eb8f0869cd"
 
 # Forces https everywhere in your website, except when you serve it locally
 # If you are not hosted on Github Pages, and your host doesn't support https
