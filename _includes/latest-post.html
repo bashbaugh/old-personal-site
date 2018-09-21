@@ -11,7 +11,9 @@
         {% if post.image %}
         <div class="col-sm-4">
         <div class="post-thumbnail">
+        <a href="{{site.baseurl}}{{ post.url }}">
         <img class="img-responsive img-rounded" src="{{ post.image }}">
+        </a>
         </div>
         </div>
         <div class="col-sm-8">
