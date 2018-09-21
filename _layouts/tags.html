@@ -30,7 +30,7 @@
         {% assign tag_list = site.tags %}
         
             {% for tag in tag_list %}
-            <h5><a href="{{ tag[0] | downcase }}">#{{ tag[0] | capitalize }} ({{ tag[1].size }})</a></h5>
+            <h5><a href="{{ tag[0] | downcase }}">{{ tag[0] | capitalize }} <span class="badge">{{ tag[1].size }}</span></a></h5>
             {% endfor %}
             
         {% assign tag_list = nil %}

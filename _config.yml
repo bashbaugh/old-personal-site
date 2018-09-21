@@ -1,5 +1,6 @@
 
 # Site settings
+testing-mode: false
 
 url: "https://scitronboy.github.io"
 # If you're hosting your site at a Project repository on GitHub pages
@@ -38,7 +39,7 @@ favicon: "/img/favicon.ico"
 # Header layout #
 ################
 
-black-favicon: "/img/black-lab-glass.ico"
+black-favicon: "/img/white-lab-glass.png"
 
 background-img: "../img/workbench.jpg"
 
@@ -139,7 +140,7 @@ email:
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "Benjamin is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making. Learn more <a href='/#about'>here</a>"
+#author_blurb: "Benjamin is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making. Learn more <a href='/#about'>here</a>"
 author_blurb_image: "/img/author.jpg"
 
 ##################

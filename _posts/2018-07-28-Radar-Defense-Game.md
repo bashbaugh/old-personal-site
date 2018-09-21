@@ -2,6 +2,7 @@
 layout: post
 section-type: post
 title: Radar Defense Game
+image: "/img/radar-defense/radar-defense-v1.0-beta.png"
 category: Projects
 tags: [ 'arduino', 'python', 'game' ]
 

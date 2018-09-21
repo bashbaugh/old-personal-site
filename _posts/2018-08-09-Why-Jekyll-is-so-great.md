@@ -4,14 +4,15 @@ section-type: post
 
 title: "Easy Blogging for Programmers: Static Site Generators"
 titletag: "Static Site Generators"
+image: "/img/post-images/html_t_code.jpg"
 
 description: "What is a static site generator? What are the benefits of using a static site generator? Learn how static site generators work and why you should use one. Also, learn how to use the jekyll ssg with github pages."
 
 keywords: "static site generator, static site generators, ssg, why use a static site generator, what is a static site generator, github pages, what is github pages, static website, static site generators review, static, jekyll, blog, static site generators 2017, static site generators 2016, static site generators 2018"
 
 slug: "static-site-generators"
-category: "Blog"
-tags: [ 'jekyll' ]
+category: "code"
+tags: [ 'jekyll', 'web-dev' ]
 ---
 
 Suppose you want to create a blog. But you don't want to use one of those drag-and-drop, Word-style, CMS (content management system) programs like [Wordpress](https://wordpress.org/) or [Blogger](https://www.blogger.com/), because first of all you want more control and customization, and second of all you want to program your site, not just design it. You have several options.

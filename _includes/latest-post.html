@@ -6,9 +6,18 @@
         <h4>Latest Posts</h4>
 
         {% assign posts = site.posts %}
-        {% for post in posts limit:3 %}
-        <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        {% for post in posts limit:5 %}
+        <div class="row panel-custom">
+        {% if post.image %}
+        <div class="col-sm-4">
+        <div class="post-thumbnail">
+        <img class="img-responsive img-rounded" src="{{ post.image }}">
+        </div>
+        </div>
+        <div class="col-sm-8">
+        {% else %}
+        <div class="col-sm-10 col-sm-offset-1">
+        {% endif %}
 
             <h4> <strong> {{ post.date | date_to_string }} </strong>
             <small>.

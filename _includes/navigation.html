@@ -34,7 +34,7 @@
                 <li class="divider"></li>
                 <li class="dropdown-header">Categories</li>
                 {% for cat in site.categories %}
-                <li><a href="/categories/{{ cat[0] | downcase }}">{{ cat[0] }} ({{ cat[1].size }})</a></li>
+                <li><a href="/categories/{{ cat[0] | downcase }}">{{ cat[0] }} <span class="badge">{{ cat[1].size }}</span></a></li>
                 {% endfor %}
                 <li class="divider"></li>
                 <li><a href="/tags">All Tags</a></li>
@@ -70,5 +70,14 @@
     </div>
   </div>
 </nav>
+
+{% if site.testing-mode %}
+<div class="container testmode-alert">
+<div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Please Note!</strong> This website is currently in development and testing mode. This means that many features may not work properly. My site should be ready again within 4 hours. Thankyou!
+</div>
+</div>
+{% endif %}
 
 <!-- Navigation End -->

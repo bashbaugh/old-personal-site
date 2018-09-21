@@ -16,7 +16,7 @@
 
           {% assign tag = page.title %}
 
-          <h3 id="#{{ tag }}">#{{ tag }}</h3>
+          <h3 id="#{{ tag }}">{{ tag }} posts</h3>
 
           <div>
             {% for post in site.posts %}
@@ -28,6 +28,8 @@
               {% endfor %}
             {% endfor %}
           </div>
+          
+          <h5><a href="/tags"><u>View All Tags</u></a></h5>
 
         </div>
       </div>

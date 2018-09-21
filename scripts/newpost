@@ -7,7 +7,7 @@ POSTS_DIR = '_posts/'
 post = ARGV[0]
 
 File.open(POSTS_DIR + Date.today.strftime("%Y-%m-%d-") + post + '.md', 'w') {|f| f.write(
-  "---\nlayout: post\nsection-type: post\ntitle: Title\nslug: URL\ncategory: Category\ntags: [ 'tag1', 'tag2' ]\ntitletag: <meta> title tag\ndescription: <meta> description\nkeywords: <meta> keywords\n---")
+  "---\nlayout: post\nsection-type: post\ntitle: Title\nimage: Image\nslug: URL\ncategory: Category\ntags: [ 'tag1', 'tag2' ]\ntitletag: <meta> title tag\ndescription: <meta> description\nkeywords: <meta> keywords\n---")
 }
 
 puts('[+] Created ' + post + ' post')
