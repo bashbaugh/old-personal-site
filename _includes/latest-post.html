@@ -6,7 +6,7 @@
         <h4>Latest Posts</h4>
 
         {% assign posts = site.posts %}
-        {% for post in posts limit:5 %}
+        {% for post in posts limit:10 %}
         <div class="row panel-custom">
         {% if post.image %}
         <div class="col-sm-4">

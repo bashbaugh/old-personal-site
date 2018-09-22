@@ -36,9 +36,9 @@ $(window).scroll(toggleNavCollapse);$(function(){$("a.page-scroll").bind("click"
   
 {% endif %}
 
-<!--   prevent navbar from collapsing when Blog button clicked -->
+<!-- Don't collapse navbar when Blog button is clicked -->
 <script>
-  
+    $(function(){$("#blogddbutton").click(function(){$(".navbar-collapse").animate({height:"100%"},500,function(){$(".navbar-collapse").addClass("in")})})});
 </script>
 
 {% if site.syntax-highlight and page.section-type == "post" %}
