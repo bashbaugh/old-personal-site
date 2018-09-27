@@ -41,6 +41,14 @@ $(window).scroll(toggleNavCollapse);$(function(){$("a.page-scroll").bind("click"
     $(function(){$("#blogddbutton").click(function(){$(".navbar-collapse").animate({height:"100%"},500,function(){$(".navbar-collapse").addClass("in")})})});
 </script>
 
+
+<!-- Initialize Tooltips -->
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+
 {% if site.syntax-highlight and page.section-type == "post" %}
 
   <!-- Syntax highlight in post pages-->

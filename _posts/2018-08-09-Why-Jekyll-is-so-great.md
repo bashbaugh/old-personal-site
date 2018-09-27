@@ -6,6 +6,8 @@ title: "Easy Blogging for Programmers: Static Site Generators"
 titletag: "Static Site Generators"
 image: "/img/post-images/html_t_code.jpg"
 
+postdescription: "In this post I explain what a static site generator is and talk about their benefits. Is a static site generator right for you???"
+
 description: "What is a static site generator? What are the benefits of using a static site generator? Learn how static site generators work and why you should use one. Also, learn how to use the jekyll ssg with github pages."
 
 keywords: "static site generator, static site generators, ssg, why use a static site generator, what is a static site generator, github pages, what is github pages, static website, static site generators review, static, jekyll, blog, static site generators 2017, static site generators 2016, static site generators 2018"
@@ -17,7 +19,7 @@ tags: [ 'jekyll', 'web-dev' ]
 
 Suppose you want to create a blog. But you don't want to use one of those drag-and-drop, Word-style, CMS (content management system) programs like [Wordpress](https://wordpress.org/) or [Blogger](https://www.blogger.com/), because first of all you want more control and customization, and second of all you want to program your site, not just design it. You have several options.
 
-You could program the whole site, with a backend, using a framework in some language like python, java, go, or C - but writing a whole backend _and_ frontend just for a simple _blog_? Overkill. 
+You could program the whole site, with a backend, using a framework in some language like python, java, or C - but writing a whole backend _and_ frontend just for a simple _blog_? You might not want to do that. 
 
 Or you could write a 100% static site - but this is obviously not a reality for a blog, because every time you wrote a new post, you'd have to go back and add the links for that post to the archive pages and such. You _could_ do this in a scrape, but it wouldn't be very flexible.
 
