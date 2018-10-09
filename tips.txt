@@ -1,3 +1,7 @@
 Just a file with all the tips I've found for writing meta stuff and more.
 
 Max meta description words:  230
+
+compress & resize jpg:
+
+convert INPUT.jpg -sampling-factor 4:2:0 -strip [-resize WxH] [-quality N] [-interlace JPEG] [-colorspace Gray/sRGB] OUTPUT.jpg

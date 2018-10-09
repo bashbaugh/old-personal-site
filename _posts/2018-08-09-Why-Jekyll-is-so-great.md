@@ -4,7 +4,7 @@ section-type: post
 
 title: "Easy Blogging for Programmers: Static Site Generators"
 titletag: "Static Site Generators"
-image: "/img/post-images/html_t_code.jpg"
+image: "/img/post-thumbnails/html_t_code.jpg"
 
 postdescription: "In this post I explain what a static site generator is and talk about their benefits. Is a static site generator right for you???"
 

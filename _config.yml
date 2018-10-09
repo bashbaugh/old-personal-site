@@ -165,7 +165,7 @@ author_blurb_image: "/img/author.jpg"
 permalink: /:categories/:year/:slug
 
     
-exclude: ["LICENSE", "README.md", "CONTRIBUTING", "CONTRIBUTORS", "scripts", "tips.txt", "no-serve"]
+exclude: ["LICENSE", "README.md", "CONTRIBUTING", "CONTRIBUTORS", "scripts", "tips.txt", "no-serve", "optimize"]
 
 # Pagination path
 

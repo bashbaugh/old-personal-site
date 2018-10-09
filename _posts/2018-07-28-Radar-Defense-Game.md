@@ -2,14 +2,14 @@
 layout: post
 section-type: post
 title: Radar Defense Game
-image: "/img/radar-defense/radar-defense-v1.0-beta.png"
+image: "/img/post/radar-defense/radar-defense-v1.0-beta.png"
 category: projects
 tags: [ 'arduino', 'python', 'game', 'project' ]
 
 year: "2018"
 urltitle: "radar-defense"
 ---
-![Radar Defense v1.0-beta](/img/radar-defense/radar-defense-v1.0-beta.png "Radar Defense v1.0-beta")
+![Radar Defense v1.0-beta image](/img/post/radar-defense/radar-defense-v1.0-beta.png "Radar Defense v1.0-beta")
 
 As my first (actual) post on my blog, I decided to write about a game I made this week, which I named _Radar Defense_.
 
@@ -74,7 +74,7 @@ IC and two buttons, one to turn the radar on and one to activate a
 feature I'll talk about later.
 
 You can see the prototype controller here (I am planning to 3d print a case for it sometime in the future):
-![prototype controller](/img/radar-defense/controller-prototype.JPG "the prototype for the controller")
+![prototype controller image](/img/post/radar-defense/controller-prototype.JPG "the prototype for the controller")
 You can see the eight-switch DIP on the right.
 
 I wrote and uploaded (using a fantastic command line arduino-compatible program called [PlatformIO](https://platformio.org/)) 
