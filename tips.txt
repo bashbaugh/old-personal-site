@@ -1,7 +1,12 @@
-Just a file with all the tips I've found for writing meta stuff and more.
+Just a text file with random info I need
 
 Max meta description words:  230
 
 compress & resize jpg:
 
-convert INPUT.jpg -sampling-factor 4:2:0 -strip [-resize WxH] [-quality N] [-interlace JPEG] [-colorspace Gray/sRGB] OUTPUT.jpg
+convert IN.jpg -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize WxH OUTPUT.jpg
+
+compress & resize PNG or GIF:
+
+convert IN.png -strip -resize WxH -alpha Remove OUTPUT.png
+
