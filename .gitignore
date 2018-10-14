@@ -1,7 +1,8 @@
 
 _site/
 .sass-cache/
-*.swp
+*.*swp
+*.kate-swp
 pkg/
 test/
 _deploy/*
