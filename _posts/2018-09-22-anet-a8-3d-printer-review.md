@@ -51,7 +51,7 @@ The build was mostly straightforward; one of the biggest problems I encountered 
 (the screw terminal outlined in orange fell off). 
 I own a soldering iron and was able to quickly re-solder the terminal back onto the board, but it might be a problem if you don't own a soldering iron. Luckily, I have never heard of this happening to anyone else.
 
-One possible mistake I noticed in the instructions was the orienation of the build plate.
+One possible mistake I noticed in the instructions was the orienation of the build plate. The instructions direct you to install the build plate with the central metal bar facing upwards - the problem with this is that it forces the y belt (the belt that moves the build plate) to bend upwards to connect with the build plate. Normally, the belt _should_ be flat - so I don't know whether the Anet instructions are incorrect or the firmware that comes with the printer is adjusted to compensate for the slight warp in the belt. Either way, I'm pretty sure that it's better to have a flat y belt, so I just ended up flipping the plate over so the center bar is on the bottom. This mostly fixes the issue.
 
 _That's the end for now! The next part is coming soon._
 
