@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 
-#updated: 
+updated: October 29 2018
 
 title: "Halloween Projects (a post in progress)"
 image: "/img/post-thumbnails/halloween_skull.jpg"
@@ -19,7 +19,7 @@ description: "In this post, I list all the things I've created and am creating f
 keywords: "arduino, arduino uno, Halloween, halloween, skull, halloween skull, servo, led, LED, PIR, HC-SR501, sensor, motion sensing, Halloween projects, Instructables, cake, icing, marshmallow"
 ---
 
-One of my favorite times of the year for making is Halloween. There are so many cool things to create to freak the trick-or-treaters out. In this post, I will list a few of the ones I've made. Keep in mind: I will add to this list as time goes on, so check back in on it every once in a while!"
+One of my favorite times of the year for making is Halloween. There are so many cool things to create to freak the trick-or-treaters out. In this post, I will list a few of the ones I've made. Keep in mind: I will add to this list as time goes on, so check back in on it every once in a while!
 
 ### 1. Motion-sensing Halloween Skull
 [![Picture of the halloween skull](/img/post/halloween/skull.jpg "The Halloween Skull")](https://www.instructables.com/id/Scary-Motion-sensing-Moving-Halloween-Skull/)
