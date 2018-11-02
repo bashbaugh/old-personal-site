@@ -6,13 +6,13 @@
         <h4>Latest Posts</h4>
 
         {% assign posts = site.posts %}
-        {% for post in posts limit:10 %}
+        {% for post in posts limit:8 %}
         <div class="row panel-custom">
         {% if post.image %}
         <div class="col-sm-4">
         <div class="post-thumbnail">
         <a href="{{site.baseurl}}{{ post.url }}">
-        <img class="img-responsive img-rounded" src="{{ post.image }}">
+        <img class="img-responsive img-rounded" src="{{ post.image }}" alt="post thumbnail">
         </a>
         </div>
         </div>
@@ -44,9 +44,7 @@
         <br/>
         {% endfor %}
         
-        {% if posts.size > 3 %}
-        <h5><a href="/blog">More Posts</a></h5>
-        {% endif %}
+        <h5><a href="/archive">More Posts</a></h5>
 </section>
 
 <!-- Latest Post Preview End -->
