@@ -2,15 +2,17 @@
 layout: post
 section-type: post
 
-title: "Easy Blogging for Programmers: Static Site Generators"
-titletag: "Static Site Generators"
+updated: "November 2, 2018"
+
+title: "Why Use a Static Site Generator?"
+titletag: "Why Use a Static Site Generator?"
 image: "/img/post-thumbnails/html_t_code.jpg"
 
-postdescription: "In this post I explain what a static site generator is and talk about their benefits. Is a static site generator right for you???"
+postdescription: "In this post I explain what a static site generator is and talk about their benefits, and why you should use one."
 
 description: "What is a static site generator? What are the benefits of using a static site generator? Learn how static site generators work and why you should use one. Also, learn how to use the jekyll ssg with github pages."
 
-keywords: "static site generator, static site generators, ssg, why use a static site generator, what is a static site generator, github pages, what is github pages, static website, static site generators review, static, jekyll, blog, static site generators 2017, static site generators 2016, static site generators 2018"
+keywords: "static site generator, static site generators, ssg, why use a static site generator, what is a static site generator, github pages, what is github pages, static website, static site generators review, static, jekyll, blog, static site generators 2017, static site generators 2016, static site generators 2018, what is a static website"
 
 slug: "static-site-generators"
 category: "code"
@@ -56,7 +58,7 @@ There is one last major reason why I think Jekkyl is so great (and why I chose t
 
 Because github pages already uses jekyll, all you need to do to publish (or update) a Jekyll site to github pages is push your source code to your github repository. and by naming that repo scitronboy.github.io, github automatically serves the site, using Jekyll, to [scitronboy.github.io](https://scitronboy.github.io/) :grinning:.
 
-If you're a programmer looking to create an easy, simple, blog, I highly recommend [Jekyll](https://jekyllrb.com/) and [Github Pages](https://pages.github.com/).
+If you're a programmer looking to create an easy, simple, blog, for free, I highly recommend [Jekyll](https://jekyllrb.com/) and [Github Pages](https://pages.github.com/).
 
 
 _ps. I am planning to write a tutorial on creating a jekyll blog sometime in the future._
