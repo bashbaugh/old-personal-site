@@ -3,12 +3,6 @@
 testing-mode: false
 
 url: "https://scitronboy.github.io"
-# If you're hosting your site at a Project repository on GitHub pages
-# (https://yourusername.github.io/repository-name)
-# and NOT your user repository (https://yourusername.github.io)
-# then add in the baseurl here, like this: "/repository-name"
-#
-# NB! Without this *nothing* will work, because it's used in every path :)
 
 baseurl: ""
 
@@ -137,7 +131,7 @@ email:
 ################
 
 # The author blurb goes underneath blog posts.
-# This works best when your author blurb image has a transparent background, or matches your site background color.
+# This works best when your author blurb image has a transparent background
 
 # if the author_blurb is not set, then this feature is skipped
 #author_blurb: "Benjamin is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making. Learn more <a href='/#about'>here</a>"
@@ -165,7 +159,7 @@ author_blurb_image: "/img/author.jpg"
 permalink: /:categories/:year/:slug
 
     
-exclude: ["LICENSE", "README.md", "CONTRIBUTING", "CONTRIBUTORS", "scripts", "tips.txt", "no-serve", "optimize"]
+exclude: ["LICENSE", "README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github"]
 
 # Pagination path
 
