@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 
-updated: "November 2, 2018"
+update-text: "November 2, 2018"
 
 title: "Why Use a Static Site Generator?"
 titletag: "Why Use a Static Site Generator?"

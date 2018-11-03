@@ -24,6 +24,7 @@
               </a>.
               <a href="{{site.baseurl}}{{page.url }}#disqus_thread">Comments</a>
               <br />
+              <br />
               {% for tag in page.tags %}
                 <a class="tag" href="{{site.baseurl}}/tags/{{tag | downcase}}">#{{ tag }}</a>
               {% endfor %}
@@ -33,7 +34,7 @@
           <section class="text-justify">
             {% if page.updated %}
             <h6><i>
-            Last Updated {{ page.updated }}
+            Last Updated {{ page.update-text }}
             </i></h6>
             {% endif %}
             {{ page.content | markdownify }}
