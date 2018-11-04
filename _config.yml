@@ -158,6 +158,9 @@ author_blurb_image: "/img/author.jpg"
 
 permalink: /:categories/:year/:slug
 
+collections:
+    - update-collection
+
     
 exclude: ["LICENSE", "README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github"]
 

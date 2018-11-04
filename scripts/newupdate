@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'date'
+
+UPDATES_DIR = '_update-collection/'
+
+update = ARGV[0]
+
+File.open(UPDATE_DIR + post + '.md', 'w') {|f| f.write(
+  "---\ntitle: UPDATE!\ndate: yyyy-mm-dd\n---\n\nupdate content")
+}
+
+puts('[+] Created ' + update + ' update')
