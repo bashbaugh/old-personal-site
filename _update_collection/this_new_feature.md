@@ -1,5 +1,5 @@
 ---
-date: 2018-10-3
+date: 2018-10-03
 title: "A New Feature!"
 ---
 

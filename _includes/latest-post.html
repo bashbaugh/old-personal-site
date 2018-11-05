@@ -40,7 +40,15 @@
             
             <h5><a href="/archive">More Posts</a></h5>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 hidden-xs">
+        <br/>
+        {% assign updates = (site.update_collection | sort: 'date') | reverse %}
+        {% for update in updates %}
+            <div class="update-box">
+            <h5>{{ update.title }}</h5>
+            {{ update.content | markdownify }}
+            </div>
+        {% endfor %}
         </div>
         </div>
 </section>

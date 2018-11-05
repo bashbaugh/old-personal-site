@@ -3,11 +3,12 @@
 
 /*!
  * The custom stylesheet for my website
- * Contains extra styling code to supplement the Grayscale Bootstrap Theme, see
+ * Contains extra styling code to supplement the Grayscale Bootstrap Theme
  * 
  * By Benjamin A.
  * 
- * Code copyright Benjamin A.
+ * Code copyright (c) Benjamin A.
+ * Licensed under the MIT license, see /LICENSE
  */
 
 @import "variables";
@@ -94,6 +95,17 @@
 
 .no-border {
     border: 0px !important;
+}
+
+.update-box {
+    border-left: 2px solid $third-color;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    p {
+        margin-left: 6px;
+        font-size: 92%;
+        padding-bottom: 5px;
+    }
 }
 
 //--------------------------------------------

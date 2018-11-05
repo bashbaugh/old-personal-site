@@ -2,11 +2,11 @@
 
 require 'date'
 
-UPDATES_DIR = '_update-collection/'
+UPDATES_DIR = '_update_collection/'
 
 update = ARGV[0]
 
-File.open(UPDATE_DIR + post + '.md', 'w') {|f| f.write(
+File.open(UPDATES_DIR + update + '.md', 'w') {|f| f.write(
   "---\ntitle: UPDATE!\ndate: yyyy-mm-dd\n---\n\nupdate content")
 }
 

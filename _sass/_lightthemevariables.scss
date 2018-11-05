@@ -6,8 +6,14 @@ $primary-color: #ffffff;
 // Anchor color
 $secondary-color: #a06929;
 
+// Third color for other things like borders etc.
+$third-color: #7f848c;
+
 // Font color
 $font-color: #000000;
+
+// Second font color
+$second-font-color: $third-color;
 
 $navbar-text-shadow: false;
 $header-text-shadow: false;
