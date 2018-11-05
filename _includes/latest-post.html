@@ -4,6 +4,7 @@
 <section id="{{ page.section-type }}" class="container content-section text-center no-top-margin">
 
         <h4>Latest Posts</h4>
+        <hr/>
         <div class="row">
         <div class="col-sm-8">
             {% assign posts = site.posts %}
@@ -40,14 +41,18 @@
             
             <h5><a href="/archive">More Posts</a></h5>
         </div>
-        <div class="col-sm-4 hidden-xs">
+        <div class="col-sm-4">
         <br/>
+        <h4 class="text-muted"><u><small>updates<small></u></h4>
         {% assign updates = (site.update_collection | sort: 'date') | reverse %}
         {% for update in updates %}
+            {% if update.visible != false %}
             <div class="update-box">
+            <h6 class="text-muted">{{ update.date | date_to_string }}</h6>
             <h5>{{ update.title }}</h5>
             {{ update.content | markdownify }}
             </div>
+            {% endif %}
         {% endfor %}
         </div>
         </div>
