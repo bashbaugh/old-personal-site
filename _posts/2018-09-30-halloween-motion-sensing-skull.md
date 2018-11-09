@@ -3,6 +3,7 @@ layout: post
 section-type: post
 
 update-text: "October 29 2018"
+lastmod: 2018-10-29
 
 title: "Halloween Projects (a post in progress)"
 image: "/img/post-thumbnails/halloween_skull.jpg"

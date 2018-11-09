@@ -3,6 +3,7 @@ layout: post
 section-type: post
 
 update-text: "November 2, 2018"
+lastmod: 2018-11-02
 
 title: "Why Use a Static Site Generator?"
 titletag: "Why Use a Static Site Generator?"
