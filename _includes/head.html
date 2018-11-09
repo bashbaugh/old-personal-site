@@ -37,7 +37,7 @@ If you are interested in learning how to work with HTML, you can get started her
   {% if page.section-type == 'index' %}
   <link rel="canonical" href="https://scitronboy.github.io/">
   {% else %}
-  <link rel="canonical" href="{{ page.url | replace:'.html','/' }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','/' }}">
   {% endif %}
   <title>{% if page.title %} {{page.title}} | scitronboy.github.io
   {% else %}Articles and Tutorials about Tech and Making - scitronboy.github.io{% endif %}</title>
