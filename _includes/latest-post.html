@@ -45,11 +45,15 @@
         <br/>
         <h4 class="text-muted"><u><small>updates<small></u></h4>
         {% assign updates = (site.update_collection | sort: 'date') | reverse %}
-        {% for update in updates %}
+        {% for update in updates limit:10 %}
             {% if update.visible != false %}
             <div class="update-box">
             <h6 class="text-muted">{{ update.date | date_to_string }}</h6>
+            {% if update.link %}
+            <h5><u><a href="{{ update.link }}">{{ update.title }}</a></u></h5>
+            {% else %}
             <h5>{{ update.title }}</h5>
+            {% endif %}
             {{ update.content | markdownify }}
             </div>
             {% endif %}

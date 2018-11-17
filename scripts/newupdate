@@ -7,7 +7,7 @@ UPDATES_DIR = '_update_collection/'
 update = ARGV[0]
 
 File.open(UPDATES_DIR + update + '.md', 'w') {|f| f.write(
-  "---\ntitle: UPDATE!\ndate: yyyy-mm-dd\n#visible: false\n---\n\nupdate content")
+  "---\ntitle: UPDATE!\ndate: yyyy-mm-dd\n#visible: false\n#link: /blah/post12\n---\n\nupdate content")
 }
 
 puts('[+] Created ' + update + ' update')
