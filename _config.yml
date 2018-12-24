@@ -45,7 +45,7 @@ dynamic-typing: True
 shuffle: True # Shuffle the lines.
 loop: True
 loop-count: False # Set False for infinite loop, or set any number for finite loop.
-type-speed: 50
+type-speed: 30
 start-delay: 200
 delete-delay: 2000
 lines: # You can add HTML Tags in the Text
@@ -54,6 +54,7 @@ lines: # You can add HTML Tags in the Text
   - text: "Maker"
   - text: "Inventor"
   - text: "Student"
+  - text: "3d Printer (the human, not machine!!!)"
 
 me-img: "/img/author.jpg"
 
