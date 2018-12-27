@@ -267,7 +267,7 @@ Then we could easily checkout commit `24b9da6552` by using the tag instead of th
 
 #### Conclusion
 
-That's the end for now! I will add more advanced stuff to this not so simple git tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc... 
+That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
 
 
 
