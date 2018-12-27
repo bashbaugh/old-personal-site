@@ -55,6 +55,7 @@ With Git and GitHub, you can easily:
 + Collaborate with others. Collaboration, or at least the basics of collaboration features, is easy with Git and GitHub.
 + Keep different branches. With different branches, you can, for example: have different branches where you work on different features; have one branch for, say, the Python version of the project and one branch for, say, the Ruby version of the project, have one for the documentation, and one for the website...
 + Easily duplicate any version of the project into a different branch, make changes, and then merge it back into the original branch.
++ Git is extremely fast
 + Keep backups of your projects on GitHub.
 + Publish or store your source code on one of the world's leading software development platforms: GitHub.
 + Have one place online where you keep all your code, and all of its history, collaborators, documentation, etc.
@@ -128,7 +129,7 @@ Now we use `commit` to take a snapshot of the changes that are staged and send t
 
 The first time you commit, it might ask you to setup your name and email with the `config` command.
 
-Now we need to push the changes to GitHub. The first time we do this we must specify which remote origin "upstream" we would like to use. Since we are still on the default branch, the `master` branch, we add `-u origin master`.
+Now we need to push the changes to our remote repo on GitHub. The first time we do this we must specify which remote origin "upstream" we would like to use. Since we are still on the default branch, the `master` branch, we add `-u origin master`.
 
 `$ git push -u origin master`
 
@@ -206,9 +207,67 @@ or else, to do both at once, do git pull:
 
 `$ git pull`
 
+#### Checking out previous versions
+
+Every file, directory, and pretty much everything else in Git has an unique 40-character hash, calculated from the contents of the object, that identifies it. These hashes help git to prevent data loss, because if git detects a hash mismatch between the actual file and its known hash, then Git will know that something went wrong. In git, commits are also given unique hashes. To checkout a previous version of the project, you must use the `log` command to list the log of commits and their hashes, then checkout the hash that you want.
+
+`$ git log`   will list each commit (in the current branch)'s hash and commit message. The hash will be something like `24b9da6552252987aa493b52f8696cd6d3b00373`. To checkout that commit, which will temporarily revert your project to its state at that commit, you use the checkout command with **at least the first six digits of the hash**. Make sure you replace `24b9da` with the first six or more digits of _your_ commit's unique hash:
+
+`$ git checkout 24b9da`
+
+Git will give you a message about being in a "detached HEAD" state. This just means that you are _not_ on the HEAD, because the HEAD is the last commit, remember? and you just checked out a commit that was earlier in your project's history.
+
+To return to the latest commit in, say, the master branch, just checkout that branch:
+
+`$ git checkout master`
+
+###### A note about git log
+
+As you may have noticed, git `log` lists every commit with about 5 lines. If you do not need the extra details, you can run this command so that, in the future, git lists every commit on just one line:
+
+`$ git config format.pretty oneline`
+
+Also, press `q` at any time to close the log, and press `enter` or `return` to scroll down through a long log file.
+
+One more thing: you can have git generate a "tree" that shows all the branches and merges with this command:
+
+`$ git log --graph --oneline --decorate --all`
+
+And you can see lots more `log` options with `git log --help`.
+
+##### Saving changes made in previous commits
+
+If you checkout a previous commit and make changes to it, you can save the modified working directory in a new branch by running:
+
+`git checkout -b branchname`
+
+This will create a new branch that contains the project at that point in time, and it will also checkout the new branch for you.
+
+### A bit more advanced stuff
+
+#### Reflog basics
+
+You can use git `reflog`, which stands for "reference log", to show the history of where the HEAD was or where another branch's HEAD was.
+
+`$ git reflog` will show the history of the current branchs HEAD. It contains commits, checkouts, merges, resets, reverts, etc, along with their hashes. You can checkout any of the hashes to temporarily detach the HEAD and go back to that point in time. Just like always, you can checkout the most recent commit with `git checkout branchname` or `git checkout HEAD`
+
+To show the history of another branch's HEAD, use this:
+
+`$ git reflog show branchname`
+
+#### Tagging
+
+In git, you can tag certain commits with custom ids. For example, you could tag each finished version with a tag like `v1.0.0`, etc. Tag a commit with `git tag tagname commithash`. Here's an example:
+
+`$ git tag v1.0 24b9da6552`
+
+Then we could easily checkout commit `24b9da6552` by using the tag instead of the hash:
+
+`$ git checkout v1.0`
+
 #### Conclusion
 
-That's the end for now! I will add more advanced stuff to this not so simple git tutorial sometime in the next few days, like checking out previous versions, tagging, stashing, more on merging, resetting, how to make a pull request, etc... 
+That's the end for now! I will add more advanced stuff to this not so simple git tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc... 
 
 
 
