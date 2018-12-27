@@ -4,7 +4,7 @@ section-type: post
 title: Radar Defense Game
 image: "/img/post-thumbnails/radar-defense.png"
 category: projects
-tags: [ 'arduino', 'python', 'game', 'project' ]
+tags: [ 'arduino', 'python', 'game', 'project', 'code' ]
 
 year: "2018"
 urltitle: "radar-defense"

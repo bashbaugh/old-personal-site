@@ -3,8 +3,8 @@ layout: post
 section-type: post
 
 #date: yyyy-mm-dd
-#update-text: 
-#lastmod: yyyy-mm-dd
+update-text: "December 27 2018" 
+lastmod: 2018-12-27
 
 title: "Why and How to use Version Control: A Simple Git & GitHub Tutorial"
 image: "img/post-thumbnails/git.png"
@@ -25,7 +25,7 @@ In this post I will try to explain as simply as I can, what version control, Git
 
 I will go over the basics and only a few more advanced points in this article.
 
-I will assume that you know how to use the command line.
+I will assume that you know how to use the command line, and I will go at a fairly fast pace.
 
 ### What is Version Control and Git???
 
