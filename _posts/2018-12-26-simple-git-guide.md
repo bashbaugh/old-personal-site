@@ -18,7 +18,7 @@ titletag: "Why and How to use Version Control: A Simple Git & GitHub Tutorial"
 
 description: "An extremely short and simple guide and tutorial to Git and GitHub, and why you should use them. Git is a program used to manage source code, and GitHub is a platform for storing projects that use Git."
 
-keywords: "git, github, where can you get best git tutorial for beginner, what do i do in git, and what do i do in github, what is a great git tutorial for absolute beginners, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management"
+keywords: "git, github, where can you get best git tutorial for beginner, what do i do in git, and what do i do in github, what is a great git tutorial for absolute beginners, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial"
 ---
 
 In this post I will try to explain as simply as I can, what version control, Git and GitHub is, and why you should use them.
@@ -122,7 +122,7 @@ Let's say you have some modified or new files in your working directory that you
 `$ git add *`   adds everything to the stage - you will use this most often as it will add all changes and additions throughout your project to the stage.
 
 
-Now we use `commit` to take a snapshot of the changes that are staged. Every commit also needs a unique message that identifies in less than one sentence what the changes were. It might be something like "fixed broken navbar", "added main menu error catcher", or "added steering". In this example we will make the message "first commit," because this is our first commit in this repo.
+Now we use `commit` to take a snapshot of the changes that are staged. Every commit also needs a unique commit message that identifies in less than one sentence what the changes were. The commit message might be something like "fixed broken navbar", "added main menu error catcher", or "added steering". In this example we will make the message "first commit," because this is our first commit in this repo.
 
 `$ git commit -m "first commit"`
 
@@ -192,7 +192,7 @@ or else, to do both at once, do git pull:
 
 #### Conclusion
 
-That's the end for now! I will add more advanced stuff sometime in the next few days, like checking out previous versions, tagging, stashing, more on merging, resetting, etc... 
+That's the end for now! I will add more advanced stuff to this not so simple git tutorial sometime in the next few days, like checking out previous versions, tagging, stashing, more on merging, resetting, how to make a pull request, etc... 
 
 
 
