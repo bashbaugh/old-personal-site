@@ -103,13 +103,13 @@ Replace `<URL>` with the URL of the pre-existing project on GitHub.
 
 Pay attention now: 
 
-Git works by taking "snapshots" of your project whenever you issue the "commit" command, which are saved as your project's history. Don't worry - Git doesn't record the whole project every time you commit: it uses references to previous files in its snapshots, and it also compresses them. The actual history folder stays quite small. The three "levels" are:
+Git works by taking "snapshots" of your project whenever you issue the "commit" command, which are saved as your project's history. Don't worry - Git doesn't record the whole project every time you commit: it uses references to previous files in its snapshots, and it also compresses them. The actual history folder stays quite small. The three "levels," or "trees," of a git project are:
 
 The "working directory": This is just the directory (folder) that your project is stored in. You make changes to the code in this directory.
 
 The "Index", or the staging area: This is where you add stuff to be committed. This is stored in a file in the .git folder. Think of it like a stage: you can use the git `add` command to add files from your working directory to the stage, where they are prepared to be committed. Then you can use the `commit` command to take a snapshot of everything on the stage and store it in the project's history.
 
-The "HEAD": This is just a reference to the previous commit in the current branch, or the last snapshot.
+The "HEAD": This is just a reference to the previous commit or checkout in the current branch.
 
 Then there is the remote origin, which refers to the remote copy of your project which is stored on GitHub. You can use the git `push` command to update the remote repo with any recent commits.
 
@@ -122,7 +122,7 @@ Let's say you have some modified or new files in your working directory that you
 `$ git add *`   adds everything to the stage - you will use this most often as it will add all changes and additions throughout your project to the stage.
 
 
-Now we use `commit` to take a snapshot of the changes that are staged. Every commit also needs a unique commit message that identifies in less than one sentence what the changes were. The commit message might be something like "fixed broken navbar", "added main menu error catcher", or "added steering". In this example we will make the message "first commit," because this is our first commit in this repo.
+Now we use `commit` to take a snapshot of the changes that are staged and send them to the HEAD. Every commit also needs a unique commit message that identifies in less than one sentence what the changes were. The commit message might be something like "fixed broken navbar", "added main menu error catcher", or "added steering". In this example we will make the message "first commit," because this is our first commit in this repo.
 
 `$ git commit -m "first commit"`
 
@@ -134,7 +134,7 @@ Now we need to push the changes to GitHub. The first time we do this we must spe
 
 It might ask you for your GitHub username and password - just fill them in and press enter (you won't see your password being typed, but that's just a safety feature).
 
-In our future commits to the `master` branch, we do not need to specify the upstream:
+In our future pushes to the remote `master` branch, we do not need to specify the upstream:
 
 `$ git push`
 
@@ -154,15 +154,15 @@ Use the git status command to see what branch you are on:
 
 if you are on the `master` branch, run the following command to duplicate the HEAD into a second branch:
 
-`$ git branch newbranch`
+`$ git branch branch2`
 
-Branch `newbranch` is now identical to branch `master`. Run the following to checkout, or "move into", the new branch:
+Branch `branch2` is now identical to branch `master`. Run the following to checkout, or "move into", the new branch:
 
-`$ git checkout newbranch`
+`$ git checkout branch2`
 
-Create a new file (for example `hello2.txt`) in the working directory. Add and commit the changes. Then push this branch's changes to the remote origin. Remember, this is the first time pushing this branch, so we must specify its upstream with `-u origin newbranch`.
+Create a new file (for example `hello2.txt`) in the working directory. Add and commit the changes. Then push this branch's changes to the remote origin. Remember, this is the first time pushing this branch, so we must specify its upstream with `-u origin branch2`.
 
-`$ git push -u origin newbranch`
+`$ git push -u origin branch2`
 
 Let's "merge" the changes into the `master` branch now. First change back into master branch, then merge:
 
@@ -175,6 +175,22 @@ Branch `master` should now contain the `hello2.txt` file.
 Let's delete `branch2` now:
 
 `$ git branch -d branch2`
+
+##### Conflicts
+
+Sometimes there are conflicts and auto-merging does not work. For example, in two branches you might have a file `a.txt`, and you might add "Adam" to the first line in one branch, but someone adds "Bob" to the first line in the second branch. Git wouldn't know whether you wanted "Adam" or "Bob" on the first line. If this happens, git will tell you that you must fix the conflicts. To do that, just modify the files that it lists until you have them the way you want them to be. Then, mark the conflicts as resolved by adding that file to the stage. When you are done resolving the conflicts, commit the changes. You can also use git `diff` to view changes between two branches. For example:
+
+File a.txt has different first lines in branch a and b, so merging results in a conflict. We can use git `diff` to see the differences between the two branches:
+
+![image of merge conflict](/img/post/git/git_merge_conflict.png "Merge Conflict")
+
+We can see that in branch b relative to branch a, Adam was removed and Bob was added to the first line. We decide that we want the first line to contain Bob, so we manually edit the file and change the first line to "Bob". In fact, git **automatically modifies the file and adds the differences to the file itself**, so it is just a matter of deleting the lines we do not want. In fact, we didn't even need to use git `diff` in the first place. After editing the file the way we want, we mark the conflict as resolved by adding it to the Index and then commit the changes:
+
+`$ git add a.txt`
+
+`$ git commit -m "manually fixed merge conflict in a.txt"`
+
+Now the merge conflict is resolved.
 
 #### Pulling changes from GitHub: fetch and pull
 
