@@ -12,26 +12,26 @@ slug: "simple-git-github-tutorial"
 category: "code"
 tags: [ 'code', 'tutorial' ]
 
-postdescription: "An extremely short and simple guide to git and github, and why you should use them."
+postdescription: "An short and simple guide to git and github, and why you should use them."
 
 titletag: "Why and How to use Version Control: A Simple Git & GitHub Tutorial"
 
-description: "An extremely short and simple guide and tutorial to Git and GitHub, and why you should use them. Git is a program used to manage source code, and GitHub is a platform for storing projects that use Git."
+description: "A short and simple guide and tutorial to Git and GitHub, and why you should use them. Git is a program used to manage source code, and GitHub is a platform for storing projects that use Git."
 
-keywords: "git, github, where can you get best git tutorial for beginner, what do i do in git, and what do i do in github, what is a great git tutorial for absolute beginners, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial"
+keywords: "git, github, what do i do in git, what do i do in github, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial, learn git, branch"
 ---
 
 In this simple git tutorial I will try to explain as simply as I can, what version control, Git and GitHub is, and why you should use them.
 
 I will go over the basics and only a few more advanced points in this article.
 
-I will assume that you know how to use the command line, and I will go at a fairly fast pace.
+In this tutorial I will be using the the command line git commands, so I will assume that you know how to use the command line, and I will go at a fairly fast pace.
 
-### What is Version Control and Git???
+### What is Git?
 
 Git is a version control system. In this article, I will focus on Git, which is the most popular version control system.
 
-Version Control is a piece of software that helps teams or individuals manage their source code over time. It tracks changes in a project so that if something breaks while you are working on it, you can compare the difference between the current project and a previous version of the project. You can even "checkout" a previous version of the project and make changes to it. Also, with Git you can have separate "branches," which are separate, parallel "versions" of the project that can be worked on simultaneously. For example, one member of a team can work on a feature at the same time as another person (or the same person) works on a different feature. Once the features are finished, they can both be (hopefully seamlessly) be merged back into the main branch (called the master branch).
+Version Control is a piece of software that helps teams or individuals manage their source code over time. It tracks changes in a project so that if something breaks while you are working on it, you can compare the difference between the current project and a previous version of the project. You can even "checkout" a previous version of the project and make changes to it. Also, with Git you can have separate "branches," which are separate, parallel "versions" of the project that can be worked on simultaneously. For example, one member of a team can work on a feature at the same time as another person (or the same person) works on a different feature. Once the features are finished, they can both be (hopefully seamlessly) be merged back into the main branch (called the master branch). There are also many, many other features of Git, some of which I will talk about in this tutorial.
 
 [Download Git Here.](https://git-scm.com/)
 
