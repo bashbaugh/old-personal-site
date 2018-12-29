@@ -3,10 +3,10 @@ layout: post
 section-type: post
 
 #date: yyyy-mm-dd
-update-text: "December 27 2018" 
-lastmod: 2018-12-27
+update-text: "December 29 2018" 
+lastmod: 2018-12-29
 
-title: "Why and How to use Version Control: A Simple Git & GitHub Tutorial"
+title: "Why and How to use Version Control: A Simple Git and GitHub Tutorial"
 image: "img/post-thumbnails/git.png"
 slug: "simple-git-github-tutorial"
 category: "code"
@@ -21,7 +21,7 @@ description: "An extremely short and simple guide and tutorial to Git and GitHub
 keywords: "git, github, where can you get best git tutorial for beginner, what do i do in git, and what do i do in github, what is a great git tutorial for absolute beginners, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial"
 ---
 
-In this post I will try to explain as simply as I can, what version control, Git and GitHub is, and why you should use them.
+In this simple git tutorial I will try to explain as simply as I can, what version control, Git and GitHub is, and why you should use them.
 
 I will go over the basics and only a few more advanced points in this article.
 
@@ -56,7 +56,7 @@ With Git and GitHub, you can easily:
 + Keep different branches. With different branches, you can, for example: have different branches where you work on different features; have one branch for, say, the Python version of the project and one branch for, say, the Ruby version of the project, have one for the documentation, and one for the website...
 + Easily duplicate any version of the project into a different branch, make changes, and then merge it back into the original branch.
 + Git is extremely fast
-+ Keep backups of your projects on GitHub.
++ Keep backups of your projects on GitHub - although this is a benefit of using GitHub, don't start thinking of Git as a backup system, as that is _not_ what it is.
 + Publish or store your source code on one of the world's leading software development platforms: GitHub.
 + Have one place online where you keep all your code, and all of its history, collaborators, documentation, etc.
 + Git and GitHub is one of the most popular version control systems.
@@ -281,6 +281,8 @@ When working on a project, it is usually easiest to use the `git add .` command 
 ### Conclusion
 
 That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
+
+Let me know in the comments below if you have any questions or suggestions, or else [contact me](/#contact) or [file an issue on GitHub](https://github.com/scitronboy/scitronboy.github.io/issues/new/choose). Thanks for reading!
 
 
 
