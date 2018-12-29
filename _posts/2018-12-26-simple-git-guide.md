@@ -120,7 +120,7 @@ Let's say you have some modified or new files in your working directory that you
 
 `$ git add <filename>`  will add just one file to the stage
 
-`$ git add *`   adds everything to the stage - you will use this most often as it will add all changes and additions throughout your project to the stage.
+`$ git add .`   adds everything to the stage - you will use this most often as it will add all changes and additions throughout your project to the stage.
 
 
 Now we use `commit` to take a snapshot of the changes that are staged and send them to the HEAD. Every commit also needs a unique commit message that identifies in less than one sentence what the changes were. The commit message might be something like "fixed broken navbar", "added main menu error catcher", or "added steering". In this example we will make the message "first commit," because this is our first commit in this repo.
@@ -265,7 +265,11 @@ Then we could easily checkout commit `24b9da6552` by using the tag instead of th
 
 `$ git checkout v1.0`
 
-#### Conclusion
+You can view all tags like this:
+
+`$ git tag`
+
+### Conclusion
 
 That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
 
