@@ -14,11 +14,11 @@ tags: [ 'code', 'tutorial' ]
 
 postdescription: "An short and simple guide to git and github, and why you should use them."
 
-titletag: "Why and How to use Version Control: A Simple Git & GitHub Tutorial"
+titletag: "Why Version Control: A Simple Git Tutorial"
 
 description: "A short and simple guide and tutorial to Git and GitHub, and why you should use them. Git is a program used to manage source code, and GitHub is a platform for storing projects that use Git."
 
-keywords: "git, github, what do i do in git, what do i do in github, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial, learn git, branch"
+keywords: "git, github, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial, learn git, branch"
 ---
 
 In this simple git tutorial I will try to explain as simply as I can, what version control, Git and GitHub is, and why you should use them.

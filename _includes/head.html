@@ -27,7 +27,7 @@ If you are interested in learning how to work with HTML, you can get started her
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="CtSf12VFnM489h5Y6THZ1bZhWJPhc51-LsdniIAPMEU" />
-  <meta name="title" content ="{% if page.title %} {{page.title}} | scitronboy.github.io
+  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }}  | scitronboy.github.io {% elsif page.title %} {{page.title}} | scitronboy.github.io
   {% else %}Articles and Tutorials about Tech and Making - scitronboy.github.io{% endif %}">
   <meta name="description" content="{% if page.description %}
   {{ page.description }} {% else %} {{site.description}} {% endif %}">
@@ -39,7 +39,7 @@ If you are interested in learning how to work with HTML, you can get started her
   {% else %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','/' }}">
   {% endif %}
-  <title>{% if page.title %} {{page.title}} | scitronboy.github.io
+  <title>{% if page.titletag %} {{ page.titletag }}  | scitronboy.github.io {% elsif page.title %} {{page.title}} | scitronboy.github.io
   {% else %}Articles and Tutorials about Tech and Making - scitronboy.github.io{% endif %}</title>
 
   <!-- Bootstrap Core CSS -->
