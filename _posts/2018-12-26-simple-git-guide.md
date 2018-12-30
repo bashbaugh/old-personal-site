@@ -14,9 +14,9 @@ tags: [ 'code', 'tutorial' ]
 
 postdescription: "An short and simple guide to git and github, and why you should use them."
 
-titletag: "Why Version Control: A Simple Git Tutorial"
+titletag: "A Simple Git Tutorial: Why and How to use Version Control"
 
-description: "A short and simple guide and tutorial to Git and GitHub, and why you should use them. Git is a program used to manage source code, and GitHub is a platform for storing projects that use Git."
+description: "A short and simple guide and tutorial to Git and GitHub, and why you should use them. If you need a short and concise git guide, read this."
 
 keywords: "git, github, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial, learn git, branch"
 ---
@@ -198,6 +198,8 @@ Now the merge conflict is resolved.
 
 To update your local branch with the most recent commits on the remote origin branch, first change into the branch you want to update and then fetch the origin:
 
+`$ git checkout branchname`
+
 `$ git fetch origin`
 
 then merge the remote branch from the origin that you just fetched into the local branch:
@@ -208,7 +210,7 @@ or else, to do both at once, do git pull:
 
 `$ git pull`
 
-#### Checking out previous versions
+#### Checking out previous versions with git checkout
 
 Every file, directory, and pretty much everything else in Git has an unique 40-character hash, calculated from the contents of the object, that identifies it. These hashes help git to prevent data loss, because if git detects a hash mismatch between the actual file and its known hash, then Git will know that something went wrong. In git, commits are also given unique hashes. To checkout a previous version of the project, you must use the `log` command to list the log of commits and their hashes, then checkout the hash that you want.
 
@@ -234,7 +236,7 @@ One more thing: you can have git generate a "tree" that shows all the branches a
 
 `$ git log --graph --oneline --decorate --all`
 
-And you can see lots more `log` options with `git log --help`.
+And you can see lots more `log` commands in the [official docs](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History "Git Basics - Viewing the Commit History") or by typing `git log --help`.
 
 ##### Saving changes made in previous commits
 
@@ -282,7 +284,11 @@ When working on a project, it is usually easiest to use the `git add .` command 
 
 That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
 
+Also, you can find the official [Git reference manual](https://git-scm.com/docs) here, and you can also read the entire [_Pro Git_ book](https://git-scm.com/book/en/v2) online for free.
+
 Let me know in the comments below if you have any questions or suggestions, or else [contact me](/#contact) or [file an issue on GitHub](https://github.com/scitronboy/scitronboy.github.io/issues/new/choose). Thanks for reading!
+
+
 
 
 
