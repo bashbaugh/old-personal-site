@@ -82,20 +82,20 @@ web-app-mode: False
 # Blog #
 ########
 
-enable-gesture-navigation: False
+enable-gesture-navigation: True
 
 post-preview-words: 100
 
 paginate: 10
 
-email-share: False
-fb-share: False
-twitter-share: False
-linkedin-share: False
-reddit-share: False
-google-plus-share: False
+email-share: True
+fb-share: True
+twitter-share: True
+linkedin-share: True
+reddit-share: True
+google-plus-share: True
 tumblr-share: False
-pinterest-share: False
+pinterest-share: True
 pocket-share: False
 vkontakte-share: False
 

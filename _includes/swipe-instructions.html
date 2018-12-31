@@ -1,4 +1,5 @@
 
+{% if site.enable-gesture-navigation %}
 <!-- Swipe Instructions Start -->
 
 <div id="swipe-instruction">
@@ -6,20 +7,21 @@
     <p><br><br><br></p>
     <i id="hand-swipe" class="fa fa-hand-o-up"></i>
     <p><strong>
-    {% if page.section-type == "blog" %}
-      Did you know that you can navigate the archive pages by swiping left and right?
+    {% if page.section-type == "archive" %}
+      You can navigate the archive pages by swiping left and right.
     {% elsif page.section-type == "post" %}
-      Did you know that you can navigate the posts by swiping left and right?
+      You can switch to the previous or next post by swiping left or right (or click-dragging).
     {% endif %}
     </strong></p>
     <button type="button" class="btn btn-default ok-btn close-swipe-instruction">
-      {% if page.section-type == "blog" %}
+      {% if page.section-type == "archive" %}
         Got it!
       {% elsif page.section-type == "post" %}
-        Awesome!
+        Ok!
       {% endif %}
     </button>
   </div>
 </div>
 
 <!-- Swipe Instructions End -->
+{% endif %}

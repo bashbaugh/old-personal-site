@@ -111,6 +111,19 @@
     }
 }
 
+.img-me {
+    z-index: 100;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    margin-left: 0;
+    border: 7px solid #f1f1f1;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+    background-color: #f1f1f1;
+}
+
 //--------------------------------------------
 
 /*!
@@ -527,7 +540,7 @@ body {
  #swipe-instruction {
      display: none;
      position: absolute;
-     background-color: rgba(0, 0, 0, 0.5);
+     background-color: rgba(255, 255, 255, 0.5);
      width: 100%;
      min-height: 100%;
      top: 0;
@@ -535,7 +548,7 @@ body {
      left: 0;
      z-index: 1;
       > div {
-         background-color: rgba(20, 20, 20, 0.6);
+         background-color: rgba(230, 230, 230, 0.6);
          padding: 10px;
          @media(min-width:768px) {
            padding: 20px 0;
