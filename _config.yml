@@ -91,11 +91,11 @@ paginate: 10
 email-share: True
 fb-share: True
 twitter-share: True
+pinterest-share: True
 linkedin-share: True
 reddit-share: True
 google-plus-share: True
 tumblr-share: False
-pinterest-share: True
 pocket-share: False
 vkontakte-share: False
 

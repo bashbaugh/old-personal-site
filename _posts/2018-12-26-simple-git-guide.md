@@ -3,8 +3,8 @@ layout: post
 section-type: post
 
 #date: yyyy-mm-dd
-update-text: "December 29 2018" 
-lastmod: 2018-12-29
+update-text: "December 31 2018" 
+lastmod: 2018-12-31
 
 title: "Why and How to use Version Control: A Simple Git and GitHub Tutorial"
 image: "img/post-thumbnails/git.png"
@@ -20,6 +20,8 @@ description: "A short and simple guide and tutorial to Git and GitHub, and why y
 
 keywords: "git, github, what is github, what is git, how to use git, how to use github, simple, git guide, git tutorial, github tutorial, version control, source management, simple git tutorial, learn git, branch"
 ---
+
+![git and github](/img/post/git/git-github-logo.jpg "git and github logos")
 
 In this simple git tutorial I will try to explain as simply as I can, what version control, Git and GitHub is, and why you should use them.
 
@@ -284,7 +286,7 @@ When working on a project, it is usually easiest to use the `git add .` command 
 
 That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
 
-Also, you can find the official [Git reference manual](https://git-scm.com/docs) here, and you can also read the entire [_Pro Git_ book](https://git-scm.com/book/en/v2) online for free.
+You can find the official [Git reference manual](https://git-scm.com/docs) here, and you can also read the entire [_Pro Git_ book](https://git-scm.com/book/en/v2) online for free.
 
 Let me know in the comments below if you have any questions or suggestions, or else [contact me](/#contact) or [file an issue on GitHub](https://github.com/scitronboy/scitronboy.github.io/issues/new/choose). Thanks for reading!
 
