@@ -79,6 +79,8 @@ To turn an ordinary directory into a Git project, open up the command line, `cd`
 
 `$ git init`
 
+Git will initialise a folder named `.git` in the root of your project directory. Git will story the project history, branches, configuration, etc. in this folder.
+
 Now we need to set up the remote copy of the project on GitHub.
 Go to [github.com](https://github.com) and click on the little plus icon in the top right. Click "new repository." Fill out the repo details like in the picture then click "create repository"
 
@@ -110,7 +112,7 @@ Git works by taking "snapshots" of your project whenever you issue the "commit" 
 
 The "working directory": This is just the directory (folder) that your project is stored in. You make changes to the code in this directory.
 
-The "Index", or the staging area: This is where you add stuff to be committed. This is stored in a file in the .git folder. Think of it like a stage: you can use the git `add` command to add files from your working directory to the stage, where they are prepared to be committed. Then you can use the `commit` command to take a snapshot of everything on the stage and store it in the project's history.
+The "Index", or the staging area: This is where you add stuff to be committed. This is stored in a file in the `.git` folder. Think of it like a stage: you can use the git `add` command to add files from your working directory to the stage, where they are prepared to be committed. Then you can use the `commit` command to take a snapshot of everything on the stage and store it in the project's history.
 
 The "HEAD": This is just a reference to the previous commit or checkout in the current branch.
 
@@ -252,7 +254,7 @@ This will create a new branch that contains the project at that point in time, a
 
 #### Reflog basics
 
-You can use git `reflog`, which stands for "reference log", to show the history of where the HEAD was or where another branch's HEAD was.
+You can use git `reflog`, which stands for "reference log", to show the history of where the HEAD was or where another branch's HEAD was. This can be used, for example, to recover lost commits.
 
 `$ git reflog` will show the history of the current branchs HEAD. It contains commits, checkouts, merges, resets, reverts, etc, along with their hashes. You can checkout any of the hashes to temporarily detach the HEAD and go back to that point in time. Just like always, you can checkout the most recent commit with `git checkout branchname` or `git checkout HEAD`
 

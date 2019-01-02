@@ -94,7 +94,7 @@ twitter-share: True
 pinterest-share: True
 linkedin-share: True
 reddit-share: True
-google-plus-share: True
+google-plus-share: False
 tumblr-share: False
 pocket-share: False
 vkontakte-share: False
