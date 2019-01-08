@@ -1,6 +1,6 @@
 
 # Site settings
-testing-mode: false
+testing-mode: true
 
 url: "https://scitronboy.github.io"
 

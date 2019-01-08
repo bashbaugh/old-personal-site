@@ -59,6 +59,7 @@ With Git and GitHub, you can easily:
 + Easily duplicate any version of the project into a different branch, make changes, and then merge it back into the original branch.
 + Git is extremely fast
 + Keep backups of your projects on GitHub - although this is a benefit of using GitHub, don't start thinking of Git as a backup system, as that is _not_ what it is.
++ Keep track of your project's issues and bugs on GitHub.
 + Publish or store your source code on one of the world's leading software development platforms: GitHub.
 + Have one place online where you keep all your code, and all of its history, collaborators, documentation, etc.
 + Git and GitHub is one of the most popular version control systems.
