@@ -49,6 +49,8 @@
 
           {% if jekyll.environment == "production" %}
             {% include comments.html %}
+          {% else %}
+            <!-- NO COMMENTS - JEKYLL ENV NOT PRODUCTION -->
           {% endif %}
 
 
