@@ -167,6 +167,8 @@ collections:
     
 exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile"]
 
+include: ["_redirects", "_headers"]
+
 # Pagination path
 
 paginate_path: "archive/page:num/"
