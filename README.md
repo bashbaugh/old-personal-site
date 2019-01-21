@@ -1,6 +1,6 @@
 # [My Blog/website](https://scitronboy.github.io/)
 
-Welcome to the open-source code for [my website/blog](https://scitronboy.github.io/). 
+Welcome to the open-source code for [my website/blog](https://scitronboy.com/). 
 Let me know if you have any questions about it.
 
 If you like my website/code, please star or fork it.
