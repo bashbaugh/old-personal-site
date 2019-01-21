@@ -10,6 +10,8 @@ If you are interested in learning how to work with HTML, you can get started her
 <!-- HEAD Start -->
 
 <head>
+  {% include site_redirect.html %}
+  {% if jekyll.environment == "production" %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-tracking-id }}"></script>
     <script>
@@ -20,6 +22,7 @@ If you are interested in learning how to work with HTML, you can get started her
     gtag('config', '{{ site.google-tracking-id }}');
     </script>
   <!-- End global site tag -->
+  {% endif %}
 
   {% include force-https.html %}
   
@@ -27,20 +30,20 @@ If you are interested in learning how to work with HTML, you can get started her
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="CtSf12VFnM489h5Y6THZ1bZhWJPhc51-LsdniIAPMEU" />
-  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} | scitronboy.github.io
-  {% else %}Articles and Tutorials about Tech and Making - scitronboy.github.io{% endif %}">
+  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} - scitronboy.com
+  {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}">
   <meta name="description" content="{% if page.description %}
   {{ page.description }} {% else %} {{site.description}} {% endif %}">
   <meta name="author" content="{{site.author}}">
   <meta name="keywords" content="{% if page.keywords %}
   {{ page.keywords }} {% else %} {{site.keywords}} {% endif %}">
   {% if page.section-type == 'index' %}
-  <link rel="canonical" href="https://scitronboy.github.io/">
+  <link rel="canonical" href="{{ site.url }}">
   {% else %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','/' }}">
   {% endif %}
-  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} | scitronboy.github.io
-  {% else %}Articles and Tutorials about Tech and Making - scitronboy.github.io{% endif %}</title>
+  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} | scitronboy.com
+  {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -90,7 +93,7 @@ If you are interested in learning how to work with HTML, you can get started her
 
     <!--     End Favicons -->
   
-  {% if page.url == "/404.html" or page.url == "/thankyou.html" %}
+  {% if page.url == "/404" %}
     <meta http-equiv="refresh" content="20; url={{site.baseurl}}/">
   {% endif %}
 

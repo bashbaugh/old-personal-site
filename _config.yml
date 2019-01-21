@@ -6,6 +6,9 @@ url: "https://scitronboy.com/"
 
 baseurl: ""
 
+site_redirect_from: scitronboy.github.io
+site_redirect_to: scitronboy.com
+
 # Google tracking id
 
 google-tracking-id: "UA-123085505-1"
@@ -24,9 +27,9 @@ force-https: True
 lang: "en"
 author: "Benjamin A."
 title: "scitronboy.com"
-description: "Benjamin A.'s blog and website: cool projects, tutorials, and articles about tech.  I blog and write tutorials about anything from python programming and web development to arduino and raspberry pi, for beginners and advanced users."
+description: "scitronboy's blog and website: cool projects, tutorials, and articles about tech.  I blog and write tutorials about anything from python programming and web development to arduino and raspberry pi, for beginners and advanced users."
 
-keywords: "A, Benjamin, scitronboy, personal, blog, tutorials, 14"
+keywords: "A, Benjamin, scitronboy, personal, blog, tutorials, 14, arduino, python, git, programming, making, DIY"
 #favicon: "/img/favicon.ico"
 
 ################
@@ -162,7 +165,7 @@ collections:
     - update_collection
 
     
-exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github"]
+exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile"]
 
 # Pagination path
 
@@ -176,3 +179,4 @@ sass:
 plugins:
   - jekyll-paginate
   - jemoji
+  - jekyll-redirect-from
