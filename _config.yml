@@ -2,7 +2,7 @@
 # Site settings
 testing-mode: false
 
-url: "https://scitronboy.com/"
+url: "https://scitronboy.com"
 
 baseurl: ""
 
