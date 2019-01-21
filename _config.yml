@@ -11,7 +11,7 @@ site_redirect_to: scitronboy.com
 
 # Google tracking id
 
-google-tracking-id: "UA-123085505-1"
+google-tracking-id: "UA-132901912-1"
 form-api-token: "4923b1bd96b8bc654e1dd3eb8f0869cd"
 
 # Forces https everywhere in your website, except when you serve it locally
