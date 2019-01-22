@@ -11,14 +11,14 @@
     {% include navigation.html %}
 
     <section class="container content-section text-center">
-      <p>I now have a new domain. If you are not redirected immediately, please change the <i>{{ site.site_redirect_from }}</i> in the URL of this page to <i>{{ site.site_redirect_to }}</i> to view this page on my new domain.<p>
+      <p>This page has moved. If you are not redirected immediately, please change the <i>{{ site.site_redirect_from }}</i> in the URL of this page to <i>{{ site.site_redirect_to }}</i> to view this page on my new domain.<p>
 
 <p>Or else <a href="https://{{ site.site_redirect_to }}">visit my new site</a>.</p>
 
-<script>
+<!--<script>
   if (window.location.host.startsWith("{{ site.site_redirect_from }}"))
     window.location.host = "{{ site.site_redirect_to }}"
-</script>
+</script>-->
     </section>
 
     {% include footer.html %}

@@ -13,7 +13,7 @@ title: scitronboy.github.io
 form-api-token: "4923b1bd96b8bc654e1dd3eb8f0869cd"
 
 
-exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile"]
+exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile", "index.html"]
 
 
 sass:
