@@ -1,0 +1,10 @@
+[[headers]]
+for = "/*"
+[headers.values]
+Server = "Netlify-scitronboy.com"
+
+[[redirects]]
+from = "https://scitronboycom.netlify.com/*"
+to = "https://scitronboy.com/:splat"
+status = 301
+force = true
