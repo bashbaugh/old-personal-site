@@ -3,7 +3,7 @@
   <!-- redirect Start -->
   <script>
   if (window.location.host.startsWith("{{ site.site_redirect_from }}")
-    window.location.host = "{{ site.site_redirect_to }}";
+    {window.location.host = "{{ site.site_redirect_to }}"}
   </script>
 
   <!-- redirect End -->

@@ -6,14 +6,10 @@
     <div class="col-md-10 col-md-offset-1">
 
       <h2>Contact</h2>
-      <p>Feedback about this site is much appreciated, as it is very new and I am still working on it. If you have a bug or glitch or some other error to report, or if you would like to submit a feature or article request, please <a href="https://github.com/scitronboy/scitronboy.github.io/issues/new/choose"><u>file an issue on GitHub</u></a> (you will need a GitHub account). Thanks.</p>
-      <p>If you do not want to file an issue on github, please fill out the form below. If you  want me to reply back to you, leave your email in the Your Email field.</p>
+      <p>If you need to, you can contact me with the form below.</p>
       
       <form action="https://getsimpleform.com/messages?form_api_token={{ site.form-api-token }}" method="post">
 
-        <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
-        <input type='hidden' name='redirect_to' value='https://scitronboy.github.io/thankyou.html' />
-        
         <input type='hidden' name='form' value='Contact Form' />
         
         <div class="form-group">
@@ -25,38 +21,13 @@
         </div>
         
         <div class="form-group">
-        <textarea type='text' rows="5" class="form-control" name='message' placeholder="Your Message" required="required"/>
+        <textarea type="text" rows="5" class="form-control" name="message" placeholder="Your Message" required="required"></textarea>
         </div>
 
         <div class="form-group">
         <input type='submit' class="btn btn-default" value='Send Message' />
         </div>
       </form>
-      
-      <br/>
-      <p>You could also make a public comment on <a href="/random/2018/first-post">one of my blog posts</a></p>
-
-      {% if site.contact_email %}
-        {% if site.email contains '@' %}
-          {% assign newemail = site.email | split: '@' %}
-            <p>
-            <script>
-              function join_at_email(user, domain){
-              return (user && domain)?(user + "@" + domain):"";
-              }
-              document.write('<a href="mailto:'
-              + join_at_email( "{{ newemail[0] }}", "{{ newemail[1] }}" )
-              + '">'
-              + join_at_email( "{{ newemail[0] }}", "{{ newemail[1] }}" )
-              + '</a>'
-              );
-              </script>
-            </p>
-        {% else %}
-          <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-        {% endif %}
-      {% endif %}
-
     </div>
   </div>
 </section>

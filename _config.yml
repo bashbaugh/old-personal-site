@@ -2,178 +2,19 @@
 # Site settings
 testing-mode: false
 
-url: "https://scitronboy.com"
+url: "https://scitronboy.github.io"
 
 baseurl: ""
 
 site_redirect_from: scitronboy.github.io
 site_redirect_to: scitronboy.com
 
-# Google tracking id
-
-google-tracking-id: "UA-132901912-1"
+title: scitronboy.github.io
 form-api-token: "4923b1bd96b8bc654e1dd3eb8f0869cd"
 
-# Forces https everywhere in your website, except when you serve it locally
-# If you are not hosted on Github Pages, and your host doesn't support https
-# then you should disable it
 
-force-https: True
-
-#############
-# HTML Head #
-#############
-
-lang: "en"
-author: "Benjamin A."
-title: "scitronboy.com"
-description: "scitronboy's blog and website: cool projects, tutorials, and articles about tech.  I blog and write tutorials about anything from python programming and web development to arduino and raspberry pi, for beginners and advanced users."
-
-keywords: "A, Benjamin, scitronboy, personal, blog, tutorials, 14, arduino, python, git, programming, making, DIY"
-#favicon: "/img/favicon.ico"
-
-################
-# Header layout #
-################
-
-black-favicon: "/img/white-lab-glass.png"
-
-background-img: "../img/workbench.jpg"
-
-##############################
-# Dynamic Text on the Header #
-##############################
-
-dynamic-typing: True
-shuffle: True # Shuffle the lines.
-loop: True
-loop-count: False # Set False for infinite loop, or set any number for finite loop.
-type-speed: 30
-start-delay: 200
-delete-delay: 2000
-lines: # You can add HTML Tags in the Text
-  - text: "Programmer"
-  - text: "Robot Builder"
-  - text: "Maker"
-  - text: "Student"
-  - text: "3d Printer (the human, not machine!!!)"
-
-me-img: "/img/author.jpg"
-
-##############################
-# Color the browser elements #
-##############################
-color-browser: "#ffffff"
-apple-status-bar-style: "white"
-
-################
-# Web app mode #
-################
-
-web-app-mode: False
-
-# Icons for Web App mode
-
-#icon-36p: "/img/web-app/icon-36p.png"
-#icon-48p: "/img/web-app/icon-48p.png"
-#icon-72p: "/img/web-app/icon-72p.png"
-#icon-96p: "/img/web-app/icon-96p.png"
-#icon-144p: "/img/web-app/icon-144p.png"
-#icon-192p: "/img/web-app/icon-192p.png"
-
-########
-# Blog #
-########
-
-enable-gesture-navigation: True
-
-post-preview-words: 100
-
-paginate: 10
-
-email-share: True
-fb-share: True
-twitter-share: True
-pinterest-share: True
-linkedin-share: True
-reddit-share: True
-google-plus-share: False
-tumblr-share: False
-pocket-share: False
-vkontakte-share: False
-
-disqus-shortname: "scitronboy-github-io"
-
-syntax-highlight: True
-
-############
-# Timeline #
-############
-
-#events:
-  #- image: "/img/timeline/spidertocat.png"
-    #date: "September 2013 - Today"
-    #description: "Saving the neighborhood!"
-  #- image: "/img/timeline/baracktocat.jpg"
-    #date: "September 2007 - August 2013"
-    #description: "Started coding"
-
-## First image of the Timeline
-
-#timeline-img: "/img/timeline/default.png"
-
-###########
-# Contact #
-###########
-
-contact_email: false
-email:
-
-################
-# Author Blurb #
-################
-
-# The author blurb goes underneath blog posts.
-# This works best when your author blurb image has a transparent background
-
-# if the author_blurb is not set, then this feature is skipped
-#author_blurb: "Benjamin is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making. Learn more <a href='/#about'>here</a>"
-author_blurb_image: "/img/author.jpg"
-
-##################
-# Social Buttons #
-##################
-
-#social:
-  ##- title: "facebook"
-    ##url: "https://facebook.com/"
-  ##- title: "twitter"
-    ##url: "https://twitter.com/"
-  #- title: "github"
-    #url: "https://github.com/scitronboy"
-  #- title: "stack overflow"
-    #url: "https://stackexchange.com/users/11955944/scitronboy?tab=accounts"
-  ##- title: "bitcoin"
-    ##url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
-  #- title: "rss"
-    #url: "/feed.xml"
-
-
-permalink: /:categories/:year/:slug
-
-collections:
-    - update_collection
-
-    
 exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile"]
 
-include: ["_redirects", "_headers"]
-
-# Pagination path
-
-paginate_path: "archive/page:num/"
-
-# Enable minification SASS
 
 sass:
   style: compressed
