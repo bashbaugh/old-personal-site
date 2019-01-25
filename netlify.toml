@@ -1,12 +1,25 @@
 [[headers]]
 for = "/*"
 [headers.values]
-Server = "Netlify-scitronboy.com"
+# Server = "Netlify-scitronboy.com"
 X-Content-Type-Options = "nosniff"
 X-Frame-Options = "DENY"
 X-XSS-Protection = "1; mode=block"
 
-# Cache-Control = "max-age=86400"
+[[headers]]
+for = "/img/*"
+[headers.values]
+Cache-Control = "max-age=86400"
+
+[[headers]]
+for = "/css/*"
+[headers.values]
+Cache-Control = "max-age=172800"
+
+[[headers]]
+for = "/js/*"
+[headers.values]
+Cache-Control = "max-age=86400"
 
 [[redirects]]
 from = "https://scitronboycom.netlify.com/*"
