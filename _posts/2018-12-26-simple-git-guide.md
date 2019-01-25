@@ -189,7 +189,7 @@ Sometimes there are conflicts and auto-merging does not work. For example, in tw
 File a.txt has different first lines in branch a and b, so merging results in a conflict. We can use git `diff` to see the differences between the two branches:
 
 <!-- ![image of merge conflict](/img/post/git/git_merge_conflict.png "Merge Conflict") -->
-<script defer src="https://gist.github.com/scitronboy/a329904295daff79f0ec87c260f8d064.js"></script>
+<script src="https://gist.github.com/scitronboy/a329904295daff79f0ec87c260f8d064.js"></script>
 
 We can see that in branch b relative to branch a, Adam was removed and Bob was added to the first line. We decide that we want the first line to contain Bob, so we manually edit the file and change the first line to "Bob". In fact, git **automatically modifies the file and adds the differences to the file itself**, so it is just a matter of deleting the lines we do not want. In fact, we didn't even need to use git `diff` in the first place. After editing the file the way we want, we mark the conflict as resolved by adding it to the Index and then commit the changes:
 
@@ -283,7 +283,7 @@ You can view all tags like this:
 
 When working on a project, it is usually easiest to use the `git add .` command to add all changes in all files to the Index all at once. Sometimes, though, there will be files that you _never_ want pushed to GitHub or even committed. Some examples are custom config files, credentials files with private information, virtual environments, swap files, os-generated files (such as `.DS_Store` on mac), log files, etcetera. To work around this, you can create a custom file in your project directory that contains files and folders that you want git to ignore. This file should be named `.gitignore`. Here's an example:
 
-<script defer src="https://gist.github.com/scitronboy/77718a1bf9f981af2da3e3fb88e04bfc.js"></script>
+<script src="https://gist.github.com/scitronboy/77718a1bf9f981af2da3e3fb88e04bfc.js"></script>
 
 ### Conclusion
 
