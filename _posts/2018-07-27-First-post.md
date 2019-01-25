@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: First Blog Post
-category: Random
+category: other
 tags: ['jekyll']
 year: "2018"
 urltitle: "first-post"
