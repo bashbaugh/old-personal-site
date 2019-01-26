@@ -9,7 +9,7 @@
       <p>Feedback about this site is much appreciated, as it is very new and I am still working on it.</p>
       <p>Please fill out the form below to contact me. If you  want me to reply back to you, leave your email in the Your Email field.</p>
       
-      <form action="/thankyou" method="POST" name="contact" netlify>
+      <form method="POST" name="contact" netlify>
         
         <div class="form-group">
         <input type='text' class="form-control" name='name' placeholder="Your Name" />
@@ -22,10 +22,10 @@
         <div class="form-group">
         <textarea type='text' rows="5" class="form-control" name='message' placeholder="Your Message" required="required"/>
         </div>
-
-        <!--<div class="form-group">
-        <div data-netlify-recaptcha="true"></div>
-        </div>-->
+        
+        <div class="form-group">
+        <div netlify-recaptcha></div>
+        </div>
         
         <div class="form-group">
         <input type='submit' class="btn btn-default" value='Send Message' />
