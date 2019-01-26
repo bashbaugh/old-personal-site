@@ -6,15 +6,10 @@
     <div class="col-md-10 col-md-offset-1">
 
       <h2>Contact</h2>
-      <p>Feedback about this site is much appreciated, as it is very new and I am still working on it. If you have a bug or glitch or some other error to report, or if you would like to submit a feature or article request, please <a href="https://github.com/scitronboy/scitronboy.github.io/issues/new/choose"><u>file an issue on GitHub</u></a> (you will need a GitHub account). Thanks.</p>
-      <p>If you do not want to file an issue on github, please fill out the form below. If you  want me to reply back to you, leave your email in the Your Email field.</p>
+      <p>Feedback about this site is much appreciated, as it is very new and I am still working on it.</p>
+      <p>Please fill out the form below to contact me. If you  want me to reply back to you, leave your email in the Your Email field.</p>
       
-      <form action="https://getsimpleform.com/messages?form_api_token={{ site.form-api-token }}" method="post">
-
-        <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
-        <input type='hidden' name='redirect_to' value='https://scitronboy.github.io/thankyou.html' />
-        
-        <input type='hidden' name='form' value='Contact Form' />
+      <form action="/thankyou" name="contact" netlify>
         
         <div class="form-group">
         <input type='text' class="form-control" name='name' placeholder="Your Name" />
@@ -29,12 +24,16 @@
         </div>
 
         <div class="form-group">
+        <div data-netlify-recaptcha="true"></div>
+        </div>
+        
+        <div class="form-group">
         <input type='submit' class="btn btn-default" value='Send Message' />
         </div>
       </form>
       
       <br/>
-      <p>You could also make a public comment on <a href="/random/2018/first-post">one of my blog posts</a></p>
+      <p>You could alternatively make a public comment on <a href="/other/2018/first-post">one of my blog posts</a> or <a href="https://github.com/scitronboy/scitronboy.github.io/issues/new/choose">file an issue on GitHub</a>.</p>
 
       {% if site.contact_email %}
         {% if site.email contains '@' %}
