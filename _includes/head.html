@@ -26,54 +26,63 @@ If you are interested in learning how to work with HTML, you can get started her
 
   {% include force-https.html %}
   
+<!--  Meta Stuff  -->
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="CtSf12VFnM489h5Y6THZ1bZhWJPhc51-LsdniIAPMEU" />
   <meta name="norton-safeweb-site-verification" content="wehuiarz-evncsqkcyaa-0bgcp4y3r0fnspg1s0ocaraobb53mt434w07i3buplymeaeqw65b87eyl06kl9srf90xq3x9tde69wbq8fp2uechyqh434ohr-kledx15sp" />
   <meta name="google-site-verification" content="ncuLLzHBTuS0MXX3SAnEUWTnVZEOgB7yc_bmUPIkf3s" />
-  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} - scitronboy.com
-  {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}">
-  <meta name="description" content="{% if page.description %}
-  {{ page.description }} {% else %} {{site.description}} {% endif %}">
+  
+<!--  Meta SEO stuff  -->
+  
+  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}">
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% endif %}
   <meta name="author" content="{{site.author}}">
-  <meta name="keywords" content="{% if page.keywords %}
-  {{ page.keywords }} {% else %} {{site.keywords}} {% endif %}">
   {% if page.section-type == 'index' %}
   <link rel="canonical" href="{{ site.url }}">
   {% else %}
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','/' }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','' }}/">
   {% endif %}
-  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} | scitronboy.com
-  {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}</title>
+  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}</title>
+  
+<!-- Open graph and Twitter cards -->
 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@scitronboy" />
+  <meta name="twitter:creator" content="@scitronboy" />
+  <meta property="og:title" content="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}" />
+  <meta property="og:type" content="website" />
+  {% if page.description %}
+  <meta property="og:description" content="{{ page.description }}" />
+  {% endif %}
+  <meta property="og:url" content="{{ site.url }}{{ page.url | replace:'.html','' }}/" />
+  {% if page.image or page.top-image %}
+  <meta property="og:image" content="{{ site.url }}{% if page.top-image %}{{ page.top-image }}{% else %}{{ page.image }}{% endif %}" />
+  {% endif %}
+  
   <!-- Bootstrap Core CSS -->
+  
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!-- Custom CSS -->
-<!--   <link href="{{site.baseurl}}/css/lighttheme.css" rel="stylesheet"> -->
   <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
-<!--   <link href="{{site.baseurl}}/css/timeline.css" rel="stylesheet"> -->
 
-  
+  {% if page.section-type = "post" %}
   <!-- Responsive Social Buttons -->
-   <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" /> 
-  
+  <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" /> 
+  {% endif %}
   
   <!-- Custom Fonts -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  
     <!--   Favicons -->
-  
+
     <!--<link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}{{site.favicon}}">-->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
@@ -91,11 +100,10 @@ If you are interested in learning how to work with HTML, you can get started her
     <link rel="manifest" href="/img/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
 
     <!--     End Favicons -->
   
-  {% if page.url == "/404" %}
+  {% if page.url == "/404.html" %}
     <meta http-equiv="refresh" content="20; url={{site.baseurl}}/">
   {% endif %}
 

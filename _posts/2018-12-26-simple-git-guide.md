@@ -7,7 +7,8 @@ update-text: "December 31 2018"
 lastmod: 2018-12-31
 
 title: "Why and How to use Version Control: A Simple Git and GitHub Tutorial"
-image: "img/post-thumbnails/git.png"
+image: "/img/post-thumbnails/git.png"
+top-image: "/img/post/git/git-github-logo.jpg"
 slug: "simple-git-github-tutorial"
 category: "code"
 tags: [ 'code', 'tutorial' ]
