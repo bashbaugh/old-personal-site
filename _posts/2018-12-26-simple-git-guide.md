@@ -3,8 +3,8 @@ layout: post
 section-type: post
 
 #date: yyyy-mm-dd
-update-text: "December 31 2018" 
-lastmod: 2018-12-31
+update-text: "January 29 2019" 
+lastmod: 2019-01-29
 
 title: "Why and How to use Version Control: A Simple Git and GitHub Tutorial"
 image: "/img/post-thumbnails/git.png"
@@ -42,7 +42,7 @@ Version Control is a piece of software that helps teams or individuals manage th
 
 GitHub is mostly a Hub for Git projects. That is, it is a platform that interfaces with Git to store projects that use Git in the cloud. It is useful for when you have multiple people or computers working on the project, because people can easily update their version of the project with a simple Git command. GitHub is also useful for ensuring that you have backups of your project, because if your version gets deleted you can just clone the entire project, including the entire history of the project, from the GitHub cloud.
 
-Sign up for a GitHub account at [github.com](https://github.com). Paid accounts allow you to make your projects private. Unless you want to start a very private project you don't need a paid account (Duh). If someone else invites you to work on their private project, you do __not__ need a paid account to work on their project as a collaborator. If you are a student or teacher you can sign up for a [free paid account](https://education.github.com/discount_requests/new) after you sign up for a standard account.
+Sign up for a GitHub account at [github.com](https://github.com). Paid accounts allow you to make your projects private. Unless you want to start a very private project you don't need a paid account (Duh). If someone else invites you to work on their private project, you do __not__ need a paid account to work on their project as a collaborator. If you are a student or teacher you can sign up for a [free paid account](https://education.github.com/discount_requests/new) after you sign up for a standard account. (**UPDATE**: GitHub now has free private repositories. [See this blog post](https://github.blog/2019-01-07-new-year-new-github/))
 
 This website's source code is published and served from a GitHub repository. Click the "source" button at the bottom of this page to find it.
 
