@@ -21,7 +21,7 @@ description: "Learn how to create a simple but fun online browser-based game wit
 
 ![the game](/img/post/js-game/js-html-game.jpeg "The game")
 
-In this tutorial series, I will guide you through the steps to create your own simple but fun online browser-based game, using HTML and JavaScript. 
+In this tutorial series, I will guide you through the steps to create your own simple but fun online browser-based HTML game, using HTML and JavaScript. 
 
 This tutorial is meant for beginners (or almost-beginners), but I will only cover what is needed to teach you how to make this game, so I will include links at the bottom so you can learn the topics in greater detail. Keep in mind that this is a very big project to use as a first HTML project, so if it seems too complicated, just learn more about the topics and come back when you understand them better.
 
