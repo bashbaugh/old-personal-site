@@ -10,6 +10,7 @@ User-agent: *
 Disallow: /thankyou
 Disallow: /empty
 Disallow: /subscribed
+Disallow: /page/no-css-page
 
 
-Sitemap: https://scitronboy.github.io/sitemap.xml
+Sitemap: https://scitronboy.com/sitemap.xml

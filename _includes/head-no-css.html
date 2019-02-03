@@ -1,0 +1,99 @@
+ <!--
+
+Hello! Welcome to my website's HTML code!
+This HTML is pretty simple. Feel free to try to figure it out! if you have any questions, just contact me here: {{ site.url }}/#contact
+
+If you are interested in learning how to work with HTML, you can get started here:  https://www.w3schools.com/html/html_intro.asp
+
+-->
+
+<!-- HEAD Start -->
+
+<head>
+  {% if jekyll.environment == "production" %}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-tracking-id }}"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ site.google-tracking-id }}');
+    </script>
+  <!-- End global site tag -->
+  {% endif %}
+
+  {% include force-https.html %}
+  
+<!--  Meta Stuff  -->
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="CtSf12VFnM489h5Y6THZ1bZhWJPhc51-LsdniIAPMEU" />
+  <meta name="norton-safeweb-site-verification" content="wehuiarz-evncsqkcyaa-0bgcp4y3r0fnspg1s0ocaraobb53mt434w07i3buplymeaeqw65b87eyl06kl9srf90xq3x9tde69wbq8fp2uechyqh434ohr-kledx15sp" />
+  <meta name="google-site-verification" content="ncuLLzHBTuS0MXX3SAnEUWTnVZEOgB7yc_bmUPIkf3s" />
+  <meta name="wot-verification" content="c015a0f11cdd75c9ddfc"/>
+  
+<!--  Meta SEO stuff  -->
+  
+  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}">
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% endif %}
+  <meta name="author" content="{{site.author}}">
+  {% if page.section-type == 'index' %}
+  <link rel="canonical" href="{{ site.url }}">
+  {% else %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','' }}/">
+  {% endif %}
+  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}</title>
+  
+<!-- Open graph and Twitter cards -->
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@scitronboy" />
+  <meta name="twitter:creator" content="@scitronboy" />
+  <meta property="og:title" content="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}" />
+  <meta property="og:type" content="website" />
+  {% if page.description %}
+  <meta property="og:description" content="{{ page.description }}" />
+  {% endif %}
+  <meta property="og:url" content="{{ site.url }}{{ page.url | replace:'.html','' }}/" />
+  {% if page.image or page.top-image %}
+  <meta property="og:image" content="{{ site.url }}{% if page.top-image %}{{ page.top-image }}{% else %}{{ page.image }}{% endif %}" />
+  {% endif %}
+  
+    <!--   Favicons -->
+
+    <!--<link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}{{site.favicon}}">-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+
+    <!--     End Favicons -->
+  
+  {% if page.url == "/404.html" %}
+    <meta http-equiv="refresh" content="20; url={{site.baseurl}}/">
+  {% endif %}
+
+  {% include color-browser.html %}
+
+  {% include syntax-highlight.html %}
+
+</head>
+
+<!-- HEAD End -->
