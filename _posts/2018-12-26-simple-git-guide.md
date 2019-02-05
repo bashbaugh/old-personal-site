@@ -288,11 +288,15 @@ When working on a project, it is usually easiest to use the `git add .` command 
 
 ### Conclusion
 
-That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime in the next few days, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
+That's the end for now! I will add more advanced stuff to this not so simple git guide and tutorial sometime soon, like stashing, more on merging, resetting, how to make a pull request, reverting, etc...
 
 You can find the official [Git reference manual](https://git-scm.com/docs) here, and you can also read the entire [_Pro Git_ book](https://git-scm.com/book/en/v2) online for free.
 
 Let me know in the comments below if you have any questions or suggestions, or else [contact me](/#contact) or [file an issue on GitHub](https://github.com/scitronboy/scitronboy.github.io/issues/new/choose). Thanks for reading!
+
+_If you liked this tutorial, please give it a +1 on hackr.io (below). Thanks!_
+
+<div class="hackr-widget" data-tutorial="a-simple-git-and-github-tutorial" data-height="45" data-width="125" data-type="2"></div><script defer src="https://hackr.io/widget.js?v=1.0"></script>
 
 
 
