@@ -294,7 +294,7 @@ You can find the official [Git reference manual](https://git-scm.com/docs) here,
 
 Let me know in the comments below if you have any questions or suggestions, or else [contact me](/#contact) or [file an issue on GitHub](https://github.com/scitronboy/scitronboy.github.io/issues/new/choose). Thanks for reading!
 
-_If you liked this tutorial, please give it an upvote on hackr.io: <div class="hackr-widget" data-tutorial="a-simple-git-and-github-tutorial" data-height="45" data-width="125" data-type="2"></div><script defer src="https://hackr.io/widget.js?v=1.0"></script> Thanks!_
+_If you liked this tutorial, please give it an upvote on hackr.io:_ <div class="hackr-widget" data-tutorial="a-simple-git-and-github-tutorial" data-height="45" data-width="125" data-type="2"></div><script defer src="https://hackr.io/widget.js?v=1.0"></script> _Thanks!_
 
 
 
