@@ -55,9 +55,13 @@ One last thing to know about HTML is that HTML, on its own, cannot "style" websi
 
 Since the purpose of this tutorial is to make a JavaScript game, I will only cover a tiny bit of HTML in this tutorial (I will also only cover a tiny amount of JavaSCript). If you want to learn more, I will include links to more resources below.
 
-#### Requirements and Setup
+### Requirements and Setup
 
-Doing basic HTML development is very easy because the only tool that you really need is your web browser. Also, it is much nicer to use a real text editor (code editor) for programming, because:
+Doing basic HTML development is very easy because the only tool that you really need is your web browser. Also, you will need some way to edit your code.
+
+#### Get a Text Editor
+
+It is much nicer to use a real text editor (code editor) for programming, because:
 
 + It will syntax-highlight, or color, your code. This is nice because you can easily find different parts of the code, and it makes programming much easier.
 + Most have special auto-complete and code correction features that make writing code easier.
@@ -66,11 +70,27 @@ Doing basic HTML development is very easy because the only tool that you really 
 + They have side-bars that make opening code files easy.
 + They have a lot of other features that will make writing code much more fun.
 
-I recommend [Atom](https://atom.io/). If you can't get that to work, there are other options such as Kate for linux or Sublime text for Mac.
+There are many options, but I recommend [Atom](https://atom.io/). If you can't get that to work, there are other options such as Kate for linux or Sublime text for Mac. 
 
-Once you have a text editor, create a new folder and name it whatever you want. Then, create a new file in that folder and name it `game.html` (or whatever you want to call it.) Open the file in your code editor so that you can edit it.
+#### Start the project in Atom
 
-Then open up your browser and hit `Ctrl+o`, or `Cmd+o` on a mac. This should bring up a window where you can specify a file to open. Navigate to the file you just created and open it. It will be blank obviously because we haven't added anything to it yet. Let's change that!
+Once you have a text editor, create a new folder and name it whatever you want (`js-game` for example). The open Atom and click on **File > Add Project Folder**. In the window that opens, navigate to the folder you just created and select it.
+
+Then, click on **File > New File**. A blank new file will appear. Click on **File > Save** and name it `game.html`. The `.html` part just tells the editor, and your browser, that this is a HTML file - so make sure you include it. You can change the first part to something different if you want.
+
+#### How to use HTML without a text editor
+
+If you don't want to get a proper text editor right now, that's fine - you can use Notepad (Windows) or TextEdit (Mac) or Nano (Linux) for now. Or you can use the [online W3 TryIt editor](https://www.w3schools.com/code/tryit.asp?filename=FZYQJ01WUF5V) (the easiest option).
+
+More information on using plain text editors can be [found here](https://www.w3schools.com/html/html_editors.asp). If you are using TextEdit, Notepad, or Nano, make sure you save your file as `game.html`. The `.html` part just tells the editor, and your browser, that this is a HTML file - so make sure you include it. You can change the first part to something different if you want.
+
+#### Open the project in your browser
+
+_(Skip this step if you are using the online TryIt editor)_
+
+Open up your browser and hit `Ctrl+o`, or `Cmd+o` on a mac. This should bring up a window where you can specify a file to open. Navigate to the file you just created and open it. It will be blank obviously because we haven't added anything to it yet. Let's change that! Make sure you leave the file open in your browser.
+
+After you start adding code to the file in your text editor, make sure you save the file with **File > Save** or `Ctrl+s`/`Cmd+s` often. And after making changes, save the file in your text editor, then switch to your browser and reload it (`Ctrl+r` on Windows, `Cmd+r` on Mac) to see the changes.
 
 ### Basic HTML syntax
 
@@ -84,7 +104,7 @@ There are many tags in HTML. You would italicize or embolden something in HTML u
 
 > `This is plain text. <i>This is italicized.</i> <b>And this is in bold.</b>`
 
-Try adding that to your file `game.html`. Then reload the browser window and you should see something like this:
+Try adding that to your file `game.html` saving it. Then reload the browser window and you should see something like this:
 
 > This is plain text. _This is italicized._ **And this is in bold.**
 
@@ -112,7 +132,9 @@ That example was actually a link. To make links in HTML, you just surround the l
 
 > Hello! [Click here to go to Google](https://www.google.com/)
 
-There are many other uses for HTML attributes. I will show you more later on.
+There are many other uses for HTML attributes. I will show you more later on. 
+
+If this is a bit intimidating or confusing, don't worry. It will become clearer later on. I also include links at the bottom to tutorials that you can use to learn more about HTML.
 
 #### HTML comments
 
@@ -134,7 +156,7 @@ Here is the HTML page that our game will live in. Copy it into your `game.html` 
 
 <script src="https://gist.github.com/scitronboy/d5f5017fadffcdb0dc3906cef590a45d.js"></script>
 
-##### Explanation:
+#### Explanation:
 
 The file starts with the line `<!DOCTYPE html>`. This is unrelated to the actual content, but it just tells the browser that the file is written in HTML, or specifically HTML5. Make sure you include it at the top of every HTML file you write.
 
@@ -156,7 +178,7 @@ Then we have a `<p>` (paragraph) tag, which adds a sentence to the page:
 
 And then we have something called a "canvas." The canvas is the most important thing on the page, along with the script. The `canvas` tag was added to HTML in HTML5, and it just creates an area where you can use JavaScript to "draw" on it, like a canvas. In the next part of this tutorial, I will show you how we can use JavaScript to create the graphics (visual parts) of the game and draw them onto the canvas. 
 
-You might notice that the canvas has two HTML attributes but it does not have anything inside it (between the starting and ending tags). Two of the attributes are `width="400"` and `height="400"`. These just tell the browser that the canvas needs to be 400 by 400 pixels in size. There is also a `id="c"` attribute. `id` attributes are used in HTML to mark, or identify, objects. When you give an element an ID, you can then find that element in JavaScript or CSS using the ID. In the next part, the JavaScript will use the id to find the canvas to draw on. The canvas element is empty because we do not need to "add" anything to it - it is just an empty canvas to draw on. 
+You might notice that the canvas has two HTML attributes but it does not have anything inside it (between the starting and ending tags). Two of the attributes are `width="400"` and `height="400"`. These just tell the browser that the canvas needs to be 400 by 400 pixels in size. There is also a `id="c"` attribute. `id` attributes are used in HTML to mark, or identify, objects. When you give an element an ID, you can then find that element in JavaScript or CSS using the ID. In the next part, the JavaScript will use the id to find the canvas to draw on. The canvas element is empty because we do not need to "add" anything to it - it is just an empty canvas to draw on. That's also why it is invisible.
 
 The last thing in the file is a `<script>` section. Browsers treat stuff inside `<script>` tags as JavaScript, and run them as soon as they get to that part of the file. Because of this, you can't put anything but JavaScript inside a script section because it will cause a JavaScript error. That's why the comments inside the script tags use two double slashes: JavaScript comments are different than HTML comments.
 
