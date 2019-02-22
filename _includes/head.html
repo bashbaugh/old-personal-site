@@ -106,6 +106,10 @@ If you are interested in learning how to work with HTML, you can get started her
   {% if page.url == "/404.html" %}
     <meta http-equiv="refresh" content="20; url={{site.baseurl}}/">
   {% endif %}
+  
+  {% if page.section-type == "post" %}
+  {% include onesignal-notifications.html %}
+  {% endif %}
 
   {% include color-browser.html %}
 
