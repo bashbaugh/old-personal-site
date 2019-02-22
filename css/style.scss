@@ -114,14 +114,18 @@
 .img-me {
     z-index: 100;
     left: 0;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin-left: 0;
     border: 7px solid #f1f1f1;
     border-radius: 100%;
     text-align: center;
     color: #fff;
     background-color: #f1f1f1;
+}
+
+.onesignal-subscribe-custom {
+    padding: 10px 5px 10px 5px;
 }
 
 //--------------------------------------------

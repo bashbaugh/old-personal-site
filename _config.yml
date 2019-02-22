@@ -137,7 +137,7 @@ email:
 # This works best when your author blurb image has a transparent background
 
 # if the author_blurb is not set, then this feature is skipped
-#author_blurb: "Benjamin is a 13 year old boy who loves electronics, robotics, science, technology, programming, and making. Learn more <a href='/#about'>here</a>"
+#author_blurb: "Benjamin is a 14 year old boy who loves electronics, robotics, science, technology, programming, and making. Learn more <a href='/#about'>here</a>."
 author_blurb_image: "/img/author.jpg"
 
 ##################
