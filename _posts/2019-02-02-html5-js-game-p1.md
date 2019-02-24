@@ -168,7 +168,9 @@ The only thing that is important for us to put in the head section is a title th
 
 ![tab title](/img/post/js-game/tab_title.png "tab title")
 
-Next comes the `<body>` section, which contains all the page content. First, we have a `<h1>` (header 1) tag, which creates a primary header for the page:
+Next comes the `<body>` section, which contains all the page content. The only attribute to the `<body>` section is `onload="init()"`. Don't worry about this now; I will explain it in part two. Basically all it will do is tell the JavaScript in part two that the page is finished loading, so it can start the game.
+
+First inside the body section, we have a `<h1>` (header 1) tag, which creates a primary header for the page:
 
 ![page header](/img/post/js-game/page_title.png "page title")
 
