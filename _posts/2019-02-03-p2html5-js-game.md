@@ -104,6 +104,10 @@ For example, imagine a scenario where you have a function named `eat` that tells
 
 Then when the function receives the argument it processes it and figures out what to eat.
 
+Just so you know, functions can also "return" numbers, so that when you call it, it acts like a number, or string, or other object. Here's an example of using a function to set a variable:
+
+`let the_weather = get_the_weather();`
+
 ##### The `console.log` command
 
 The console.log command is very useful for programming JavaScript. It can be used to send a message to the console, which is something that is integrated into most browsers that allows developers to interact with the JavaScript on a page. Try it out! Open up your `game.html` file and add this command in between the `<script>` tags:
@@ -322,7 +326,7 @@ I'll teach more about arrays later.
 
 #### Creating some variables
 
-For our game to work, we need to create some variables (and arrays) the we will use later. **Add these to the top of the script**.
+For our game to work, we need to create some variables (and arrays) that we will use later. **Add these to the top of the script**.
 
 First we will create variables to store players x and y coordinates:
 
@@ -330,17 +334,13 @@ First we will create variables to store players x and y coordinates:
 
 `let player_y = 220;`
 
-Then arrays to store the coordinates and colors for all the colored dots. The arrays will be empty at the start of the game:
+Then arrays to store the coordinates and colors for all the colored dots created. The arrays will have one dot at the start of the game:
 
-`let dots_x = [];`
+`let dots_x = [200];`
 
-`let dots_y = [];`
+`let dots_y = [0];`
 
-`let dots_color = [];`
-
-<!--Then a variable to store the current frame number:
-
-`let curr_frame = 0;`-->
+`let dots_color = ["#800080"];`
 
 And a variable to store the score:
 
@@ -364,21 +364,31 @@ It's always good to make your program as easy to customize as possible, so lets 
 
 Here's the color picker in case you want to choose different ones: <input class="jscolor" value="FFFF00">.
 
-Then one to specify how much the player should move when the player press left or right:
+Then one to specify how much the player should move when the player presses left or right:
 
 `let player_move_increment = 40;`
 
-Now for a dot move increment and frame rate (in FPS or Frames Per Second) - the number of times `update` is called in each second. The dot move increment will be the number of pixels each dot moves in each second. To be safe, we'll keep the frame rate relatively slow:
+Now for a frame rate (in FPS or Frames Per Second) - the number of times `update` is called in each second. To be safe, we'll keep the frame rate relatively slow:
 
 `let frames_per_second = 15;`
 
-`let dot_pixels_per_second = 40;`
+And a variable to define how many pixels each dot should move frame. 
+
+`let dot_pixels_per_frame = 5;`
+
+**`player_y` MUST be a multiple of `dot_pixels_per_frame`**. Here we are safe because 220 / 5 does not have a remainder.
 
 Also we need to specify how far apart (in the vertical direction; pixels) each dot should be, and how long (in milliseconds) the game should be:
 
 `let dot_distance_apart = 5;`
 
 `let game_duration = 30 * 1000;`
+
+Then the radius for the player and dots:
+
+`let dot_radius = 10;`
+
+`let player_radius = 20;`
 
 That's all for now!
 
@@ -412,7 +422,83 @@ We divide 1000 by `frames_per_second` to get the interval (in milliseconds) that
 
 #### Add the first `if` statement
 
-Let's add the `if` statement that checks to see whether the game's time limit is up yet.
+Let's add the `if` statement that checks to see whether the game's time limit is up yet. Here's the updated `update` function:
+
+<script src="https://gist.github.com/scitronboy/9ccf90395f8ce644274cbe9eff3d3806.js"></script>
+
+Again, just in case you've gotten lost, [here's what your project file should look like now (excluding comments)](https://gist.github.com/scitronboy/cf46d818246456b3c9b2013b898f3f1b).
+
+#### Clear Canvas, Move dots Down Screen & Draw Them
+
+We will start by programming the part of the `update` function that is _not_ withing the if/else blocks. 
+
+First we clear the screen using our `draw_background` function.
+
+Then we use a for loop to move each dot down the canvas a bit and draw it.
+
+Drawing a solid circle on a canvas is somewhat tricky - you need to draw a circle and then fill it in. Here are the functions we'll use to do that:
+
+    canvas.beginPath();
+    canvas.arc(x, y, radius, start angle radians, end angle radians);
+    canvas.fillStyle = color;
+    canvas.fill();
+    canvas.closePath();
+    
+When we draw the arc, angles are in radians, so one full 360 degree turn is 2*pi.
+
+Arrays `dots_x`, `dots_y` and `dots_color` are used to store the x and y positions and colors for all the dots, so that the same position or color in each array corresponds to the same dot. For example, dot number 5's x position will be `dots_x[4]` and dot number 5's y position will be `dots_y[4]` and dot number 5's color will be `dots_color[4]`. So we can use these arrays to get the info we need about each dot.
+
+Here's the code. Replace the corresponding comments (the clear screen, move, and draw dots ones) in the `update` function with it:
+
+<script src="https://gist.github.com/scitronboy/5f2d93d8ad5edb457a39e894f880ba5a.js"></script>
+
+#### Draw player onto screen
+
+Drawing the player is just like drawing the dots. But before we draw the player, we need to make sure that its x position is within the the canvas (0 < `player_x` < canvas width). We can clamp the number within the range by using JavaScript's maximum and minimum functions:
+
+`player_x = Math.max(0, Math.min(player_x, canvas_element.width))`
+
+Replace the corresponding comment in the update function with the code.
+
+<script src="https://gist.github.com/scitronboy/c9887f8346de35cd2e7d7b8999a6ddb7.js"></script>
+
+#### Draw score
+
+The last thing to draw is the score, into the upper left corner. Replace the comment with the code:
+
+<script src="https://gist.github.com/scitronboy/dd02ae9346a7484527cf999ae7420e74.js"></script>
+
+#### Test it
+
+OK! We have all of the `update` function finished now except for the if/else blocks. This is what it should look like:
+
+<script src="https://gist.github.com/scitronboy/6c39c59b92b4a8ebd337b3ecf68b05ab.js"></script>
+
+And this is what it should look like if you open the game in your browser and press then up arrow:
+
+img/post/js-game/after-score-text-in-update-func.gif
+
+You can see the single dot, the score in the upper left, and the yellow player. However the score doesn't change yet, and you can't move the player.
+
+#### Moving the player
+
+Let's make the player move.
+
+We need to add a part to the original `key_pressed` function that changes the `player_x` variable when the left or right arrows keys are pressed. Here's the updated `key_pressed` function:
+
+
+
+Try it out in your browser and you'll see that you can move the player left and right with the arrow keys!
+
+#### Check to see whether Player is over a dot
+
+Now for the part inside the `if` block.
+
+To check whether a player is over a dot, we can use a for loop and compare the player's coordinates to the each dot's coordinates. 
+
+Replace the corresponding comment in the `update` function with this code:
+
+<script src="https://gist.github.com/scitronboy/84c55210b16b144b41b7093bb9c116ca.js"></script>
 
 
 ##### JavaScript lesson: `for` loops
@@ -430,6 +516,19 @@ Before starting the first loop, the `for` loop will execute the first statement 
 Here's an example of using a `for` loop to run some code 5 times, and then using a `for` loop to iterate through every item in an array:
 
 <script src="https://gist.github.com/scitronboy/d8bdf792743b12f2388f2f1fb1170297.js"></script>
+
+Here's the expected output (on the console):
+
+    Right now, i is 0
+    Right now, i is 1
+    Right now, i is 2
+    Right now, i is 3
+    Right now, i is 4
+    Next Example!
+    16
+    87
+    33
+    12
 
 
 
