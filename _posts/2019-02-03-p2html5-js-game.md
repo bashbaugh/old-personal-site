@@ -72,7 +72,7 @@ In that example, we are creating a variable (like a box) named `score`, and sett
 
 `score = 70;`
 
-Or else we could just set `score` to itself + 20:
+Or else we could use a math operator (`+`, `-`, `*`, `/`) and set `score` to itself + 20:
 
 `score = score + 20;`
 
@@ -169,6 +169,7 @@ And here's how we will build it:
 5. It will also have a system to detect whether the player is over a colored dot, so that it can increment the score.
 6. Finally, it will erase the canvas, then draw the background, player, and score onto their new positions.
 7. We will make the game loop function run many times per second so that the game runs smoothly.
+8. Once the time limit is reached we will stop the game and display the final score.
 
 
 ### Programming The Game
@@ -246,7 +247,7 @@ Congratulations! You may have just written your first piece of JavaScript that d
 
 We need to detect key presses and take action when someone presses the up arrow, left arrow, or right arrow.
 
-To do this, we simply "attach" a `key_pressed` function to the documents `onkeydown` attribute, so that when a key is pressed down, `key_pressed` is called. Add this to the script:
+To do this, we simply "attach" a `key_pressed` function to the documents `onkeydown` attribute, so that when a key is pressed down, `key_pressed` is called. Add this to the script, near the top:
 
 `document.onkeydown = key_pressed;`
 
@@ -321,6 +322,97 @@ I'll teach more about arrays later.
 
 #### Creating some variables
 
+For our game to work, we need to create some variables (and arrays) the we will use later. **Add these to the top of the script**.
+
+First we will create variables to store players x and y coordinates:
+
+`let player_x = 200;`
+
+`let player_y = 220;`
+
+Then arrays to store the coordinates and colors for all the colored dots. The arrays will be empty at the start of the game:
+
+`let dots_x = [];`
+
+`let dots_y = [];`
+
+`let dots_color = [];`
+
+<!--Then a variable to store the current frame number:
+
+`let curr_frame = 0;`-->
+
+And a variable to store the score:
+
+`let score = 0;`
+
+And a variable to store a `Date` object so we can keep track of time, and a variable to store the time that the game started at.
+
+`let date = new Date;`
+
+`let start_time = 0;`
+
+It's always good to make your program as easy to customize as possible, so lets create a few "settings" variables so that we can easily change them instead of looking for a certain line or lines in our code. First some color ones:
+
+`let dot_color_1 = "#FF0000";`
+
+`let dot_color_2 = "#800080";`
+
+`let player_color = "#FFFF00";`
+
+`let text_color = "#FFFFFF";`
+
+Here's the color picker in case you want to choose different ones: <input class="jscolor" value="FFFF00">.
+
+Then one to specify how much the player should move when the player press left or right:
+
+`let player_move_increment = 40;`
+
+Now for a dot move increment and frame rate (in FPS or Frames Per Second) - the number of times `update` is called in each second. The dot move increment will be the number of pixels each dot moves in each second. To be safe, we'll keep the frame rate relatively slow:
+
+`let frames_per_second = 15;`
+
+`let dot_pixels_per_second = 40;`
+
+Also we need to specify how far apart (in the vertical direction; pixels) each dot should be, and how long (in milliseconds) the game should be:
+
+`let dot_distance_apart = 5;`
+
+`let game_duration = 30 * 1000;`
+
+That's all for now!
+
+#### The `update` function layout
+
+Here's the plan for the update function:
+
+<script src="https://gist.github.com/scitronboy/fa2ac39ff792a8e95c63a3ca00fc8c08.js"></script>
+
+Add it to the script in your project file. We will replace the comments with code over the next few sections.
+
+#### Making the loop run & keep track of the time
+
+When the player presses the up arrow, the `update` function should start looping.
+
+But before we start looping the `update` function, we need to store the time that the game started at so we can compare it each frame and see if the difference between the time that frame and the time at the start is greater than the time limit. If it is, we will stop the game.
+
+To store the time we can use the `Date` class, which has a ton of functions for managing time. We put a `Date` object into a variable named `date` earlier, so we can use it, along with the `start_time` variable we created. `Date.getTime` gets the time, in milliseconds, since January 1, 1970.
+
+To start looping the `update` function, which effectively starts the game, we can use `setInterval(arg1, arg2)` which is a function that runs a certain function (first argument) every x number of milliseconds, where x is the second argument.
+
+But we need to ensure that the game hasn't already started whenever we try to start it, because if we didn't then pressing the up arrow a second time would reset the `start_time` and make the `update` function run twice as often, which would result in unexpected behaviour.
+
+We can check using the `start_time` variable, which is set to `0` when the page loads - so we know that if `start_time` is _not_ `0`, the game has already started.
+
+We can add all this in the `key_pressed` function by adding the following to the `if (key.key == "ArrowUp")` block, below the `console.log`, so that it is run when the up arrow is pressed:
+
+<script src="https://gist.github.com/scitronboy/7c84e2cbf82128aecaf17584632688af.js"></script>
+
+We divide 1000 by `frames_per_second` to get the interval (in milliseconds) that we should pause for between each call to `update`. If, for example, `frames_per_second` was set to `5`, then 1000 divided by 5 is equal to 200, and 200 milliseconds is one fifth of a second, so the function `update` would be called five times per second, which would result in 5 frames per second.
+
+#### Add the first `if` statement
+
+Let's add the `if` statement that checks to see whether the game's time limit is up yet.
 
 
 ##### JavaScript lesson: `for` loops
