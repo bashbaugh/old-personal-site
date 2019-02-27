@@ -25,11 +25,13 @@ description: "Learn how to create a simple but fun online browser-based game wit
 
 In this tutorial series, I will guide you through the steps to create your own simple but fun online browser-based game, using HTML and JavaScript. 
 
+[Click here if you want to see the game we will create.](/html-js-demo-game) Remember that you will be able to customize your own however you want.
+
 This is part two of the tutorial. **If you have not read part one, you should read it now.** [Click here for part 1: HTML tutorial](/code/2019/html-js-game-part1). Once you have read it, you can continue with this part.
 
 In this part of the tutorial, I will show you how to add JavaScript to program the game itself. Keep in mind that this tutorial is meant for beginners (or almost-beginners), but I will only cover what is needed to teach you how to make this game. It may seem to complicated or hard at first, so if it does check out some of the links at the bottom and come back when you feel a little more comfortable with JavaScript basics. 
 
-**I will include links at the bottom of this article for reference for every function we use.**
+**I will include links at the bottom of this article to reference for every concept we use.**
 
 Here's a reminder of what we did in [the last part](/code/2019/html-js-game-part1):
 
@@ -57,6 +59,8 @@ In JavaScript you should put a semicolon after every command, to tell the browse
 `do something else;`
 
 Keep in mind that there is usually one command per line.
+
+Also remember that JavaScript ignores whitespace (spaces, indentation, new lines) so don't be confused if my use of whitespace throughout this article is inconsistent in places - because JavaScript doesn't care so it doesn't actually change the way the code runs.
 
 #### Variables
 
@@ -98,7 +102,7 @@ Functions are like commands that tell the browser to do something. There are man
 
 `function(argument_1, argument_2, argument_3);`
 
-For example, imagine a scenario where you have a function named `eat` that tells the computer to eat (yes, yes, I know computers can't eat). But what if the computer can eat different things? How does it know what to eat? You could create different functions for different foods, like `eat_orange` and `eat_apple`, but that gets clunky and is _not_ a good solution, because you'd have to write a new function every time you added a food item. The solution is to pass the `eat` function an argument every time that tells it _what_ to eat. An example:
+For example, imagine a scenario where you have a function named `eat` that tells the computer to eat (yes, yes, I know computers can't eat). But how does it know what to eat when you call the `eat()` function? You could create different functions for different foods, like `eat_orange` and `eat_apple`, but that gets clunky and is _not_ a good solution, because you'd have to write a new function every time you added a food item. The solution is to pass the `eat` function an argument every time that tells it _what_ to eat. An example:
 
 `eat("apple");` or `eat("orange");` 
 
@@ -167,7 +171,7 @@ And here's how we will build it:
 
 1. We will use the canvas to create the game graphics.
 2. We will create an `init` function that will run when the page loads, that will add a message to the canvas that says "Press Up To Start"
-3. We will detect key presses. The up arrow will trigger the start of the game, and the left and right arrow keys will trigger functions called `move_left` and `move_right` which will move the player to the left and right.
+3. We will detect key presses. The up arrow will trigger the start of the game, and the left and right arrow keys will trigger a function that moves the player left or right.
 4. We will create a game loop function that updates the game.
 5. The game loop function will move the colored dots down slightly each time it is run.
 5. It will also have a system to detect whether the player is over a colored dot, so that it can increment the score.
@@ -190,7 +194,7 @@ Let's add a little message at the top of the `<script>` section in `game.html` s
 
 `console.log("Starting the script!");`
 
-Now the first thing that we need to do is to get a reference to the canvas on the web page, so that we can "draw" on it with JavaScript. Remember when we created the web page and we added a HTML attribute to the canvas that gave it an id? Specifically, `id="c"`. Now we are going to use that id we added to tell JavaScript what we want. Add this to the top of the `<script>` section:
+Now the first thing that we need to do is to get a reference to the canvas on the web page, so that we can "draw" on it with JavaScript. Remember when we created the web page and we added a HTML attribute to the canvas that gave it an id? Specifically, `id="c"`. Now we are going to use that id we added to tell JavaScript what we want. Add this to the top of your `<script>` section:
 
 `let canvas_element = document.getElementById("c");`
 
@@ -234,7 +238,7 @@ When we created the web page for the game, we added `onload="init()"` as an attr
 
 Again, feel free to change the color code `#FFFFFF` to something else if you want to: <input class="jscolor" value="FFFFFF">.
 
-Also, it's probably self-evident but the basic arguments for fillText are (text, left side of text x position, left side of text y position).
+Also, you can probably figure them out but the basic arguments for fillText are (text, left side of text x position, left side of text y position).
 
 Make sure you've added all these functions and variables to your project file (`game.html`). It should look like this now (with or without the comments):
 
@@ -258,15 +262,15 @@ To do this, we simply "attach" a `key_pressed` function to the documents `onkeyd
 
 ##### JavaScript lesson: `IF` statements
 
-If statements are used when a program needs to do something ONLY if a condition is true. If the condition is false, then the action is not done. The basic syntax (layout) for an `if` statement in JavaScript is:
+`If` statements are used when a program needs to do something ONLY if a condition is true. If the condition is false, then the action is not carried out. The basic syntax (layout) for an `if` statement in JavaScript is:
 
 `if (this is true) {do everything in here}`
 
-You can optionally extend it and give it something to do IF and ONLY IF the condition is false:
+You can optionally extend it and also give it something to do IF (and only if) the condition is false:
 
 `if (this is true) {do this} else {if its not, do this}`
 
-You can put anything inside the parenthesis as long as it can be true or false. Everything with a value is considered true in JavaScript, so `43` and `1` is considered "true" by JavaScript. `0` is considered false. 
+You can put anything inside the parenthesis as long as it can be true or false. Everything with a value is considered true in JavaScript, so `43` and `1` are considered "true" by JavaScript. `0` is considered false. 
 
 Often you'll need to compare to values in JavaScript, to see if, for example, one value is greater than, less than, or equal to another. In that case you'll need to use [comparison operators](https://www.w3schools.com/js/js_comparisons.asp); some examples are `==` (equal to), `<` (less than), `>` (greater than), and `!=` (not equal to). There are also [logical operators](https://www.w3schools.com/js/js_comparisons.asp) which are `&&` (and), `||` (or), and `!` (not).
 
@@ -316,7 +320,7 @@ is not an option. The solution is to use an array, which can store any amount nu
 
 Here's how you would store the above in an array:
 
-    let ages = [16, 87, 33, 12, ...];
+`let ages = [16, 87, 33, 12, ...];`
 
 And then you can access the ages with the syntax `ages[i]`, where `i` is an index that identifies what value you want. Because **in programming, counting always starts with `0`**, to get the third value in the array you'd use an index of `2`:
 
@@ -346,27 +350,23 @@ And a variable to store the score:
 
 `let score = 0;`
 
-And a variable to store a `Date` object so we can keep track of time, and a variable to store the time that the game started at.
-
-`let date = new Date;`
+And a variable to store the time that the game started at:
 
 `let start_time = 0;`
 
+And a variable to store whether or not the game is finished (0 or 1):
+
+`let game_over = 0;`
+
 It's always good to make your program as easy to customize as possible, so lets create a few "settings" variables so that we can easily change them instead of looking for a certain line or lines in our code. First some color ones:
 
-`let dot_color_1 = "#FF0000";`
-
-`let dot_color_2 = "#800080";`
+`let dot_color_options = ["#FF0000", "#800080"];`
 
 `let player_color = "#FFFF00";`
 
 `let text_color = "#FFFFFF";`
 
-Here's the color picker in case you want to choose different ones: <input class="jscolor" value="FFFF00">.
-
-Then one to specify how much the player should move when the player presses left or right:
-
-`let player_move_increment = 40;`
+Here's the color picker in case you want to choose different ones: <input class="jscolor" value="FFFF00">. Also feel free to add more options to the `dot_color_options` if you wish.
 
 Now for a frame rate (in FPS or Frames Per Second) - the number of times `update` is called in each second. To be safe, we'll keep the frame rate relatively slow:
 
@@ -378,9 +378,16 @@ And a variable to define how many pixels each dot should move frame.
 
 **`player_y` MUST be a multiple of `dot_pixels_per_frame`**. Here we are safe because 220 / 5 does not have a remainder.
 
+Then one to specify how many pixels the _player_ should move when the player presses left or right:
+
+`let player_move_increment = 40;`
+
+**`player_x` MUST be a multiple of `player_move_increment`**.  You will see why later on.  Here we are safe because 400 / 40 does not have a remainder.
+
+
 Also we need to specify how far apart (in the vertical direction; pixels) each dot should be, and how long (in milliseconds) the game should be:
 
-`let dot_distance_apart = 5;`
+`let dot_distance_apart = 10;`
 
 `let game_duration = 30 * 1000;`
 
@@ -406,7 +413,7 @@ When the player presses the up arrow, the `update` function should start looping
 
 But before we start looping the `update` function, we need to store the time that the game started at so we can compare it each frame and see if the difference between the time that frame and the time at the start is greater than the time limit. If it is, we will stop the game.
 
-To store the time we can use the `Date` class, which has a ton of functions for managing time. We put a `Date` object into a variable named `date` earlier, so we can use it, along with the `start_time` variable we created. `Date.getTime` gets the time, in milliseconds, since January 1, 1970.
+To store the time we can use the `Date` class, which has a ton of functions for managing time. We can use the `start_time` variable we created to store the time the game starts at. `new Date().getTime()` creates a new `Date` class and then uses it to get the time, in milliseconds, since January 1, 1970.
 
 To start looping the `update` function, which effectively starts the game, we can use `setInterval(arg1, arg2)` which is a function that runs a certain function (first argument) every x number of milliseconds, where x is the second argument.
 
@@ -422,11 +429,40 @@ We divide 1000 by `frames_per_second` to get the interval (in milliseconds) that
 
 #### Add the first `if` statement
 
-Let's add the `if` statement that checks to see whether the game's time limit is up yet. Here's the updated `update` function:
+Let's add the `if` statement that checks to see whether the game's time limit is up yet. If it is, it sets `game_over` to 1 (true). Here's the updated `update` function:
 
 <script src="https://gist.github.com/scitronboy/9ccf90395f8ce644274cbe9eff3d3806.js"></script>
 
 Again, just in case you've gotten lost, [here's what your project file should look like now (excluding comments)](https://gist.github.com/scitronboy/cf46d818246456b3c9b2013b898f3f1b).
+
+##### JavaScript lesson: `for` loops
+
+`for` loops are most commonly useful in two scenarios: When you want some code to run a certain number of times, or else when to iterate over every item in an array and do something to each one.
+
+The basic syntax for a for loop is `for (before loop starts; condition to continue; after each iteration) {code block; do something;}`. Here's an explanation:
+
+A for loop runs the code in the code block (the code between `{` and `}`) over and over again **as long as** the condition, or the second statement in the parenthesis, is _true_. 
+
+At the beginning of each loop, the `for` loop checks the condition - if it is true, then the code block is executed. If it is false, then the code block is not executed and the program continues with the rest of the code. Whenever the code block is finished running, the `for` loop executes the third statement inside the parenthesis and then goes back to the beginning and checks the condition again.
+
+Before starting the first loop, the `for` loop will execute the first statement in the parenthesis. The third and last statement in the parenthesis will be executed _every time_ after the end of the loop, before going back to the beginning. 
+
+Here's an example of using a `for` loop to run some code 5 times, and then using a `for` loop to iterate through every item in an array:
+
+<script src="https://gist.github.com/scitronboy/d8bdf792743b12f2388f2f1fb1170297.js"></script>
+
+Here's the expected output (on the console):
+
+    Right now, i is 0
+    Right now, i is 1
+    Right now, i is 2
+    Right now, i is 3
+    Right now, i is 4
+    Next Example!
+    16
+    87
+    33
+    12
 
 #### Clear Canvas, Move dots Down Screen & Draw Them
 
@@ -476,7 +512,7 @@ OK! We have all of the `update` function finished now except for the if/else blo
 
 And this is what it should look like if you open the game in your browser and press then up arrow:
 
-img/post/js-game/after-score-text-in-update-func.gif
+![Game at this point](/img/post/js-game/after-score-text-in-update-func.gif "The game right now")
 
 You can see the single dot, the score in the upper left, and the yellow player. However the score doesn't change yet, and you can't move the player.
 
@@ -486,9 +522,11 @@ Let's make the player move.
 
 We need to add a part to the original `key_pressed` function that changes the `player_x` variable when the left or right arrows keys are pressed. Here's the updated `key_pressed` function:
 
+<script src="https://gist.github.com/scitronboy/021b8f4105425a79cd207cd0ffb8ede6.js"></script>
 
+`player_x -= player_move_increment` is the same as `player_x = player_x - player_move_increment`.
 
-Try it out in your browser and you'll see that you can move the player left and right with the arrow keys!
+Try it out in your browser and you'll see that you can move the player left and right with the arrow keys, but you can't move the player off the sides of the canvas!
 
 #### Check to see whether Player is over a dot
 
@@ -500,76 +538,97 @@ Replace the corresponding comment in the `update` function with this code:
 
 <script src="https://gist.github.com/scitronboy/84c55210b16b144b41b7093bb9c116ca.js"></script>
 
+Try it out in your browser and you'll see that, when the player "flies over" the dot, the score in the upper left changes to `2`.
 
-##### JavaScript lesson: `for` loops
+#### Generate new dots at top of screen
 
-`for` loops are most commonly useful in two scenarios: When you want some code to run a certain number of times, or else when to iterate over every item in an array and do something to each one.
+Obviously the game needs more dots. So let's create more - it should be as simple as adding new items to the dot arrays (`dots_x`, `dots_y`, and `dots_color`).
 
-The basic syntax for a for loop is `for (before loop starts; condition to continue; after each iteration) {code block; do something;}`. Here's an explanation:
+However we can't create a new dot every frame, or else the canvas would quickly become filled with hundreds of dots, making the game way to easy. So each frame we need to check and make sure the distance between the top of the canvas and the highest dot is greater than `dot_distance_apart`. This is very easy, using an `if` statement.
 
-A for loop runs the code in the code block (the code between `{` and `}`) over and over again **as long as** the condition, or the second statement in the parenthesis, is _true_. 
+When we generate a new dot we also want it to have a random x location, and a random color (chosen from the array of color options). We can do this by using the `Math.random` function, along with some other `Math` functions. 
 
-At the beginning of each loop, the `for` loop checks the condition - if it is true, then the code block is executed. If it is false, then the code block is not executed and the program continues with the rest of the code. Whenever the code block is finished running, the `for` loop executes the third statement inside the parenthesis and then goes back to the beginning and checks the condition again.
+`Math.random` returns a number between `0` and `1` so that the number is greater than OR equal to `0` _but_ the number is always less than 1. So to get a random choice from an array (like the `dot_color_options` array) we can multiply a random number by the number of items in the array and then round it down to the nearest integer (we can just nest the functions within eachother):
 
-Before starting the first loop, the `for` loop will execute the first statement in the parenthesis. The third and last statement in the parenthesis will be executed _every time_ after the end of the loop, before going back to the beginning. 
+`dot_color_options[Math.floor(Math.random() * dot_color_options.length)];`
 
-Here's an example of using a `for` loop to run some code 5 times, and then using a `for` loop to iterate through every item in an array:
+`Math.floor(number)` returns a number rounded down to the nearest integer.
 
-<script src="https://gist.github.com/scitronboy/d8bdf792743b12f2388f2f1fb1170297.js"></script>
+Generating the new x position is not as simple as it seems because we must make sure that each dot falls into a "lane", where each lane is separated by the same amount as `player_move_increment`. We have to do this because there are only 400 / `player_move_increment` x positions (plus one, one the far right side of the canvas) that the player can possibly be in on the canvas, so the dots can only be in those positions or else the player would only be able to "fly" over the dots that were in one of the same x positions that the player could be in (which would be only a tiny fraction of the dots).
 
-Here's the expected output (on the console):
+So we must multiply a random lane number (an integer between 0 and canvas width / `player_move_increment` + 1) by the `player_move_increment` to get the new x position for the new dot:
 
-    Right now, i is 0
-    Right now, i is 1
-    Right now, i is 2
-    Right now, i is 3
-    Right now, i is 4
-    Next Example!
-    16
-    87
-    33
-    12
+`let lane_number = Math.floor(Math.random() * (canvas_element.width / player_move_increment + 1));`
 
+`let new_x_position = lane_number * player_move_increment;`
 
+We can use the `array.push(item)` function to add an item to the end of an array. We can use this to add the new dots. Also, because the most recently created dot (which is also the highest dot) will be the last position in the arrays, because each new dot is added to the end of the array. Therefore we can use `dots_y[dots_y.length - 1]` to get the last item in the `dots_y` array (we must subtract one from the array length because in an array the index of the nth position is n - 1).
 
+Here's the code. Replace the corresponding comment in the `update` function with it:
 
+<script src="https://gist.github.com/scitronboy/9d144c47008553fccc2564e4633995bd.js"></script>
 
+#### Game Over Screen
 
+Finally! The last part!
 
+The game over screen is simple to program. Add this to the **bottom** of the `update` function:
 
+<script src="https://gist.github.com/scitronboy/2c4cd4de4490977eea2f011b9120ba8a.js"></script>
 
+### Finished game!!!
 
+Finally, the game is finished!!! The final code is:
 
+<script src="https://gist.github.com/scitronboy/9ce4cedd5a58e0a7de8182a18012f91e.js"></script>
 
+And here is a gif of a ten second game:
 
+![gif of finished game](/img/post/js-game/final-game.gif "Gif of finished game")
 
+[And here is the actual game to play!](/html-js-demo-game)
 
+#### Improvements
 
+Here are some improvements that could be made to the game. I'll leave it to you to figure out how to implement them:
 
++ Dots disappear when you "collect" them. _Hint: Look up a JavaScript function to remove an item from an array._
++ Page looks nicer. _Hint: maybe go and learn some CSS so you know how to style the web page._
++ "Play again" functionality. _Hint: You might need a function to reinitialize all the variables. At the very least, you could set it up so that the `r` key reloaded the page._
++ High score system. This one is tricky to implement with just a file and browser, because many browsers block cookies and local storage (which are the best option for creating a high score system) from local files. You could look into putting your web page online and then try it.
++ Better looking player and dots. You could look up how to display an image instead of a circle on a canvas, and then replace the circles with custom-designed characters.
 
+There are so many more enchancements you could make. Your imagination is the limit!
 
+### More Resources to Learn JavaScript
 
+To find lots of good JavaScript tutorials, just [google js tutorial](https://www.google.com?q=js+tutorial).
 
+W3 schools is also a great website for learning about HTML and JavaScript. Here are links for every concept we used:
 
+#### W3 schools links
 
++ [JavaScript tutorial](https://www.w3schools.com/js/default.asp)
++ [Semicolons and statements](https://www.w3schools.com/js/js_statements.asp)
++ [Variables](https://www.w3schools.com/js/js_variables.asp)
++ [Functions](https://www.w3schools.com/js/js_functions.asp)
++ [Canvas Reference](https://www.w3schools.com/graphics/canvas_reference.asp)
++ [Canvas Tutorial](https://www.w3schools.com/graphics/canvas_intro.asp)
++ [Timing and SetInterval](https://www.w3schools.com/js/js_timing.asp)
++ [JavaScript Dates](https://www.w3schools.com/js/js_dates.asp)
++ [Arrays](https://www.w3schools.com/js/js_arrays.asp)
++ [if/else](https://www.w3schools.com/js/js_if_else.asp)
++ [for loop](https://www.w3schools.com/js/js_loop_for.asp)
 
+### Conclusion
 
+I hope you learned lots and had fun building this game. Even if this was the only line you read, thank you for reading it!
 
+If you need any help with this project, feel free to reach out to me!
 
+Please leave any questions, comments, or suggestions in the comments below or else [contact me](/#contact). 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
+Thank you!
 
 
 

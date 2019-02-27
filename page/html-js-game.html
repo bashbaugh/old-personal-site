@@ -1,0 +1,173 @@
+---
+title: HTML + JS Demo Game
+permalink: /html-js-demo-game
+---
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>JavaScript Game</title>
+  </hescad>
+  <body onload="init()">
+    <h1>JavaScript Game</h1>
+    <p>Here is a simple JavaScript game:</p>
+    <canvas id="c" width="400" height="400"></canvas>
+    <br />
+    <a href="javascript:history.back()">Go Back</a>
+    <script>
+      console.log("Starting the script!");
+      
+      // Get canvas:
+      let canvas_element = document.getElementById("c");
+      let canvas = canvas_element.getContext("2d");
+      
+      // Set up variables:
+      let player_x = 200;
+      let player_y = 220;
+      let dots_x = [200];
+      let dots_y = [0];
+      let dots_color = ["#800080"];
+      let score = 0;
+      let start_time = 0;
+      let game_over = 0;
+      
+      // Set up config "settings" variables:
+      let dot_color_options = ["#FF0000", "#800080"];
+      let player_color = "#FFFF00";
+      let text_color = "#FFFFFF";
+      let frames_per_second = 15;
+      let dot_pixels_per_frame = 5;
+      let player_move_increment = 40;
+      let dot_distance_apart = 10;
+      let game_duration = 30 * 1000;
+      let dot_radius = 10;
+      let player_radius = 20;
+      
+      // Register function to handle key presses:
+      document.onkeydown = key_pressed;
+      
+      function init()
+      {
+        // Display start message:
+        draw_background();
+        canvas.fillStyle = "#FFFFFF";
+        canvas.font = "25px Arial";
+        canvas.fillText("Press the up arrow to start", 40, 200);
+      }
+      
+      function draw_background()
+      {
+        // Clear canvas and draw background:
+        canvas.clearRect(0, 0, canvas_element.width, canvas_element.height);
+        canvas.fillStyle = "#1EBA00";
+        canvas.fillRect(0, 0, canvas_element.width, canvas_element.height);
+      }
+      
+      function key_pressed(key)
+      {
+        if (key.key == "ArrowUp")
+        {
+            // Start the game if not started:
+            console.log("up");
+            if (start_time == 0)
+            {
+              start_time = new Date().getTime();
+              setInterval(update, 1000 / frames_per_second);
+            }
+        }
+
+        if (key.key == "ArrowLeft")
+        {
+            // Move player left:
+            console.log("left");
+            player_x -= player_move_increment;
+        }
+
+        if (key.key == "ArrowRight")
+        {
+            // Move player right:
+            console.log("right");
+            player_x += player_move_increment;
+        }
+      }
+      
+      function update()
+      {
+        // Set current time (milliseconds):
+        let time_right_now = new Date().getTime()
+        
+        if (time_right_now - start_time < game_duration)
+        {
+            // Check whether player is over dot:
+            for (i = 0; i < dots_x.length; i++)
+            {
+                if (dots_x[i] == player_x && dots_y[i] == player_y)
+                {
+                    score += 2;
+                }
+            }
+        
+            // Generate new dot if needed:
+            if (dots_y[dots_y.length - 1] > dot_distance_apart)
+            {
+              let new_color = dot_color_options[Math.floor(Math.random()*dot_color_options.length)];
+              
+              let lane_number = Math.floor(Math.random() * (canvas_element.width / player_move_increment + 1));
+              
+              let new_x_position = lane_number * player_move_increment;
+              
+              dots_x.push(new_x_position);
+              dots_y.push(0);
+              dots_color.push(new_color);
+            }
+        }
+        else
+        {
+            game_over = 1;
+        }
+        
+        // Clear the canvas and draw background:
+        draw_background();
+        
+        // Draw the dots and move them down the canvas:
+        for (i = 0; i < dots_x.length; i++)
+        {
+            // Move dot down canvas a little:
+            dots_y[i] += dot_pixels_per_frame;
+            canvas.beginPath(); 
+            canvas.arc(dots_x[i], dots_y[i], dot_radius, 0, 2*Math.PI); 
+            canvas.fillStyle = dots_color[i];
+            canvas.fill();
+            canvas.closePath();
+            
+        }
+
+        // Ensure that player is within canvas:
+        player_x = Math.max(0, Math.min(player_x, canvas_element.width))
+        
+        // Draw player:
+        canvas.beginPath();
+        canvas.arc(player_x, player_y, player_radius, 0, 2*Math.PI);
+        canvas.fillStyle = player_color;
+        canvas.fill();
+        canvas.closePath();
+        
+        // Draw score:
+        canvas.fillStyle = text_color;
+        canvas.font = "20px Arial";
+        canvas.fillText(score, 20, 20);
+        
+        // Draw game over screen:
+        if (game_over)
+        {
+            canvas.fillStyle = text_color;
+            canvas.font = "45px Arial";
+            canvas.fillText("Game Over", 80, 100);
+            canvas.fillText("Final Score: " + score.toString(), 60, 150);
+        }
+      }
+ 
+   </script>
+  </body>
+</html> 
