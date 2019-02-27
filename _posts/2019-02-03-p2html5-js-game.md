@@ -29,11 +29,11 @@ In this tutorial series, I will guide you through the steps to create your own s
 
 This is part two of the tutorial. **If you have not read part one, you should read it now.** [Click here for part 1: HTML tutorial](/code/2019/html-js-game-part1). Once you have read it, you can continue with this part.
 
-In this part of the tutorial, I will show you how to add JavaScript to program the game itself. Keep in mind that this tutorial is meant for beginners (or almost-beginners), but I will only cover what is needed to teach you how to make this game. It may seem to complicated or hard at first, so if it does check out some of the links at the bottom and come back when you feel a little more comfortable with JavaScript basics. 
+In this part of the tutorial, I will show you how to add JavaScript to program the game itself. Keep in mind that this tutorial is meant for beginners (or almost-beginners), but I will only cover what is needed to teach you how to make this game. It may seem too complicated or hard at first, so if it does check out some of the links at the bottom and come back when you feel a little more comfortable with JavaScript basics. 
 
 **I will include links at the bottom of this article to reference for every concept we use.**
 
-Here's a reminder of what we did in [the last part](/code/2019/html-js-game-part1):
+Here's a reminder of what we did in [part 1](/code/2019/html-js-game-part1):
 
 + We learned the basics of HTML, which uses `<tags>` to tell the browser more about different elements on the page, for example the `<i></i>` tags that _italicize_ stuff.
 + We learned how JavaScript can be added to websites to make them interactive or add other programmed functionality.
@@ -52,7 +52,7 @@ JavaScript is put between `<script>` tags in a web page. Then, when a browser is
 
 #### The semicolon
 
-In JavaScript you should put a semicolon after every command, to tell the browser that that command is finished. This is not strictly required, but it is recommended. Here's an example:
+In JavaScript you should put a semicolon after every command. This tells the browser that the command is finished. This is not strictly required, but it is recommended. Here's an example:
 
 `command;`
 
@@ -60,7 +60,7 @@ In JavaScript you should put a semicolon after every command, to tell the browse
 
 Keep in mind that there is usually one command per line.
 
-Also remember that JavaScript ignores whitespace (spaces, indentation, new lines) so don't be confused if my use of whitespace throughout this article is inconsistent in places - because JavaScript doesn't care so it doesn't actually change the way the code runs.
+Also remember that JavaScript ignores whitespace (spaces, indentation, new lines) so don't be confused if my use of whitespace in the code throughout this article is inconsistent in places - because JavaScript doesn't care so it doesn't actually change the way the code runs.
 
 #### Variables
 
@@ -212,7 +212,7 @@ The argument `2d` just tells `getContext` that we want the 2-dimensional part of
 
 ##### A note about the coordinate system
 
-When working with canvases, simple x and y coordinates are used. x is horizontal and is the first argument in functions, and y is vertical and is the second argument in functions. Each unit is 1 pixel. Remember that the _upper left corner_ is origin, so its coordinates are `0,0`. 100 pixels to the right of the upper left would be `100,0`. 100 pixels below the upper left corner is `0,100`. Because our canvas has a width of 400 pixels and a height of 400 pixels, the bottom right corner would be `400,400`.
+When working with canvases, simple x and y coordinates are used. x is the horizontal axis and is the first argument in functions, and y is the vertical axis and is the second argument in functions. Each unit is 1 pixel. Remember that the _upper left corner_ is origin, so its coordinates are `0,0`. 100 pixels to the right of the upper left would be `100,0`. 100 pixels below the upper left corner is `0,100`. Because our canvas has a width of 400 pixels and a height of 400 pixels, the bottom right corner would be `400,400`.
 
 #### Creating the `draw_background` function
 
@@ -221,7 +221,7 @@ We are going to need this function soon. It will draw a solid color onto the can
 The `draw_background` function will have three lines:
 
 1. Clear the canvas. Erase everything in a rectangle from 0,0 to 400,400 (or canvas width, canvas height).
-2. Set the color of the "paintbrush". Colors in JavaScript are set using hexadecimal color codes, which store a color's RGB (Red, Green, Blue) values in a shortened format. All color codes must have a `#` in front of them. I chose a greenish color (which has a hex code of  `#1EBA00`) for the background. Here is a color picker that you can use if you want to change the color: <input class="jscolor" value="1EBA00">.
+2. Set the color of the "paintbrush". Colors in JavaScript are set using hexadecimal color codes, which store a color's RGB (Red, Green, Blue) values in a shortened format. All color codes must have a `#` in front of them. I chose a greenish color (which has a hex code of  `#1EBA00`) for the background. Here is a color picker that you can use if you want to change the color (click on the box to select a color, and then it will generate a hex code for that color) : <input class="jscolor" value="1EBA00">.
 3. Draw a rectangle that covers the entire canvas. 
 
 Here it is. Add this function to the script:
