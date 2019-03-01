@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 
-date: 2019-02-03
+date: 2019-03-01
 #update-text: 
 #lastmod: yyyy-mm-dd
 
@@ -98,7 +98,7 @@ Now `my_full_name` is equal to `John Smith` because we created it from my_first_
 
 #### Functions
 
-Functions are like commands that tell the browser to do something. There are many built in functions, and you can also create your own. In JavaScript, you can call (execute) a function by simply typing the command followed by two parenthesis. The parenthesis are used to pass (give) parameters, or arguments, for the function to use. Arguments are put between the parenthesis, with a comma separating each one, like this:
+Functions are like commands that tell the browser to do something. There are many built in functions, and you can also create your own. In JavaScript, you can call (execute) a function by simply typing the command followed by two parentheses. The parentheses are used to pass (give) parameters, or arguments, for the function to use. Arguments are put between the parentheses, with a comma separating each one, like this:
 
 `function(argument_1, argument_2, argument_3);`
 
@@ -132,7 +132,7 @@ In JavaScript, custom functions are blocks of code that are run when you call th
 
 `function my_own_function(my_own_argument) {do stuff using my_own_argument;}`
 
-You declare the function using the `function` keyword. Then, you name the function and add any arguments it will require to the parenthesis. Then, you put all the code that will run when you call the function inside curly braces (`{}`).
+You declare the function using the `function` keyword. Then, you name the function and add any arguments it will require to the parentheses. Then, you put all the code that will run when you call the function inside curly braces (`{}`).
 
 Here's an example of a function to print a full name to the console:
 
@@ -270,7 +270,7 @@ You can optionally extend it and also give it something to do IF (and only if) t
 
 `if (this is true) {do this} else {if its not, do this}`
 
-You can put anything inside the parenthesis as long as it can be true or false. Everything with a value is considered true in JavaScript, so `43` and `1` are considered "true" by JavaScript. `0` is considered false. 
+You can put anything inside the parentheses as long as it can be true or false. Everything with a value is considered true in JavaScript, so `43` and `1` are considered "true" by JavaScript. `0` is considered false. 
 
 Often you'll need to compare to values in JavaScript, to see if, for example, one value is greater than, less than, or equal to another. In that case you'll need to use [comparison operators](https://www.w3schools.com/js/js_comparisons.asp); some examples are `==` (equal to), `<` (less than), `>` (greater than), and `!=` (not equal to). There are also [logical operators](https://www.w3schools.com/js/js_comparisons.asp) which are `&&` (and), `||` (or), and `!` (not).
 
@@ -306,7 +306,7 @@ Before you start, though, you'll need to create some more variables, including o
 
 ##### JavaScript lesson: Arrays
 
-Arrays are simply lists of variables, all stored withing another variable. 
+Arrays are simply lists of variables, all stored within another variable. 
 
 For example, say you have a list of ages that you need to store in variables. You're not exactly sure how long the list will be, but even if you did, it would be very long. So obviously 
 
@@ -441,11 +441,11 @@ Again, just in case you've gotten lost, [here's what your project file should lo
 
 The basic syntax for a for loop is `for (before loop starts; condition to continue; after each iteration) {code block; do something;}`. Here's an explanation:
 
-A for loop runs the code in the code block (the code between `{` and `}`) over and over again **as long as** the condition, or the second statement in the parenthesis, is _true_. 
+A for loop runs the code in the code block (the code between `{` and `}`) over and over again **as long as** the condition, or the second statement in the parentheses, is _true_. 
 
-At the beginning of each loop, the `for` loop checks the condition - if it is true, then the code block is executed. If it is false, then the code block is not executed and the program continues with the rest of the code. Whenever the code block is finished running, the `for` loop executes the third statement inside the parenthesis and then goes back to the beginning and checks the condition again.
+At the beginning of each loop, the `for` loop checks the condition - if it is true, then the code block is executed. If it is false, then the code block is not executed and the program continues with the rest of the code. Whenever the code block is finished running, the `for` loop executes the third statement inside the parentheses and then goes back to the beginning and checks the condition again.
 
-Before starting the first loop, the `for` loop will execute the first statement in the parenthesis. The third and last statement in the parenthesis will be executed _every time_ after the end of the loop, before going back to the beginning. 
+Before starting the first loop, the `for` loop will execute the first statement in the parentheses. The third and last statement in the parentheses will be executed _every time_ after the end of the loop, before going back to the beginning. 
 
 Here's an example of using a `for` loop to run some code 5 times, and then using a `for` loop to iterate through every item in an array:
 
@@ -466,7 +466,7 @@ Here's the expected output (on the console):
 
 #### Clear Canvas, Move dots Down Screen & Draw Them
 
-We will start by programming the part of the `update` function that is _not_ withing the if/else blocks. 
+We will start by programming the part of the `update` function that is _not_ within the if/else blocks. 
 
 First we clear the screen using our `draw_background` function.
 
@@ -597,8 +597,12 @@ Here are some improvements that could be made to the game. I'll leave it to you 
 + "Play again" functionality. _Hint: You might need a function to reinitialize all the variables. At the very least, you could set it up so that the `r` key reloaded the page._
 + High score system. This one is tricky to implement with just a file and browser, because many browsers block cookies and local storage (which are the best option for creating a high score system) from local files. You could look into putting your web page online and then try it.
 + Better looking player and dots. You could look up how to display an image instead of a circle on a canvas, and then replace the circles with custom-designed characters.
++ Better player-over-dot detection. Right now, the player has to be exactly centered over the dot for the game to detect it. It would be nice if there was a margin so that it was a little easy to get points. _Hint: change the `if` statement condition so that it checks whether the distance from the players coordinates to the dots coordinates is less than a limit you set._
++ Add a form to the web page so that the player can change the settings himself before the game starts. _Hint: research HTML forms and then look up how to read form input using JavaScript._
++ Enemy dots. Add dots that are a different color or shape the reduce the score when the player touches them, instead of increasing it.
++ Phone support. Right now, you can't play this game on a phone because phones don't have keyboards with arrow keys. Try adding two on-screen left and right buttons that trigger the same actions as the arrow keys. _Hint: look up how to add HTML buttons that trigger a JavaScript action._
 
-There are so many more enchancements you could make. Your imagination is the limit!
+There are so many more enhancements you could make. Your imagination is the limit!
 
 ### More Resources to Learn JavaScript
 
@@ -626,9 +630,7 @@ I hope you learned lots and had fun building this game. Even if this was the onl
 
 If you need any help with this project, feel free to reach out to me!
 
-Please leave any questions, comments, or suggestions in the comments below or else [contact me](/#contact). 
-
-Thank you!
+Please leave any questions, comments, feedback, or suggestions in the comments below or else [contact me](/#contact). 
 
 
 
