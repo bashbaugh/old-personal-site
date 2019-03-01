@@ -30,7 +30,19 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/:cat/2018/:slug"
-to = "/:cat/:slug"
+from = "/other/:year/:slug"
+to = "/other/:slug"
+status = 301
+force = true
+
+[[redirects]]
+from = "/projects/:year/:slug"
+to = "/projects/:slug"
+status = 301
+force = true
+
+[[redirects]]
+from = "/code/:year/:slug"
+to = "/code/:slug"
 status = 301
 force = true
