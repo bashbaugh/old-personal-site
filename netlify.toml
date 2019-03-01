@@ -30,7 +30,7 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/:cat/:year/:slug"
+from = "/:cat/2018/:slug"
 to = "/:cat/:slug"
 status = 301
 force = true
