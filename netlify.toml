@@ -21,8 +21,16 @@ for = "/js/*"
 [headers.values]
 Cache-Control = "max-age=86400"
 
+
+
 [[redirects]]
 from = "https://scitronboycom.netlify.com/*"
 to = "https://scitronboy.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "/:cat/:year/:slug"
+to = "/:cat/:slug"
 status = 301
 force = true

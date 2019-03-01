@@ -10,3 +10,5 @@ Rakefile
 .jekyll-metadata
 /.idea/
 img/gitignore
+.goutputstream*
+

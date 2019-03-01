@@ -159,7 +159,7 @@ author_blurb_image: "/img/author.jpg"
     #url: "/feed.xml"
 
 
-permalink: /:categories/:year/:slug
+permalink: /:categories/:slug
 
 collections:
     - update_collection
