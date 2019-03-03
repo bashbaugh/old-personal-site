@@ -282,7 +282,7 @@ Be very careful not to confuse `=` with `==`. If you use an assignment operator 
 
 #### Create the `key_pressed` function
 
-When a key is pressed, `key_pressed` will be called with an argument that contains more information about the key press. That argument will hava a property (variable) named `key` that will contain the name of the key.
+When a key is pressed, `key_pressed` will be called with an argument that contains more information about the key press. That argument will have a property (variable) named `key` that will contain the name of the key.
 
 So we need to check what key it is and then take action based on that. But how can we check which key it is? We need an `if` statement!
 
@@ -298,9 +298,9 @@ Just in case you got lost, [here's what your project file should look like now](
 
 ### Creating the Game Loop Function
 
-The game loop function, or `update` function, will run many times per second and each time it runs it will calculate the new position for all the colored dots, and also check to see whether the player is over one or not. Then it will clear the canvas and redraw the scene. 
+The game loop function, or `update` function, will run many times per second and each time it runs it will calculate the new position for all the colored dots, and also check to see whether the player's position is over a dot or not. Then it will clear the canvas and redraw the scene. 
 
-It is important to clear the canvas each time or else every pixel that is drawn will just layer on top of the previous ones, creating an ugly mess where there is are a ton of dots overlapping one another.
+It is important to clear the canvas each time or else every pixel that is drawn will just layer on top of the previous ones, creating an ugly mess where there are a ton of dots overlapping one another.
 
 Before you start, though, you'll need to create some more variables, including one type that you haven't learned yet.
 
@@ -308,7 +308,7 @@ Before you start, though, you'll need to create some more variables, including o
 
 Arrays are simply lists of variables, all stored within another variable. 
 
-For example, say you have a list of ages that you need to store in variables. You're not exactly sure how long the list will be, but even if you did, it would be very long. So obviously 
+For example, say you have a list of ages that you need to store in variables. You're not exactly sure how long the list will be, but even if you did, it would be very long. So obviously manually creating lots of variables like this:
 
     let age1 = 16;
     let age2 = 87;
@@ -316,9 +316,9 @@ For example, say you have a list of ages that you need to store in variables. Yo
     let age4 = 12;
     ...
  
-is not an option. The solution is to use an array, which can store any amount numbers, strings, or other objects in a way that you can easily access them but they _don't all have to have variable names_. Array syntax is simple: `let my_array = [values, separated, by, commas]`.
+is not an option. The solution is to use an array, which can store any amount of numbers, strings, or other objects in a way that you can easily access them but they _don't all have to have variable names_. Array syntax is simple: `let my_array = [values, separated, by, commas]`
 
-Here's how you would store the above in an array:
+Here's how you would store the above ages in an array:
 
 `let ages = [16, 87, 33, 12, ...];`
 
@@ -326,13 +326,13 @@ And then you can access the ages with the syntax `ages[i]`, where `i` is an inde
 
 `ages[2]` is equal to `33`.
 
-I'll teach more about arrays later.
+I'll say more about arrays later.
 
 #### Creating some variables
 
 For our game to work, we need to create some variables (and arrays) that we will use later. **Add these to the top of the script**.
 
-First we will create variables to store players x and y coordinates:
+First we will create variables to store the player's x and y coordinates:
 
 `let player_x = 200;`
 
@@ -372,26 +372,28 @@ Now for a frame rate (in FPS or Frames Per Second) - the number of times `update
 
 `let frames_per_second = 15;`
 
-And a variable to define how many pixels each dot should move frame. 
+And a variable to define how many pixels each dot should move down the canvas, per frame. 
 
 `let dot_pixels_per_frame = 5;`
 
-**`player_y` MUST be a multiple of `dot_pixels_per_frame`**. Here we are safe because 220 / 5 does not have a remainder.
+**`player_y` MUST be a multiple of `dot_pixels_per_frame`**. Here we are safe because 220 divided by 5 is a whole number.
 
-Then one to specify how many pixels the _player_ should move when the player presses left or right:
+Then add a variable to specify how many pixels the _player_ should move when the player presses left or right:
 
 `let player_move_increment = 40;`
 
-**`player_x` MUST be a multiple of `player_move_increment`**.  You will see why later on.  Here we are safe because 400 / 40 does not have a remainder.
+**`player_x` MUST be a multiple of `player_move_increment`**.  You will see why later on.  Here we are safe because 200 divided by 40 is a whole number.
 
 
-Also we need to specify how far apart (in the vertical direction; pixels) each dot should be, and how long (in milliseconds) the game should be:
+Also we need to specify how far apart (vertically, in pixels) each dot should be, and how long (in milliseconds) the game should be:
 
 `let dot_distance_apart = 10;`
 
 `let game_duration = 30 * 1000;`
 
-Then the radius for the player and dots:
+(30000 will create a 30 second game)
+
+Then the radius for the (circular) player and dots:
 
 `let dot_radius = 10;`
 
@@ -411,13 +413,13 @@ Add it to the script in your project file. We will replace the comments with cod
 
 When the player presses the up arrow, the `update` function should start looping.
 
-But before we start looping the `update` function, we need to store the time that the game started at so we can compare it each frame and see if the difference between the time that frame and the time at the start is greater than the time limit. If it is, we will stop the game.
+But before we start looping the `update` function, we need to store the time that the game started so we can compare it each frame and see if the difference between the time that frame and the time at the start is greater than the time limit (stored in `game_duration`). If it is, the game will stop.
 
 To store the time we can use the `Date` class, which has a ton of functions for managing time. We can use the `start_time` variable we created to store the time the game starts at. `new Date().getTime()` creates a new `Date` class and then uses it to get the time, in milliseconds, since January 1, 1970.
 
 To start looping the `update` function, which effectively starts the game, we can use `setInterval(arg1, arg2)` which is a function that runs a certain function (first argument) every x number of milliseconds, where x is the second argument.
 
-But we need to ensure that the game hasn't already started whenever we try to start it, because if we didn't then pressing the up arrow a second time would reset the `start_time` and make the `update` function run twice as often, which would result in unexpected behaviour.
+But we need to ensure that the game hasn't already started whenever we try to start it, because if we didn't check to ensure game hadn't started, then pressing the up arrow a second time would reset the `start_time` and make the `update` function run twice as often, which would result in unexpected behaviour.
 
 We can check using the `start_time` variable, which is set to `0` when the page loads - so we know that if `start_time` is _not_ `0`, the game has already started.
 
@@ -425,7 +427,7 @@ We can add all this in the `key_pressed` function by adding the following to the
 
 <script src="https://gist.github.com/scitronboy/7c84e2cbf82128aecaf17584632688af.js"></script>
 
-We divide 1000 by `frames_per_second` to get the interval (in milliseconds) that we should pause for between each call to `update`. If, for example, `frames_per_second` was set to `5`, then 1000 divided by 5 is equal to 200, and 200 milliseconds is one fifth of a second, so the function `update` would be called five times per second, which would result in 5 frames per second.
+We divide 1000 by `frames_per_second` to get the interval (in milliseconds) that we should pause between each call to `update`. If, for example, `frames_per_second` was set to `5`, then 1000 divided by 5 is equal to 200, and 200 milliseconds is one fifth of a second, so the function `update` would be called five times per second, which would result in 5 frames per second.
 
 #### Add the first `if` statement
 
@@ -437,11 +439,11 @@ Again, just in case you've gotten lost, [here's what your project file should lo
 
 ##### JavaScript lesson: `for` loops
 
-`for` loops are most commonly useful in two scenarios: When you want some code to run a certain number of times, or else when to iterate over every item in an array and do something to each one.
+`for` loops are most commonly useful in two scenarios: When you want some code to run a certain number of times, or else when you want to iterate through every item in an array and do something to each one.
 
-The basic syntax for a for loop is `for (before loop starts; condition to continue; after each iteration) {code block; do something;}`. Here's an explanation:
+The basic syntax for a `for` loop is `for (before loop starts; condition to continue; after each iteration) {code block; do something;}`. Here's an explanation:
 
-A for loop runs the code in the code block (the code between `{` and `}`) over and over again **as long as** the condition, or the second statement in the parentheses, is _true_. 
+A `for` loop runs the code in the code block (the code between `{` and `}`) over and over again **as long as** the condition, or the second statement in the parentheses, is _true_. 
 
 At the beginning of each loop, the `for` loop checks the condition - if it is true, then the code block is executed. If it is false, then the code block is not executed and the program continues with the rest of the code. Whenever the code block is finished running, the `for` loop executes the third statement inside the parentheses and then goes back to the beginning and checks the condition again.
 
