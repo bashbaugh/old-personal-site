@@ -34,10 +34,12 @@ I will cover the following topics in this tutorial:
 + I will teach JavaScript basics
 + I will show how to interact with the canvas and generate graphics using JavaScript
 + I will show how to get user input to control the player
-+ I will show how to use cookies to create a high score system
++ I will show how to check the player coordinates to see whether or not the score should be increased
 + And more!
 
-When finished, the game is a game in which the goal is to fly over as many colored dots as possible before it ends. 
+When finished, the goal of the game will be to move the player left and right in order to fly over as many colored dots as possible before the time limit is up.
+
+[You can try it here.](/html-js-demo-game). Remember that you will be able to customize your own however you want.
 
 The first part (this article) of this tutorial covers the basics of HTML. Have fun and make sure you leave a comment at the bottom if you have any questions!
 
@@ -186,7 +188,7 @@ The last thing in the file is a `<script>` section. Browsers treat stuff inside 
 
 ### Conclusion + More resources
 
-That's the end of the HTML part. In the next parts, I will go over the basics of JavaScript and teach you how to make the game using the webpage you just created. It will be released some time in the next few days.
+That's the end of the HTML part. [Click here to continue to part two](/code/html-js-game-part2).
 
 Here are a few resources to learn more about HTML:
 
@@ -196,6 +198,8 @@ Here are a few resources to learn more about HTML:
 + [W3 schools HTML & JavaSCript game tutorial](https://www.w3schools.com/graphics/game_intro.asp)
 
 If you need help or have any suggestions please leave a comment below or else [contact me](/#contact). Thanks for reading!
+
+[-- Part Two ->](https://scitronboy.com/code/html-js-game-part2)
 
 
 
