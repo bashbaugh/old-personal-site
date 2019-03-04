@@ -472,7 +472,7 @@ We will start by programming the part of the `update` function that is _not_ wit
 
 First we clear the screen using our `draw_background` function.
 
-Then we use a for loop to move each dot down the canvas a bit and draw it.
+Then we use a `for` loop to move each dot down the canvas a bit and draw it.
 
 Drawing a solid circle on a canvas is somewhat tricky - you need to draw a circle and then fill it in. Here are the functions we'll use to do that:
 
@@ -534,7 +534,7 @@ Try it out in your browser and you'll see that you can move the player left and 
 
 Now for the part inside the `if` block.
 
-To check whether a player is over a dot, we can use a for loop and compare the player's coordinates to the each dot's coordinates. 
+To check whether a player is over a dot, we can use a `for` loop and compare the player's coordinates to each dot's coordinates. 
 
 Replace the corresponding comment in the `update` function with this code:
 
@@ -550,21 +550,21 @@ However we can't create a new dot every frame, or else the canvas would quickly 
 
 When we generate a new dot we also want it to have a random x location, and a random color (chosen from the array of color options). We can do this by using the `Math.random` function, along with some other `Math` functions. 
 
-`Math.random` returns a number between `0` and `1` so that the number is greater than OR equal to `0` _but_ the number is always less than 1. So to get a random choice from an array (like the `dot_color_options` array) we can multiply a random number by the number of items in the array and then round it down to the nearest integer (we can just nest the functions within eachother):
+`Math.random` returns a number between `0` and `1` so that the number is greater than OR equal to `0` _but_ the number is always less than 1. So to get a random choice from an array (like the `dot_color_options` array) we can multiply a random number by the number of items in the array and then round it down to the nearest integer (we can just nest the functions within each other):
 
 `dot_color_options[Math.floor(Math.random() * dot_color_options.length)];`
 
-`Math.floor(number)` returns a number rounded down to the nearest integer.
+`Math.floor(number)` returns a number rounded down to the nearest integer. In this case, the number is `Math.random() * dot_color_options.lenth` - a random number multiplied by the number of options in the `dot_color_options`. The rounded down number is then used as the index to retrieve a random item from the `dot_color_options` array.
 
-Generating the new x position is not as simple as it seems because we must make sure that each dot falls into a "lane", where each lane is separated by the same amount as `player_move_increment`. We have to do this because there are only 400 / `player_move_increment` x positions (plus one, one the far right side of the canvas) that the player can possibly be in on the canvas, so the dots can only be in those positions or else the player would only be able to "fly" over the dots that were in one of the same x positions that the player could be in (which would be only a tiny fraction of the dots).
+Generating the new x position is not as simple as it seems because we must make sure that each dot falls into a position that the player can access. There are only 400 (the width of the canvas) divided by `player_move_increment` (the distance that the player jumps to the left or right) horizontal positions, like "lanes", that the player can possibly be in on the canvas (plus one, on the far right side of the canvas). The total number of x positions (400) is far greater than the number of x positions the player can be in, so if the dots were assigned to any of the x positions the player wouldn't be able to "fly over" most of them. We have to make sure that a new dot's x position is one that the player can be in.
 
-So we must multiply a random lane number (an integer between 0 and canvas width / `player_move_increment` + 1) by the `player_move_increment` to get the new x position for the new dot:
+So we must multiply a random lane number (an integer between 0 and canvas width divided by `player_move_increment` + 1) by the `player_move_increment` to get a new x position for the new dot:
 
 `let lane_number = Math.floor(Math.random() * (canvas_element.width / player_move_increment + 1));`
 
 `let new_x_position = lane_number * player_move_increment;`
 
-We can use the `array.push(item)` function to add an item to the end of an array. We can use this to add the new dots. Also, because the most recently created dot (which is also the highest dot) will be the last position in the arrays, because each new dot is added to the end of the array. Therefore we can use `dots_y[dots_y.length - 1]` to get the last item in the `dots_y` array (we must subtract one from the array length because in an array the index of the nth position is n - 1).
+We can use the `array.push(item)` function to add an item to the end of an array. We can use this to add the new dots. The most recently created dot, which is the highest dot on the canvas, will be the last item in each of the arrays (`dot_x`, `dot_y`, and `dot_color`) because each new dot is added to the end of the array. Therefore we can use `dots_y[dots_y.length - 1]` to get the last item in the `dots_y` array (remember we must subtract one from the array length because in an array the index of the nth position is n - 1).
 
 Here's the code. Replace the corresponding comment in the `update` function with it:
 
@@ -594,17 +594,27 @@ And here is a gif of a ten second game:
 
 Here are some improvements that could be made to the game. I'll leave it to you to figure out how to implement them:
 
-+ Dots disappear when you "collect" them. _Hint: Look up a JavaScript function to remove an item from an array._
++ Dots disappear when you fly over them (right now, they continue down the canvas even if the player has flown over them). _Hint: Look up a JavaScript function to remove an item from an array._
 + Page looks nicer. _Hint: maybe go and learn some CSS so you know how to style the web page._
-+ "Play again" functionality. _Hint: You might need a function to reinitialize all the variables. At the very least, you could set it up so that the `r` key reloaded the page._
++ "Play again" functionality. _Hint: You might need a function to reinitialize all the variables. At the very least, you could set it up so that the `r` key reloads the page._
 + High score system. This one is tricky to implement with just a file and browser, because many browsers block cookies and local storage (which are the best option for creating a high score system) from local files. You could look into putting your web page online and then try it.
 + Better looking player and dots. You could look up how to display an image instead of a circle on a canvas, and then replace the circles with custom-designed characters.
-+ Better player-over-dot detection. Right now, the player has to be exactly centered over the dot for the game to detect it. It would be nice if there was a margin so that it was a little easy to get points. _Hint: change the `if` statement condition so that it checks whether the distance from the players coordinates to the dots coordinates is less than a limit you set._
-+ Add a form to the web page so that the player can change the settings himself before the game starts. _Hint: research HTML forms and then look up how to read form input using JavaScript._
-+ Enemy dots. Add dots that are a different color or shape the reduce the score when the player touches them, instead of increasing it.
++ Better player-over-dot detection. Right now, the player has to be exactly centered over the dot for the game to detect it. It would be nice if there was a margin so that it was a little easier to get points. _Hint: change the `if` statement condition so that it checks whether the distance from the player's coordinates to the dot's coordinates is less than a limit you set._
++ Add a form to the web page so that the player can change the settings (e.g. the colors, game duration, etc.) before the game starts, as opposed to the hardcoded settings. _Hint: research HTML forms and then look up how to read form input using JavaScript._
++ Enemy dots. Add dots that are a different color or shape that reduce the score when the player touches them, instead of increasing it.
 + Phone support. Right now, you can't play this game on a phone because phones don't have keyboards with arrow keys. Try adding two on-screen left and right buttons that trigger the same actions as the arrow keys. _Hint: look up how to add HTML buttons that trigger a JavaScript action._
 
 There are so many more enhancements you could make. Your imagination is the limit!
+
+### Conclusion
+
+Congratulations! You've done it!
+
+I hope you learned lots and had fun building this game. Thank you for reading my article!
+
+If you need any help with this project, feel free to contact me!
+
+Please leave any questions, comments, feedback, or suggestions in the comments below or else [contact me](/#contact). 
 
 ### More Resources to Learn JavaScript
 
@@ -625,14 +635,6 @@ W3 schools is also a great website for learning about HTML and JavaScript. Here 
 + [Arrays](https://www.w3schools.com/js/js_arrays.asp)
 + [if/else](https://www.w3schools.com/js/js_if_else.asp)
 + [for loop](https://www.w3schools.com/js/js_loop_for.asp)
-
-### Conclusion
-
-I hope you learned lots and had fun building this game. Even if this was the only line you read, thank you for reading it!
-
-If you need any help with this project, feel free to reach out to me!
-
-Please leave any questions, comments, feedback, or suggestions in the comments below or else [contact me](/#contact). 
 
 
 
