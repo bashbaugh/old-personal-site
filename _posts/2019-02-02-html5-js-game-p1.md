@@ -197,9 +197,11 @@ Here are a few resources to learn more about HTML:
 + [CodeCademy HTML tutorial](https://www.codecademy.com/learn/learn-html)
 + [W3 schools HTML & JavaSCript game tutorial](https://www.w3schools.com/graphics/game_intro.asp)
 
-If you need help or have any suggestions please leave a comment below or else [contact me](/#contact). Thanks for reading!
+If you need help or have any suggestions please leave a comment below or else [contact me](/#contact). Thanks for reading, and if you liked it, please click below to upvote it on hackr.io:
 
-[-- Part Two ->](https://scitronboy.com/code/html-js-game-part2)
+<div class="hackr-widget" data-tutorial="make-a-fun-html-javascript-game-part-1" data-type="2"></div><script src="https://hackr.io/widget.js?v=1.0"></script>
+
+[--> Part Two -->](/code/html-js-game-part2)
 
 
 
