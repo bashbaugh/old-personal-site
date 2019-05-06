@@ -1,0 +1,58 @@
+---
+layout: none
+---
+
+<!--
+I made this a LONG time ago, when I was first learning JavaScript, roughly following a tutorial in a book (I forget the title).
+My sister wanted to use it when she was online so I uploaded it here for her to use; anyone else can use it too.
+-->
+
+<html><head><style>
+    #t {text-align:center; font-size:3.5em; font-family:Arial; color:#00FF00;}
+</style>
+
+
+    <title>silly name generator</title>
+    </head><body><h1 id="t">Silly name generator</h1>
+
+<p></p>
+enter your name to get your silly name:<br><br>
+real first name: <input type="text" id="fn"><br><br>
+real last name: <input type="text" id="ln" onkeydown="if (event.keyCode == 13) document.getElementById('go').click()"><br>
+<input type="submit" onclick="nameget();" value="get silly name" id="go"><br><br>
+silly names:<br>
+<textarea id="ta" rows="5" cols="50" style="margin: 0px; width: 520px; height: 305px;">
+</textarea>
+<script type="text/javascript">
+    var sfnames = ["runny", "buttercup", "dinky", "stinky", "crusty", "greasy", "gidget", "cheesyproof", "lumpy","wacky", "tiny", "flunky", "fluffy", "zippy","doofus",
+     "gobsmacked", "slimy", "grimy", "salamander", "oily", "burrito", "bumpy", "loopy", "snotty", "irving", "egbert"]; //silly first names
+    var slnames = ["snicker", "buffalo", "gross", "bubble", "sheep", "corset", "toilet", "lizzard", "waffle", "kumquat", "burger", "chimp", "liver", "gorilla", "rhino",
+     "emu", "pizza", "toad", "gerbil", "pickle", "tofu", "chicken", "potatoe", "hamster", "lemur", "vermin"];//silly last names
+    var slnames2 = ["face", "dip", "nose", "brain", "head", "breath", "pants", "shorts", "lips", "mouth", "muffin", "bottom",
+     "butt", "elbow", "honker", "toes", "buns", "spew", "kisser", "fanny", "squirt", "chunks", "brains", "wit", "juice"];//slnames, 2nd part
+    
+    function nameget() {
+        var fn = document.getElementById('fn').value.toUpperCase();
+        var ln = document.getElementById('ln').value.toUpperCase();
+        
+        if (fn != "" && ln != "") {
+            if (fn.charCodeAt(0)-65 >= 0 && fn.charCodeAt(0)-65 <= 25) {
+                if (ln.charCodeAt(0)-65 >= 0 && fn.charCodeAt(0)-65 <= 25 && ln.charCodeAt(ln.length-1)-65 >= 0 && ln.charCodeAt(ln.length-1)-65 <= 25) {
+                    
+                    var sfname = sfnames[fn.charCodeAt(0)-65];
+                    var slname = slnames[ln.charCodeAt(0)-65];
+                    var slname2 = slnames2[ln.charCodeAt(ln.length-1)-65];
+                    var name = document.createTextNode(fn + " " + ln + "=");
+                    var ta = document.getElementById('ta');
+                    var sname = document.createTextNode(sfname + " " + slname + slname2 + "\n");
+                    
+                    ta.appendChild(name);
+                    ta.appendChild(sname);
+                } else {alert("not valid last name");}
+                
+            } else {alert("not valid first name");}
+            
+        } else {alert("you must enter both names.");}
+    }
+</script>
+</body></html>
