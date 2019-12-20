@@ -7,16 +7,16 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
         <i class="fa fa-bars"></i>
       </button>
-      {% if page.section-type == "index" %}
+      {% if page.section-type == "blog" %}
         <a class="navbar-brand page-scroll" href="#page-top">
       {% else %}
-        <a class="navbar-brand" href="{{site.baseurl}}/">
+        <a class="navbar-brand" href="{{site.baseurl}}/blog">
       {% endif %}
           <div>
             {% if site.black-favicon %}
               <img src="{{site.baseurl}}{{ site.black-favicon }}" alt="lab glass image">
             {% endif %}
-            {{ site.title }}
+            Benjamin Ashbaugh
             <!--<h6 style="display: inline;"></h6>-->
           </div>
         </a>
@@ -44,19 +44,13 @@
               </li>
               
           
-              {% if page.section-type == "index" %}
+              {% if page.section-type == "blog" %}
               <li>
-              <a href="#about" class="page-scroll">About Me</a>
-              </li>
-              <li>
-              <a href="#contact" class="page-scroll">Contact Me</a>
+              <a href="/">About Me</a>
               </li>
               {% else %}
               <li>
-              <a href="/#about">About Me</a>
-              </li>
-              <li>
-              <a href="/#contact">Contact Me</a>
+              <a href="/">About Me</a>
               </li>
               {% endif %}
               

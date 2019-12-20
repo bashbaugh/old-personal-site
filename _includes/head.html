@@ -50,12 +50,17 @@ If you are interested in learning how to work with HTML, you can get started her
   <meta property="og:image" content="{{ site.url }}{% if page.top-image %}{{ page.top-image }}{% else %}{{ page.image }}{% endif %}" />
   {% endif %}
   
+  {% unless page.custom-css %}
   <!-- Bootstrap Core CSS -->
-  
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <!-- Custom CSS -->
-  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
+  <!-- Theme CSS -->
+  <link href="{{site.baseurl}}/css/blog-style.css" rel="stylesheet">
+  {% endunless %}
+  
+  {% if page.section-type == 'index' %}
+  <!-- Special styling for home page including portfolio, etc. -->
+  <link href="{{site.baseurl}}/css/home-style.css" rel="stylesheet">
+  {% endif %}
 
   {% if page.section-type == "post" %}
   <!-- Responsive Social Buttons -->
@@ -96,27 +101,11 @@ If you are interested in learning how to work with HTML, you can get started her
   {% if page.section-type == "post" %}
   
   {% endif %}
-  {% include onesignal-notifications.html %}
+  <!--{% include onesignal-notifications.html %}-->
 
   {% include color-browser.html %}
 
   {% include syntax-highlight.html %}
-  
-  <!-- Matomo -->
-  <script type="text/javascript">
-    var _paq = window._paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="https://scitronboycom.matomo.cloud/";
-      _paq.push(['setTrackerUrl', u+'matomo.php']);
-      _paq.push(['setSiteId', '1']);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-    })();
-  </script>
-  <!-- End Matomo Code -->
 
 </head>
 
