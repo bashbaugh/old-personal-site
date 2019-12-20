@@ -1,5 +1,7 @@
 <!--
 
+SORRY, THE CODE IS A COMPLETE MESS RIGHT NOW. I'M WORKING ON A BIG UPDATE SO CHECK BACK IN A FEW WEEKS :)
+
 Hello! Welcome to my website's HTML code!
 This HTML is pretty simple. Feel free to try to figure it out! if you have any questions, just contact me here: {{ site.url }}/#contact
 
@@ -10,19 +12,6 @@ If you are interested in learning how to work with HTML, you can get started her
 <!-- HEAD Start -->
 
 <head>
-  {% if jekyll.environment == "production" %}
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-tracking-id }}"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '{{ site.google-tracking-id }}');
-    </script>
-  <!-- End global site tag -->
-  {% endif %}
-
   {% include force-https.html %}
   
 <!--  Meta Stuff  -->
@@ -30,12 +19,7 @@ If you are interested in learning how to work with HTML, you can get started her
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-site-verification" content="CtSf12VFnM489h5Y6THZ1bZhWJPhc51-LsdniIAPMEU" />
-  <meta name="norton-safeweb-site-verification" content="wehuiarz-evncsqkcyaa-0bgcp4y3r0fnspg1s0ocaraobb53mt434w07i3buplymeaeqw65b87eyl06kl9srf90xq3x9tde69wbq8fp2uechyqh434ohr-kledx15sp" />
-  <meta name="google-site-verification" content="ncuLLzHBTuS0MXX3SAnEUWTnVZEOgB7yc_bmUPIkf3s" />
-  <meta name="wot-verification" content="c015a0f11cdd75c9ddfc"/>
-  
-<!--  Meta SEO stuff  -->
+
   
   <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}">
   {% if page.description %}
@@ -47,14 +31,14 @@ If you are interested in learning how to work with HTML, you can get started her
   {% else %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','' }}/">
   {% endif %}
-  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}</title>
+  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - benjaminashbaugh.me{% endif %}</title>
   
 <!-- Open graph and Twitter cards -->
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@scitronboy" />
   <meta name="twitter:creator" content="@scitronboy" />
-  <meta property="og:title" content="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}" />
+  <meta property="og:title" content="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - benjaminashbaugh.me{% endif %}" />
   <meta property="og:type" content="website" />
   {% if page.description %}
   <meta property="og:description" content="{{ page.description }}" />
@@ -73,7 +57,7 @@ If you are interested in learning how to work with HTML, you can get started her
 
   {% if page.section-type == "post" %}
   <!-- Responsive Social Buttons -->
-  <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" /> 
+  <link rel="stylesheet" href="{{site.baseurl}}/css/rrssb.css" />
   {% endif %}
   
   <!-- Custom Fonts -->
@@ -110,28 +94,11 @@ If you are interested in learning how to work with HTML, you can get started her
   {% if page.section-type == "post" %}
   
   {% endif %}
-  {% include onesignal-notifications.html %}
 
   {% include color-browser.html %}
 
   {% include syntax-highlight.html %}
   
-  <!-- Matomo -->
-  <script type="text/javascript">
-    var _paq = window._paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="https://scitronboycom.matomo.cloud/";
-      _paq.push(['setTrackerUrl', u+'matomo.php']);
-      _paq.push(['setSiteId', '1']);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-    })();
-  </script>
-  <!-- End Matomo Code -->
-
 </head>
 
 <!-- HEAD End -->
