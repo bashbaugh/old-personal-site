@@ -24,8 +24,8 @@ Cache-Control = "max-age=86400"
 
 
 [[redirects]]
-from = "https://scitronboycom.netlify.com/*"
-to = "https://scitronboy.com/:splat"
+from = "https://benjaminashbaughme.netlify.com/*"
+to = "https://benjaminashbaugh.me/:splat"
 status = 301
 force = true
 
