@@ -34,12 +34,12 @@
                 <li class="divider"></li>
                 <li class="dropdown-header">Categories</li>
                 {% for cat in site.categories %}
-                <li><a href="/categories/{{ cat[0] | downcase }}">{{ cat[0] }} <span class="badge">{{ cat[1].size }}</span></a></li>
+                <li><a href="/blog/categories/{{ cat[0] | downcase }}">{{ cat[0] }} <span class="badge">{{ cat[1].size }}</span></a></li>
                 {% endfor %}
                 <li class="divider"></li>
-                <li><a href="/tags">All Tags</a></li>
+                <li><a href="/blog/tags">All Tags</a></li>
                 <li class="divider"></li>
-                <li><a href="/">Recent Posts</a></li>
+                <li><a href="/blog">Recent Posts</a></li>
               </ul>
               </li>
               

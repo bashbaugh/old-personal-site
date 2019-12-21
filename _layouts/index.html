@@ -1,19 +1,23 @@
-<!-- Index Layout Start -->
+<!-- Home Layout Start -->
 
 <!DOCTYPE html>
 <html lang="{{ site.lang }}">
 
   {% include head.html %}
 
-  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"  data-offset="151">
+  <body>
 
-    {% include home-navigation.html %}
-    
-    {% include about.html %}
-    
-    {% include home-js.html %}
+    <div class="home-parent">
+      <div class="home-container">
+        {% include home.html %}
+        
+        {% include home-navigation.html %}
+        
+        {% include home-js.html %}
+      </div>
+    </div>
 
   </body>
 </html>
 
-<!-- Index Layout End -->
+<!-- Home Layout End -->
