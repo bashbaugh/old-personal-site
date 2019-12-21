@@ -1,0 +1,24 @@
+<script>
+setTimeout(function() {
+  // Animate navbar
+  let navbar = document.getElementById("home-nav");
+  let navbarButtons = navbar.children;
+  
+  let currentButton = 0;
+  let buttonAnimationInterval = setInterval(function() {
+    navbarButtons[currentButton].classList.add("home-nav-button-animation");
+    
+    if (currentButton === navbarButtons.length - 1) {
+      clearInterval(buttonAnimationInterval);
+    }
+    currentButton ++;
+  }, 200);
+  
+}, 2000);
+  
+let navbarfunctions = {
+  about: function () {
+    alert("hey");
+  }
+}
+</script>

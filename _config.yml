@@ -25,6 +25,24 @@ title: "benjaminashbaugh.me"
 #favicon: "/img/favicon.ico"
 
 ################
+# home navbar buttons #
+################
+
+homeButtons:
+  - name: "About Me"
+    href: "#about"
+  - name: "Portfolio"
+    href: "#portfolio"
+  - name: "Blog"
+    href: "blog"
+  - name: "GitHub"
+    href: "https://github.com/scitronboy"
+    newtab: true
+  - name: "More Links"
+    href: "#links"
+
+
+################
 # Blog Header layout #
 ################
 
