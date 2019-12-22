@@ -1,24 +1,44 @@
 <script>
-setTimeout(function() {
-  // Animate navbar
-  let navbar = document.getElementById("home-nav");
-  let navbarButtons = navbar.children;
-  
-  let currentButton = 0;
-  let buttonAnimationInterval = setInterval(function() {
-    navbarButtons[currentButton].classList.add("home-nav-button-animation");
+let navbar = document.getElementById("home-nav");
+let currentPage = null;
+
+(function() {
+  setTimeout(function() {
+    // Animate navbar
+    let navbarButtons = navbar.children;
     
-    if (currentButton === navbarButtons.length - 1) {
-      clearInterval(buttonAnimationInterval);
-    }
-    currentButton ++;
-  }, 200);
+    let currentButton = 0;
+    let buttonAnimationInterval = setInterval(function() {
+      navbarButtons[currentButton].classList.add("home-nav-button-animation");
+      
+      if (currentButton === navbarButtons.length - 1) {
+        clearInterval(buttonAnimationInterval);
+      }
+      currentButton ++;
+    }, 200);
+    
+  }, 2000);
+})();
+
+function closePage() {
+  if (currentPage) {
+    document.getElementById(currentPage + '-page').classList.remove("page-active")
+    document.getElementById(currentPage + '-page').classList.add("page-inactive")
+  }
   
-}, 2000);
-  
-let navbarfunctions = {
-  about: function () {
-    alert("hey");
+  document.getElementById("close-button").classList.remove("visible")
+}
+
+function openPage() {
+  closePage();
+  currentPage = location.hash.substr(1);
+  if (currentPage) {
+    document.getElementById(currentPage + '-page').classList.add("page-active")
+    document.getElementById("close-button").classList.add("visible")
   }
 }
+
+openPage()
+  
+window.onhashchange = openPage;
 </script>
