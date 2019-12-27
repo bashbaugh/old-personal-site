@@ -24,16 +24,20 @@ function closePage() {
   if (currentPage) {
     document.getElementById(currentPage + '-page').classList.remove("page-active")
     document.getElementById(currentPage + '-page').classList.add("page-inactive")
+
+    document.getElementById("close-button").classList.remove("visible")
+    document.getElementById("close-button").classList.add("hidden")
   }
-  
-  document.getElementById("close-button").classList.remove("visible")
 }
 
 function openPage() {
   closePage();
   currentPage = location.hash.substr(1);
   if (currentPage) {
+    document.getElementById(currentPage + '-page').classList.remove("page-inactive")
     document.getElementById(currentPage + '-page').classList.add("page-active")
+
+    document.getElementById("close-button").classList.remove("hidden")
     document.getElementById("close-button").classList.add("visible")
   }
 }

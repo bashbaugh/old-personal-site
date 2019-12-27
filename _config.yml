@@ -38,8 +38,8 @@ homeButtons:
   - name: "GitHub"
     href: "https://github.com/scitronboy"
     newtab: true
-  - name: "More Links"
-    href: "#links"
+  - name: "Contact Me"
+    href: "#contact"
 
 
 ################
