@@ -2,8 +2,8 @@
 <div class="home-parent">
   <div class="home-container">
     <div class="home-welcome">
-      <div class="hello">Hello. I'm Benjamin Ashbaugh.</div>
-      <div class="home-welcome-text">I'm a student, aspiring developer, programmer, and maker.</div>
+      <h1 class="hello">Hello. I'm Benjamin Ashbaugh.</h1>
+      <p class="home-welcome-text">I'm a student, aspiring developer, programmer, and maker.</p>
     </div>
     
     {% include home-navigation.html %}
@@ -13,17 +13,67 @@
 
 <!-- ABOUT PAGE -->
 <div id="about-page" class="home-about-page fullscreen-page">
-  About Me
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">About Me</h2>
+    <p class="about-page-description">
+      My name is Benjamin Ashbaugh. I am known online as scitronboy. I'm a high-schooler from Colorado interested in web development, deep learning, engineering, and more. I'm a self-taught programmer, 3d printing and maker-movement enthusiast, and science lover. I live in Colorado with my family, including my sister, our cat Lulu and our dog Coco.
+    </p>
+    <div class="about-page-column-container">
+      <div class="column">
+        <h3>Experience</h3>
+        <p>All skills listed below (except for Inventor & SolidWorks) were self-taught, using books & online tutorials.</p>
+        <h5>Web Development</h5>
+        <p>I know HTML, CSS, and JavaScript relatively well. I also know Vue.js 2.0, which is my favorite JS framework - although I guess and I can't really say its better than React or Angular because I only ever learned a tiny bit of React. As for server-side, I've mostly used Node.js & Express recently but I used to know python Flask.</p>
+        <h5>Python</h5>
+        <p>I've used Flask for web development and PyGame for some simple games. I've experimented with a bit of deep learning with keras - for example I created a model to detect how many fingers I was holding up using pictures from my Raspberry Pi camera. I've also used python for other Raspberry pi projects. </p>
+        <h5>3d printing & electronics</h5>
+        <p>I know Autodesk Fusion 360 & Inventor; I am currently working on becoming Solidworks certified. I also know Arduino basics and I used to do some basic digital/analog electronics (for example I built a line-following robot).</p>
+        <br><br>
+        <p>Head over to my <a href="#portfolio">portfolio</a> to see some of my projects.</p>
+        <a href="https://app.pluralsight.com/profile/benjamin-a" target="_blank"><h5>Pluralsight Skill IQ results</h5></a>
+        <p>Python: 76th percentile</p>
+        <p>JavaScript: 70th percentile</p>
+        <p>HTML: 23rd percentile (not sure what happened there :p)</p>
+        <p>CSS: 78th percentile</p>
+        <div class="badges">
+          <h5>Badges</h5>
+          <a href="https://stackexchange.com/users/11955944"><img src="https://stackexchange.com/users/flair/11955944.png" width="208" height="58" alt="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+        </div>
+      </div>
+      <div class="column">
+        <h4>Links</h4>
+        <div class="about-links">
+          <a href="https://github.com/scitronboy" target="_blank">GitHub</a>
+          <a href="https://stackoverflow.com/users/8748307/scitronboy?tab=profile" target="_blank">Stack Overflow</a>
+          <a href="https://raspberrypi.stackexchange.com/users/75152/scitronboy?tab=profile" target="_blank">Rasberry Pi Stack Exchange</a>
+          <a href="https://www.thingiverse.com/scitronboy/about" target="_blank">Thingiverse</a>
+          <a href="https://www.instructables.com/member/scitronboy/" target="_blank">Instructables</a>
+        </div>
+        <h4>Projects</h4>
+        <p>Featured projects coming soon, but check out my <a href="#portfolio">portfolio</a> page.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- PORTFOLIO PAGE -->
 <div id="portfolio-page" class="home-portfolio-page fullscreen-page">
-  PORTFOLIO
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">Portfolio</h2>
+    <p>
+      Portfolio coming soon
+    </p>
+  </div>
 </div>
 
 <!-- CONTACT PAGE -->
 <div id="contact-page" class="home-contact-page fullscreen-page">
-  CONTACT
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">Contact Me</h2>
+    <p>
+      Contact form coming soon.
+    </p>
+  </div>
 </div>
 
 <a href="#" id="close-button" class="close-button-x"></a>
