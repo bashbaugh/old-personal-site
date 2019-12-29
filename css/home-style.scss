@@ -176,7 +176,9 @@ a.close-button-x {
 }
 
 .about-page-column-container {
-  display: flex;
+  @media (min-width: 380px) {
+    display: flex;
+  }
   justify-content: center;
   align-items: baseline;
   margin-bottom: 50px;
@@ -184,8 +186,10 @@ a.close-button-x {
   .column {
     display: inline-block;
     vertical-align: top;
-    width: 49%;
     margin-top: 5px;
+    @media (min-width: 380px) {
+      width: 49%;
+    }
     // text-align: center;
     padding: 5px;
   
@@ -217,6 +221,10 @@ a.close-button-x {
   font-family: 'Roboto Mono', monospace;
   display: block;
   margin-top: 10px;
+}
+
+.form {
+  
 }
 
 
