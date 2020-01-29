@@ -25,10 +25,13 @@
     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
           <!-- Scroll to section for each page in index -->
-              
+              <li>
+                <a href="/blog">Home</a>
+              </li>    
+
               <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#" tabindex="-1" id="blogddbutton">
-              Blog<span class="caret"></span></a>
+              Posts<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/blog/archive">All Posts</a></li>
                 <li class="divider"></li>
@@ -37,9 +40,7 @@
                 <li><a href="/blog/categories/{{ cat[0] | downcase }}">{{ cat[0] }} <span class="badge">{{ cat[1].size }}</span></a></li>
                 {% endfor %}
                 <li class="divider"></li>
-                <li><a href="/blog/tags">All Tags</a></li>
-                <li class="divider"></li>
-                <li><a href="/blog">Recent Posts</a></li>
+                <li><a href="/blog/tags">Tags</a></li>
               </ul>
               </li>
               

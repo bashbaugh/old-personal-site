@@ -136,6 +136,7 @@ permalink: /:categories/:slug
 
 collections:
     - update_collection
+    - home_portfolio_collection
 
     
 exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile"]

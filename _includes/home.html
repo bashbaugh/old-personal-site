@@ -26,8 +26,10 @@
         <p>I know HTML, CSS, and JavaScript relatively well. I also know Vue.js 2.0, which is my favorite JS framework - although I guess and I can't really say its better than React or Angular because I only ever learned a tiny bit of React. As for server-side, I've mostly used Node.js & Express recently but I used to know python Flask.</p>
         <h5>Python</h5>
         <p>I've used Flask for web development and PyGame for some simple games. I've experimented with a bit of deep learning with keras - for example I created a model to detect how many fingers I was holding up using pictures from my Raspberry Pi camera. I've also used python for other Raspberry pi projects. </p>
-        <h5>3d printing & electronics</h5>
+        <h5>3d printing & Electronics</h5>
         <p>I know Autodesk Fusion 360 & Inventor; I am currently working on becoming Solidworks certified. I also know Arduino basics and I used to do some basic digital/analog electronics (for example I built a line-following robot).</p>
+        <h5>Game Development</h5>
+        <p>I know Unity and Blender basics.</p>
         <br><br>
         <p>Head over to my <a href="#portfolio">portfolio</a> to see some of my projects.</p>
         <!-- <a href="https://app.pluralsight.com/profile/benjamin-a" target="_blank"><h5>Pluralsight Skill IQ results</h5></a>
@@ -35,10 +37,6 @@
         <p>JavaScript: 70th percentile</p>
         <p>HTML: 23rd percentile (not sure what happened there :p)</p>
         <p>CSS: 78th percentile</p> -->
-        <div class="badges">
-          <h5>Badges</h5>
-          <a href="https://stackexchange.com/users/11955944"><img src="https://stackexchange.com/users/flair/11955944.png" width="208" height="58" alt="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
-        </div>
       </div>
       <div class="column">
         <h4>Links</h4>
@@ -46,12 +44,16 @@
           <a href="https://github.com/scitronboy" target="_blank">GitHub</a>
           <a href="https://stackoverflow.com/users/8748307/scitronboy?tab=profile" target="_blank">Stack Overflow</a>
           <a href="https://app.pluralsight.com/profile/benjamin-a" target="_blank">Pluralsight Skill IQ results</a>
-          <a href="https://raspberrypi.stackexchange.com/users/75152/scitronboy?tab=profile" target="_blank">Rasberry Pi Stack Exchange</a>
+          <a href="https://raspberrypi.stackexchange.com/users/75152/scitronboy?tab=profile" target="_blank">Raspberry Pi Stack Exchange</a>
           <a href="https://www.thingiverse.com/scitronboy/about" target="_blank">Thingiverse</a>
           <a href="https://www.instructables.com/member/scitronboy/" target="_blank">Instructables</a>
         </div>
+        <div class="badges">
+          <!-- <h5>Badges</h5> -->
+          <a href="https://stackexchange.com/users/11955944"><img src="https://stackexchange.com/users/flair/11955944.png" width="208" height="58" alt="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+        </div>
         <h4>Projects</h4>
-        <p>Featured projects coming soon, but check out my <a href="#portfolio">portfolio</a> page.</p>
+        <p>Check out my <a href="#portfolio">portfolio</a> page to see some of my projects.</p>
       </div>
     </div>
   </div>
@@ -62,8 +64,41 @@
   <div class="fullscreen-page-container">
     <h2 class="fullscreen-page-title">Portfolio</h2>
     <p>
-      Portfolio coming soon
+      This is a list of projects I've worked on.
     </p>
+    {% assign featured_projects = (site.home_portfolio_collection | where: "section", 0 | sort: 'date') | reverse %}
+    {% assign other_projects = (site.home_portfolio_collection | where: "section", 1 | sort: 'date') | reverse %}
+
+    <div class="portfolio-section">
+      <h3>Featured Projects</h3>
+      <div class="project-hcontainer">
+        {% for project in featured_projects %}
+          {% if project.visible != false %}
+            <div class="featured-project-card">
+              <img class="featured-project-image" src="{{ project.image }}" alt="{{ project.name }}">
+              <div class="featured-project-card-content">
+                <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
+                <h6>started: {{ project.date | date_to_string }}</h6>
+                {{ project.content | markdownify }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="portfolio-section">
+      <h3>Other Projects</h3>
+      <div class="project-hcontainer">
+        {% for project in other_projects %}
+          {% if project.visible != false %}
+            <div class="project-card">
+              {{ project.content | markdownify }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 
