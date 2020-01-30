@@ -3,7 +3,7 @@ title: Arithmerace - a multiplayer competitive online math racing game
 date: 2019-7-1
 section: 0
 image: /img/home/portfolio/arithmerace.jpg
-#visible: false
+visible: false
 link: https://arithmerace.com
 ---
 

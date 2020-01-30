@@ -145,7 +145,7 @@ include: ["_redirects", "_headers"]
 
 # Pagination path
 
-paginate_path: "archive/page:num/"
+paginate_path: "blog/archive/page:num/"
 
 # Enable minification SASS
 

@@ -261,13 +261,19 @@ a.close-button-x {
     overflow-y: show;
   }
 
-  .featured-project-card {
-    box-shadow: 0px 0px 15px #292929;
+  .project-card {
+    box-shadow: 0px 0px 5px #474747;
     max-width: 300px;
+    // min-width: 100px;
     margin: 20px;
+    margin-bottom: 45px;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+  }
+
+  .featured-card {
+    box-shadow: 0px 0px 15px #292929;
   }
 
   .featured-project-image {
@@ -277,6 +283,23 @@ a.close-button-x {
   }
 }
 
+/* ----------- CONTACT FORM ------------ */
+
+.form {
+  margin: 20px;
+
+  div {
+    margin: 15px;
+  }
+
+  input, textarea {
+    border: 1px solid #9b9b9b;
+    border-radius: 3px;
+    padding: 5px;
+    width: 50%;
+    box-sizing: border-box;
+  }
+}
 
 // Home Animation Keyframes
 /* ----------------------------------------------

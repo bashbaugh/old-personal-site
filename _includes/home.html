@@ -31,7 +31,7 @@
         <h5>Game Development</h5>
         <p>I know Unity and Blender basics.</p>
         <br><br>
-        <p>Head over to my <a href="#portfolio">portfolio</a> to see some of my projects.</p>
+        <!-- <p>Head over to my <a href="#portfolio">portfolio</a> to see some of my projects.</p> -->
         <!-- <a href="https://app.pluralsight.com/profile/benjamin-a" target="_blank"><h5>Pluralsight Skill IQ results</h5></a>
         <p>Python: 76th percentile</p>
         <p>JavaScript: 70th percentile</p>
@@ -50,7 +50,7 @@
         </div>
         <div class="badges">
           <!-- <h5>Badges</h5> -->
-          <a href="https://stackexchange.com/users/11955944"><img src="https://stackexchange.com/users/flair/11955944.png" width="208" height="58" alt="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+          <a href="https://stackexchange.com/users/11955944/scitronboy?tab=accounts"><img src="https://stackexchange.com/users/flair/11955944.png" width="208" height="58" alt="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
         </div>
         <h4>Projects</h4>
         <p>Check out my <a href="#portfolio">portfolio</a> page to see some of my projects.</p>
@@ -64,7 +64,7 @@
   <div class="fullscreen-page-container">
     <h2 class="fullscreen-page-title">Portfolio</h2>
     <p>
-      This is a list of projects I've worked on.
+      This is a list of projects I've worked on. More coming soon...
     </p>
     {% assign featured_projects = (site.home_portfolio_collection | where: "section", 0 | sort: 'date') | reverse %}
     {% assign other_projects = (site.home_portfolio_collection | where: "section", 1 | sort: 'date') | reverse %}
@@ -74,7 +74,7 @@
       <div class="project-hcontainer">
         {% for project in featured_projects %}
           {% if project.visible != false %}
-            <div class="featured-project-card">
+            <div class="project-card featured-card">
               <img class="featured-project-image" src="{{ project.image }}" alt="{{ project.name }}">
               <div class="featured-project-card-content">
                 <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
@@ -93,6 +93,8 @@
         {% for project in other_projects %}
           {% if project.visible != false %}
             <div class="project-card">
+              <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
+              <h6>started: {{ project.date | date_to_string }}</h6>
               {{ project.content | markdownify }}
             </div>
           {% endif %}
@@ -109,18 +111,19 @@
     <p>
       Feel free to contact me using the form below. Feedback about my site and projects is much appreciated.
     </p>
-    <form id="contact-form" class="form" name="contact" method="POST" data-netlify="true">
+    <form id="contact-form" class="form" name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+      <div>
+        <input type="text" name="name" placeholder="Your Name" />
+      </div>
+      <div>
+        <input type="email" name="email" placeholder="Your Email" />
+      </div>
+      <div>
+        <textarea name="message" id="contact-message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <div data-netlify-recaptcha="true"></div>
       <p>
-        <label>Your Name: <input type="text" name="name" /></label>
-      </p>
-      <p>
-        <label>Your Email: <input type="email" name="email" /></label>
-      </p>
-      <p>
-        <label>Your Message: <textarea name="message" required></textarea></label>
-      </p>
-      <p>
-        <button type="button" onclick="submitContactForm()" id="contact-submit">Send</button>
+        <button type="button" class="home-nav-button" onclick="submitContactForm()" id="contact-submit">Submit</button>
       </p>
     </form>
   </div>

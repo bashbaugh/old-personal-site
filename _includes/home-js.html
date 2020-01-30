@@ -46,6 +46,11 @@ openPage()
 
 
 function submitContactForm() {
+  if (document.getElementById("contact-message").value === "") {
+    alert("Please type something in the message field :)")
+    return
+  }
+
   var form = document.getElementById("contact-form")
 
   var url = form.action
