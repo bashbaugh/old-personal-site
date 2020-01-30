@@ -53,19 +53,16 @@ function submitContactForm() {
 
   var form = document.getElementById("contact-form")
 
-  var url = form.action
+  var url = "/"
   var xhr = new XMLHttpRequest()
-
-  console.log(form.elements)
 
   // https://stackoverflow.com/a/26556347/8748307
   var params = [].filter.call(form.elements, function(el) {
-     return !!el.name //Nameless elements die.
+      return !!el.name //Nameless elements die.
     })
-    .filter(function(el) { return el.disabled; }) //Disabled elements die.
     .map(function(el) {
       return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value)
-    }).join('&');
+    }).join('&')
 
 
   xhr.open("POST", url)
