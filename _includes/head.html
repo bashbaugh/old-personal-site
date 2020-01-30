@@ -12,6 +12,10 @@ If you are interested in learning how to work with HTML, you can get started her
 <!-- HEAD Start -->
 
 <head>
+  {% if jekyll.environment == "production" %}
+    <!-- TODO ANALYTICS -->
+  {% endif %}
+
   {% include force-https.html %}
   
 <!--  Meta Stuff  -->
@@ -19,9 +23,9 @@ If you are interested in learning how to work with HTML, you can get started her
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!--  Meta SEO stuff  -->
   
-  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - scitronboy.com{% endif %}">
+  <meta name="title" content ="{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Benjamin Ashbaugh | programmer, student, maker{% endif %}">
   {% if page.description %}
   <meta name="description" content="{{ page.description }}">
   {% endif %}
@@ -31,7 +35,7 @@ If you are interested in learning how to work with HTML, you can get started her
   {% else %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'.html','' }}/">
   {% endif %}
-  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Articles and Tutorials about Tech and Making - benjaminashbaugh.me{% endif %}</title>
+  <title>{% if page.titletag %} {{ page.titletag }} {% elsif page.title %} {{page.title}} {% else %}Benjamin Ashbaugh | programmer, student, maker{% endif %}</title>
   
 <!-- Open graph and Twitter cards -->
 
@@ -48,12 +52,17 @@ If you are interested in learning how to work with HTML, you can get started her
   <meta property="og:image" content="{{ site.url }}{% if page.top-image %}{{ page.top-image }}{% else %}{{ page.image }}{% endif %}" />
   {% endif %}
   
+  {% unless page.section-type == 'index'%}
   <!-- Bootstrap Core CSS -->
-  
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <!-- Custom CSS -->
-  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet">
+  <!-- Theme CSS -->
+  <link href="{{site.baseurl}}/css/blog-style.css" rel="stylesheet">
+  {% endunless %}
+  
+  {% if page.section-type == 'index' %}
+  <!-- Special styling for home page including portfolio, etc. -->
+  <link href="{{site.baseurl}}/css/home-style.css" rel="stylesheet">
+  {% endif %}
 
   {% if page.section-type == "post" %}
   <!-- Responsive Social Buttons -->
@@ -61,9 +70,8 @@ If you are interested in learning how to work with HTML, you can get started her
   {% endif %}
   
   <!-- Custom Fonts -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  
+  {% include typography.html %}
   
     <!--   Favicons -->
 
@@ -98,7 +106,6 @@ If you are interested in learning how to work with HTML, you can get started her
   {% include color-browser.html %}
 
   {% include syntax-highlight.html %}
-  
 </head>
 
 <!-- HEAD End -->

@@ -6,14 +6,6 @@ url: "https://benjaminashbaugh.me"
 
 baseurl: ""
 
-site_redirect_from: scitronboy.github.io
-site_redirect_to: benjaminashbaugh.me
-
-# Google tracking id
-
-# google-tracking-id: "UA-132901912-1"
-# form-api-token: "4923b1bd96b8bc654e1dd3eb8f0869cd"
-
 # Forces https everywhere in your website, except when you serve it locally
 # If you are not hosted on Github Pages, and your host doesn't support https
 # then you should disable it
@@ -25,7 +17,7 @@ force-https: True
 #############
 
 lang: "en"
-author: "Benjamin A."
+author: "Benjamin Ashbaugh"
 title: "benjaminashbaugh.me"
 #description: "scitronboy's blog and website: cool projects, tutorials, and articles about tech.  I blog and write tutorials about anything from python programming and web development to arduino and raspberry pi, for beginners and advanced users."
 
@@ -33,32 +25,30 @@ title: "benjaminashbaugh.me"
 #favicon: "/img/favicon.ico"
 
 ################
-# Header layout #
+# home navbar buttons #
+################
+
+homeButtons:
+  - name: "About Me"
+    href: "#about"
+  - name: "Portfolio"
+    href: "#portfolio"
+  - name: "Blog"
+    href: "blog"
+  - name: "GitHub"
+    href: "https://github.com/scitronboy"
+    newtab: true
+  - name: "Contact Me"
+    href: "#contact"
+
+
+################
+# Blog Header layout #
 ################
 
 black-favicon: "/img/white-lab-glass.png"
 
 background-img: "../img/workbench.jpg"
-
-##############################
-# Dynamic Text on the Header #
-##############################
-
-dynamic-typing: True
-shuffle: True # Shuffle the lines.
-loop: True
-loop-count: False # Set False for infinite loop, or set any number for finite loop.
-type-speed: 30
-start-delay: 200
-delete-delay: 2000
-lines: # You can add HTML Tags in the Text
-  - text: "Programmer"
-  - text: "Robot Builder"
-  - text: "Maker"
-  - text: "Student"
-  - text: "3d Printer (the human, not machine!!!)"
-
-me-img: "/img/author.jpg"
 
 ##############################
 # Color the browser elements #
@@ -85,8 +75,6 @@ web-app-mode: False
 # Blog #
 ########
 
-enable-gesture-navigation: True
-
 post-preview-words: 100
 
 paginate: 10
@@ -106,21 +94,6 @@ vkontakte-share: False
 
 syntax-highlight: True
 
-############
-# Timeline #
-############
-
-#events:
-  #- image: "/img/timeline/spidertocat.png"
-    #date: "September 2013 - Today"
-    #description: "Saving the neighborhood!"
-  #- image: "/img/timeline/baracktocat.jpg"
-    #date: "September 2007 - August 2013"
-    #description: "Started coding"
-
-## First image of the Timeline
-
-#timeline-img: "/img/timeline/default.png"
 
 ###########
 # Contact #
@@ -163,6 +136,7 @@ permalink: /:categories/:slug
 
 collections:
     - update_collection
+    - home_portfolio_collection
 
     
 exclude: ["README.md", "scripts", "tips.txt", "no-serve", "optimize", ".github", "Gemfile"]
@@ -171,7 +145,7 @@ include: ["_redirects", "_headers"]
 
 # Pagination path
 
-paginate_path: "archive/page:num/"
+paginate_path: "blog/archive/page:num/"
 
 # Enable minification SASS
 

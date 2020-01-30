@@ -1,0 +1,132 @@
+ <!--WELCOME PAGE-->
+<div class="home-parent">
+  <div class="home-container">
+    <div class="home-welcome">
+      <h1 class="hello">Hello. I'm Benjamin Ashbaugh.</h1>
+      <p class="home-welcome-text">I'm a student, aspiring developer, programmer, and maker.</p>
+    </div>
+    
+    {% include home-navigation.html %}
+  </div>
+</div>
+
+
+<!-- ABOUT PAGE -->
+<div id="about-page" class="home-about-page fullscreen-page">
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">About Me</h2>
+    <p class="about-page-description">
+      My name is Benjamin Ashbaugh. I am known online as scitronboy. I'm a high-schooler from Colorado interested in web development, deep learning, engineering, and more. I'm a self-taught programmer, 3d printing and maker-movement enthusiast, and science lover. I live in Colorado with my family, including my sister, our cat Lulu and our dog Coco.
+    </p>
+    <div class="about-page-column-container">
+      <div class="column">
+        <h3>Experience</h3>
+        <p>All skills listed below (except for Inventor & SolidWorks) were self-taught, using books & online tutorials.</p>
+        <h5>Web Development</h5>
+        <p>I know HTML, CSS, and JavaScript relatively well. I also know Vue.js 2.0, which is my favorite JS framework - although I guess and I can't really say its better than React or Angular because I only ever learned a tiny bit of React. As for server-side, I've mostly used Node.js & Express recently but I used to know python Flask.</p>
+        <h5>Python</h5>
+        <p>I've used Flask for web development and PyGame for some simple games. I've experimented with a bit of deep learning with keras - for example I created a model to detect how many fingers I was holding up using pictures from my Raspberry Pi camera. I've also used python for other Raspberry pi projects. </p>
+        <h5>3d printing & Electronics</h5>
+        <p>I know Autodesk Fusion 360 & Inventor; I am currently working on becoming Solidworks certified. I also know Arduino basics and I used to do some basic digital/analog electronics (for example I built a line-following robot).</p>
+        <h5>Game Development</h5>
+        <p>I know Unity and Blender basics.</p>
+        <br><br>
+        <!-- <p>Head over to my <a href="#portfolio">portfolio</a> to see some of my projects.</p> -->
+        <!-- <a href="https://app.pluralsight.com/profile/benjamin-a" target="_blank"><h5>Pluralsight Skill IQ results</h5></a>
+        <p>Python: 76th percentile</p>
+        <p>JavaScript: 70th percentile</p>
+        <p>HTML: 23rd percentile (not sure what happened there :p)</p>
+        <p>CSS: 78th percentile</p> -->
+      </div>
+      <div class="column">
+        <h4>Links</h4>
+        <div class="about-links">
+          <a href="https://github.com/scitronboy" target="_blank">GitHub</a>
+          <a href="https://stackoverflow.com/users/8748307/scitronboy?tab=profile" target="_blank">Stack Overflow</a>
+          <a href="https://app.pluralsight.com/profile/benjamin-a" target="_blank">Pluralsight Skill IQ results</a>
+          <a href="https://raspberrypi.stackexchange.com/users/75152/scitronboy?tab=profile" target="_blank">Raspberry Pi Stack Exchange</a>
+          <a href="https://www.thingiverse.com/scitronboy/about" target="_blank">Thingiverse</a>
+          <a href="https://www.instructables.com/member/scitronboy/" target="_blank">Instructables</a>
+        </div>
+        <div class="badges">
+          <!-- <h5>Badges</h5> -->
+          <a href="https://stackexchange.com/users/11955944/scitronboy?tab=accounts"><img src="https://stackexchange.com/users/flair/11955944.png" width="208" height="58" alt="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for scitronboy on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+        </div>
+        <h4>Projects</h4>
+        <p>Check out my <a href="#portfolio">portfolio</a> page to see some of my projects.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO PAGE -->
+<div id="portfolio-page" class="home-portfolio-page fullscreen-page">
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">Portfolio</h2>
+    <p>
+      This is a list of projects I've worked on. More coming soon...
+    </p>
+    {% assign featured_projects = (site.home_portfolio_collection | where: "section", 0 | sort: 'date') | reverse %}
+    {% assign other_projects = (site.home_portfolio_collection | where: "section", 1 | sort: 'date') | reverse %}
+
+    <div class="portfolio-section">
+      <h3>Featured Projects</h3>
+      <div class="project-hcontainer">
+        {% for project in featured_projects %}
+          {% if project.visible != false %}
+            <div class="project-card featured-card">
+              <img class="featured-project-image" src="{{ project.image }}" alt="{{ project.name }}">
+              <div class="featured-project-card-content">
+                <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
+                <h6>started: {{ project.date | date_to_string }}</h6>
+                {{ project.content | markdownify }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="portfolio-section">
+      <h3>Other Projects</h3>
+      <div class="project-hcontainer">
+        {% for project in other_projects %}
+          {% if project.visible != false %}
+            <div class="project-card">
+              <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
+              <h6>started: {{ project.date | date_to_string }}</h6>
+              {{ project.content | markdownify }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact-page" class="home-contact-page fullscreen-page">
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">Contact Me</h2>
+    <p>
+      Feel free to contact me using the form below. Feedback about my site and projects is much appreciated.
+    </p>
+    <form id="contact-form" class="form" name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+      <div>
+        <input type="text" name="name" placeholder="Your Name" />
+      </div>
+      <div>
+        <input type="email" name="email" placeholder="Your Email" />
+      </div>
+      <div>
+        <textarea name="message" id="contact-message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <div data-netlify-recaptcha="true"></div>
+      <p>
+        <button type="button" class="home-nav-button" onclick="submitContactForm()" id="contact-submit">Submit</button>
+      </p>
+    </form>
+  </div>
+</div>
+
+<a href="#" id="close-button" class="close-button-x"></a>

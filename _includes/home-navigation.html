@@ -1,0 +1,6 @@
+<div id="home-nav" class="home-nav">
+  <!-- Home navigation bar. starts invisible but then animated in. -->
+  {% for btn in site.homeButtons %}
+  <div class="home-nav-button-div" ><a class="home-nav-button" href="{{ btn.href }}"{% if btn.newtab %} target="_blank"{% endif %}>{{ btn.name }}</a></div>
+  {% endfor %}
+</div>

@@ -1,0 +1,93 @@
+<script>
+let navbar = document.getElementById("home-nav")
+let currentPage = null;
+
+(function() {
+  setTimeout(function() {
+    // Animate navbar
+    let navbarButtons = navbar.children
+    
+    let currentButton = 0
+    let buttonAnimationInterval = setInterval(function() {
+      navbarButtons[currentButton].classList.add("home-nav-button-animation")
+      
+      if (currentButton === navbarButtons.length - 1) {
+        clearInterval(buttonAnimationInterval)
+      }
+      currentButton ++
+    }, 200)
+    
+  }, 2000)
+})()
+
+function closePage() {
+  if (currentPage) {
+    document.getElementById(currentPage + '-page').classList.remove("page-active")
+    document.getElementById(currentPage + '-page').classList.add("page-inactive")
+
+    document.getElementById("close-button").classList.remove("visible")
+    document.getElementById("close-button").classList.add("hidden")
+  }
+}
+
+function openPage() {
+  closePage()
+  currentPage = location.hash.substr(1)
+  if (currentPage) {
+    document.getElementById(currentPage + '-page').classList.remove("page-inactive")
+    document.getElementById(currentPage + '-page').classList.add("page-active")
+
+    document.getElementById("close-button").classList.remove("hidden")
+    document.getElementById("close-button").classList.add("visible")
+  }
+}
+
+openPage()
+
+
+function submitContactForm() {
+  if (document.getElementById("contact-message").value === "") {
+    alert("Please type something in the message field :)")
+    return
+  }
+
+  var form = document.getElementById("contact-form")
+
+  var url = form.action
+  var xhr = new XMLHttpRequest()
+
+  console.log(form.elements)
+
+  // https://stackoverflow.com/a/26556347/8748307
+  var params = [].filter.call(form.elements, function(el) {
+     return !!el.name //Nameless elements die.
+    })
+    .filter(function(el) { return el.disabled; }) //Disabled elements die.
+    .map(function(el) {
+      return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value)
+    }).join('&');
+
+
+  xhr.open("POST", url)
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          alert("Message sent :)")
+          closePage()
+        } else {
+          alert("Your message might not have sent correctly. \nIf the contact form seems broken, you can contact me at scitronboy [at@] gmail [dot] com.\nError code " + xhr.status.toString());
+        }
+    }
+  }
+
+  xhr.onerror = function() {
+    alert("There was an error sending your message :(\nIf the contact form seems broken, you can contact me at scitronboy [at@] gmail [dot] com\nXHR error")
+  }
+
+  xhr.send(params)
+}
+  
+window.onhashchange = openPage
+</script>
