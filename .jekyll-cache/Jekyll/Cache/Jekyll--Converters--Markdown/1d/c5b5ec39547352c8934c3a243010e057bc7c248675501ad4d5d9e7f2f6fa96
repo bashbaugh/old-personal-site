@@ -1,0 +1,3 @@
+I".<p>I call this the “update column”. It uses <a href="https://jekyllrb.com/docs/collections/">jekyll collections</a>. It works by arranging every file (update) in my <code class="language-plaintext highlighter-rouge">_update_collections</code> collection by date and then displaying them here.</p>
+
+:ET

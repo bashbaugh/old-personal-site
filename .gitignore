@@ -11,4 +11,4 @@ Rakefile
 /.idea/
 img/gitignore
 .goutputstream*
-
+vendor

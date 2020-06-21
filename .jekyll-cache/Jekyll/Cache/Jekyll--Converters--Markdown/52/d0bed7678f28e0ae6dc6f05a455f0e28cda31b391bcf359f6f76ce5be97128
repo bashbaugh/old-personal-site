@@ -1,0 +1,629 @@
+I"n�<script src="/js/jscolor.js"></script>
+
+<p><img src="/img/post/js-game/js-html-game.jpeg" alt="banner image" title="js + html" /></p>
+
+<p>In this tutorial series, I will guide you through the steps to create your own simple but fun online browser-based game, using HTML and JavaScript.</p>
+
+<p><a href="/html-js-demo-game">Click here if you want to see the game we will create.</a> Remember that you will be able to customize your own however you want.</p>
+
+<p>This is part two of the tutorial. <strong>If you have not read part one, you should read it now.</strong> <a href="/code/2019/html-js-game-part1">Click here for part 1: HTML tutorial</a>. Once you have read it, you can continue with this part.</p>
+
+<p>In this part of the tutorial, I will show you how to add JavaScript to program the game itself. Keep in mind that this tutorial is meant for beginners (or almost-beginners), but I will only cover what is needed to teach you how to make this game. It may seem too complicated or hard at first, so if it does check out some of the links at the bottom and come back when you feel a little more comfortable with JavaScript basics.</p>
+
+<p><strong>I will include links at the bottom of this article to reference for every concept we use.</strong></p>
+
+<p>Here’s a reminder of what we did in <a href="/code/2019/html-js-game-part1">part 1</a>:</p>
+
+<ul>
+  <li>We learned the basics of HTML, which uses <code class="language-plaintext highlighter-rouge">&lt;tags&gt;</code> to tell the browser more about different elements on the page, for example the <code class="language-plaintext highlighter-rouge">&lt;i&gt;&lt;/i&gt;</code> tags that <em>italicize</em> stuff.</li>
+  <li>We learned how JavaScript can be added to websites to make them interactive or add other programmed functionality.</li>
+  <li>We learned how to get and use a <em>text editor</em>, or code editor, which makes code look better. If you haven’t got one yet, now might be a good time to get one. (Or else you could <a href="https://www.w3schools.com/code/tryit.asp?filename=FZYQJ01WUF5V">use the online TryIt editor</a>)</li>
+  <li>And finally we created a simple web page for the game to live in. We used a <code class="language-plaintext highlighter-rouge">&lt;canvas&gt;</code> element to create a “canvas” for the game.</li>
+</ul>
+
+<p>Here’s the code for the web page so far:</p>
+
+<script src="https://gist.github.com/scitronboy/d5f5017fadffcdb0dc3906cef590a45d.js"></script>
+
+<p>Let’s start!</p>
+
+<h3 id="javascript-basics">JavaScript Basics</h3>
+
+<p>JavaScript is put between <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tags in a web page. Then, when a browser is loading a page, it reads the HTML line by line, and when it comes to a <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tag, it knows everything from there until the closing <code class="language-plaintext highlighter-rouge">&lt;/script&gt;</code> tag is JavaScript. So, it reads the JavaScript line by line and follows the instructions on each one. Here I will cover a few of the different things you can do on each line in JavaScript.</p>
+
+<h4 id="the-semicolon">The semicolon</h4>
+
+<p>In JavaScript you should put a semicolon after every command. This tells the browser that the command is finished. This is not strictly required, but it is recommended. Here’s an example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">command;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">do something else;</code></p>
+
+<p>Keep in mind that there is usually one command per line.</p>
+
+<p>Also remember that JavaScript ignores whitespace (spaces, indentation, new lines) so don’t be confused if my use of whitespace in the code throughout this article is inconsistent in places - because JavaScript doesn’t care so it doesn’t actually change the way the code runs.</p>
+
+<h4 id="variables">Variables</h4>
+
+<p>Variables are a crucial part of most programming languages. They are simply a place where a program (the code) can store information, such as words, or numbers (think score, current location, whether or not a user has clicked a certain button, etc.)</p>
+
+<p>Each variable in JavaScript has a name and a value. Think of them like boxes - each variable is a box that has a label written on the outside, and the computer can store numbers or other information inside the box. Then whenever it needs the information again it can look in the box. It can also change what’s in the box, if it needs to.</p>
+
+<p>In JavaScript you declare (create) a variable by using an equals sign with the <code class="language-plaintext highlighter-rouge">let</code> keyword. (Please note: you may see other people use the  <code class="language-plaintext highlighter-rouge">var</code> keyword in JavaScript. Know that <code class="language-plaintext highlighter-rouge">var</code> can also be used to create a variable, however it is generally better to use the <code class="language-plaintext highlighter-rouge">let</code> keyword for reasons I will not explain here. If you would like to know why, please leave a comment at the end of this article.) Here’s an example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let score = 50;</code></p>
+
+<p>In that example, we are creating a variable (like a box) named <code class="language-plaintext highlighter-rouge">score</code>, and setting it equal to <code class="language-plaintext highlighter-rouge">50</code>. The semicolon signifies the end of the command. Then if the player got 20 more points, we could change the variable to 70. Note that, after the variable is created, we do not need to use <code class="language-plaintext highlighter-rouge">let</code> anymore:</p>
+
+<p><code class="language-plaintext highlighter-rouge">score = 70;</code></p>
+
+<p>Or else we could use a math operator (<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>) and set <code class="language-plaintext highlighter-rouge">score</code> to itself + 20:</p>
+
+<p><code class="language-plaintext highlighter-rouge">score = score + 20;</code></p>
+
+<p>Since <code class="language-plaintext highlighter-rouge">score</code> <em>was</em> 50, and 50 + 20 = 70, <code class="language-plaintext highlighter-rouge">score</code> now equals 70.</p>
+
+<p>In JavaScript you can also have word variables, but you <strong><em>MUST</em></strong> put the word between two double quotes (“”). Words, sentences, and letters are called “strings” in programming (think of a “string” of letters):</p>
+
+<p><code class="language-plaintext highlighter-rouge">let my_first_name = "John";</code></p>
+
+<p>You can see in the last example that I didn’t name the variable <code class="language-plaintext highlighter-rouge">my first name</code>, I named it <code class="language-plaintext highlighter-rouge">my_first_name</code> with an underscore instead of a space. This is very important because <strong>variable names cannot have spaces</strong>.</p>
+
+<p>You can also do “addition” with strings. Here’s an example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let my_last_name = "Smith";</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let my_full_name = my_first_name + " " + my_last_name</code></p>
+
+<p>Now <code class="language-plaintext highlighter-rouge">my_full_name</code> is equal to <code class="language-plaintext highlighter-rouge">John Smith</code> because we created it from my_first_name (which was “John”) plus a space (“ “) plus my_last_name (which was “Smith”).</p>
+
+<h4 id="functions">Functions</h4>
+
+<p>Functions are like commands that tell the browser to do something. There are many built in functions, and you can also create your own. In JavaScript, you can call (execute) a function by simply typing the command followed by two parentheses. The parentheses are used to pass (give) parameters, or arguments, for the function to use. Arguments are put between the parentheses, with a comma separating each one, like this:</p>
+
+<p><code class="language-plaintext highlighter-rouge">function(argument_1, argument_2, argument_3);</code></p>
+
+<p>For example, imagine a scenario where you have a function named <code class="language-plaintext highlighter-rouge">eat</code> that tells the computer to eat (yes, yes, I know computers can’t eat). But how does it know what to eat when you call the <code class="language-plaintext highlighter-rouge">eat()</code> function? You could create different functions for different foods, like <code class="language-plaintext highlighter-rouge">eat_orange</code> and <code class="language-plaintext highlighter-rouge">eat_apple</code>, but that gets clunky and is <em>not</em> a good solution, because you’d have to write a new function every time you added a food item. The solution is to pass the <code class="language-plaintext highlighter-rouge">eat</code> function an argument every time that tells it <em>what</em> to eat. An example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">eat("apple");</code> or <code class="language-plaintext highlighter-rouge">eat("orange");</code></p>
+
+<p>Then when the function receives the argument it processes it and figures out what to eat.</p>
+
+<p>Just so you know, functions can also “return” numbers, so that when you call it, it acts like a number, or string, or other object. Here’s an example of using a function to set a variable:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let the_weather = get_the_weather();</code></p>
+
+<h5 id="the-consolelog-command">The <code class="language-plaintext highlighter-rouge">console.log</code> command</h5>
+
+<p>The console.log command is very useful for programming JavaScript. It can be used to send a message to the console, which is something that is integrated into most browsers that allows developers to interact with the JavaScript on a page. Try it out! Open up your <code class="language-plaintext highlighter-rouge">game.html</code> file and add this command in between the <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tags:</p>
+
+<p><code class="language-plaintext highlighter-rouge">console.log("Hello, Console! This is JavaScript!")</code></p>
+
+<p>Load the page in your browser. Then open up your console. Usually, you can do this by pressing <code class="language-plaintext highlighter-rouge">Ctrl+Shift+I</code> or else right clicking the page and pressing “Inspect”. Then, click on “console” when the window opens. Here is an example on Chrome:</p>
+
+<p><img src="/img/post/js-game/console-hello.png" alt="image of console" title="image of console" /></p>
+
+<p>You can see the message at the top! That was generated by the little line of JavaScript we wrote!</p>
+
+<p><strong>Note</strong>: the <code class="language-plaintext highlighter-rouge">log</code> command is a function, however the <code class="language-plaintext highlighter-rouge">console</code> part is not actually part of the function name. It is instead a “class” that houses the <code class="language-plaintext highlighter-rouge">log</code> function. I will not cover classes in this tutorial, but just know that function names cannot actually have periods in them. Remember this when you start to create your own functions.</p>
+
+<h5 id="creating-your-own-function">Creating your own function</h5>
+
+<p>In JavaScript, custom functions are blocks of code that are run when you call the function. They are often used when the same code needs to be run in two different places, because you can just call the function in each place instead of duplicating code. Here’s how you create your own function:</p>
+
+<p><code class="language-plaintext highlighter-rouge">function my_own_function(my_own_argument) {do stuff using my_own_argument;}</code></p>
+
+<p>You declare the function using the <code class="language-plaintext highlighter-rouge">function</code> keyword. Then, you name the function and add any arguments it will require to the parentheses. Then, you put all the code that will run when you call the function inside curly braces (<code class="language-plaintext highlighter-rouge">{}</code>).</p>
+
+<p>Here’s an example of a function to print a full name to the console:</p>
+
+<script src="https://gist.github.com/scitronboy/b991a6504fad0fa7428dfef266067607.js"></script>
+
+<p>Then let’s say we have three names to print. Luckily we can use the name-printer function we just made to help us do that:</p>
+
+<script src="https://gist.github.com/scitronboy/55253735ed5071c86910415435449681.js"></script>
+
+<p>Here is the output (on the console):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Here is a full name:
+Bob Joe
+Here is a full name:
+Margaret Joe
+Here is a full name:
+Jane Smith
+</code></pre></div></div>
+
+<p>Do you get it? We called <code class="language-plaintext highlighter-rouge">print_full_name</code> three times in that last script, and each time it printed the “Here is a full name” message <em>and</em> the full name which it pieced together using the arguments we passed it.</p>
+
+<p>Don’t worry if this is a bit intimidating or confusing. It will probably become clearer later on. I also include links at the bottom to tutorials that you can use to learn more about JavaScript.</p>
+
+<h3 id="game-overview">Game Overview</h3>
+
+<p>Before you start a project, it’s always a good idea to lay out a plan and figure out how you’ll do things before you start. So here’s how we want the finished game to behave:</p>
+
+<ul>
+  <li>When you press the up arrow key, the game will start.</li>
+  <li>The player will be a yellow (or any other color) circle</li>
+  <li>There will be colored dots spread throughout the game</li>
+  <li>The colored dots will move down the screen at a fixed rate so that it looks as if the player is moving forward</li>
+  <li>The left and right arrow keys will move the player left and right</li>
+  <li>The goal will be for the player to “fly” over as many colored dots as possible within the time limit. Each time the player flies over a dot, his score will increment by 2.</li>
+</ul>
+
+<p>And here’s how we will build it:</p>
+
+<ol>
+  <li>We will use the canvas to create the game graphics.</li>
+  <li>We will create an <code class="language-plaintext highlighter-rouge">init</code> function that will run when the page loads, that will add a message to the canvas that says “Press Up To Start”</li>
+  <li>We will detect key presses. The up arrow will trigger the start of the game, and the left and right arrow keys will trigger a function that moves the player left or right.</li>
+  <li>We will create a game loop function that updates the game.</li>
+  <li>The game loop function will move the colored dots down slightly each time it is run.</li>
+  <li>It will also have a system to detect whether the player is over a colored dot, so that it can increment the score.</li>
+  <li>Finally, it will erase the canvas, then draw the background, player, and score onto their new positions.</li>
+  <li>We will make the game loop function run many times per second so that the game runs smoothly.</li>
+  <li>Once the time limit is reached we will stop the game and display the final score.</li>
+</ol>
+
+<h3 id="programming-the-game">Programming The Game</h3>
+
+<p>Now we will start programming the game.</p>
+
+<p>Leave the console in you browser open the whole time, because it will alert you of any errors or problems in your code.</p>
+
+<p><em>You will get an error near the beginning that says “init is not defined”. Just ignore it - we will fix it later.</em></p>
+
+<h4 id="getting-the-canvas-context">Getting the canvas context</h4>
+
+<p>Let’s add a little message at the top of the <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> section in <code class="language-plaintext highlighter-rouge">game.html</code> so that we see in the console when the script starts:</p>
+
+<p><code class="language-plaintext highlighter-rouge">console.log("Starting the script!");</code></p>
+
+<p>Now the first thing that we need to do is to get a reference to the canvas on the web page, so that we can “draw” on it with JavaScript. Remember when we created the web page and we added a HTML attribute to the canvas that gave it an id? Specifically, <code class="language-plaintext highlighter-rouge">id="c"</code>. Now we are going to use that id we added to tell JavaScript what we want. Add this to the top of your <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> section:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let canvas_element = document.getElementById("c");</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">document</code> is a class that contains a ton of functions for accessing or manipulating the “document”, or the web page itself. <code class="language-plaintext highlighter-rouge">getElementById</code> is a function that gets a reference to an element on the page using its id. So when we call <code class="language-plaintext highlighter-rouge">document.getElementById("c")</code> JavaScript stores a reference to the element that has an id of <code class="language-plaintext highlighter-rouge">c</code>, which is our canvas.</p>
+
+<p>Now we need to actually get the “context”, or the part of the canvas that will allow us to draw on it. To do this, we can use the <code class="language-plaintext highlighter-rouge">getContext</code> function of the canvas element:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let canvas = canvas_element.getContext("2d");</code></p>
+
+<p>The argument <code class="language-plaintext highlighter-rouge">2d</code> just tells <code class="language-plaintext highlighter-rouge">getContext</code> that we want the 2-dimensional part of the canvas.</p>
+
+<!--Here is what your `game.html` should look like now:
+
+<script src="https://gist.github.com/scitronboy/035e5fb8c4e80299f6de16a96c955569.js"></script>-->
+
+<h5 id="a-note-about-the-coordinate-system">A note about the coordinate system</h5>
+
+<p>When working with canvases, simple x and y coordinates are used. x is the horizontal axis and is the first argument in functions, and y is the vertical axis and is the second argument in functions. Each unit is 1 pixel. Remember that the <em>upper left corner</em> is origin, so its coordinates are <code class="language-plaintext highlighter-rouge">0,0</code>. 100 pixels to the right of the upper left would be <code class="language-plaintext highlighter-rouge">100,0</code>. 100 pixels below the upper left corner is <code class="language-plaintext highlighter-rouge">0,100</code>. Because our canvas has a width of 400 pixels and a height of 400 pixels, the bottom right corner would be <code class="language-plaintext highlighter-rouge">400,400</code>.</p>
+
+<h4 id="creating-the-draw_background-function">Creating the <code class="language-plaintext highlighter-rouge">draw_background</code> function</h4>
+
+<p>We are going to need this function soon. It will draw a solid color onto the canvas.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">draw_background</code> function will have three lines:</p>
+
+<ol>
+  <li>Clear the canvas. Erase everything in a rectangle from 0,0 to 400,400 (or canvas width, canvas height).</li>
+  <li>Set the color of the “paintbrush”. Colors in JavaScript are set using hexadecimal color codes, which store a color’s RGB (Red, Green, Blue) values in a shortened format. All color codes must have a <code class="language-plaintext highlighter-rouge">#</code> in front of them. I chose a greenish color (which has a hex code of  <code class="language-plaintext highlighter-rouge">#1EBA00</code>) for the background. Here is a color picker that you can use if you want to change the color (click on the box to select a color, and then it will generate a hex code for that color) : <input class="jscolor" value="1EBA00" />.</li>
+  <li>Draw a rectangle that covers the entire canvas.</li>
+</ol>
+
+<p>Here it is. Add this function to the script:</p>
+
+<script src="https://gist.github.com/scitronboy/efeb8dca816d47c0bbe8ebb3fa531455.js"></script>
+
+<p>You can see that <code class="language-plaintext highlighter-rouge">canvas.clearRect</code> and <code class="language-plaintext highlighter-rouge">canvas.fillRect</code> have four arguments. They are (upper left corner of rectangle x position, upper left corner of rectangle y position, width of rectangle, height of rectangle).</p>
+
+<h4 id="creating-the-init-function">Creating the <code class="language-plaintext highlighter-rouge">init</code> function</h4>
+
+<p>When we created the web page for the game, we added <code class="language-plaintext highlighter-rouge">onload="init()"</code> as an attributes to the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>. If you have a JavaScript function that needs to be run as soon as an element on the page loads, you can use the <code class="language-plaintext highlighter-rouge">onload</code> attribute. So <code class="language-plaintext highlighter-rouge">onload="init()"</code> tells the browser to run (call) the JavaScript function <code class="language-plaintext highlighter-rouge">init()</code> as soon as the body is loaded. Here it is. All it does is draw a background and message onto the canvas:</p>
+
+<script src="https://gist.github.com/scitronboy/df88ad9a4cba1193da8d0957abdf39f8.js"></script>
+
+<p>Again, feel free to change the color code <code class="language-plaintext highlighter-rouge">#FFFFFF</code> to something else if you want to: <input class="jscolor" value="FFFFFF" />.</p>
+
+<p>Also, you can probably figure them out but the basic arguments for fillText are (text, left side of text x position, left side of text y position).</p>
+
+<p>Make sure you’ve added all these functions and variables to your project file (<code class="language-plaintext highlighter-rouge">game.html</code>). It should look like this now (with or without the comments):</p>
+
+<script src="https://gist.github.com/scitronboy/6a84f4306b83f36d751dbe6e6d6e3066.js"></script>
+
+<p>And after you load the file into your web browser and open your console, you should see this:</p>
+
+<p><img src="/img/post/js-game/game-after-init-func.jpeg" alt="The game" title="the game" /></p>
+
+<p>Congratulations! You may have just written your first piece of JavaScript that does something visible on a web page!</p>
+
+<h4 id="detect-key-presses">Detect key presses</h4>
+
+<p>We need to detect key presses and take action when someone presses the up arrow, left arrow, or right arrow.</p>
+
+<p>To do this, we simply “attach” a <code class="language-plaintext highlighter-rouge">key_pressed</code> function to the documents <code class="language-plaintext highlighter-rouge">onkeydown</code> attribute, so that when a key is pressed down, <code class="language-plaintext highlighter-rouge">key_pressed</code> is called. Add this to the script, near the top:</p>
+
+<p><code class="language-plaintext highlighter-rouge">document.onkeydown = key_pressed;</code></p>
+
+<h5 id="javascript-lesson-if-statements">JavaScript lesson: <code class="language-plaintext highlighter-rouge">IF</code> statements</h5>
+
+<p><code class="language-plaintext highlighter-rouge">If</code> statements are used when a program needs to do something ONLY if a condition is true. If the condition is false, then the action is not carried out. The basic syntax (layout) for an <code class="language-plaintext highlighter-rouge">if</code> statement in JavaScript is:</p>
+
+<p><code class="language-plaintext highlighter-rouge">if (this is true) {do everything in here}</code></p>
+
+<p>You can optionally extend it and also give it something to do IF (and only if) the condition is false:</p>
+
+<p><code class="language-plaintext highlighter-rouge">if (this is true) {do this} else {if its not, do this}</code></p>
+
+<p>You can put anything inside the parentheses as long as it can be true or false. Everything with a value is considered true in JavaScript, so <code class="language-plaintext highlighter-rouge">43</code> and <code class="language-plaintext highlighter-rouge">1</code> are considered “true” by JavaScript. <code class="language-plaintext highlighter-rouge">0</code> is considered false.</p>
+
+<p>Often you’ll need to compare to values in JavaScript, to see if, for example, one value is greater than, less than, or equal to another. In that case you’ll need to use <a href="https://www.w3schools.com/js/js_comparisons.asp">comparison operators</a>; some examples are <code class="language-plaintext highlighter-rouge">==</code> (equal to), <code class="language-plaintext highlighter-rouge">&lt;</code> (less than), <code class="language-plaintext highlighter-rouge">&gt;</code> (greater than), and <code class="language-plaintext highlighter-rouge">!=</code> (not equal to). There are also <a href="https://www.w3schools.com/js/js_comparisons.asp">logical operators</a> which are <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> (and), <code class="language-plaintext highlighter-rouge">||</code> (or), and <code class="language-plaintext highlighter-rouge">!</code> (not).</p>
+
+<p>Here is an example in JavaScript, given three variables named <code class="language-plaintext highlighter-rouge">happy</code>,  <code class="language-plaintext highlighter-rouge">sad</code>, and <code class="language-plaintext highlighter-rouge">name</code>:</p>
+
+<script src="https://gist.github.com/scitronboy/93b3d8a95ff86d1235fe7a4a1e01391b.js"></script>
+
+<p>Be very careful not to confuse <code class="language-plaintext highlighter-rouge">=</code> with <code class="language-plaintext highlighter-rouge">==</code>. If you use an assignment operator (<code class="language-plaintext highlighter-rouge">=</code>) where you meant to use a comparison operator (<code class="language-plaintext highlighter-rouge">==</code>) it will result in strange unexpected results.</p>
+
+<h4 id="create-the-key_pressed-function">Create the <code class="language-plaintext highlighter-rouge">key_pressed</code> function</h4>
+
+<p>When a key is pressed, <code class="language-plaintext highlighter-rouge">key_pressed</code> will be called with an argument that contains more information about the key press. That argument will have a property (variable) named <code class="language-plaintext highlighter-rouge">key</code> that will contain the name of the key.</p>
+
+<p>So we need to check what key it is and then take action based on that. But how can we check which key it is? We need an <code class="language-plaintext highlighter-rouge">if</code> statement!</p>
+
+<p>Here’s the function:</p>
+
+<script src="https://gist.github.com/scitronboy/e9e8bf2a92a998f3b25eaf212bbf12d8.js"></script>
+
+<p>For now, every time you press one of the arrows it will just log it on the console. Later, we will make the key presses actually do stuff.</p>
+
+<p>Try it out! Reload the page in your browser, open the console, click on the green canvas, and then try pressing the arrow keys. You should see the console logging them.</p>
+
+<p>Just in case you got lost, <a href="https://gist.github.com/scitronboy/ccfddf2989b06cf2ae3abd6d2ad23256#file-game-after-detect-keypress-func-html">here’s what your project file should look like now</a>.</p>
+
+<h3 id="creating-the-game-loop-function">Creating the Game Loop Function</h3>
+
+<p>The game loop function, or <code class="language-plaintext highlighter-rouge">update</code> function, will run many times per second and each time it runs it will calculate the new position for all the colored dots, and also check to see whether the player’s position is over a dot or not. Then it will clear the canvas and redraw the scene.</p>
+
+<p>It is important to clear the canvas each time or else every pixel that is drawn will just layer on top of the previous ones, creating an ugly mess where there are a ton of dots overlapping one another.</p>
+
+<p>Before you start, though, you’ll need to create some more variables, including one type that you haven’t learned yet.</p>
+
+<h5 id="javascript-lesson-arrays">JavaScript lesson: Arrays</h5>
+
+<p>Arrays are simply lists of variables, all stored within another variable.</p>
+
+<p>For example, say you have a list of ages that you need to store in variables. You’re not exactly sure how long the list will be, but even if you did, it would be very long. So obviously manually creating lots of variables like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let age1 = 16;
+let age2 = 87;
+let age3 = 33;
+let age4 = 12;
+...
+</code></pre></div></div>
+
+<p>is not an option. The solution is to use an array, which can store any amount of numbers, strings, or other objects in a way that you can easily access them but they <em>don’t all have to have variable names</em>. Array syntax is simple: <code class="language-plaintext highlighter-rouge">let my_array = [values, separated, by, commas]</code></p>
+
+<p>Here’s how you would store the above ages in an array:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let ages = [16, 87, 33, 12, ...];</code></p>
+
+<p>And then you can access the ages with the syntax <code class="language-plaintext highlighter-rouge">ages[i]</code>, where <code class="language-plaintext highlighter-rouge">i</code> is an index that identifies what value you want. Because <strong>in programming, counting always starts with <code class="language-plaintext highlighter-rouge">0</code></strong>, to get the third value in the array you’d use an index of <code class="language-plaintext highlighter-rouge">2</code>:</p>
+
+<p><code class="language-plaintext highlighter-rouge">ages[2]</code> is equal to <code class="language-plaintext highlighter-rouge">33</code>.</p>
+
+<p>I’ll say more about arrays later.</p>
+
+<h4 id="creating-some-variables">Creating some variables</h4>
+
+<p>For our game to work, we need to create some variables (and arrays) that we will use later. <strong>Add these to the top of the script</strong>.</p>
+
+<p>First we will create variables to store the player’s x and y coordinates:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let player_x = 200;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let player_y = 220;</code></p>
+
+<p>Then arrays to store the coordinates and colors for all the colored dots created. The arrays will have one dot at the start of the game:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let dots_x = [200];</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let dots_y = [0];</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let dots_color = ["#800080"];</code></p>
+
+<p>And a variable to store the score:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let score = 0;</code></p>
+
+<p>And a variable to store the time that the game started at:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let start_time = 0;</code></p>
+
+<p>And a variable to store whether or not the game is finished (0 or 1):</p>
+
+<p><code class="language-plaintext highlighter-rouge">let game_over = 0;</code></p>
+
+<p>It’s always good to make your program as easy to customize as possible, so lets create a few “settings” variables so that we can easily change them instead of looking for a certain line or lines in our code. First some color ones:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let dot_color_options = ["#FF0000", "#800080"];</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let player_color = "#FFFF00";</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let text_color = "#FFFFFF";</code></p>
+
+<p>Here’s the color picker in case you want to choose different ones: <input class="jscolor" value="FFFF00" />. Also feel free to add more options to the <code class="language-plaintext highlighter-rouge">dot_color_options</code> if you wish.</p>
+
+<p>Now for a frame rate (in FPS or Frames Per Second) - the number of times <code class="language-plaintext highlighter-rouge">update</code> is called in each second. To be safe, we’ll keep the frame rate relatively slow:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let frames_per_second = 15;</code></p>
+
+<p>And a variable to define how many pixels each dot should move down the canvas, per frame.</p>
+
+<p><code class="language-plaintext highlighter-rouge">let dot_pixels_per_frame = 5;</code></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">player_y</code> MUST be a multiple of <code class="language-plaintext highlighter-rouge">dot_pixels_per_frame</code></strong>. Here we are safe because 220 divided by 5 is a whole number.</p>
+
+<p>Then add a variable to specify how many pixels the <em>player</em> should move when the player presses left or right:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let player_move_increment = 40;</code></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">player_x</code> MUST be a multiple of <code class="language-plaintext highlighter-rouge">player_move_increment</code></strong>.  You will see why later on.  Here we are safe because 200 divided by 40 is a whole number.</p>
+
+<p>Also we need to specify how far apart (vertically, in pixels) each dot should be, and how long (in milliseconds) the game should be:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let dot_distance_apart = 10;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let game_duration = 30 * 1000;</code></p>
+
+<p>(30000 will create a 30 second game)</p>
+
+<p>Then the radius for the (circular) player and dots:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let dot_radius = 10;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let player_radius = 20;</code></p>
+
+<p>That’s all for now!</p>
+
+<h4 id="the-update-function-layout">The <code class="language-plaintext highlighter-rouge">update</code> function layout</h4>
+
+<p>Here’s the plan for the update function:</p>
+
+<script src="https://gist.github.com/scitronboy/fa2ac39ff792a8e95c63a3ca00fc8c08.js"></script>
+
+<p>Add it to the script in your project file. We will replace the comments with code over the next few sections.</p>
+
+<h4 id="making-the-loop-run--keep-track-of-the-time">Making the loop run &amp; keep track of the time</h4>
+
+<p>When the player presses the up arrow, the <code class="language-plaintext highlighter-rouge">update</code> function should start looping.</p>
+
+<p>But before we start looping the <code class="language-plaintext highlighter-rouge">update</code> function, we need to store the time that the game started so we can compare it each frame and see if the difference between the time that frame and the time at the start is greater than the time limit (stored in <code class="language-plaintext highlighter-rouge">game_duration</code>). If it is, the game will stop.</p>
+
+<p>To store the time we can use the <code class="language-plaintext highlighter-rouge">Date</code> class, which has a ton of functions for managing time. We can use the <code class="language-plaintext highlighter-rouge">start_time</code> variable we created to store the time the game starts at. <code class="language-plaintext highlighter-rouge">new Date().getTime()</code> creates a new <code class="language-plaintext highlighter-rouge">Date</code> class and then uses it to get the time, in milliseconds, since January 1, 1970.</p>
+
+<p>To start looping the <code class="language-plaintext highlighter-rouge">update</code> function, which effectively starts the game, we can use <code class="language-plaintext highlighter-rouge">setInterval(arg1, arg2)</code> which is a function that runs a certain function (first argument) every x number of milliseconds, where x is the second argument.</p>
+
+<p>But we need to ensure that the game hasn’t already started whenever we try to start it, because if we didn’t check to ensure game hadn’t started, then pressing the up arrow a second time would reset the <code class="language-plaintext highlighter-rouge">start_time</code> and make the <code class="language-plaintext highlighter-rouge">update</code> function run twice as often, which would result in unexpected behaviour.</p>
+
+<p>We can check using the <code class="language-plaintext highlighter-rouge">start_time</code> variable, which is set to <code class="language-plaintext highlighter-rouge">0</code> when the page loads - so we know that if <code class="language-plaintext highlighter-rouge">start_time</code> is <em>not</em> <code class="language-plaintext highlighter-rouge">0</code>, the game has already started.</p>
+
+<p>We can add all this in the <code class="language-plaintext highlighter-rouge">key_pressed</code> function by adding the following to the <code class="language-plaintext highlighter-rouge">if (key.key == "ArrowUp")</code> block, below the <code class="language-plaintext highlighter-rouge">console.log</code>, so that it is run when the up arrow is pressed:</p>
+
+<script src="https://gist.github.com/scitronboy/7c84e2cbf82128aecaf17584632688af.js"></script>
+
+<p>We divide 1000 by <code class="language-plaintext highlighter-rouge">frames_per_second</code> to get the interval (in milliseconds) that we should pause between each call to <code class="language-plaintext highlighter-rouge">update</code>. If, for example, <code class="language-plaintext highlighter-rouge">frames_per_second</code> was set to <code class="language-plaintext highlighter-rouge">5</code>, then 1000 divided by 5 is equal to 200, and 200 milliseconds is one fifth of a second, so the function <code class="language-plaintext highlighter-rouge">update</code> would be called five times per second, which would result in 5 frames per second.</p>
+
+<h4 id="add-the-first-if-statement">Add the first <code class="language-plaintext highlighter-rouge">if</code> statement</h4>
+
+<p>Let’s add the <code class="language-plaintext highlighter-rouge">if</code> statement that checks to see whether the game’s time limit is up yet. If it is, it sets <code class="language-plaintext highlighter-rouge">game_over</code> to 1 (true). Here’s the updated <code class="language-plaintext highlighter-rouge">update</code> function:</p>
+
+<script src="https://gist.github.com/scitronboy/9ccf90395f8ce644274cbe9eff3d3806.js"></script>
+
+<p>Again, just in case you’ve gotten lost, <a href="https://gist.github.com/scitronboy/cf46d818246456b3c9b2013b898f3f1b">here’s what your project file should look like now (excluding comments)</a>.</p>
+
+<h5 id="javascript-lesson-for-loops">JavaScript lesson: <code class="language-plaintext highlighter-rouge">for</code> loops</h5>
+
+<p><code class="language-plaintext highlighter-rouge">for</code> loops are most commonly useful in two scenarios: When you want some code to run a certain number of times, or else when you want to iterate through every item in an array and do something to each one.</p>
+
+<p>The basic syntax for a <code class="language-plaintext highlighter-rouge">for</code> loop is <code class="language-plaintext highlighter-rouge">for (before loop starts; condition to continue; after each iteration) {code block; do something;}</code>. Here’s an explanation:</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">for</code> loop runs the code in the code block (the code between <code class="language-plaintext highlighter-rouge">{</code> and <code class="language-plaintext highlighter-rouge">}</code>) over and over again <strong>as long as</strong> the condition, or the second statement in the parentheses, is <em>true</em>.</p>
+
+<p>At the beginning of each loop, the <code class="language-plaintext highlighter-rouge">for</code> loop checks the condition - if it is true, then the code block is executed. If it is false, then the code block is not executed and the program continues with the rest of the code. Whenever the code block is finished running, the <code class="language-plaintext highlighter-rouge">for</code> loop executes the third statement inside the parentheses and then goes back to the beginning and checks the condition again.</p>
+
+<p>Before starting the first loop, the <code class="language-plaintext highlighter-rouge">for</code> loop will execute the first statement in the parentheses. The third and last statement in the parentheses will be executed <em>every time</em> after the end of the loop, before going back to the beginning.</p>
+
+<p>Here’s an example of using a <code class="language-plaintext highlighter-rouge">for</code> loop to run some code 5 times, and then using a <code class="language-plaintext highlighter-rouge">for</code> loop to iterate through every item in an array:</p>
+
+<script src="https://gist.github.com/scitronboy/d8bdf792743b12f2388f2f1fb1170297.js"></script>
+
+<p>Here’s the expected output (on the console):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Right now, i is 0
+Right now, i is 1
+Right now, i is 2
+Right now, i is 3
+Right now, i is 4
+Next Example!
+16
+87
+33
+12
+</code></pre></div></div>
+
+<h4 id="clear-canvas-move-dots-down-screen--draw-them">Clear Canvas, Move dots Down Screen &amp; Draw Them</h4>
+
+<p>We will start by programming the part of the <code class="language-plaintext highlighter-rouge">update</code> function that is <em>not</em> within the if/else blocks.</p>
+
+<p>First we clear the screen using our <code class="language-plaintext highlighter-rouge">draw_background</code> function.</p>
+
+<p>Then we use a <code class="language-plaintext highlighter-rouge">for</code> loop to move each dot down the canvas a bit and draw it.</p>
+
+<p>Drawing a solid circle on a canvas is somewhat tricky - you need to draw a circle and then fill it in. Here are the functions we’ll use to do that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>canvas.beginPath();
+canvas.arc(x, y, radius, start angle radians, end angle radians);
+canvas.fillStyle = color;
+canvas.fill();
+canvas.closePath();
+</code></pre></div></div>
+
+<p>When we draw the arc, angles are in radians, so one full 360 degree turn is 2*pi.</p>
+
+<p>Arrays <code class="language-plaintext highlighter-rouge">dots_x</code>, <code class="language-plaintext highlighter-rouge">dots_y</code> and <code class="language-plaintext highlighter-rouge">dots_color</code> are used to store the x and y positions and colors for all the dots, so that the same position or color in each array corresponds to the same dot. For example, dot number 5’s x position will be <code class="language-plaintext highlighter-rouge">dots_x[4]</code> and dot number 5’s y position will be <code class="language-plaintext highlighter-rouge">dots_y[4]</code> and dot number 5’s color will be <code class="language-plaintext highlighter-rouge">dots_color[4]</code>. So we can use these arrays to get the info we need about each dot.</p>
+
+<p>Here’s the code. Replace the corresponding comments (the clear screen, move, and draw dots ones) in the <code class="language-plaintext highlighter-rouge">update</code> function with it:</p>
+
+<script src="https://gist.github.com/scitronboy/5f2d93d8ad5edb457a39e894f880ba5a.js"></script>
+
+<h4 id="draw-player-onto-screen">Draw player onto screen</h4>
+
+<p>Drawing the player is just like drawing the dots. But before we draw the player, we need to make sure that its x position is within the the canvas (0 &lt; <code class="language-plaintext highlighter-rouge">player_x</code> &lt; canvas width). We can clamp the number within the range by using JavaScript’s maximum and minimum functions:</p>
+
+<p><code class="language-plaintext highlighter-rouge">player_x = Math.max(0, Math.min(player_x, canvas_element.width))</code></p>
+
+<p>Replace the corresponding comment in the update function with the code.</p>
+
+<script src="https://gist.github.com/scitronboy/c9887f8346de35cd2e7d7b8999a6ddb7.js"></script>
+
+<h4 id="draw-score">Draw score</h4>
+
+<p>The last thing to draw is the score, into the upper left corner. Replace the comment with the code:</p>
+
+<script src="https://gist.github.com/scitronboy/dd02ae9346a7484527cf999ae7420e74.js"></script>
+
+<h4 id="test-it">Test it</h4>
+
+<p>OK! We have all of the <code class="language-plaintext highlighter-rouge">update</code> function finished now except for the if/else blocks. This is what it should look like:</p>
+
+<script src="https://gist.github.com/scitronboy/6c39c59b92b4a8ebd337b3ecf68b05ab.js"></script>
+
+<p>And this is what it should look like if you open the game in your browser and press then up arrow:</p>
+
+<p><img src="/img/post/js-game/after-score-text-in-update-func.gif" alt="Game at this point" title="The game right now" /></p>
+
+<p>You can see the single dot, the score in the upper left, and the yellow player. However the score doesn’t change yet, and you can’t move the player.</p>
+
+<h4 id="moving-the-player">Moving the player</h4>
+
+<p>Let’s make the player move.</p>
+
+<p>We need to add a part to the original <code class="language-plaintext highlighter-rouge">key_pressed</code> function that changes the <code class="language-plaintext highlighter-rouge">player_x</code> variable when the left or right arrows keys are pressed. Here’s the updated <code class="language-plaintext highlighter-rouge">key_pressed</code> function:</p>
+
+<script src="https://gist.github.com/scitronboy/021b8f4105425a79cd207cd0ffb8ede6.js"></script>
+
+<p><code class="language-plaintext highlighter-rouge">player_x -= player_move_increment</code> is the same as <code class="language-plaintext highlighter-rouge">player_x = player_x - player_move_increment</code>.</p>
+
+<p>Try it out in your browser and you’ll see that you can move the player left and right with the arrow keys, but you can’t move the player off the sides of the canvas!</p>
+
+<h4 id="check-to-see-whether-player-is-over-a-dot">Check to see whether Player is over a dot</h4>
+
+<p>Now for the part inside the <code class="language-plaintext highlighter-rouge">if</code> block.</p>
+
+<p>To check whether a player is over a dot, we can use a <code class="language-plaintext highlighter-rouge">for</code> loop and compare the player’s coordinates to each dot’s coordinates.</p>
+
+<p>Replace the corresponding comment in the <code class="language-plaintext highlighter-rouge">update</code> function with this code:</p>
+
+<script src="https://gist.github.com/scitronboy/84c55210b16b144b41b7093bb9c116ca.js"></script>
+
+<p>Try it out in your browser and you’ll see that, when the player “flies over” the dot, the score in the upper left changes to <code class="language-plaintext highlighter-rouge">2</code>.</p>
+
+<h4 id="generate-new-dots-at-top-of-screen">Generate new dots at top of screen</h4>
+
+<p>Obviously the game needs more dots. So let’s create more - it should be as simple as adding new items to the dot arrays (<code class="language-plaintext highlighter-rouge">dots_x</code>, <code class="language-plaintext highlighter-rouge">dots_y</code>, and <code class="language-plaintext highlighter-rouge">dots_color</code>).</p>
+
+<p>However we can’t create a new dot every frame, or else the canvas would quickly become filled with hundreds of dots, making the game way to easy. So each frame we need to check and make sure the distance between the top of the canvas and the highest dot is greater than <code class="language-plaintext highlighter-rouge">dot_distance_apart</code>. This is very easy, using an <code class="language-plaintext highlighter-rouge">if</code> statement.</p>
+
+<p>When we generate a new dot we also want it to have a random x location, and a random color (chosen from the array of color options). We can do this by using the <code class="language-plaintext highlighter-rouge">Math.random</code> function, along with some other <code class="language-plaintext highlighter-rouge">Math</code> functions.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Math.random</code> returns a number between <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">1</code> so that the number is greater than OR equal to <code class="language-plaintext highlighter-rouge">0</code> <em>but</em> the number is always less than 1. So to get a random choice from an array (like the <code class="language-plaintext highlighter-rouge">dot_color_options</code> array) we can multiply a random number by the number of items in the array and then round it down to the nearest integer (we can just nest the functions within each other):</p>
+
+<p><code class="language-plaintext highlighter-rouge">dot_color_options[Math.floor(Math.random() * dot_color_options.length)];</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">Math.floor(number)</code> returns a number rounded down to the nearest integer. In this case, the number is <code class="language-plaintext highlighter-rouge">Math.random() * dot_color_options.lenth</code> - a random number multiplied by the number of options in the <code class="language-plaintext highlighter-rouge">dot_color_options</code>. The rounded down number is then used as the index to retrieve a random item from the <code class="language-plaintext highlighter-rouge">dot_color_options</code> array.</p>
+
+<p>Generating the new x position is not as simple as it seems because we must make sure that each dot falls into a position that the player can access. There are only 400 (the width of the canvas) divided by <code class="language-plaintext highlighter-rouge">player_move_increment</code> (the distance that the player jumps to the left or right) horizontal positions, like “lanes”, that the player can possibly be in on the canvas (plus one, on the far right side of the canvas). The total number of x positions (400) is far greater than the number of x positions the player can be in, so if the dots were assigned to any of the x positions the player wouldn’t be able to “fly over” most of them. We have to make sure that a new dot’s x position is one that the player can be in.</p>
+
+<p>So we must multiply a random lane number (an integer between 0 and canvas width divided by <code class="language-plaintext highlighter-rouge">player_move_increment</code> + 1) by the <code class="language-plaintext highlighter-rouge">player_move_increment</code> to get a new x position for the new dot:</p>
+
+<p><code class="language-plaintext highlighter-rouge">let lane_number = Math.floor(Math.random() * (canvas_element.width / player_move_increment + 1));</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">let new_x_position = lane_number * player_move_increment;</code></p>
+
+<p>We can use the <code class="language-plaintext highlighter-rouge">array.push(item)</code> function to add an item to the end of an array. We can use this to add the new dots. The most recently created dot, which is the highest dot on the canvas, will be the last item in each of the arrays (<code class="language-plaintext highlighter-rouge">dot_x</code>, <code class="language-plaintext highlighter-rouge">dot_y</code>, and <code class="language-plaintext highlighter-rouge">dot_color</code>) because each new dot is added to the end of the array. Therefore we can use <code class="language-plaintext highlighter-rouge">dots_y[dots_y.length - 1]</code> to get the last item in the <code class="language-plaintext highlighter-rouge">dots_y</code> array (remember we must subtract one from the array length because in an array the index of the nth position is n - 1).</p>
+
+<p>Here’s the code. Replace the corresponding comment in the <code class="language-plaintext highlighter-rouge">update</code> function with it:</p>
+
+<script src="https://gist.github.com/scitronboy/9d144c47008553fccc2564e4633995bd.js"></script>
+
+<h4 id="game-over-screen">Game Over Screen</h4>
+
+<p>Finally! The last part!</p>
+
+<p>The game over screen is simple to program. Add this to the <strong>bottom</strong> of the <code class="language-plaintext highlighter-rouge">update</code> function:</p>
+
+<script src="https://gist.github.com/scitronboy/2c4cd4de4490977eea2f011b9120ba8a.js"></script>
+
+<h3 id="finished-game">Finished game!!!</h3>
+
+<p>Finally, the game is finished!!! The final code is:</p>
+
+<script src="https://gist.github.com/scitronboy/9ce4cedd5a58e0a7de8182a18012f91e.js"></script>
+
+<p>And here is a gif of a ten second game:</p>
+
+<p><img src="/img/post/js-game/final-game.gif" alt="gif of finished game" title="Gif of finished game" /></p>
+
+<p><a href="/html-js-demo-game">And here is the actual game to play!</a></p>
+
+<h4 id="improvements">Improvements</h4>
+
+<p>Here are some improvements that could be made to the game. I’ll leave it to you to figure out how to implement them:</p>
+
+<ul>
+  <li>Dots disappear when you fly over them (right now, they continue down the canvas even if the player has flown over them). <em>Hint: Look up a JavaScript function to remove an item from an array.</em></li>
+  <li>Page looks nicer. <em>Hint: maybe go and learn some CSS so you know how to style the web page.</em></li>
+  <li>“Play again” functionality. <em>Hint: You might need a function to reinitialize all the variables. At the very least, you could set it up so that the <code class="language-plaintext highlighter-rouge">r</code> key reloads the page.</em></li>
+  <li>High score system. This one is tricky to implement with just a file and browser, because many browsers block cookies and local storage (which are the best option for creating a high score system) from local files. You could look into putting your web page online and then try it.</li>
+  <li>Better looking player and dots. You could look up how to display an image instead of a circle on a canvas, and then replace the circles with custom-designed characters.</li>
+  <li>Better player-over-dot detection. Right now, the player has to be exactly centered over the dot for the game to detect it. It would be nice if there was a margin so that it was a little easier to get points. <em>Hint: change the <code class="language-plaintext highlighter-rouge">if</code> statement condition so that it checks whether the distance from the player’s coordinates to the dot’s coordinates is less than a limit you set.</em></li>
+  <li>Add a form to the web page so that the player can change the settings (e.g. the colors, game duration, etc.) before the game starts, as opposed to the hardcoded settings. <em>Hint: research HTML forms and then look up how to read form input using JavaScript.</em></li>
+  <li>Enemy dots. Add dots that are a different color or shape that reduce the score when the player touches them, instead of increasing it.</li>
+  <li>Phone support. Right now, you can’t play this game on a phone because phones don’t have keyboards with arrow keys. Try adding two on-screen left and right buttons that trigger the same actions as the arrow keys. <em>Hint: look up how to add HTML buttons that trigger a JavaScript action.</em></li>
+</ul>
+
+<p>There are so many more enhancements you could make. Your imagination is the limit!</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Congratulations! You’ve done it!</p>
+
+<p>I hope you learned lots and had fun building this game. Thank you for reading my article!</p>
+
+<p>If you need any help with this project, feel free to contact me!</p>
+
+<p>Please leave any questions, comments, feedback, or suggestions in the comments below or else <a href="/#contact">contact me</a>.</p>
+
+<h3 id="more-resources-to-learn-javascript">More Resources to Learn JavaScript</h3>
+
+<p>To find lots of good JavaScript tutorials, just <a href="https://www.google.com?q=js+tutorial">google js tutorial</a>.</p>
+
+<p>W3 schools is also a great website for learning about HTML and JavaScript. Here are links for every concept we used:</p>
+
+<h4 id="w3-schools-links">W3 schools links</h4>
+
+<ul>
+  <li><a href="https://www.w3schools.com/js/default.asp">JavaScript tutorial</a></li>
+  <li><a href="https://www.w3schools.com/js/js_statements.asp">Semicolons and statements</a></li>
+  <li><a href="https://www.w3schools.com/js/js_variables.asp">Variables</a></li>
+  <li><a href="https://www.w3schools.com/js/js_functions.asp">Functions</a></li>
+  <li><a href="https://www.w3schools.com/graphics/canvas_reference.asp">Canvas Reference</a></li>
+  <li><a href="https://www.w3schools.com/graphics/canvas_intro.asp">Canvas Tutorial</a></li>
+  <li><a href="https://www.w3schools.com/js/js_timing.asp">Timing and SetInterval</a></li>
+  <li><a href="https://www.w3schools.com/js/js_dates.asp">JavaScript Dates</a></li>
+  <li><a href="https://www.w3schools.com/js/js_arrays.asp">Arrays</a></li>
+  <li><a href="https://www.w3schools.com/js/js_if_else.asp">if/else</a></li>
+  <li><a href="https://www.w3schools.com/js/js_loop_for.asp">for loop</a></li>
+</ul>
+
+:ET

@@ -155,4 +155,3 @@ sass:
 plugins:
   - jekyll-paginate
   - jemoji
-  - jekyll-redirect-from
