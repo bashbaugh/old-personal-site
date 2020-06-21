@@ -1,3 +1,2 @@
 #!/bin/bash
 
-gem update github-pages jekyll jekyll-paginate jemoji html-proofer bundler
