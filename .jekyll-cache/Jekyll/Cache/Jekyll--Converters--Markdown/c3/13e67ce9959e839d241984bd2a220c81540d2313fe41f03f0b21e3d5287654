@@ -1,18 +1,0 @@
-I"�<p>In this tutorial series, I will guide you through the steps to create your own simple but fun online browser-based game, using HTML and JavaScript.</p>
-
-<p>This tutorial is meant for beginners (or almost-beginners), but I will only cover what I need to to teach you to make this game; so I will include links in each section so you can actually learn the topics in greater detail.</p>
-
-<p>The first part (this article) of this tutorial covers the basics of HTML.</p>
-
-<h3 id="intro-to-html">Intro to HTML</h3>
-
-<p>HTML, as you probably already know, is the language that makes web pages possible. Every web page on the internet, excluding images, plain text files, and other “static” files that are not web pages on their own, is really just a file containing HTML. That HTML is what tells your browser how the web pages should look, and tells it what images, links, sounds, videos, etc. should be on the web page.</p>
-
-<p>So when you type a URL into your browser, or click on a link, your browser sends a request to the server of the website and tells it what page it wants. The server then processes your request and responds by sending a HTML file back to your browser. Your browser reads the HTML file to know what the web page should look like, and then it “renders” the web page onto your screen.</p>
-
-<p>Some people think that HTML is a “programming language,” but it’s really not. It’s actually a “markup language”. (the ML in HTML stands for Markup Language) The difference is that a programming language is a set of instructions for a computer to follow, usually line-after-line, that tells it how to do something (like rendering a markup file). Whereas a markup file is just a file of text that include extra little bits that tell your browser (or whatever is reading the markup) how to structure and display the text.</p>
-
-<p>Now, you might be wondering how how websites can be interactive or dynamic or have games, etc., if they don’t have any code that tells the browser what to do. (If you <em>were</em> wondering that, that’s great because it means you probably completely understand the concept of markup language vs programming language.) Well actually, web pages do have a programming language, it’s just not HTML. Websites can be made dynamic or given interactive elements or other functionality by adding <em>JavaScript</em> to them (do <strong>NOT</strong> confuse JavaScript with Java. They are completely different languages.). JavaScript can be included in a special part of the HTML, or else it can be imported from a different URL. Where ever it is loaded, the browser reads it and follows the instructions within, which can be instructions to modify text, add elements, change sizes or colors of elements on the page, add animations, and much more. In part two of this tutorial, we will need JavaScript to make the game.</p>
-
-<p>One last thing to know about HTML is that HTML, on its own, cannot “style” websites, or make them look pretty or decorated or anything else - HTML is just used to define the layout or everything on the page. For styling a page, you must use CSS. (You can see how important this is. Why don’t you <a href="/code/2019/html-js-game-part1">head back to the real page</a></p>
-:ET

@@ -12,3 +12,4 @@ Rakefile
 img/gitignore
 .goutputstream*
 vendor
+.jekyll-cache
