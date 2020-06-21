@@ -170,3 +170,9 @@ function addTohistory() {
 <!-- END Page Prefetching -->
 
 <!-- Javascript End -->
+
+<!--Analytics-->
+{% if jekyll.environment == "production" %}
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
+{% endif %}
