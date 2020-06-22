@@ -90,7 +90,7 @@ tumblr-share: False
 pocket-share: False
 vkontakte-share: False
 
-# disqus-shortname: "scitronboy-github-io"
+disqus-shortname: "scitronboy-github-io"
 
 syntax-highlight: True
 
