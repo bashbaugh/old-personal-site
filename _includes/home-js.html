@@ -39,6 +39,8 @@ function openPage() {
 
     document.getElementById("close-button").classList.remove("hidden")
     document.getElementById("close-button").classList.add("visible")
+
+    sa_event('homepage_' + currentPage)
   }
 }
 
@@ -108,6 +110,7 @@ displayScrapbookUsername('blucashbaugh')
 
 <!--Analytics-->
 {% if jekyll.environment == "production" %}
+<script>window.sa_event=window.sa_event||function(){a=[].slice.call(arguments);sa_event.q?sa_event.q.push(a):sa_event.q=[a]};</script>
 <script async defer src="https://howmuchtrafficarewegetting.benjaminashbaugh.me/latest.js"></script>
 <noscript><img src="https://howmuchtrafficarewegetting.benjaminashbaugh.me/noscript.gif" alt=""/></noscript>
 {% endif %}
