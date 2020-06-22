@@ -105,3 +105,9 @@ function displayScrapbookUsername(username) {
 
 displayScrapbookUsername('blucashbaugh')
 </script>
+
+<!--Analytics-->
+{% if jekyll.environment == "production" %}
+<script async defer src="https://howmuchtrafficarewegetting.benjaminashbaugh.me/latest.js"></script>
+<noscript><img src="https://howmuchtrafficarewegetting.benjaminashbaugh.me/noscript.gif" alt=""/></noscript>
+{% endif %}
