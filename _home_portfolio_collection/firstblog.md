@@ -1,7 +1,7 @@
 ---
 title: My First Website & blog
 date: 2018-7-27
-section: 0
+section: 1
 image: /img/home/portfolio/original_blog.jpg
 #visible: false
 link: /blog
