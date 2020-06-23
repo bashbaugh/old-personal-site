@@ -20,14 +20,14 @@
             <strong>{{ page.date | date_to_string }}</strong>
             <small>
               . category:
-              <a class="category" href="{{site.baseurl}}/categories/{{page.category | downcase}}">
+              <a class="category" href="{{site.baseurl}}/blog/categories/{{page.category | downcase}}">
                 {{ page.category }}
               </a>.
               <a href="{{site.baseurl}}{{page.url }}#disqus_thread">Comments</a>
               <br />
               <br />
               {% for tag in page.tags %}
-                <a class="tag" href="{{site.baseurl}}/tags/{{tag | downcase}}">#{{ tag }}</a>
+                <a class="tag" href="{{site.baseurl}}/blog/tags/{{tag | downcase}}">#{{ tag }}</a>
               {% endfor %}
             </small>
           </h4>
