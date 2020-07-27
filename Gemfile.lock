@@ -101,7 +101,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
   html-proofer (~> 3.15)
   jekyll (~> 4.1)
   jekyll-paginate (~> 1.1)

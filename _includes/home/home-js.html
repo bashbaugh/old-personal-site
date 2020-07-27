@@ -44,8 +44,6 @@ function openPage() {
   }
 }
 
-openPage()
-
 
 function submitContactForm() {
   if (document.getElementById("contact-message").value === "") {
@@ -89,6 +87,7 @@ function submitContactForm() {
 }
   
 window.onhashchange = openPage
+openPage()
 </script>
 
 <!--Hack club SOM widget-->

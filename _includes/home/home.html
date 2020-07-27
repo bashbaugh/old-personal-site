@@ -1,0 +1,88 @@
+ <!--WELCOME PAGE-->
+<div class="home-parent">
+  <div class="home-container">
+    <div class="home-welcome">
+      <h1 class="hello">Hello. I'm Benjamin Ashbaugh.</h1>
+      <p class="home-welcome-text">I'm a student, aspiring developer, programmer, and maker.</p>
+    </div>
+    
+    {% include home/home-navigation.html %}
+  </div>
+</div>
+
+
+{% include home/about.html %}
+
+<!-- PORTFOLIO PAGE -->
+<div id="portfolio-page" class="home-portfolio-page fullscreen-page">
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">Portfolio</h2>
+    <p>
+      This is a list of projects I've worked on. More coming soon...
+    </p>
+    {% assign featured_projects = (site.home_portfolio_collection | where: "section", 0 | sort: 'date') | reverse %}
+    {% assign other_projects = (site.home_portfolio_collection | where: "section", 1 | sort: 'date') | reverse %}
+
+    <div class="portfolio-section">
+      <h3>Featured Projects</h3>
+      <div class="project-hcontainer">
+        {% for project in featured_projects %}
+          {% if project.visible != false %}
+            <div class="project-card featured-card">
+              <img class="featured-project-image" src="{{ project.image }}" alt="{{ project.name }}">
+              <div class="featured-project-card-content">
+                <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
+                <h6>started: {{ project.date | date_to_string }}</h6>
+                {{ project.content | markdownify }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="portfolio-section">
+      <h3>Other Projects</h3>
+      <div class="project-hcontainer">
+        {% for project in other_projects %}
+          {% if project.visible != false %}
+            <div class="project-card">
+              <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
+              <h6>started: {{ project.date | date_to_string }}</h6>
+              {{ project.content | markdownify }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact-page" class="home-contact-page fullscreen-page">
+  <div class="fullscreen-page-container">
+    <h2 class="fullscreen-page-title">Contact Me</h2>
+    <p>
+      Feel free to contact me using the form below. Feedback about my site and projects is much appreciated.
+    </p>
+    <form id="contact-form" class="form" name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+      <div>
+        <input type="text" name="name" placeholder="Your Name" />
+      </div>
+      <div>
+        <input type="email" name="email" placeholder="Your Email" />
+      </div>
+      <div>
+        <textarea name="message" id="contact-message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <!-- <div class="recaptcha-container">
+        <div data-netlify-recaptcha="true"></div>
+      </div> -->
+      <p>
+        <button type="button" class="home-nav-button" onclick="submitContactForm()" id="contact-submit">Submit</button>
+      </p>
+    </form>
+  </div>
+</div>
+
+<a href="#" id="close-button" class="close-button-x"></a>
