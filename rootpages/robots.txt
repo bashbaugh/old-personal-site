@@ -13,4 +13,4 @@ Disallow: /subscribed
 Disallow: /page/no-css-page
 
 
-Sitemap: https://scitronboy.com/sitemap.xml
+Sitemap: https://benjaminashbaugh.me/sitemap.xml
