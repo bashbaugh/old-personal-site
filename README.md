@@ -5,6 +5,8 @@
 Welcome to the open-source code for [my website/blog](https://benjaminashbaugh.me/). 
 Let me know if you have any questions about it.
 
+It uses Jekyll to generate a static site from my HTML/CSS/JS/templates/etc. and is hosted by netlify. I also use Netlify CMS for editing content such as blog posts.
+
 If you like my website/code, please star it.
 Feel free to use any of my code in _your_ website, just please give me credit for it :smile:. Thank you.
 
