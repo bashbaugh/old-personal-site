@@ -22,7 +22,7 @@ collections:
     folder: '_posts/'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    preview_path: '{{category}}/{{slug}}'
+    preview_path: '{{category}}/{{url_slug}}'
     editor:
       preview: false
     fields:
@@ -35,6 +35,7 @@ collections:
       - { label: 'Thumbnail', name: 'image', widget: 'image', required: false }
       - { label: 'Header Image', name: 'top-image', widget: 'image', required: false }
       - { label: 'URL slug', name: 'slug', widget: 'string' }
+      - { label: 'URL slug (again)', name: 'url_slug', widget: 'string' }
       - { label: 'Category', name: 'category', widget: 'select', options: ['3dp', 'code', 'projects', 'other']}
       - { label: 'Tags', name: 'tags', widget: 'select', multiple: true, options: ['3d-printing', 'arduino', 'code', 'game', 'jekyll', 'project', 'python', 'review', 'tutorial', 'web-dev']}
       - { label: 'Post Description', name: 'postdescription', widget: 'string' }
