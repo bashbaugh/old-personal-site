@@ -1,0 +1,42 @@
+site_url: 'https://benjaminashbaugh.me/'
+
+backend:
+  name: git-gateway
+  branch: published
+
+media_folder: 'img/uploads'
+
+publish_mode: editorial_workflow
+show_preview_links: true
+
+logo_url: 'https://benjaminashbaugh.me/img/favicon/favicon-96x96.png'
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    folder: '_posts/'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    preview_path: '{{category}}/{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
+      - { label: 'SectionType', name: 'section-type', widget: 'hidden', default: 'post' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD'}
+      - { label: 'Update Text', name: 'update-text', widget: 'string', required: false }
+      - { label: 'Last Modification (SEO)', name: 'lastmod', widget: 'datetime', format: 'YYYY-MM-DD'}
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Thumbnail', name: 'image', widget: 'image', required: false }
+      - { label: 'Header Image', name: 'top-image', widget: 'image', required: false }
+      - { label: 'URL slug', name: 'slug', widget: 'string' }
+      - { label: 'Category', name: 'category', widget: 'select', options: ['3dp', 'code', 'projects', 'other']}
+      - { label: 'Tags', name: 'tags', widget: 'select', multiple: true, options: ['3d-printing', 'arduino', 'code', 'game', 'jekyll', 'project', 'python', 'review', 'tutorial', 'web-dev']}
+      - { label: 'Post Description', name: 'postdescription', widget: 'string' }
+      - { label: 'SEO Title', name: 'titletag', widget: 'string' }
+      - { label: 'SEO Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
