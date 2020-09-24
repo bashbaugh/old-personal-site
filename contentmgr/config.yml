@@ -47,7 +47,7 @@ collections:
     folder: '_update_collection/'
     create: true
     slug: '{{slug}}'
-    preview_path: ''
+    preview_path: 'blog'
     editor:
       preview: false
     fields:
