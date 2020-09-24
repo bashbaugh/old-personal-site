@@ -53,7 +53,7 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD'}
-      - { label: 'Visible', name: 'visible', widget: 'boolean', required: false }
+      - { label: 'Visible', name: 'visible', widget: 'boolean', required: false, default: true }
       - { label: 'Title Link', name: 'link', widget: 'string', required: false }
       - { label: 'Message', name: 'body', widget: 'markdown' }
   - name: 'projects'
@@ -69,6 +69,6 @@ collections:
       - { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' }
       - { label: 'Section (0=featured, 1=other)', name: 'section', widget: 'number', value_type: 'int' }
       - { label: 'Image', name: 'image', widget: 'image', required: false }
-      - { label: 'Visible', name: 'visible', widget: 'boolean', required: false }
+      - { label: 'Visible', name: 'visible', widget: 'boolean', required: false, default: true }
       - { label: 'Title Link', name: 'link', widget: 'string', required: false }
       - { label: 'Message', name: 'body', widget: 'markdown' }
