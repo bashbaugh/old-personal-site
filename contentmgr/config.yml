@@ -1,7 +1,8 @@
 site_url: 'https://benjaminashbaugh.me/'
 
 backend:
-  name: git-gateway
+  name: github
+  repo: scitronboy/benjaminashbaugh
   branch: published
 
 media_folder: 'img/uploads'
