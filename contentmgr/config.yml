@@ -36,8 +36,8 @@ collections:
       - { label: 'Header Image', name: 'top-image', widget: 'image', required: false }
       - { label: 'URL slug', name: 'slug', widget: 'string' }
       - { label: 'URL slug (again)', name: 'url_slug', widget: 'string' }
-      - { label: 'Category', name: 'category', widget: 'select', options: ['3dp', 'code', 'projects', 'other']}
-      - { label: 'Tags', name: 'tags', widget: 'select', multiple: true, options: ['3d-printing', 'arduino', 'code', 'game', 'jekyll', 'project', 'python', 'review', 'tutorial', 'web-dev']}
+      - { label: 'Category', name: 'category', widget: 'select', options: ['3dp', 'code', 'projects', 'tutorials', 'other']}
+      - { label: 'Tags', name: 'tags', widget: 'select', multiple: true, options: ['3d-printing', 'arduino', 'code', 'game', 'jekyll', 'project', 'python', 'javascript', 'review', 'tutorial', 'web-dev']}
       - { label: 'Post Description', name: 'postdescription', widget: 'string' }
       - { label: 'SEO Title', name: 'titletag', widget: 'string' }
       - { label: 'SEO Description', name: 'description', widget: 'string' }
