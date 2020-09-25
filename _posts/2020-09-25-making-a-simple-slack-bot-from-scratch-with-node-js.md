@@ -3,14 +3,16 @@ layout: post
 section-type: post
 date: 2020-09-25
 lastmod: 2020-09-25
-title: Making a simple Slack bot from scratch with Node.js
+title: Making a simple Slack bot with Node.js
 slug: simple-node-slack-bot
 url_slug: simple-node-slack-bot
-category: other
+category: tutorials
 tags:
   - code
-postdescription: Make a simple Node js slack bot app from scratch.
-titletag: Make a simple Slack bot from scratch with Node.js
-description: Make a simple Node js slack bot app from scratch.
+  - game
+  - javascript
+postdescription: Make a simple Node js slack bot app
+titletag: Make a simple Slack bot with Node.js
+description: Make a simple Node js slack bot app
 ---
-Slack bots (also called slack apps) are an integral part of the Hack Club slack. In this workshop, you will learn how to make your own slack bot using Node.js
+Slack bots (also called slack apps) are an integral part of the Hack Club slack. In this workshop, you will learn how to make your own slack bot using Node.js.
