@@ -4,8 +4,8 @@ section-type: post
 date: 2020-09-28
 lastmod: 2020-09-28
 title: How to Set Up Your Own Personal CDN & "Cloud" using GCP
-slug: personal-gcp-cdn
-url_slug: personal-gcp-cdn
+slug: gcp-cdn
+url_slug: gcp-cdn
 category: tutorials
 tags:
   - tutorial
@@ -20,19 +20,20 @@ description: In this tutorial, I will show how to easily set up your own "cloud"
   for file hosting, using Google Cloud Storage and network services. I will also
   explain how to create a simple dashboard for it.
 ---
-Recently, it occurred to me that it would be cool to have my own CDN subdomain and file sharing service. Of course, there are many easier options for hosting your files online, such as using something like Google Drive or one of the hundreds of free file sharing websites and services out there. However, having a personal cloud with only your own files and sending people links to [cdn.mydomain.com/file.txt](https://cdn.benjaminashbaugh.me/hello.txt) has got to be much cooler than sending people links to "sketchyfilewebsite.com/file/hashthatnoonewillremember.txt". Fortunately, it's super easy to set one up!
+Recently, it occurred to me that it would be cool to have my own CDN subdomain and file sharing service. Of course, there are many easier options for hosting your files online, such as using something like Google Drive or one of the hundreds of free file sharing websites and services out there. However, having a personal cloud with only your own files and sending people links to [cdn.mydomain.com/file.txt](https://cdn.benjaminashbaugh.me/hello.txt) has got to be much cooler than sending people links to "sketchyfilewebsite.com/file/hashthatnoonewillremember.txt". Also, using the CDN layer will also allow you to efficiently host things such as images and JavaScript libraries for your websites, etc. Fortunately, it's super easy to set one up!
 
 In this tutorial, we will:
 
 1. Create a storage bucket with Google Cloud storage. This could also be done with Amazon s3 or another cloud storage service, but in this tutorial I will use Google Cloud storage.
 2. (optionally) Set up a static IP, load balancing and cloud cdn to turn our bucket instance into an actual CDN.
-3. (optionally) Use Firebase and Node.js to create a very simple dashboard to upload and manage files (alternatively, you could just use the GCP dashboard).
+3. Add our CDN to a custom subdomain or domain.
+4. (optionally) Use Firebase and Node.js to create a very simple dashboard to upload and manage files (alternatively, you could just use the GCP dashboard).
 
 You will need an active [Google Cloud Platform](https://console.cloud.google.com/) account to follow along. Before you begin, I would recommend that you create a new project (from the dropdown in the top menu bar) to isolate the cloud storage and networking instances from any other GCP projects you might have.
 
 ## Creating a Cloud Storage Bucket.
 
-Before we start, I should talk about pricing. [Pricing for google cloud platform storage](https://cloud.google.com/storage/pricing) buckets are very cheap - it costs about $0.02 USD per gigabyte per month, plus networking costs which are unlikely to be more than a few cents per month (unless you're using your CDN for a hugely popular website with hundreds of thousands of downloads per month). And if you choose a single region, the first few gigabytes stored every month will be free. If you are worried about costs, you can set up threshold alerts under the 
+Before we start, I should talk about pricing. [Pricing for google cloud platform storage](https://cloud.google.com/storage/pricing) buckets are very cheap - it costs about $0.02 USD per gigabyte per month, plus networking costs which are unlikely to be more than a few cents per month (unless you're using your CDN for a hugely popular website with hundreds of thousands of downloads per month). And if you choose a single region, the first few gigabytes stored every month will be free. If you are worried about costs, you can set up threshold alerts under the billing tab in GCP.
 
 In the GCP console, navigate to Products -> Storage -> Storage -> Browser. Click on "Create Bucket".
 
@@ -54,4 +55,34 @@ You could stop here if you wanted to - we now have a fully functioning storage b
 
 ## Setting up load balancing + a CDN layer
 
-GCP provides a very simple CDN layer through their load balancing service. To set it up, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
+*Note: **this step and all steps after this require you to have a domain you can use for your CDN**. Or you could just use the static IP address, but that looks ugly and comes with security concerns. I use my personal domain at cdn.benjaminashbaugh.me.*
+
+*Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $3 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but that should be discouraged as you won't be able to use a top level domain or HTTPS)*
+
+GCP provides a very simple CDN layer through their load balancing service, which basically caches your files wherever they are needed, ensuring that your cloud will always be super fast (A lot faster than needed for a personal CDN - but whatever). To set it up, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
+
+1. Choose "From internet to my VMs"
+2. Give the load balancer a name and choose "backend configuration"
+3. Then choose "create or select..." -> "backend buckets" -> "create a backend bucket" and select the bucket we created last step. The key here is to select "Enable cloud CDN"!
+
+![Setting up the CDN backend](/img/uploads/2020-09-28_14-05.png "CDN backend")
+
+Leave "host and path rules" untouched for now, but in "frontend configuration" we need to set up a static IP for our CDN, so that we can connect it to our website. Under "New frontend IP and port", name it something like "cdn-https" and select HTTPS for the protocol. Choose whichever network service tier you want, and under "IP address" reserve a new static IP. Under Certificate, choose "Create a new certificate" and select "Create google-managed certificate". Make sure you enter the domain/subdomain(s) you want to host your CDN at, and Google will automatically provision an SSL certificate for it. 
+
+![Frontend setup](/img/uploads/cdn_frontend_setup.png "Frontend setup")
+
+You can create a second frontend configuration, if you wish, using the same IP and HTTP, if you want your CDN to be accessible from HTTP as well as HTTPS.
+
+Finally, click "create" to finish setting up your load balancer! 
+
+Note that you will get an error message if you visit `http://CDN-IP` if you have not set up an HTTP frontend, and visiting `https://CDN-IP` will also give an error (`ERR_SSL_VERSION_OR_CIPHER_MISMATCH`) initially, because it takes about 20 minutes to provision the SSL certificate. Even after the SSL cert is provisioned, you might still get a warning because you're visiting the site through the IP rather than the domain listed in the certificate.
+
+Next up - adding the CDN to a custom subdomain!
+
+## Adding DNS entries to your subdomain.
+
+In this step, we will add DNS entries for our CDN so that we can access it from a subdomain on our website. 
+
+Navigate to your domain's DNS record settings (if you haven't changed the default nameservers for your domain, you should find these in the control panel of your domain registrar) and create a new `A` record. The name/host should be the same domain or subdomain that you used when creating your SSL certificate. The value should be set to the static IP you reserved (**without the port**).
+
+![Dns settings](/img/uploads/cdn-dns-settings.png "DNS settings")
