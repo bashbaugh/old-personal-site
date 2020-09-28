@@ -27,9 +27,11 @@ In this tutorial, we will:
 1. Create a storage bucket with Google Cloud storage. This could also be done with Amazon s3 or another cloud storage service, but in this tutorial I will use Google Cloud storage.
 2. (optionally) Set up a static IP, load balancing and cloud cdn to turn our bucket instance into an actual CDN.
 3. (optionally) Add our CDN to a custom subdomain or domain.
-4. (optionally) Use Firebase and Node.js to create a very simple dashboard to upload and manage files (alternatively, you could just use the GCP dashboard).
+4. (optionally; coming soon) In the next part, use Node.js to create a very simple dashboard to upload and manage files. 
 
 You will need an active [Google Cloud Platform](https://console.cloud.google.com/) account to follow along. Before you begin, I would recommend that you create a new project (from the dropdown in the top menu bar) to isolate the cloud storage and networking instances from any other GCP projects you might have.
+
+If you run into any issues or have any questions throughout this tutorial, make sure to leave a comment down below and I'll try to reply within a day or two.
 
 ## Creating a Cloud Storage Bucket.
 
@@ -55,7 +57,7 @@ You could stop here if you wanted to - we now have a fully functioning storage b
 
 ## Setting up load balancing + a CDN layer
 
-*Note: **this step and all steps after this require you to have a domain you can use for your CDN**. Or you could just use the static IP address, but that looks ugly and comes with security concerns. I use my personal domain at cdn.benjaminashbaugh.me.*
+*Note: **this step and all steps after this require you to have a domain you can use for your CDN**. I use my personal domain at cdn.benjaminashbaugh.me.*
 
 *Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $3 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but you won't be able to use a top level domain or HTTPS)*
 
@@ -87,10 +89,18 @@ Navigate to your domain's DNS record settings (if you haven't changed the defaul
 
 ### If you are using the load balancer
 
-Create a new `A` record. The name should be the same domain or subdomain that you used when creating your SSL certificate. The value should be set to the static IP you reserved for your load balancer (**without the port**).
+Create a new `A` record. The name should be the same domain or subdomain that you used when creating your SSL certificate. The value should be set to the static IP you reserved for your load balancer (**without the port**). Wait a few minutes for the DNS changes to propagate, then you should be able to visit the subdomain in your browser. Make sure you add `https://` to the beginning of the URL in order to access the secure version of your CDN!
 
-![Dns settings](/img/uploads/cdn-dns-settings.png "DNS settings")
+![DNS settings](/img/uploads/cdn-dns-settings.png "DNS settings")
 
 ### [If you aren't using a load balancer](https://cloud.google.com/storage/docs/request-endpoints#cname)
 
-Create a new `CNAME` record. The name should be the subdomain you want to host your CDN at (this should be the same as your bucket name). Set the value to `c.storage.googleapis.com.` (note the final dot).
+Create a new `CNAME` record. The name should be the subdomain you want to host your CDN at (this should be the same as your bucket name). Set the value to `c.storage.googleapis.com.` (note the final dot). Wait a few minutes for the DNS changes to propagate, then you should be able to visit the subdomain in your browser. 
+
+![CNAME DNS settings](/img/uploads/cdn-cname-dns-settings.png "DNS settings")
+
+**After adding your DNS record**, you should see an XML document listing all the files you have uploaded to your storage bucket. You can access them by appending a filename to the URL in your browser.
+
+Congratulations! You've now added your CDN to a custom subdomain on your website!
+
+Hopefully you didn't run into any difficulties setting up your very own CDN (if you did, leave a comment). In the next part, (coming in a few days hopefully) I'll explain how to set up a simple Node.js dashboard and add better forwarding rules to your load balancer. Until then, have fun uploading files to your CDN through the GCP dashboard!
