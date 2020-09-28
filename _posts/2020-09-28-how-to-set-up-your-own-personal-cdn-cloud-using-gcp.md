@@ -4,6 +4,7 @@ section-type: post
 date: 2020-09-28
 lastmod: 2020-09-28
 title: How to Set Up Your Own Personal CDN & "Cloud" using GCP
+image: /img/uploads/cdn_xml_thumbnail.png
 slug: gcp-cdn
 url_slug: gcp-cdn
 category: tutorials
@@ -99,7 +100,9 @@ Create a new `CNAME` record. The name should be the subdomain you want to host y
 
 ![CNAME DNS settings](/img/uploads/cdn-cname-dns-settings.png "DNS settings")
 
-**After adding your DNS record**, you should see an XML document listing all the files you have uploaded to your storage bucket. You can access them by appending a filename to the URL in your browser.
+**After adding your DNS record**, you should see an XML document listing all the files you have uploaded to your storage bucket. You can access them by appending a filename to the URL in your browser, for example \[https://cdn.mywebsite.com/hello.txt](https://cdn.benjaminashbaugh.me/hello.txt)
+
+![The XML index](/img/uploads/cdn_xml_thumbnail.png "The XML index")
 
 Congratulations! You've now added your CDN to a custom subdomain on your website!
 
