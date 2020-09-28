@@ -26,7 +26,7 @@ In this tutorial, we will:
 
 1. Create a storage bucket with Google Cloud storage. This could also be done with Amazon s3 or another cloud storage service, but in this tutorial I will use Google Cloud storage.
 2. (optionally) Set up a static IP, load balancing and cloud cdn to turn our bucket instance into an actual CDN.
-3. Add our CDN to a custom subdomain or domain.
+3. (optionally) Add our CDN to a custom subdomain or domain.
 4. (optionally) Use Firebase and Node.js to create a very simple dashboard to upload and manage files (alternatively, you could just use the GCP dashboard).
 
 You will need an active [Google Cloud Platform](https://console.cloud.google.com/) account to follow along. Before you begin, I would recommend that you create a new project (from the dropdown in the top menu bar) to isolate the cloud storage and networking instances from any other GCP projects you might have.
@@ -37,7 +37,7 @@ Before we start, I should talk about pricing. [Pricing for google cloud platform
 
 In the GCP console, navigate to Products -> Storage -> Storage -> Browser. Click on "Create Bucket".
 
-1. Choose a unique, but short, name for your bucket.
+1. Choose a unique name for your bucket. **Important:** If you DO want to use a custom subdomain but don't care about CDN or HTTPS (and won't be using a load balancer) (see the next step), you HAVE to set the bucket name to that of the subdomain you will be using; for example `cdn.mywebsite.com`. You will also have to verify your ownership of the domain, [as described here](https://cloud.google.com/storage/docs/domain-name-verification#verification).
 2. You can choose multi-region if you want to, but especially if you plan to add a load balancing CDN then this isn't really necesarry so you can just choose a single region that's closest to where you're located. 
 3. Choose the standard storage class
 4. For now, choose Uniform access control. If you want to add complex permissions later you can always change this setting within 90 days.
@@ -57,7 +57,7 @@ You could stop here if you wanted to - we now have a fully functioning storage b
 
 *Note: **this step and all steps after this require you to have a domain you can use for your CDN**. Or you could just use the static IP address, but that looks ugly and comes with security concerns. I use my personal domain at cdn.benjaminashbaugh.me.*
 
-*Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $3 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but that should be discouraged as you won't be able to use a top level domain or HTTPS)*
+*Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $3 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but you won't be able to use a top level domain or HTTPS)*
 
 GCP provides a very simple CDN layer through their load balancing service, which basically caches your files wherever they are needed, ensuring that your cloud will always be super fast (A lot faster than needed for a personal CDN - but whatever). To set it up, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
 
@@ -83,6 +83,14 @@ Next up - adding the CDN to a custom subdomain!
 
 In this step, we will add DNS entries for our CDN so that we can access it from a subdomain on our website. 
 
-Navigate to your domain's DNS record settings (if you haven't changed the default nameservers for your domain, you should find these in the control panel of your domain registrar) and create a new `A` record. The name/host should be the same domain or subdomain that you used when creating your SSL certificate. The value should be set to the static IP you reserved (**without the port**).
+Navigate to your domain's DNS record settings (if you haven't changed the default nameservers for your domain, you should find these in the control panel of your domain registrar).
+
+### If you are using the load balancer
+
+Create a new `A` record. The name should be the same domain or subdomain that you used when creating your SSL certificate. The value should be set to the static IP you reserved for your load balancer (**without the port**).
 
 ![Dns settings](/img/uploads/cdn-dns-settings.png "DNS settings")
+
+### [If you aren't using a load balancer](https://cloud.google.com/storage/docs/request-endpoints#cname)
+
+Create a new `CNAME` record. The name should be the subdomain you want to host your CDN at (this should be the same as your bucket name). Set the value to `c.storage.googleapis.com.` (note the final dot).
