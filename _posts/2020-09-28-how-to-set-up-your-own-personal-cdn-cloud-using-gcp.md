@@ -16,7 +16,7 @@ postdescription: In this tutorial, I will show how to easily set up your own
   "cloud" for file hosting, using Google Cloud Storage and network services. I
   will also explain how to create a simple dashboard for it using Node.js.
 titletag: How to Set Up Your Own Personal CDN & Cloud using Google Cloud Storage
-  and load balancing.
+  and Load Balancing.
 description: In this tutorial, I will show how to easily set up your own "cloud"
   for file hosting, using Google Cloud Storage and network services. I will also
   explain how to create a simple dashboard for it using Node.js.
@@ -36,7 +36,7 @@ If you run into any issues or have any questions throughout this tutorial, make 
 
 ## Creating a Cloud Storage Bucket.
 
-Before we start, I should talk about pricing. [Pricing for google cloud platform storage](https://cloud.google.com/storage/pricing) buckets are very cheap - it costs about $0.02 USD per gigabyte per month, plus networking costs which are unlikely to be more than a few cents per month (unless you're using your CDN for a hugely popular website with hundreds of thousands of downloads per month). And if you choose a single region, the first few gigabytes stored every month will be free. If you are worried about costs, you can set up threshold alerts under the billing tab in GCP.
+Before we start, I should mention pricing. [Pricing for google cloud platform storage](https://cloud.google.com/storage/pricing) buckets is very cheap - it costs about $0.02 USD per gigabyte per month, plus networking costs which are unlikely to be more than a few cents per month (unless you're using your CDN for a hugely popular website with hundreds of thousands of downloads per month). And if you choose a single region, the first few gigabytes stored every month will be free. If you are worried about costs, you can set up threshold alerts under the billing tab in GCP.
 
 In the GCP console, navigate to Products -> Storage -> Storage -> Browser. Click on "Create Bucket".
 
@@ -50,7 +50,7 @@ Now we need to make it so that anyone can read from the bucket. Under the permis
 
 ![Adding new permissions](/img/uploads/2020-09-28_13-28.png "Adding the new permission")
 
-Congratulations! You've set up your first Cloud Storage bucket! If you navigate back to the Objects tab and select "upload files", you'll see a new entry appear with an option to "copy URL". Click this, open a new tab, and paste it into your address bar to visit the file you just uploaded! The URL should look something like <https://storage.googleapis.com/cdn-workshop/test.txt>. I would suggest bookmarking your bucket dashboard in your browser so you can easily find it.
+Congratulations! You've set up your first Cloud Storage bucket! If you navigate back to the Objects tab and select "upload files", you'll see a new entry appear with an option to "copy URL". Click this, open a new tab, and paste it into your address bar to visit the file you just uploaded! The URL should look something like <https://storage.googleapis.com/cdn-workshop/test.txt>. I would suggest bookmarking your bucket dashboard in your browser so you can easily access it.
 
 ![](/img/uploads/2020-09-28_13-33.png)
 
@@ -60,7 +60,7 @@ You could stop here if you wanted to - we now have a fully functioning storage b
 
 *Note: **this step and all steps after this require you to have a domain you can use for your CDN**. I use my personal domain at cdn.benjaminashbaugh.me.*
 
-*Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $3 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but you won't be able to use a top level domain or HTTPS)*
+*Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $2.50 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but you won't be able to use a top level domain or HTTPS)*
 
 GCP provides a very simple CDN layer through their load balancing service, which basically caches your files wherever they are needed, ensuring that your cloud will always be super fast (A lot faster than needed for a personal CDN, but probably necessary if you'll be hosting images or js libraries, etc. for websites.). To set it up, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
 
@@ -74,7 +74,7 @@ Leave "host and path rules" untouched for now, but in "frontend configuration" w
 
 ![Frontend setup](/img/uploads/cdn_frontend_setup.png "Frontend setup")
 
-You can create a second frontend configuration, if you wish, using the same IP and HTTP, if you want your CDN to be accessible from HTTP as well as HTTPS.
+You can create a second frontend configuration, if you wish, using the same IP but HTTP instead of HTTPS, if you want your CDN to be accessible from HTTP as well.
 
 Finally, click "create" to finish setting up your load balancer! 
 
@@ -100,7 +100,7 @@ Create a new `CNAME` record. The name should be the subdomain you want to host y
 
 ![CNAME DNS settings](/img/uploads/cdn-cname-dns-settings.png "DNS settings")
 
-**After adding your DNS record**, you should see an XML document listing all the files you have uploaded to your storage bucket. You can access them by appending a filename to the URL in your browser, for example \[https://cdn.mywebsite.com/hello.txt](https://cdn.benjaminashbaugh.me/hello.txt)
+**After adding your DNS record**, you should see an XML document listing all the files you have uploaded to your storage bucket. You can access them by appending a filename to the URL in your browser, for example [https://cdn.mywebsite.com/hello.txt](https://cdn.benjaminashbaugh.me/hello.txt)
 
 ![The XML index](/img/uploads/cdn_xml_thumbnail.png "The XML index")
 
