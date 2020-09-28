@@ -14,12 +14,12 @@ tags:
   - clouds
 postdescription: In this tutorial, I will show how to easily set up your own
   "cloud" for file hosting, using Google Cloud Storage and network services. I
-  will also explain how to create a simple dashboard for it using firebase.
+  will also explain how to create a simple dashboard for it using Node.js.
 titletag: How to Set Up Your Own Personal CDN & Cloud using Google Cloud Storage
   and load balancing.
 description: In this tutorial, I will show how to easily set up your own "cloud"
   for file hosting, using Google Cloud Storage and network services. I will also
-  explain how to create a simple dashboard for it.
+  explain how to create a simple dashboard for it using Node.js.
 ---
 Recently, it occurred to me that it would be cool to have my own CDN subdomain and file sharing service. Of course, there are many easier options for hosting your files online, such as using something like Google Drive or one of the hundreds of free file sharing websites and services out there. However, having a personal cloud with only your own files and sending people links to [cdn.mydomain.com/file.txt](https://cdn.benjaminashbaugh.me/hello.txt) has got to be much cooler than sending people links to "sketchyfilewebsite.com/file/hashthatnoonewillremember.txt". Also, using the CDN layer will also allow you to efficiently host things such as images and JavaScript libraries for your websites, etc. Fortunately, it's super easy to set one up!
 
@@ -62,7 +62,7 @@ You could stop here if you wanted to - we now have a fully functioning storage b
 
 *Pricing: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is a little more expensive, and costs about $3 USD at minimum per month for the static IP, networking and [CDN costs](https://cloud.google.com/cdn/pricing). You can slightly reduce these costs, if needed, by disabling the CDN. Alternatively, if you just want a custom subdomain for your storage bucket without the benefits of the load balancer and CDN layer, you can skip to the next step (but you won't be able to use a top level domain or HTTPS)*
 
-GCP provides a very simple CDN layer through their load balancing service, which basically caches your files wherever they are needed, ensuring that your cloud will always be super fast (A lot faster than needed for a personal CDN - but whatever). To set it up, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
+GCP provides a very simple CDN layer through their load balancing service, which basically caches your files wherever they are needed, ensuring that your cloud will always be super fast (A lot faster than needed for a personal CDN, but probably necessary if you'll be hosting images or js libraries, etc. for websites.). To set it up, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
 
 1. Choose "From internet to my VMs"
 2. Give the load balancer a name and choose "backend configuration"
