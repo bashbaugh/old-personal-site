@@ -41,7 +41,11 @@ Before starting, make sure you have node (10) and yarn (or NPM) installed.
 
 ## The React App
 
-You can download the app [template from my CDN](https://cdn.benjaminashbaugh.me/file-dashboard-template.zip) (or [from github](https://github.com/scitronboy/cloud-storage-dashboard/tree/template). Basically, it's just `create-react-app` plus a few structural changes.
+You can download the app [template from my CDN](https://cdn.benjaminashbaugh.me/file-dashboard-template.zip) (or [from github](https://github.com/scitronboy/cloud-storage-dashboard/tree/template). Basically, it's just `create-react-app` plus a few structural changes and a basic [React-Semantic-UI](https://react.semantic-ui.com/) UI with a sidebar and file cards.
+
+Once you unzip it, `cd` into /app and run `yarn install` to install the dependencies, then yarn run to start the app.
+
+
 
 ## Making the API 
 
