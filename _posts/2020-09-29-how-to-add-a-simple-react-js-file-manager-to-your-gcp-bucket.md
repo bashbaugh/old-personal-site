@@ -24,11 +24,9 @@ description: Using React.js, create a simple file dashboard for managing Google
 ---
 In the [previous tutorial](/tutorials/gcp-cdn), we set up a Google Storage bucket with a load balancer and custom subdomain to use as a personal CDN. In this tutorial, we will be making a file management dashboard for our storage bucket, as a simpler alternative to the GCP dashboard.
 
-If you aren't interested in the code and just want to set up the dashboard, skip to the end of this tutorial. [GitHub Repo](https://github.com/scitronboy/cloud-storage-dashboard)
+You will need a basic understanding of React.js in order to follow along. If you're not interested in the React tutorial or don't know any React, you can just skip to the last section and copy the code from [the GitHub repo](https://github.com/scitronboy/cloud-storage-dashboard).
 
 I should also mention that we could also do all this using Google's Firebase Storage, however, doing it manually allows for slightly more flexibility and customization of the storage bucket and CDN setup, for example (see the [previous tutorial](/tutorials/gcp-cdn)). Also, Firebase uses the same GCP components (storage, cloud functions, etc.) behind the scenes.
-
-You will need a basic understanding of React.js in order to follow along (or, you can skip to the last step and just copy the code from the repo).
 
 #### Introduction
 
@@ -41,16 +39,29 @@ Before starting, make sure you have node (10) and yarn (or NPM) installed.
 
 ## The React App
 
-You can download the app [template from my CDN](https://cdn.benjaminashbaugh.me/file-dashboard-template.zip) (or [from github](https://github.com/scitronboy/cloud-storage-dashboard/tree/template). Basically, it's just `create-react-app` plus a few structural changes and a basic [React-Semantic-UI](https://react.semantic-ui.com/) UI with a sidebar and file cards.
+You can download the app [template from my CDN](https://cdn.benjaminashbaugh.me/file-dashboard-template.zip) (or [from github](https://github.com/scitronboy/cloud-storage-dashboard/tree/template)). Basically, it's just `create-react-app` plus a few structural changes and a basic [React-Semantic-UI](https://react.semantic-ui.com/) UI with a sidebar and file cards.
 
-Once you unzip it, `cd` into /app and run `yarn install` to install the dependencies, then yarn run to start the app.
+Once you unzip it, `cd` into /app and run `yarn install` to install the dependencies, then `yarn start` to start the app in development mode.
+
+After starting the app and navigating to [localhost:3000](http://localhost:3000/), you should see an empty dashboard with a sidebar and title:
+
+![The empty dashboard](/img/uploads/dashboard_template.png "Empty dashboard template")
+
+Before we can program the logic for fetching data from the bucket, we have to add authentication. 
+
+## Setting it up in GCP
+
+### Authentication
+
+The google sign-in plugin in our web app will require users to sign into their google account, obtaining an OAuth token for the app to use in it's cloud function requests. The Google sign-in plugin needs to be registered with GCP to work.
+
+1. First, we need to create an OAuth Client ID for the CDN dashboard. You can do this by navigating to the [API credentials](https://console.cloud.google.com/apis/credentials) page -> Create Credentials -> OAuth Client ID. You will be required to create a sign-in consent screen.
+2. Choose "external user" type, enter a name like "my CDN dashboard", and enter the domain of your CDN for "authorized domains" and any other required URLs. **Do not** add any extra scopes, an icon, or extra domains, as that would necessitate a review by Google (which might take a while).
+3. Once you create the consent screen, you might have to choose "Create Credentials" again to get to the application creation page.
+4. Choose web application and add your CDN URL to the Authorized JavaScript origins.
+5. Under "Authorized redirect URIs," add the URL to the page you want your file dashboard to be hosted at (on your CDN). This might be the root of your CDN, or it might be at `/admin`, for example - it's your choice. Finally, click "create". Copy your Client ID.
 
 
+### Adding the Cloud functions
 
-## Making the API 
-
-### Setting up cloud functions
-
-_Before deploying cloud functions, make sure you [enable the Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com)._
-
-
+*Before deploying cloud functions, make sure you [enable the Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com).*
