@@ -61,7 +61,8 @@ The google sign-in plugin in our web app will require users to sign into their g
 4. Choose web application and add your CDN URL to the Authorized JavaScript origins.
 5. Under "Authorized redirect URIs," add the URL to the page you want your file dashboard to be hosted at (on your CDN). This might be the root of your CDN, or it might be at `/admin`, for example - it's your choice. Finally, click "create". Copy your Client ID.
 
-
 ### Adding the Cloud functions
 
 *Before deploying cloud functions, make sure you [enable the Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com).*
+
+Google's Cloud Functions are the ideal place to host the API for our file manager, as the Cloud Storage Node library will automatically connect to our bucket when hosted on Cloud Functions, and Cloud Functions allow us to easily add authentication rules to our functions so that only people signed into the app with an authorized Google account can access them.
