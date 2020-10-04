@@ -63,7 +63,11 @@ The google sign-in plugin in our web app will require users to sign into their g
 
 ### Adding the Cloud functions
 
-*Before deploying cloud functions, make sure you [enable the Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com), the [Cloud Storage API](https://console.cloud.google.com/flows/enableapi?apiid=storage-api.googleapis.com), and the [IAM service account credentials API](https://console.developers.google.com/apis/library/iamcredentials.googleapis.com). These will allow your functions to build in the cloud, access cloud storage and generate signed upload URLs, respectively.*
+Before deploying cloud functions, make sure you [enable the Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com), the [Cloud Storage API](https://console.cloud.google.com/flows/enableapi?apiid=storage-api.googleapis.com), and the [IAM service account credentials API](https://console.developers.google.com/apis/library/iamcredentials.googleapis.com). These will allow your functions to build in the cloud and access the cloud storage API. 
+
+Additionally, you may need to add the Service Account Token Creator role to the service account used by your cloud functions. This will give them permission to generate signed URLs for file uploads and downloads. To do this, visit the [IAM (identity and access management) page](https://console.cloud.google.com/iam-admin/iam) in the cloud console. In the list of service accounts, search for the account named "App engine default service account". Then, select "add" at the top of the page and under "New members", start typing and select the account you just found. This is the account Cloud Functions will use to sign URLs. Finally, select `Service Account Token Creator` for the role and click save.
+
+![The IAM page](/img/uploads/iam-tokencreator.png "The IAM page")
 
 Google's Cloud Functions are the ideal place to host the API for our file manager, as the Cloud Storage Node library will automatically connect to our bucket when hosted on Cloud Functions, and Cloud Functions allow us to easily add authentication rules to our functions so that only people signed into the app with an authorized Google account can access them.
 
