@@ -5,6 +5,7 @@ date: 2020-09-28
 lastmod: 2020-09-28
 title: How to Set Up Your Own Personal CDN & "Cloud" using GCP and Cloudflare
 image: /img/uploads/cdn_xml_thumbnail.png
+top-image: ""
 slug: gcp-cdn
 url_slug: gcp-cdn
 category: tutorials
