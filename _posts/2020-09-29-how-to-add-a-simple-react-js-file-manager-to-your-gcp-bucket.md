@@ -4,6 +4,7 @@ section-type: post
 date: 2020-09-29
 lastmod: 2020-09-29
 title: How to Create a Simple React.js File Manager for your GCP bucket
+top-image: /img/uploads/filemanager1.png
 slug: gcp-cdn-file-dashboard
 url_slug: gcp-cdn-file-dashboard
 category: tutorials
