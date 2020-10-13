@@ -58,11 +58,11 @@ Congratulations! You've set up your first Cloud Storage bucket! If you navigate 
 
 You could stop here if you wanted to - we now have a fully functioning storage bucket with the default GCP dashboard for uploading files and getting links. In the next step, we will go over setting up load balancing and a static IP, so that we can turn our storage bucket into an official CDN and add it to a subdomain on a website.
 
-## Setting up load balancing + a CDN layer
+## Setting up load balancing + GCP CDN layer
 
 *Note: **this step and all steps after this require you to have a domain you can use for your CDN**. I use my personal domain at cdn.benjaminashbaugh.me.*
 
-**Pricing**: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is relatively expensive, and costs about $2.90 USD at minimum per month for the static IP and [CDN costs](https://cloud.google.com/cdn/pricing), plus about $18 a month for the [load balancing](https://cloud.google.com/vpc/network-pricing#lb). I'm not completely sure why Google doesn't offer a free tier on load balancing, but if you're just making a personal CDN and this is too expensive for you, you an either skip the CDN layer altogether and just access your bucket through `storage.googleapis.com`, or you can use a CNAME record to connect your subdomain across HTTP, or you can route your bucket through Cloudflare's (free) CDN (as described in the next section) - which [won't perform quite as well as the GCP CDN](https://www.cdnperf.com/), but will still be ideal especially for static website content.
+**Pricing**: The [pricing for this step](https://cloud.google.com/vpc/network-pricing) is relatively expensive, and costs about $2.90 USD at minimum per month for the static IP and [CDN costs](https://cloud.google.com/cdn/pricing), plus about $18 a month for the [load balancing](https://cloud.google.com/vpc/network-pricing#lb). I'm not completely sure why Google doesn't offer a free tier on load balancing, but if you're just making a personal CDN and this is too expensive for you, you can either skip the CDN layer altogether and just access your bucket through `storage.googleapis.com`, or you can use a CNAME record to connect your subdomain across HTTP, or you can (recommended) route your bucket through Cloudflare's (free) CDN (as described in the next section) - which [won't perform quite as well as the GCP CDN](https://www.cdnperf.com/), but will still be ideal especially for static website content.
 
 To set up the Google Cloud CDN and load balancer, navigate to Networking -> Network Services -> Load Balancing. Select "create load balancer" and choose "HTTP(s) load balancing".
 
@@ -82,7 +82,14 @@ Finally, click "create" to finish setting up your load balancer!
 
 Note that you will get an error message if you visit `http://CDN-IP` if you have not set up an HTTP frontend, and visiting `https://CDN-IP` will also give an error (`ERR_SSL_VERSION_OR_CIPHER_MISMATCH`) initially, because it takes about 20 minutes to provision the SSL certificate. Even after the SSL cert is provisioned, you might still get a warning because you're visiting the site through the IP rather than the domain listed in the certificate.
 
+## Adding Cloudflare to the bucket
+
+Cloudflare is another company which offers a free CDN layer for your websites. If you're hosting content for a website or other service and can't afford Google's Load Balancer, then this is recommended. You will still need a domain or subdomain to use.
+
+Once you have [created a cloudflare account](https://dash.cloudflare.com/sign-up), choose "add site" from the navigation bar.
+
 Next up - adding the CDN to a custom subdomain!
+
 
 ## Adding DNS entries to your subdomain.
 
