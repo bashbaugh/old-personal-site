@@ -1,6 +1,6 @@
 ---
 title: Custom Cloud Storage File Dashboard
-date: 2020-10-14
+date: 2020-09-30
 section: 0
 image: /img/uploads/dash.png
 visible: true
