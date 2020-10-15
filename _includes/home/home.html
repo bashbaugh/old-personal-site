@@ -29,7 +29,7 @@
         {% for project in featured_projects %}
           {% if project.visible != false %}
             <div class="project-card featured-card">
-              <img class="featured-project-image" src="{{ project.image }}" alt="{{ project.name }}">
+              <a href="{{ project.image }}"><img class="featured-project-image" src="{{ project.image }}" alt="{{ project.name }}"></a>
               <div class="featured-project-card-content">
                 <a href="{{ project.link }}" target="_blank"><h4>{{ project.title }}</h4></a>
                 <h6>started: {{ project.date | date_to_string }}</h6>
