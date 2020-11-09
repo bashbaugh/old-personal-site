@@ -5,4 +5,4 @@ section: 1
 visible: true
 link: https://hiplivingcoach.com/
 ---
-I designed and programmed the HIP Living Coach life coaching website with Next.js, and also set up the invoicing system with Stripe, automated email system with Mailgun, and a custom contract/agreement form system.
+I designed and programmed the HIP Living Coach life coaching website with Next.js, and also set up the invoicing system with Stripe, automated email system with Mailgun, CMS with Netlify CMS, and a custom contract/agreement form system.
