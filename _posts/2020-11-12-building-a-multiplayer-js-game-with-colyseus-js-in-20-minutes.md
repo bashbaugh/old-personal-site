@@ -38,7 +38,7 @@ First, we need to install the Colyseus server framework. Navigate to the "packag
 
 There are several packages we need to import into our gameserver, including Colyseus (the framework we'll use for networking), Express (a package we'll use for setting up the interface between the game and server. It allows us to define "routes", which tell the server how to respond when the user requests a certain URL), and CORs (a package that will configure express so that the game can access it). Let's do that first by adding these lines to the top of `index.ts`:
 
-```
+```javascript
 import http from "http"
 import express from "express"
 import cors from "cors"
@@ -48,7 +48,7 @@ import { monitor } from "@colyseus/monitor"
 
 Now, we need to write a few lines to set up the game server:
 
-```
+```javascript
 const port = 3000
 const app = express() // This line creates a new Express app
 
