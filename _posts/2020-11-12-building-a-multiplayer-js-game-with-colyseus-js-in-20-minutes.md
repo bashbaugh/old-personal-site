@@ -151,27 +151,26 @@ Yeahhh!!! It works!!! If it doesn't, go back and make sure all your files, inclu
 
 ## Writing the Game
 
-Ok, it's time to code the game itself!! Let's start by adding the Phaser and Colyseus libraries to the `game.html`, before the closing `</head>` tag:
+Ok, it's time to code the game itself!! Let's start by adding the Colyseus library to the `game.html`, before the closing `</head>` tag:
 
 ```html
   <head>
     <title>My Amazing Game</title>
-    <script src="//cdn.jsdelivr.net/npm/phaser@3.24.0/dist/phaser.min.js"></script>
     <script src="https://unpkg.com/colyseus.js@^0.14.0/dist/colyseus.js"></script>
   </head>
 ```
 
-Now let's add a `div` tag for Phaser to add our game to, in the middle of `<body>`:
+Now let's add a `canvas` element for our game graphics to the `<body>`:
 
 ```html
   <body>
     <h1>My Amazing Game</h1>
 
-    <div id='game-parent'></div>
+    <canvas id='game-canvas' width='400' height='600'></canvas>
     
     <script src='game.js'></script>
   </body>
 ```
 
-Now, in `game.js` let's initialize Phaser:
+Now, in `game.js` the first thing we want to do is ask the player to enter a display name (this will 
 
