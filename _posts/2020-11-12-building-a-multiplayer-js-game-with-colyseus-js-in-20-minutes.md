@@ -286,7 +286,7 @@ export class PongRoom extends Room {
 
 ```
 
-Let's add some classes and variables to keep track of the game's state. **Make sure you add these above the `PongRoom` class** First, add a "Player" class to keep track of each player's racket position, score, and name:
+Let's add some classes and variables to keep track of the game's state. **Make sure you add these above the `PongRoom class** First, add a "Player" class to keep track of each player's racket position, score, and name:
 
 ```javascript
 class Player extends Schema {
@@ -308,11 +308,6 @@ class Player extends Schema {
 Next, we'll add a PongState class to store the players, as well as the position and direction of the Pong:
 
 ```javascript
-
-
-Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
-
-```javascript
 class PongState extends Schema {
   // We instantiate two player classes, one for each player
   @type(Player)
@@ -330,4 +325,10 @@ class PongState extends Schema {
   @type('float32')
   pongAngle: number // 0 means it's flying in a straight line, 1 is 45 degrees right, -1 is 45 degrees left
 }
+```
+
+Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
+
+```javascript
+
 ```
