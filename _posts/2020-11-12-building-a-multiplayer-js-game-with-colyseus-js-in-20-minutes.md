@@ -112,9 +112,19 @@ console.log(`Listening on http://localhost:${ port }`)
 
 ```
 
-Finally, we need to create the HTML and JS files that will run on the user's computer when they visit the game. Create two new files, `game.html` and `game.js`. You can leave `game.js` empty for now but let's add some HTML to `game.html`:
+Finally, we need to create the HTML and JS files that will run on the user's computer when they visit the game. Create two new files, `game.html` and `game.js`. You can leave `game.js` empty for now but let's add some basic HTML with a title and page header to `game.html`:
 
 ```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Amazing Game</title>
+  </head>
+  <body>
+    <h1>My Amazing Game</h1>
+    
+  </body>
+</html>
 ```
 
 Your project should now look like this:
