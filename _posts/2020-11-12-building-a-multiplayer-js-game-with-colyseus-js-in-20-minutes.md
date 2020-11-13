@@ -27,9 +27,25 @@ We will be using TypeScript for the server, as it is best for Colyseus. If you a
 
 The easiest way to get started is by starting a new TypeScript Repl at <https://repl.it/languages/typescript> (if you would prefer to use a local environment instead, go ahead). I would recommend renaming it to something like "My Multiplayer Game" from the dropdown at the top so you can easily find it again.
 
+Now, there's one configuration change we need to make so that the typescript compiles properly. I won't get into the details here, but you can delete everything in the `tsconfig.json` file and replace it with this:
+
+```
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true
+  }
+}
+```
+
 ### Importing the Packages
 
-First, we need to install the Colyseus server framework and other packages. To specify them, add a file name `package.json` to your project with the following contents:
+Now, we need to install the Colyseus server framework and other packages our game will use. To specify them, add a file named `package.json` to your project with the following contents:
 
 ```json
 {
@@ -42,7 +58,6 @@ First, we need to install the Colyseus server framework and other packages. To s
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.1",
     "ts-node": "^8.1.0",
     "ts-node-dev": "^1.0.0-pre.63",
@@ -50,14 +65,10 @@ First, we need to install the Colyseus server framework and other packages. To s
   },
   "dependencies": {
     "@colyseus/monitor": "^0.12.2",
-    "@colyseus/social": "^0.10.9",
     "colyseus": "^0.14.0",
-    "cors": "^2.8.5",
     "express": "^4.16.4",
-    "express-jwt": "^5.3.1"
   }
 }
-
 ```
 
 There are several packages we need to import into our gameserver, including Colyseus (the framework we'll use for networking), Express (a package we'll use for setting up the interface between the game and server. It allows us to define "routes", which tell the server how to respond when the user requests a certain URL), and CORs (a package that will configure express so that the game can access it). Let's do that first by adding these lines to the top of `index.ts`:
