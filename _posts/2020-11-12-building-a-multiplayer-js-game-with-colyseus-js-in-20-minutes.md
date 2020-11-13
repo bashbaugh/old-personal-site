@@ -195,5 +195,21 @@ We will create a function called "loop", which we will pass to a built in browse
 It's also important to keep track of when exactly the loop runs every time, so that we can calculate how many milliseconds it's been since the loop last ran. This is a concept known as "delta time" and it's extremely important for ensuring smooth, consistent gameplay regardless of how fast a player's computer is. Fortunately, `requestAnimationFrame` passes the number of milliseconds since the window was loaded into the loop function, which we can use to calculate the delta time.
 
 ```javascript
+let lastRender = 0 // Initialize lastRender variable to keep track of when the loop was last run.
+function loop(timestamp) {
+  var delta = timestamp - lastRender // How many milliseconds have past since the loop last ran?
+
+  // Erase the canvas every time the loop runs
+  ctx.fillStyle = 'black'
+  ctx.fillRect(0, 0, width, height)
+
+
+  lastRender = timestamp // Update the last render variable
+  window.requestAnimationFrame(loop) // Schedule this function to be run again.
+}
+
+window.requestAnimationFrame(loop) // Schedule the loop function to be run next frame
+```
+
 
 
