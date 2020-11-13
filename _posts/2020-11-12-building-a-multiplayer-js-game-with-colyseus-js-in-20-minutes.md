@@ -24,7 +24,7 @@ In this tutorial, I will explain the basics of creating a multiplayer browser po
 
 ## How it works
 
-Most browser-based games use what are called _websockets_ to communicate with a _game server_, a special kind of web server responsible for synchronizing each player's movements across every player's browser. Websockets are not like traditional HTTP requests, as they form a _persistent, 2-way connection_ with the server, allowing each server and client to send messages back and forth to each other. For example, if one player in the game moves or does some other game action (depending on the type of game), the game will immediately send that move to the server using a socket connection, where the server will process the move (and perform any validation necessary to prevent cheating), and send it back over a socket connection to all the other players, whose games will process the new data and update the first player's position, so that everyone can see when one player moves. 
+Most browser-based games use what are called *websockets* to communicate with a *game server*, a special kind of web server responsible for synchronizing each player's movements across every player's browser. Websockets are not like traditional HTTP requests, as they form a *persistent, 2-way connection* with the server, allowing each server and client to send messages back and forth to each other. For example, if one player in the game moves or does some other game action (depending on the type of game), the game will immediately send that move to the server using a socket connection, where the server will process the move (and perform any validation necessary to prevent cheating), and send it back over a socket connection to all the other players, whose games will process the new data and update the first player's position, so that everyone can see when one player moves. 
 
 Fortunately, the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) is easy enough to use already, but for this tutorial we will be using a JavaScript package called [Colyseus](https://colyseus.io/) that handles the websocket connection and game state automatically, so we can just focus on the game itself.
 
@@ -188,7 +188,7 @@ const ctx = canvas.getContext('2d') // This is the canvas context, which we can 
 
 ### Making a game loop
 
-Most games have at least one or more _game loop_, that is, a chunk of code composed of an update and drawing function, or maybe a function to calculate physics, etc, that run as frequently as possible while a game is running (this is often 60 times per second). We need one of these when we are using the HTML canvas element as well, because the canvas is quite literally a "canvas" in the sense that you can't adjust the position of something (like a player) or remove something from the canvas (you can only add things) - instead, you have to clear the whole canvas and redraw every object on it, each with their new updated positions. Fortunately, this is easy to in JavaScript.
+Most games have at least one or more *game loop*, that is, a chunk of code composed of an update and drawing function, or maybe a function to calculate physics, etc, that run as frequently as possible while a game is running (this is often 60 times per second). We need one of these when we are using the HTML canvas element as well, because the canvas is quite literally a "canvas" in the sense that you can't adjust the position of something (like a player) or remove something from the canvas (you can only add things) - instead, you have to clear the whole canvas and redraw every object on it, each with their new updated positions. Fortunately, this is easy to in JavaScript.
 
 We will create a function called "loop", which we will pass to a built in browser function called `requestAnimationFrame`. requestAnimationFrame registers a function to be called as soon as possible before the browser repaints the page (which happens roughly 60 times per second on most displays). It's the perfect place to call our game loop to make our game graphics appear as smooth as possible.
 
@@ -211,5 +211,6 @@ function loop(timestamp) {
 window.requestAnimationFrame(loop) // Schedule the loop function to be run next frame
 ```
 
+Once you add all this, you should be able to refresh the game window and see a black square where the canvas is:
 
-
+![The blank canvas and script](/img/uploads/hcmpg_blacksquare.png "The blank canvas and script")
