@@ -23,7 +23,13 @@ In this tutorial, I will explain the basics of creating a multiplayer browser ga
 
 ## How it works
 
-We will be using TypeScript for the server, as it is best for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. Usually, you should be able to just write standard JS code and get away with it in TypeScript.
+Most browser-based games use what are called _websockets_ to communicate with a _game server_, a special kind of web server responsible for synchronizing each player's movements across every player's browser. Websockets are not like traditional HTTP requests, as they form a _persistent, 2-way connection_ with the server, allowing each server and client to send messages back and forth to each other. For example, if one player in the game moves or does some other game action (depending on the type of game), the game will immediately send that move to the server using a socket connection, where the server will process the move (and perform any validation necessary to prevent cheating), and send it back over a socket connection to all the other players, whose games will process the new data and update the first player's position, so that everyone can see when one player moves. 
+
+Fortunately, the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) is easy enough to use already, but for this tutorial we will be using a JavaScript package called [Colyseus](https://colyseus.io/) that handles the websocket connection and game state automatically, so we can just focus on the game itself.
+
+As for the game itself, we will be using [Phaser.js](https://phaser.io/), another open-source package for making browser games. Phaser is a very large framework, with everything from physics engines to sound tools to animation utilities. In this tutorial, we will only be using a tiny fraction of its available features, but you may find its other features useful if you plan to continue expanding and improving this game.
+
+We will be using the [TypeScript programming language](https://www.typescriptlang.org/docs/) for the server, as it is the recommended language for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types (such as string, number, or "any") for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. But usually, you should be able to just write standard JS code and get away with it in TypeScript.
 
 ## Setting up the server
 
@@ -132,8 +138,11 @@ Your project should now look like this:
 
 (it's ok if you don't see `package-lock.json`)
 
-Let's make sure it's working so far - press Run and hold your breath! After several seconds, if you see a new screen open that says "My Amazing Game"
+Let's make sure it's working so far - press Run and hold your breath! After several seconds, if you see a new screen open that says "My Amazing Game", it's working!!
 
 ![The empty game page](/img/uploads/hcmpg_hello.png "The empty game page")
 
 Yeahhh!!! It works!!! If it doesn't, go back and make sure all your files, including game.html, index.ts, tsconfig.json and package.json match mine.
+
+## Writing the Game
+
