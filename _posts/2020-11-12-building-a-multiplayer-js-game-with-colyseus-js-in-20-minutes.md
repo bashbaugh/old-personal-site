@@ -263,14 +263,10 @@ import { Schema, type } from "@colyseus/schema"
 Now, let's start extending these classes to define a pong room:
 
 ```javascript
-export class PongState extends Schema {
-    
-}
-
 export class PongRoom extends Room {
 
   onCreate (options: any) {
-    this.setState(new PongState()) // Set the state for the room
+    this.setState(new PongState()) // Set the state for the room (we'll make this next step)
     this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (synonymous with the loop function in game.js)
     this.maxClients = 2 // Only 2 players per Pong game
   }
@@ -290,32 +286,48 @@ export class PongRoom extends Room {
 
 ```
 
-Let's add some variables to the state class. Two numbers for the racket x positions, two numbers for the score, two strings for the player names, and an x, y and angle value for the pong.
+Let's add some classes and variables to keep track of the game's state. **Make sure you add these above the `PongRoom` class** First, add a "Player" class to keep track of each player's racket position, score, and name:
+
+```javascript
+class Player extends Schema {
+  // This class keeps track of the racket position, score and name for a player
+  @type('number')
+  racketX: number = 270 // Initializing it at 270 will make sure it's centered
+
+  @type('int8')
+  score: number = 0
+
+  @type('string')
+  name: string
+
+  @type('string')
+  clientId: string // We'll use this to keep track of which player is which
+}
+```
+
+Next, we'll add a PongState class to store the players, as well as the position and direction of the Pong:
+
+```javascript
+
+
+Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
 
 ```javascript
 class PongState extends Schema {
-    @type('number')
-    player1RacketX: number
-    @type('number')
-    player2RacketX: number
+  // We instantiate two player classes, one for each player
+  @type(Player)
+  player1: Player = new Player() 
+  @type(Player)
+  player2: Player = new Player()
 
-    @type('int8')
-    player1Score: number
-    @type('int8')
-    player2Score: number
-
-    @type('string')
-    player1Name: string
-    @type('string')
-    player2Name: string
-
-    @type('number')
-    pongX: number
-    @type('number')
-    pongY: number
-    @type('boolean')
-    pongDirection: boolean // 1 means it's flying towards player 2, 0 means it's flying toward player 1
-    @type('float32')
-    pongAngle: number // 0 means it's flying in a straight line, 1 is 45 degrees right, -1 is 45 degrees left
+  // We also define a few variables to keep track of the Pong
+  @type('number')
+  pongX: number
+  @type('number')
+  pongY: number
+  @type('boolean')
+  pongDirection: boolean // 1 means it's flying towards player 2, 0 means it's flying toward player 1
+  @type('float32')
+  pongAngle: number // 0 means it's flying in a straight line, 1 is 45 degrees right, -1 is 45 degrees left
 }
 ```
