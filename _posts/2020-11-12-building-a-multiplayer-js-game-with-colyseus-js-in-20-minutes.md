@@ -3,7 +3,7 @@ layout: post
 section-type: post
 date: 2020-11-12
 lastmod: 2020-11-12
-title: Building a multiplayer JS game with Colyseus.js in 20 minutes
+title: Building a Multiplayer JS Pong Game with Colyseus.js in 20 Minutes
 slug: multiplayer-js-game-workshop
 url_slug: multiplayer-js-game-workshop
 category: tutorials
@@ -12,14 +12,15 @@ tags:
   - javascript
   - game
   - tutorial
-postdescription: Using TypeScript along with Colyseus.js and Phaser.js, we will
-  create a very simple multiplayer browser game in less than 30 minutes.
-  Originally uploaded as a Hack Club Workshop.
-titletag: Building a multiplayer JS game with Colyseus.js and Phaser.js in 20 minutes
-description: Using TypeScript along with Colyseus.js and Phaser.js, we will
-  create a very simple multiplayer browser game in less than 30 minutes.
+postdescription: Using TypeScript along with Colyseus.js we will create a very
+  simple multiplayer browser pong game in less than 30 minutes. Originally
+  uploaded as a Hack Club Workshop.
+titletag: Building a multiplayer JS Pong game with Colyseus.js in 20 minutes
+description: Using TypeScript along with Colyseus.js we will create a very
+  simple multiplayer browser pong game in less than 30 minutes. Originally
+  uploaded as a Hack Club Workshop.
 ---
-In this tutorial, I will explain the basics of creating a multiplayer browser game with the popular JS frameworks [Colyseus.js](https://docs.colyseus.io/) and [Phaser.js](https://photonstorm.github.io/phaser3-docs/). Using these frameworks, you will be able to build on this game to create something very complex, if you want!
+In this tutorial, I will explain the basics of creating a multiplayer browser game with the JS framework [Colyseus.js](https://docs.colyseus.io/).
 
 ## How it works
 
@@ -27,7 +28,7 @@ Most browser-based games use what are called _websockets_ to communicate with a 
 
 Fortunately, the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) is easy enough to use already, but for this tutorial we will be using a JavaScript package called [Colyseus](https://colyseus.io/) that handles the websocket connection and game state automatically, so we can just focus on the game itself.
 
-As for the game itself, we will be using [Phaser.js](https://phaser.io/), another open-source package for making browser games. Phaser is a very large framework, with everything from physics engines to sound tools to animation utilities. In this tutorial, we will only be using a tiny fraction of its available features, but you may find its other features useful if you plan to continue expanding and improving this game.
+As for the game itself, we will just be using the native browser [canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) as we don't need anything more than that for this simple game. However, if you want to make more complex games in the future there are many available frameworks such as [Phaser.js](https://phaser.io/) that provide useful tools such as physics and animation engines.
 
 We will be using the [TypeScript programming language](https://www.typescriptlang.org/docs/) for the server, as it is the recommended language for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types (such as string, number, or "any") for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. But usually, you should be able to just write standard JS code and get away with it in TypeScript.
 
@@ -112,6 +113,10 @@ app.get('/', (req: express.Request, res: express.Response) => {
   res.sendFile(path.resolve('game.html')) // Respond with the game file when the user visits the server. Path.resolve makes sure the path is absolute so Express can find the file.
 })
 
+app.get('/game.js', (req: express.Request, res: express.Response) => {
+  res.sendFile(path.resolve('game.js')) // Send game.js as well. (we'll create these files soon)
+})
+
 gameServer.listen(port) // Finally, we start the server by listening to incoming requests.
 console.log(`Listening on http://localhost:${ port }`)
 ```
@@ -145,4 +150,28 @@ Let's make sure it's working so far - press Run and hold your breath! After seve
 Yeahhh!!! It works!!! If it doesn't, go back and make sure all your files, including game.html, index.ts, tsconfig.json and package.json match mine.
 
 ## Writing the Game
+
+Ok, it's time to code the game itself!! Let's start by adding the Phaser and Colyseus libraries to the `game.html`, before the closing `</head>` tag:
+
+```html
+  <head>
+    <title>My Amazing Game</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.24.0/dist/phaser.min.js"></script>
+    <script src="https://unpkg.com/colyseus.js@^0.14.0/dist/colyseus.js"></script>
+  </head>
+```
+
+Now let's add a `div` tag for Phaser to add our game to, in the middle of `<body>`:
+
+```html
+  <body>
+    <h1>My Amazing Game</h1>
+
+    <div id='game-parent'></div>
+    
+    <script src='game.js'></script>
+  </body>
+```
+
+Now, in `game.js` let's initialize Phaser:
 
