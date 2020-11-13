@@ -32,7 +32,7 @@ As for the game itself, we will just be using the native browser [canvas API](ht
 
 We will be using the [TypeScript programming language](https://www.typescriptlang.org/docs/) for the server, as it is the recommended language for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types (such as string, number, or "any") for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. But usually, you should be able to just write standard JS code and get away with it in TypeScript.
 
-As this is an intermediate-level tutorial, I will assume you are already familiar with JavaScript features such as classes, etc.
+As this is an intermediate-level tutorial, I will assume you are already familiar with JavaScript features such as classes, ternary expressions, and arrow functions.
 
 ## Setting up the server
 
@@ -275,6 +275,10 @@ export class PongRoom extends Room {
     
   }
 
+  startGame() {
+    
+  }
+
   onJoin (client: Client, options: any) {
 
   }
@@ -285,6 +289,8 @@ export class PongRoom extends Room {
 }
 
 ```
+
+### Adding game state
 
 Let's add some classes and variables to keep track of the game's state. **Make sure you add these above the `PongRoom class** First, add a "Player" class to keep track of each player's racket position, score, and name:
 
@@ -326,6 +332,12 @@ class PongState extends Schema {
   pongAngle: number // 0 means it's flying in a straight line, 1 is 45 degrees right, -1 is 45 degrees left
 }
 ```
+
+### Handling users joining
+
+Back in the `onJoin` function of `PongRoom`, we need to do a few things when a user joins. First, we need to add the user's name and id to the game state:
+
+
 
 Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
 
