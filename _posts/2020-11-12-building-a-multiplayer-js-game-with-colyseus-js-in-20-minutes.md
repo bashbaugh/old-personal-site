@@ -311,10 +311,16 @@ class Player extends Schema {
 }
 ```
 
-Next, we'll add a PongState class to store the players, as well as the position and direction of the Pong:
+Note that the `@type...` part is a typescript feature called a _decorator_. In this context, it's used to tell Colyseus what type of data a variable is so that it can properly encode it for websocket transfer.
+
+Next, we'll add a PongState class to store the players and whether the game has started, as well as the position and direction of the Pong:
 
 ```javascript
 class PongState extends Schema {
+  // Has the game started?
+  @type('boolean')
+  gameStarted: boolean = false
+
   // We instantiate two player classes, one for each player
   @type(Player)
   player1: Player = new Player() 
@@ -333,9 +339,9 @@ class PongState extends Schema {
 }
 ```
 
-### Handling users joining
+### Handling when a user joins
 
-Back in the `onJoin` function of `PongRoom`, we need to do a few things when a user joins. First, we need to add the user's name and id to the game state, then call the `startGame` function if there are 2 players:
+Back in the `onJoin` function of `PongRoom`, we need to do two things when a user joins. First, we need to add the user's name and id to the game state, then call the `startGame` function if there are 2 players:
  
 ```javascript
   onJoin (client: Client, options: any) {
@@ -355,6 +361,19 @@ Back in the `onJoin` function of `PongRoom`, we need to do a few things when a u
     }
   }
 ```
+
+### Starting the game
+
+Now, in the `startGame` function, all we have to do is choose a random position for the pong and start the game:
+
+```javascript
+  startGame() {
+    this.state.pongDirection = Math.random() <= 0.5 // Randomize the starting direction of the pong
+    this.state.gameStarted = true // Start the game!!!
+  }
+```
+
+### Handling when a user moves their racket
 
 Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
 
