@@ -335,9 +335,26 @@ class PongState extends Schema {
 
 ### Handling users joining
 
-Back in the `onJoin` function of `PongRoom`, we need to do a few things when a user joins. First, we need to add the user's name and id to the game state:
+Back in the `onJoin` function of `PongRoom`, we need to do a few things when a user joins. First, we need to add the user's name and id to the game state, then call the `startGame` function if there are 2 players:
+ 
+```javascript
+  onJoin (client: Client, options: any) {
+    // Determine whether this is player 2 or player 1 joining. If player 1 already exists then this is player 2.
+    const alreadyHasPlayer1 = !!this.state.player1.clientId
+    const newPlayerState = alreadyHasPlayer1 ? this.state.player2 : this.state.player1
 
+    // Set the player's name and ID:
 
+    newPlayerState.name = options.name // options contain options passed from the player. We'll write that part soon.
+
+    newPlayerState.clientId = client.sessionId
+
+    if (alreadyHasPlayer1) {
+      // We now have 2 players and can start the game!!!
+      setTimeout(this.startGame, 3000) // Wait 3 seconds before starting
+    }
+  }
+```
 
 Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
 
