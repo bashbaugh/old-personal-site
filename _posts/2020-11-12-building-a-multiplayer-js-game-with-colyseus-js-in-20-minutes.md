@@ -375,8 +375,19 @@ Now, in the `startGame` function, all we have to do is choose a random position 
 
 ### Handling when a user moves their racket
 
-Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket. When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the PongRoom's `onCreate` method.
+Now, we need to add a websocket message handler so that each client can tell the server when the player moves their racket (which we'll code soon). When they do, we need to update the racket state. We can use the `room.onMessage` handler for this. Let's add it to the bottom of the `PongRoom`'s `onCreate` method.
 
 ```javascript
+  onCreate (options: any) {
+    this.setState(new PongState()) // Set the state for the room
+    this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (similar to the loop function in game.js)
+    this.maxClients = 2 // Only 2 players per Pong game
 
+    this.onMessage('moveRacket', (client, data) => {
+      // First, we check the client's id to see whether they're player 1 or player 2
+      const player = (client.sessionId === this.state.player1.clientId) ? this.state.player1 : this.state.player2
+
+      player.pongX += data.x // Adjust the player's pong position. data is passed from the player; we'll code that soon.
+    })
+  }
 ```
