@@ -32,6 +32,8 @@ As for the game itself, we will just be using the native browser [canvas API](ht
 
 We will be using the [TypeScript programming language](https://www.typescriptlang.org/docs/) for the server, as it is the recommended language for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types (such as string, number, or "any") for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. But usually, you should be able to just write standard JS code and get away with it in TypeScript.
 
+As this is an intermediate-level tutorial, I will assume you are already familiar with JavaScript features such as classes, etc.
+
 ## Setting up the server
 
 The easiest way to get started is by starting a new TypeScript Repl at <https://repl.it/languages/typescript> (if you would prefer to use a local environment instead, go ahead). I would recommend renaming it to something like "My Multiplayer Game" from the dropdown at the top so you can easily find it again.
@@ -194,7 +196,7 @@ We will create a function called "loop", which we will pass to a built in browse
 
 It's also important to keep track of when exactly the loop runs every time, so that we can calculate how many milliseconds it's been since the loop last ran. This is a concept known as "delta time" and it's extremely important for ensuring smooth, consistent gameplay regardless of how fast a player's computer is. Fortunately, `requestAnimationFrame` passes the number of milliseconds since the window was loaded into the loop function, which we can use to calculate the delta time.
 
-We'll also add a function called `draw`, where we will eventually place all the code for drawing the paddles and pong ball to the screen.
+We'll also add a function called `draw`, where we will eventually place all the code for drawing the rackets and pong ball to the screen.
 
 ```javascript
 function draw () {
@@ -225,7 +227,7 @@ Once you add all this, you should be able to refresh the game window and see a b
 
 ### Handling user input
 
-The only user input we need to handle is the browser's left and right arrow keys, which will move the player's paddle left or right. We need to be able to check from the game loop to see if the left or right arrow keys are pressed, so let's add some event handlers that will detect when the user presses or releases the left/right arrows and update a variable.
+The only user input we need to handle is the browser's left and right arrow keys, which will move the player's racket left or right. We need to be able to check from the game loop to see if the left or right arrow keys are pressed, so let's add some event handlers that will detect when the user presses or releases the left/right arrows and update a variable.
 
 Add two variables to the top of the `game.js` file:
 
@@ -244,5 +246,76 @@ window.onkeydown = function (e) {
 window.onkeyup = function (e) {
   if (e.key = 'ArrowLeft') leftIsPressed = false
   if (e.key = 'ArrowRight') rightIsPressed = false
+}
+```
+
+## Back to the server...
+
+Let's move back to the server now and write the Pong server logic.
+
+First, we need to create a `Room` class (a room is basically an instance of a game) to define the networking code and logic for pong games. We also need to create a `Schema` class to define the "state" for each pong game. The state will include the positions of each player's racket and of the ball, as well as the score, etc. Let's create a new file named `PongRoom.ts` and import some Colyseus classes:
+
+```javascript
+import { Room, Client } from "colyseus"
+import { Schema, type } from "@colyseus/schema"
+```
+
+Now, let's start extending these classes to define a pong room:
+
+```javascript
+export class PongState extends Schema {
+    
+}
+
+export class PongRoom extends Room {
+
+  onCreate (options: any) {
+    this.setState(new PongState()) // Set the state for the room
+    this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (synonymous with the loop function in game.js)
+    this.maxClients = 2 // Only 2 players per Pong game
+  }
+
+  update (delta: number) {
+    
+  }
+
+  onJoin (client: Client, options: any) {
+
+  }
+
+  onLeave (client: Client, consented: boolean) {
+
+  }
+}
+
+```
+
+Let's add some variables to the state class. Two numbers for the racket x positions, two numbers for the score, two strings for the player names, and an x, y and angle value for the pong.
+
+```javascript
+class PongState extends Schema {
+    @type('number')
+    player1RacketX: number
+    @type('number')
+    player2RacketX: number
+
+    @type('int8')
+    player1Score: number
+    @type('int8')
+    player2Score: number
+
+    @type('string')
+    player1Name: string
+    @type('string')
+    player2Name: string
+
+    @type('number')
+    pongX: number
+    @type('number')
+    pongY: number
+    @type('boolean')
+    pongDirection: boolean // 1 means it's flying towards player 2, 0 means it's flying toward player 1
+    @type('float32')
+    pongAngle: number // 0 means it's flying in a straight line, 1 is 45 degrees right, -1 is 45 degrees left
 }
 ```
