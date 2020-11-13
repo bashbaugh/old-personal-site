@@ -20,7 +20,7 @@ description: Using TypeScript along with Colyseus.js we will create a very
   simple multiplayer browser pong game in less than 30 minutes. Originally
   uploaded as a Hack Club Workshop.
 ---
-In this tutorial, I will explain the basics of creating a multiplayer browser game with the JS framework [Colyseus.js](https://docs.colyseus.io/).
+In this tutorial, I will explain the basics of creating a multiplayer browser pong game with the JS framework [Colyseus.js](https://docs.colyseus.io/).
 
 ## How it works
 
@@ -172,5 +172,28 @@ Now let's add a `canvas` element for our game graphics to the `<body>`:
   </body>
 ```
 
-Now, in `game.js` the first thing we want to do is ask the player to enter a display name (this will 
+Now, in `game.js` the first thing we want to do is ask the player to enter a display name to identify themself to other players.
+
+```javascript
+const userName = prompt("Enter a name:")
+```
+
+Then, let's get the canvas context:
+
+```javascript
+const canvas = document.getElementById('game-canvas')
+const width = canvas.width, height = canvas.height
+const ctx = canvas.getContext('2d') // This is the canvas context, which we can use to draw things on the canvas.
+```
+
+### Making a game loop
+
+Most games have at least one or more _game loop_, that is, a chunk of code composed of an update and drawing function, or maybe a function to calculate physics, etc, that run as frequently as possible while a game is running (this is often 60 times per second). We need one of these when we are using the HTML canvas element as well, because the canvas is quite literally a "canvas" in the sense that you can't adjust the position of something (like a player) or remove something from the canvas (you can only add things) - instead, you have to clear the whole canvas and redraw every object on it, each with their new updated positions. Fortunately, this is easy to in JavaScript.
+
+We will create a function called "loop", which we will pass to a built in browser function called `requestAnimationFrame`. requestAnimationFrame registers a function to be called as soon as possible before the browser repaints the page (which happens roughly 60 times per second on most displays). It's the perfect place to call our game loop to make our game graphics appear as smooth as possible.
+
+It's also important to keep track of when exactly the loop runs every time, so that we can calculate how many milliseconds it's been since the loop last ran. This is a concept known as "delta time" and it's extremely important for ensuring smooth, consistent gameplay regardless of how fast a player's computer is. Fortunately, `requestAnimationFrame` passes the number of milliseconds since the window was loaded into the loop function, which we can use to calculate the delta time.
+
+```javascript
+
 
