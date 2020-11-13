@@ -194,15 +194,23 @@ We will create a function called "loop", which we will pass to a built in browse
 
 It's also important to keep track of when exactly the loop runs every time, so that we can calculate how many milliseconds it's been since the loop last ran. This is a concept known as "delta time" and it's extremely important for ensuring smooth, consistent gameplay regardless of how fast a player's computer is. Fortunately, `requestAnimationFrame` passes the number of milliseconds since the window was loaded into the loop function, which we can use to calculate the delta time.
 
+We'll also add a function called `draw`, where we will eventually place all the code for drawing the paddles and pong ball to the screen.
+
 ```javascript
+function draw () {
+  
+}
+
 let lastRender = 0 // Initialize lastRender variable to keep track of when the loop was last run.
 function loop(timestamp) {
   var delta = timestamp - lastRender // How many milliseconds have past since the loop last ran?
 
-  // Erase the canvas every time the loop runs
+  // Erase the canvas and refill with black every time the loop runs
   ctx.fillStyle = 'black'
+  ctx.clearRect(0, 0, width, height)
   ctx.fillRect(0, 0, width, height)
 
+  draw() // Draw everything
 
   lastRender = timestamp // Update the last render variable
   window.requestAnimationFrame(loop) // Schedule this function to be run again.
@@ -214,3 +222,27 @@ window.requestAnimationFrame(loop) // Schedule the loop function to be run next 
 Once you add all this, you should be able to refresh the game window and see a black square where the canvas is:
 
 ![The blank canvas and script](/img/uploads/hcmpg_blacksquare.png "The blank canvas and script")
+
+### Handling user input
+
+The only user input we need to handle is the browser's left and right arrow keys, which will move the player's paddle left or right. We need to be able to check from the game loop to see if the left or right arrow keys are pressed, so let's add some event handlers that will detect when the user presses or releases the left/right arrows and update a variable.
+
+Add two variables to the top of the `game.js` file:
+
+```javascript
+let leftIsPressed, rightIsPressed
+```
+
+And at the bottom of the file, add a few event handlers to change these variables:
+
+```javascript
+window.onkeydown = function (e) {
+  if (e.key = 'ArrowLeft') leftIsPressed = true
+  if (e.key = 'ArrowRight') rightIsPressed = true
+}
+
+window.onkeyup = function (e) {
+  if (e.key = 'ArrowLeft') leftIsPressed = false
+  if (e.key = 'ArrowRight') rightIsPressed = false
+}
+```
