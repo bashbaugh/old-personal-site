@@ -19,7 +19,11 @@ titletag: Building a multiplayer JS game with Colyseus.js and Phaser.js in 20 mi
 description: Using TypeScript along with Colyseus.js and Phaser.js, we will
   create a very simple multiplayer browser game in less than 30 minutes.
 ---
-In this tutorial, I will explain the basics of creating a multiplayer browser game with the popular JS frameworks [Colyseus.js](https://docs.colyseus.io/) and [Phaser.js](https://photonstorm.github.io/phaser3-docs/).
+In this tutorial, I will explain the basics of creating a multiplayer browser game with the popular JS frameworks [Colyseus.js](https://docs.colyseus.io/) and [Phaser.js](https://photonstorm.github.io/phaser3-docs/). Using these frameworks, you will be able to build on this game to create something very complex, if you want!
+
+## How it works
+
+
 
 We will be using TypeScript for the server, as it is best for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. Usually, you should be able to just write standard JS code and get away with it in TypeScript.
 
@@ -68,10 +72,11 @@ Now, we need to install the Colyseus server framework and other packages our gam
   "dependencies": {
     "@colyseus/monitor": "^0.12.2",
     "colyseus": "^0.14.0",
-    "express": "^4.16.4",
+    "express": "^4.16.4"
   }
 }
 ```
+
 Now, let's start writing code!!!!
 
 Open `index.ts` and add these lines to the top to import the packages we just added:
@@ -99,11 +104,23 @@ const gameServer = new Server({ server }) // This line adds Colyseus, the game f
 app.use('/colyseus', monitor()) // This sets up a route allowing us to view all the Colyseus data in real-time from a browser. We'll use it later.
 
 app.get('/', (req: express.Request, res: express.Response) => {
-  res.send("Hello, game server!") // Respond with "Hello, game server!" when the user visits the server.
+  res.sendFile('game.html') // Respond with the game file when the user visits the server. We'll create this file in just a moment.
 })
 
 gameServer.listen(port) // Finally, we start the server by listening to incoming requests.
-console.log(`Listening on ws://localhost:${ port }`)
+console.log(`Listening on http://localhost:${ port }`)
 
 ```
 
+Finally, we need to create the HTML and JS files that will run on the user's computer when they visit the game. Create two new files, `game.html` and `game.js`. You can leave `game.js` empty for now but let's add some HTML to `game.html`:
+
+```
+```
+
+Your project should now look like this:
+
+![The beginning of the project](/img/uploads/hcmpg_pbeginning.png "Your project should look something like this")
+
+(it's ok if you don't see `package-lock.json`)
+
+Let's make sure it's working so far - press Run and hold your breath! After several seconds, if you see a new screen open that says "
