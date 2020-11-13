@@ -391,3 +391,19 @@ Now, we need to add a websocket message handler so that each client can tell the
     })
   }
 ```
+
+### Adding the PongRoom to the server
+
+Now that we've written all the game logic for our pong room, we actually need to tell the server about it. Let's import the room code at the top of `index.ts`, right below all the other `import` statements:
+
+```
+import PongRoom from "./PongRoom"
+```
+
+and define the room for the server, *above* the line that says `app.use('/colyseus', monitor())`:
+
+```
+gameServer.define('pong', PongRoom) // Add the pong room to the server
+```
+
+Congrats!!!! The server is finished!
