@@ -151,9 +151,9 @@ Let's make sure it's working so far - press Run and hold your breath! After seve
 
 Yeahhh!!! It works!!! If it doesn't, go back and make sure all your files, including game.html, index.ts, tsconfig.json and package.json match mine.
 
-## Writing the Game
+## Starting the game
 
-Ok, it's time to code the game itself!! Let's start by adding the Colyseus library to the `game.html`, before the closing `</head>` tag:
+Ok, it's time to start coding the game itself!! Let's start by adding the Colyseus library to the `game.html`, before the closing `</head>` tag:
 
 ```html
   <head>
