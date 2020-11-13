@@ -23,8 +23,6 @@ In this tutorial, I will explain the basics of creating a multiplayer browser ga
 
 ## How it works
 
-
-
 We will be using TypeScript for the server, as it is best for Colyseus. If you are not familiar with TypeScript, it is very similar to Node.js but requires you to specify types for variables and also lets you use some advanced/modern features that are unavailable in basic Node.js. Usually, you should be able to just write standard JS code and get away with it in TypeScript.
 
 ## Setting up the server
@@ -79,10 +77,11 @@ Now, we need to install the Colyseus server framework and other packages our gam
 
 Now, let's start writing code!!!!
 
-Open `index.ts` and add these lines to the top to import the packages we just added:
+Open `index.ts` and add these lines to the top to import the packages we just added (along with some basic packages built into TypeScript/Node):
 
 ```javascript
 import http from "http"
+import path from "path"
 import express from "express"
 import { Server } from "colyseus"
 import { monitor } from "@colyseus/monitor"
@@ -104,17 +103,16 @@ const gameServer = new Server({ server }) // This line adds Colyseus, the game f
 app.use('/colyseus', monitor()) // This sets up a route allowing us to view all the Colyseus data in real-time from a browser. We'll use it later.
 
 app.get('/', (req: express.Request, res: express.Response) => {
-  res.sendFile('game.html') // Respond with the game file when the user visits the server. We'll create this file in just a moment.
+  res.sendFile(path.resolve('game.html')) // Respond with the game file when the user visits the server. Path.resolve makes sure the path is absolute so Express can find the file.
 })
 
 gameServer.listen(port) // Finally, we start the server by listening to incoming requests.
 console.log(`Listening on http://localhost:${ port }`)
-
 ```
 
-Finally, we need to create the HTML and JS files that will run on the user's computer when they visit the game. Create two new files, `game.html` and `game.js`. You can leave `game.js` empty for now but let's add some basic HTML with a title and page header to `game.html`:
+Finally, we need to create the HTML and JS files that will run on the user's computer when they visit the game. Create two new files, `game.html` and `game.js`. You can leave `game.js` empty for now but let's add some basic HTML with a title, page header, and script tag to import `game.js` to `game.html`:
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -123,6 +121,7 @@ Finally, we need to create the HTML and JS files that will run on the user's com
   <body>
     <h1>My Amazing Game</h1>
     
+    <script src='game.js'></script>
   </body>
 </html>
 ```
@@ -133,4 +132,8 @@ Your project should now look like this:
 
 (it's ok if you don't see `package-lock.json`)
 
-Let's make sure it's working so far - press Run and hold your breath! After several seconds, if you see a new screen open that says "
+Let's make sure it's working so far - press Run and hold your breath! After several seconds, if you see a new screen open that says "My Amazing Game"
+
+![The empty game page](/img/uploads/hcmpg_hello.png "The empty game page")
+
+Yeahhh!!! It works!!! If it doesn't, go back and make sure all your files, including game.html, index.ts, tsconfig.json and package.json match mine.
