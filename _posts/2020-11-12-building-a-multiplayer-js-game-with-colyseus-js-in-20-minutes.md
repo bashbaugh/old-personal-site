@@ -27,7 +27,7 @@ We will be using TypeScript for the server, as it is best for Colyseus. If you a
 
 The easiest way to get started is by starting a new TypeScript Repl at <https://repl.it/languages/typescript> (if you would prefer to use a local environment instead, go ahead). I would recommend renaming it to something like "My Multiplayer Game" from the dropdown at the top so you can easily find it again.
 
-Now, there's one small configuration change we need to make so that the typescript compiles properly. I won't get into the details here, but you can delete everything in the `tsconfig.json` file and replace it with this:
+Now, there's one small configuration change we need to make so that the typescript compiles properly. I won't get into the details here, but you can delete everything in the `tsconfig.json` file and replace it with this (you can just copy and paste):
 
 ```
 {
@@ -45,7 +45,9 @@ Now, there's one small configuration change we need to make so that the typescri
 
 ### Importing the Packages
 
-Now, we need to install the Colyseus server framework and other packages our game will use. To specify them, add a file named `package.json` to your project with the following contents:
+There are several packages we need to import into our gameserver, including Colyseus (the server and networking framework that will allow us to make our game multiplayer), and Express (a package we'll use for setting up the interface between the game and server. It allows us to define "routes", which tell the server how to respond when the user requests a certain URL)
+
+Now, we need to install the Colyseus server framework and other packages our game will use. To specify them, add a file named `package.json` to your project with the following contents (you can just copy and paste):
 
 ```json
 {
@@ -70,20 +72,20 @@ Now, we need to install the Colyseus server framework and other packages our gam
   }
 }
 ```
+Now, let's start writing code!!!!
 
-There are several packages we need to import into our gameserver, including Colyseus (the framework we'll use for networking), Express (a package we'll use for setting up the interface between the game and server. It allows us to define "routes", which tell the server how to respond when the user requests a certain URL), and CORs (a package that will configure express so that the game can access it). Let's do that first by adding these lines to the top of `index.ts`:
+Open `index.ts` and add these lines to the top to import the packages we just added:
 
 ```javascript
 import http from "http"
 import express from "express"
-import cors from "cors"
 import { Server } from "colyseus"
 import { monitor } from "@colyseus/monitor"
 ```
 
 ### Starting the Server
 
-Now, we need to write a few lines to set up the game server:
+Now, we need to write a few lines to set up the game server. Add this to the rest of `index.ts`. Make sure you read the comments so you know what's going on!
 
 ```javascript
 const port = 3000
