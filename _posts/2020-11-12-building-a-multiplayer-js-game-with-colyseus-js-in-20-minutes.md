@@ -374,13 +374,13 @@ Back in the `onJoin` function of `PongRoom`, we need to do two things when a use
 
     // Set the player's name and ID:
 
-    newPlayerState.name = options.name // options contain options passed from the player. We'll write that part soon.
+    newPlayerState.name = encodeURIComponent(options.name) // options contain options passed from the player. We'll write that part soon. We run the encodeURIcomponent function on it just to help prevent xss or other vulnerabilities.
 
     newPlayerState.clientId = client.sessionId
 
     if (alreadyHasPlayer1) {
       // We now have 2 players and can start the game!!!
-       setTimeout(() => this.startGame, 3000) // Wait 3 seconds before starting
+       setTimeout(() => this.startGame(), 3000) // Wait 3 seconds before starting
     }
   }
 ```
