@@ -321,7 +321,7 @@ Let's add some classes and variables to keep track of the game's state. **Make s
 class Player extends Schema {
   // This class keeps track of the racket position, score and name for a player
   @type('number')
-  racketX: number = 270 // Initializing it at 270 will make sure it's centered
+  racketX: number = 250 // Initializing it at 270 will make sure it's centered
 
   @type('int8')
   score: number = 0
