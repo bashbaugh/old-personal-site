@@ -262,10 +262,12 @@ Then, we want to find or create a pong game, which is easy thanks to Colyseus's 
 
 ```
 let room // We'll store the room in this variable
+let isPlayer1 // Keep track of who's player 1 and 2
 client.joinOrCreate('pong', { name: userName || 'player'})
 .then(r => { // We successfully found or created a pong game
   console.log("joined successfully", room)
   room = r
+  room.onMessage('youArePlayer1', m => { isPlayer1 = true }) // If the server tells us we're player 1, set isPlayer1 to true
 }).catch(e => { // Something went wrong
   console.error("couldn't join room", e)
 })
@@ -380,7 +382,9 @@ Back in the `onJoin` function of `PongRoom`, we need to do two things when a use
 
     if (alreadyHasPlayer1) {
       // We now have 2 players and can start the game!!!
-       setTimeout(() => this.startGame(), 3000) // Wait 3 seconds before starting
+      setTimeout(() => this.startGame(), 3000) // Wait 3 seconds before starting
+    } else {
+      client.send('youArePlayer1') // This is player 1, make sure to let them know!
     }
   }
 ```
@@ -410,7 +414,7 @@ Now, we need to add a websocket message handler so that each client can tell the
       // First, we check the client's id to see whether they're player 1 or player 2
       const player = (client.sessionId === this.state.player1.clientId) ? this.state.player1 : this.state.player2
 
-      player.pongX += data.x // Adjust the player's pong position. data is passed from the player; we'll code that soon.
+      player.racketX += data.move // Adjust the player's pong position. data is passed from the player; we'll code that soon.
     })
   }
 ```
@@ -492,12 +496,18 @@ These are all things to keep in mind, but obviously for a simple, casual, slow-p
 
 ### Updating the racket positions
 
-After all that, it turns out our method's super easy to add to the code (just 2 lines!). For our purposes, we can simply assume that the user has been holding the left or right key down since the last loop ran, and we can use delta time (the time since the last time the loop was called) to calculate how many pixels the racket should move. So, if the player is holding one of the keys down when the loop runs, we can take deltatime and divide it by 2 to make racket movement a little slower (so, holding the left key down for one second = 1000ms/2 = 500 = the racket moves 500 pixels to the left) and send that value to the server.
+After all that, it turns out our method's super easy to add to the code (just 2 lines!). For our purposes, we can simply assume that the user has been holding the left or right key down since the last loop ran, and we can use delta time (the time since the last time the loop was called) to calculate how many pixels the racket should move. So, if the player is holding one of the keys down when the loop runs, we can take deltatime and divide it by 2 to make racket movement a little slower (so, holding the left key down for one second = 1000ms/2 = 500 = the racket moves 500 pixels to the left) and send that value to the server (where it will be handled by the function we wrote earlier).
 
 Let's add this in the `loop` function of `game.js` right before the `if` statement:
 
 ```javascript
-  if (leftIsPressed) room.send('moveRacket', -(delta / 2)) // Negative sign so the racket moves left
-  if (rightIsPressed) room.send('moveRacket', (delta / 2))
+  if (leftIsPressed) room.send('moveRacket', { move: -(delta / 2) }) // Negative sign so the racket moves left
+  if (rightIsPressed) room.send('moveRacket', { move: (delta / 2) })
 ```
+
+That's it! If you press run to restart the server and then open your Repl in two different tabs, you should be able to move a racket in one tab with the left/right arrows and see it moving in both tabs!
+
+### The pong ball
+
+Now we show movement of the pong ball on the canvas. It will be simulated on the server, so all we need to do is draw it to the screen. Let's add it the end of the `draw` function in `game.js`:
 
