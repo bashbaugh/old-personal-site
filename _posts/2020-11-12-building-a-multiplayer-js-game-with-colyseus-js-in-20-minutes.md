@@ -511,3 +511,20 @@ That's it! If you press run to restart the server and then open your Repl in two
 
 Now we show movement of the pong ball on the canvas. It will be simulated on the server, so all we need to do is draw it to the screen. Let's add it the end of the `draw` function in `game.js`:
 
+```javascript
+  // Draw the pong ball
+  ctx.beginPath() // Start a new drawing path
+  ctx.arc(room.state.pongX, room.state.pongY, 10, 0, 2 * Math.PI) // Draw the ball with a radius of 20
+  ctx.fill() // fill it in
+```
+
+### The score
+
+Let's add two numbers to the canvas as well, to display the score (which does not yet change, but it will soon!). Add this code to the bottom of the `draw` function:
+
+```javascript
+  // Draw the score
+  ctx.font = '30px Arial'
+  ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15,  height - 60) // The bottom player's score
+  ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15, 30) // The top player's score
+```
