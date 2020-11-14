@@ -531,7 +531,7 @@ Let's add two numbers to the canvas as well, to display the score (which does no
   // Draw the score
   ctx.font = '30px Arial'
   ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15,  height - 60) // The bottom player's score
-  ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15, 30) // The top player's score
+  ctx.fillText(isPlayer1 ? room.state.player2.score : room.state.player1.score, 15, 45) // The top player's score
 ```
 
 ## Simulating pong ball movement on the server
@@ -544,7 +544,7 @@ Here's how it will work:
 2. Each update, we move it (delta/3) y pixels in whichever direction it's travelling. This means it would move 1000 pixels across the canvas in 3 seconds.. We add (the angle value * (delta/3)) to the current x value to get a new x value for the ball.
 3. If we detect the ball has moved within the "goal" area of either player (within 20px of the end), we check to see if it collided with the racket.
 4. If it **did not** collide, we reset the ball and increment the other player's score.
-5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (center of racket x position - ball x position) / half of racket width (note that there are other ways you could calculate the bounce if you wanted to do it differently).
+5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (ball x position - center of racket x position) / half of racket width (note that there are other ways you could calculate the bounce if you wanted to do it differently).
 6. If we detect the ball touching a side of the canvas, we flip the angle so it bounces back.
 
 Here's the final function:
