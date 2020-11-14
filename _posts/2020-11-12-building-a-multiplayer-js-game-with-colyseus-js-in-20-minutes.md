@@ -285,7 +285,7 @@ import { Room, Client } from "colyseus"
 import { Schema, type } from "@colyseus/schema"
 ```
 
-Now, let's start extending these classes to define a pong room:
+Now, let's start extending these classes to define a pong room. Each Colyseus room class has several overridable methods, including an `onCreate` method, where we will do some setup:
 
 ```javascript
 export class PongRoom extends Room {
@@ -295,6 +295,7 @@ export class PongRoom extends Room {
     this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (similar to the loop function in game.js)
     this.setPatchRate(20) // The patch rate determines the interval (in milliseconds) at which the server sends state updates to the client
     this.maxClients = 2 // Only 2 players per Pong game
+    this.clock.start() // Start the game clock
   }
 
   update (delta: number) {
@@ -386,7 +387,7 @@ Back in the `onJoin` function of `PongRoom`, we need to do two things when a use
 
     if (alreadyHasPlayer1) {
       // We now have 2 players and can start the game!!!
-      setTimeout(() => this.startGame(), 3000) // Wait 3 seconds before starting
+      this.clock.setTimeout(() => this.startGame(), 2000) // Wait 2 seconds before starting
     } else {
       client.send('youArePlayer1') // This is player 1, make sure to let them know!
     }
@@ -547,7 +548,7 @@ Here's how it will work:
 2. Each update, we move it (delta/3) y pixels in whichever direction it's travelling. This means it would move 1000 pixels across the canvas in 3 seconds.. We add (the angle value * (delta/3)) to the current x value to get a new x value for the ball.
 3. If we detect the ball has moved within the "goal" area of either player (within 20px of the end), we check to see if it collided with the racket.
 4. If it **did not** collide, we reset the ball and increment the other player's score.
-5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (ball x position - center of racket x position) / half of racket width (note that there are other ways you could calculate the bounce if you wanted to do it differently).
+5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (ball x position - center of racket x position) / half of racket width (which is 50). Note that you can adjust this formula if you want the ball to bounce differently. 50 for the last variable would give a maximum bounce angle of 45 degrees (assuming the racket is 100px wide), but you can decrease that number if you want a greater bounce angle.
 6. If we detect the ball touching a side of the canvas, we flip the angle so it bounces back.
 7. If either player has more than 10 points, set `hasWon` to true for that player and destroy/disconnect the room.
 
@@ -634,6 +635,31 @@ But we don't actually _do_ anything on the server when one player disconnects, s
   onLeave (client: Client, consented: boolean) {
     this.disconnect() // If a player leaves the game is unplayable, so destroy the room and disconnect the remaining player so that they can find a new game.
   }
+```
+
+### Making it slightly more difficult
+
+There are many ways once could improve this game by making it look better, perform better with less lag, or making it more difficult. Here, we will add one such addition to demonstrate how you can add new features. 
+
+In most pong games, the ball speed starts out slow and gradually increases each match. Let's add that to this game. 
+
+First, we need to add a new state variable to keep track of when each match starts. let's add that to the top of the `PongState` class in `PongRoom.ts`:
+
+```javascript
+  @type('number')
+  roundStartedAt: number
+```
+
+Then, let's set that number every time a new game starts somewhere in `startGame`:
+
+```
+this.state.roundStartedAt = this.clock.elapsedTime // Set the round started time using the timestamp from the game clock
+```
+Now, let's double the speed of the pong every thirty seconds from the `update` function. To do that, we'll subtract the elapsed time (ms) at the start of the round from the current elapsed time (ms), and divide it by 30,000 to see how many times 30 seconds have passed (we'll also add 1 so that it starts at 1 rather than 0) We'll multiply this by our speed constant in the `update` function, like this:
+
+```javascript
+const timeMsSinceRoundStart = this.clock.elapsedTime - this.state.roundStartedAt
+    const speedConstant = (delta / 3) * (timeMsSinceRoundStart / 30000 + 1) // Calculate the speed constant for the ball. it should gradually increase over time.
 ```
 
 ## Conclusion
