@@ -106,6 +106,15 @@ const app = express() // This line creates a new Express app
 
 app.use(express.json()) // This line tells express to interpret incoming requests as JSON, which makes it easy for us to understand and interact with the requests.
 
+// On REPL, Colyseus doesn't work over HTTPS without additional configuration (or writing custom matchmaking routes). For building this pong workshop this workaround is necesarry to make it work on Repl, but make sure to remove this if you expand your game into a full website with many people playing it, as this effectively disables encryption to prevent mixed content errors.
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] === 'http') {
+    next()
+  } else {
+    return res.redirect(302, 'http://' + req.headers.host + req.url) 
+  }
+})
+
 const server = http.createServer(app) // here, we initialize a server using our express app.
 const gameServer = new Server({ server }) // This line adds Colyseus, the game framework, to our Express server.
 
@@ -575,7 +584,7 @@ Here's the final function:
       if (this.state.pongX >= racketX && this.state.pongX <= racketX + 100 ) { // Ball collided with racket!!!
         this.state.pongDirection = !this.state.pongDirection // Flip the direction
         this.state.pongAngle = (this.state.pongX - (racketX + 50)) / 50 // Calculate the new angle between -1 and 1
-        this.state.pongY = isOnPlayer1Side ? 20 : 580 // We do this to make sure the pong doesn't get stuck in the rackets
+        this.state.pongY = isOnPlayer1Side ? 30 : 570 // Move the ball to the edge of the racket to make sure it doesn't get stuck
       } else { // Ball did not collide with racket - SCORE!!!
         isOnPlayer1Side ? this.state.player2.score += 1 : this.state.player1.score +=1 // Increment the other player's score
         
