@@ -318,7 +318,7 @@ export class PongRoom extends Room {
 
 ### Adding game state
 
-Let's add some classes and variables to keep track of the game's state. **Make sure you add these above the `PongRoom class** First, add a "Player" class to keep track of each player's racket position, score, and name:
+Let's add some classes and variables to keep track of the game's state. **Make sure you add these above the `PongRoom class** First, add a "Player" class to keep track of each player's racket position, score, whether they've won, and name:
 
 ```javascript
 class Player extends Schema {
@@ -328,6 +328,9 @@ class Player extends Schema {
 
   @type('int8')
   score: number = 0
+
+  @type('boolean')
+  hasWon: boolean = false
 
   @type('string')
   name: string
@@ -448,12 +451,12 @@ Now it's time to finish writing the game logic and drawing functions that actual
 
 ### The status text
 
-We need some sort of status text to tell the player whether the game has started and who they're playing against, etc. We could add this as text to the canvas, but I prefer to add UI elements like status text as HTML around the canvas, as it's easier to program and style. So let's add a new `<p>` tag to `game.html`, right between the header and canvas. Let's also update the title:
+We need some sort of status text to tell the player whether the game has started and who they're playing against, etc. We could add this as text to the canvas, but I prefer to add UI elements like status text as HTML around the canvas, as it's easier to program and style. So let's add a new `<p>` tag to `game.html`, right between the header and canvas. By default, it will say "Looking for opponent". Let's also update the title:
 
 ```html
   <body>
     <h1>Pong</h1>
-    <p id='game-status-text'>Loading...</p>
+    <p id='game-status-text'>Looking for opponent...</p>
     <canvas id='game-canvas' width='600' height='600'></canvas>
     
     <script src='/game.js'></script>
@@ -466,14 +469,12 @@ Now, let's create a reference to this element at the top of `game.js`:
 const gameStatusText = document.getElementById('game-status-text')
 ```
 
-In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text to reflect this, as well as tell the player who their opponent is:
+In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text when a game starts:
 
 ```javascript
 if (room && room.state.gameStarted) { // Don't draw anything until the game has started
     gameStatusText.innerText = `${room.state.player1.name} vs ${room.state.player2.name}`
     draw() // Draw everything
-  } else {
-    gameStatusText.innerText = "Waiting for an opponent..."
   }
 ```
 
@@ -548,6 +549,7 @@ Here's how it will work:
 4. If it **did not** collide, we reset the ball and increment the other player's score.
 5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (ball x position - center of racket x position) / half of racket width (note that there are other ways you could calculate the bounce if you wanted to do it differently).
 6. If we detect the ball touching a side of the canvas, we flip the angle so it bounces back.
+7. If either player has more than 10 points, set `hasWon` to true for that player and destroy/disconnect the room.
 
 Here's the final function:
 
@@ -580,6 +582,14 @@ Here's the final function:
     } else if (this.state.pongX > 590 || this.state.pongX < 10) { // Ball is touching edge of canvas!
       this.state.pongAngle *= -1 // Flip the angle so the ball bounces back
     }
+
+    if (this.state.player1.score >= 10 || this.state.player2.score >= 10) { // One of the players has won
+      const playerThatWon = this.state.player1.score >= 10 ? this.state.player1 : this.state.player2
+
+      playerThatWon.hasWon = true
+
+      this.disconnect() // Disconnect players from room and dispose
+    }
   }
 ```
 
@@ -589,3 +599,31 @@ But this won't work properly in the game, because the pong Y value represents ho
   const pongY = isPlayer1 ? 600 - room.state.pongY : room.state.pongY // For player 1 we should flip the direction of the ball
   ctx.arc(room.state.pongX, pongY, 10, 0, 2 * Math.PI) // Draw the ball with a radius of 20
 ```
+
+## Final touches
+
+The game is almost, done but we have a few last things to do. First, we need to tell the player that the game is over when the server disconnects. Then, we need to check to see if either player won and display that as well. We'll just do this in the status text.
+
+However, you may remember we added an `if` block to the loop in `game.js` earlier that rewrites the status text every loop when the game starts So, let's change that, and rather than setting the status text every loop let's just change it once when the game begins. We can do this using the Colyseus `state.listen` function. First, delete the line in `loop` that begins with `gameStatusText.innerText =` and then let's add the game start listener to the bottom of the `.then()` callback near the top of the file:
+
+```javascript
+room.state.listen('gameStarted', (oldValue, newValue) => {
+    // If the game has started and it wasn't started previously, update the status text
+    if (newValue && !oldValue) gameStatusText.innerText = `${room.state.player1.name} vs ${room.state.player2.name}`
+  })
+
+```
+Now, we can add another listener in the same place (right below the gameStarted listener) that listens for the server to disconnect:
+
+```javascript
+    room.onLeave((code) => {
+    gameStatusText.innerText = 'Game Over. ' // We were disconnected from the game (either intentionally or because of an error), let the player know it's game over.
+    // Let the user know if either player won:
+    if (room.state.player1.hasWon) gameStatusText.innerText += 'Player 1 won!!!'
+    else if (room.state.player2.hasWon) gameStatusText.innerText += 'Player 2 won!!!'
+    else gameStatusText.innerText += 'A player disconnected.' // if neither player won, that means one of the players disconnected before the game was finished.
+  })
+```
+
+
+## Conclusion
