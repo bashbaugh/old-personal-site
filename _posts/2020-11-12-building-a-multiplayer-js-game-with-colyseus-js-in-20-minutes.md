@@ -291,8 +291,9 @@ Now, let's start extending these classes to define a pong room:
 export class PongRoom extends Room {
 
   onCreate (options: any) {
-    this.setState(new PongState()) // Set the state for the room (we'll make this next step)
-    this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (synonymous with the loop function in game.js)
+    this.setState(new PongState()) // Set the state for the room
+    this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (similar to the loop function in game.js)
+    this.setPatchRate(30) // The patch rate determines the interval (in milliseconds) at which the server sends state updates to the client
     this.maxClients = 2 // Only 2 players per Pong game
   }
 
@@ -391,11 +392,15 @@ Back in the `onJoin` function of `PongRoom`, we need to do two things when a use
 
 ### Starting the game
 
-Now, in the `startGame` function, all we have to do is choose a random position for the pong and start the game:
+Now, in the `startGame` function, all we have to do is choose a random position for the pong, reset it and start the game:
 
 ```javascript
   startGame() {
     this.state.pongDirection = Math.random() <= 0.5 // Randomize the starting direction of the pong
+    // Reset the position and angle
+    this.state.pongX = 300
+    this.state.pongY = 300 
+    this.state.pongAngle = 0
     this.state.gameStarted = true // Start the game!!!
   }
 ```
@@ -528,3 +533,22 @@ Let's add two numbers to the canvas as well, to display the score (which does no
   ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15,  height - 60) // The bottom player's score
   ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15, 30) // The top player's score
 ```
+
+## Simulating pong ball movement on the server
+
+Open `PongRoom.ts` again and scroll down to the `update` function in the `PongRoom` class. You may remember we set this up earlier as a "simulation interval". It runs 60 frames per second by default and we'll use it to update the position of the Pong ball each frame.
+
+Here's how it will work:
+
+1. We keep track of the x position, y position (where a greater y value is closer to player 2), direction (1 means it's flying toward player 2, 0 means it's flying toward player 1) and angle (-1 means it's aiming 45 degrees left, 1 means it's aiming 45 degrees right, 0 means it's flying straight up or down) of the pong ball in the room state (we added this earlier).
+2. Each update, we move it 4 y pixels in whichever direction it's travelling. This means at 60 updates per second it would move 240 pixels across the canvas in a second. We add (the angle value * 4) to the current x value to get a new x value for the ball.
+3. If we detect the ball has moved within the "goal" area of either player (within 20px of the end), we check to see if it collided with the racket.
+4. If it **did not** collide, we reset the ball and increment the other player's score.
+5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (center of racket x position - ball x position) / half of racket width (note that there are other ways you could calculate the bounce if you wanted to do it differently).
+6. If we detect the ball touching a side of the canvas, we flip the angle so it bounces back.
+
+Here's the final function:
+
+```javascript
+```
+
