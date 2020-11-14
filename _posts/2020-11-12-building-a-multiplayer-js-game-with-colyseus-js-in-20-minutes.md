@@ -607,9 +607,9 @@ The game is almost, done but we have a few last things to do. First, we need to 
 However, you may remember we added an `if` block to the loop in `game.js` earlier that rewrites the status text every loop when the game starts So, let's change that, and rather than setting the status text every loop let's just change it once when the game begins. We can do this using the Colyseus `state.listen` function. First, delete the line in `loop` that begins with `gameStatusText.innerText =` and then let's add the game start listener to the bottom of the `.then()` callback near the top of the file:
 
 ```javascript
-room.state.listen('gameStarted', (oldValue, newValue) => {
+  room.state.listen('gameStarted', (currentValue, oldValue) => {
     // If the game has started and it wasn't started previously, update the status text
-    if (newValue && !oldValue) gameStatusText.innerText = `${room.state.player1.name} vs ${room.state.player2.name}`
+    if (currentValue && !oldValue) gameStatusText.innerText = `${room.state.player1.name} vs ${room.state.player2.name}`
   })
 
 ```
@@ -619,9 +619,10 @@ Now, we can add another listener in the same place (right below the gameStarted 
     room.onLeave((code) => {
     gameStatusText.innerText = 'Game Over. ' // We were disconnected from the game (either intentionally or because of an error), let the player know it's game over.
     // Let the user know if either player won:
-    if (room.state.player1.hasWon) gameStatusText.innerText += 'Player 1 won!!!'
-    else if (room.state.player2.hasWon) gameStatusText.innerText += 'Player 2 won!!!'
-    else gameStatusText.innerText += 'A player disconnected.' // if neither player won, that means one of the players disconnected before the game was finished.
+    if (room.state.player1.hasWon) gameStatusText.innerText += ' Player 1 won!!!'
+    else if (room.state.player2.hasWon) gameStatusText.innerText += ' Player 2 won!!!'
+    else gameStatusText.innerText += ' A player disconnected.' // if neither player won, that means one of the players disconnected before the game was finished.
+    gameStatusText.innerText += ' Reload the page to find a new game.' // Tell the player how they can find a new game.
   })
 ```
 
