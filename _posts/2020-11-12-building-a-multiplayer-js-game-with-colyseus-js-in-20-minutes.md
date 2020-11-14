@@ -249,7 +249,7 @@ window.onkeyup = function (e) {
 }
 ```
 
-## Back to the server...
+## Coding the server logic
 
 Let's move back to the server now and write the Pong server logic.
 
