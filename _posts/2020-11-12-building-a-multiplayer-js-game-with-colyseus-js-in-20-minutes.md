@@ -588,6 +588,8 @@ Here's the final function:
 
       playerThatWon.hasWon = true
 
+      this.broadcastPatch() // Broadcast the new state to make sure each player knows who won before we disconnect them
+
       this.disconnect() // Disconnect players from room and dispose
     }
   }
@@ -619,8 +621,8 @@ Now, we can add another listener in the same place (right below the gameStarted 
     room.onLeave((code) => {
     gameStatusText.innerText = 'Game Over. ' // We were disconnected from the game (either intentionally or because of an error), let the player know it's game over.
     // Let the user know if either player won:
-    if (room.state.player1.hasWon) gameStatusText.innerText += ' Player 1 won!!!'
-    else if (room.state.player2.hasWon) gameStatusText.innerText += ' Player 2 won!!!'
+    if (room.state.player1.hasWon) gameStatusText.innerText +=  `${room.state.player1.name} won!!!`
+    else if (room.state.player2.hasWon) gameStatusText.innerText += ` ${room.state.player2.name} won!!!`
     else gameStatusText.innerText += ' A player disconnected.' // if neither player won, that means one of the players disconnected before the game was finished.
     gameStatusText.innerText += ' Reload the page to find a new game.' // Tell the player how they can find a new game.
   })
