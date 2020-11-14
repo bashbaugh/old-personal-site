@@ -575,6 +575,7 @@ Here's the final function:
       if (this.state.pongX >= racketX && this.state.pongX <= racketX + 100 ) { // Ball collided with racket!!!
         this.state.pongDirection = !this.state.pongDirection // Flip the direction
         this.state.pongAngle = (this.state.pongX - (racketX + 50)) / 50 // Calculate the new angle between -1 and 1
+        this.state.pongY = isOnPlayer1Side ? 20 : 580 // We do this to make sure the pong doesn't get stuck in the rackets
       } else { // Ball did not collide with racket - SCORE!!!
         isOnPlayer1Side ? this.state.player2.score += 1 : this.state.player1.score +=1 // Increment the other player's score
         
