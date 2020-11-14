@@ -455,9 +455,16 @@ Now, let's create a reference to this element at the top of `game.js`:
 const gameStatusText = document.getElementById('game-status-text')
 ```
 
-In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text to reflect this
+In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text to reflect this, as well as tell the player who their opponent is:
 
-
+```javascript
+if (room && room.state.gameStarted) { // Don't draw anything until the game has started
+    gameStatusText.innerText = `${room.state.player1.name} vs ${room.state.player2.name}`
+    draw() // Draw everything
+  } else {
+    gameStatusText.innerText = "Waiting for an opponent..."
+  }
+```
 
 ### The rackets
 
