@@ -629,7 +629,7 @@ But we don't actually _do_ anything on the server when one player disconnects, s
 
 ```javascript
   onLeave (client: Client, consented: boolean) {
-    this.disconnect() // If a player leaves the game is unplayable, so destroy the room
+    this.disconnect() // If a player leaves the game is unplayable, so destroy the room and disconnect the remaining player so that they can find a new game.
   }
 ```
 
