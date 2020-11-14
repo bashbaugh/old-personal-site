@@ -106,7 +106,7 @@ const app = express() // This line creates a new Express app
 
 app.use(express.json()) // This line tells express to interpret incoming requests as JSON, which makes it easy for us to understand and interact with the requests.
 
-// On REPL, Colyseus doesn't work over HTTPS without additional configuration (or writing custom matchmaking routes). For building this pong workshop this workaround is necesarry to make it work on Repl, but make sure to remove this if you expand your game into a full website with many people playing it, as this effectively disables encryption to prevent mixed content errors.
+// On REPL, Colyseus doesn't work over HTTPS without additional configuration (or writing custom matchmaking routes). For building this pong workshop this workaround is necessary to make it work on Repl, but make sure to remove this if you expand your game into a full website with many people playing it, as this effectively disables encryption to prevent mixed content errors. For some reason, converting everything to HTTPS instead wasn't working, even though it should.
 app.use((req, res, next) => {
   if (req.headers['x-forwarded-proto'] === 'http') {
     next()
@@ -531,6 +531,7 @@ Now we show movement of the pong ball on the canvas. It will be simulated on the
 
 ```javascript
   // Draw the pong ball
+  ctx.fillStyle = 'limegreen'
   ctx.beginPath() // Start a new drawing path
   ctx.arc(room.state.pongX, room.state.pongY, 10, 0, 2 * Math.PI) // Draw the ball with a radius of 20
   ctx.fill() // fill it in
@@ -542,6 +543,7 @@ Let's add two numbers to the canvas as well, to display the score (which does no
 
 ```javascript
   // Draw the score
+  ctx.fillStyle = 'white'
   ctx.font = '30px Arial'
   ctx.fillText(isPlayer1 ? room.state.player1.score : room.state.player2.score, 15,  height - 60) // The bottom player's score
   ctx.fillText(isPlayer1 ? room.state.player2.score : room.state.player1.score, 15, 45) // The top player's score
