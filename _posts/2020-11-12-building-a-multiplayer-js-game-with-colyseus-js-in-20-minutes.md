@@ -374,7 +374,7 @@ Back in the `onJoin` function of `PongRoom`, we need to do two things when a use
 
     // Set the player's name and ID:
 
-    newPlayerState.name = encodeURIComponent(options.name) // options contain options passed from the player. We'll write that part soon. We run the encodeURIcomponent function on it just to help prevent xss or other vulnerabilities.
+    newPlayerState.name = options.name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") // options contain options passed from the player. We'll write that part soon. The 3 replace statements just make sure the user's name doesn't contain any dangerous characters.
 
     newPlayerState.clientId = client.sessionId
 
@@ -431,7 +431,7 @@ gameServer.define('pong', PongRoom) // Add the pong room to the server
 
 The server is almost finished!
 
-## Writing the game
+## Coding the game
 
 Now it's time to finish writing the game logic and drawing functions that actually draw the rackets and ball to the canvas.
 
@@ -455,7 +455,7 @@ Now, let's create a reference to this element at the top of `game.js`:
 const gameStatusText = document.getElementById('game-status-text')
 ```
 
-In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text to reflect this:
+In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text to reflect this
 
 
 
@@ -468,9 +468,9 @@ function draw () {
   if (!room || !room.state.gameStarted) return // Don't draw anything until the game has started
   // Draw the rackets
   ctx.fillStyle = 'white' // set the color
-  // Draw the bottom racket with a width of 60 and height of 20 (bottom racket is always this player's racket)
-  ctx.fillRect(isPlayer1 ? room.state.player1.racketX : room.state.player2.pongX, height - 20, 60, 20)
+  // Draw the bottom racket with a width of 100 and height of 20 (bottom racket is always this player's racket)
+  ctx.fillRect(isPlayer1 ? room.state.player1.racketX : room.state.player2.pongX, height - 20, 100, 20)
   // Draw opponent's top racket
-  ctx.fillRect(isPlayer1 ? room.state.player2.racketX : room.state.player1.racketX, 0, 60, 20)
+  ctx.fillRect(isPlayer1 ? room.state.player2.racketX : room.state.player1.racketX, 0, 100, 20)
 }
 ```
