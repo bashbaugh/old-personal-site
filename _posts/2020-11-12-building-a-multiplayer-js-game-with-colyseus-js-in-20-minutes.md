@@ -541,7 +541,7 @@ Open `PongRoom.ts` again and scroll down to the `update` function in the `PongRo
 Here's how it will work:
 
 1. We keep track of the x position, y position (where a greater y value is closer to player 2), direction (1 means it's flying toward player 2, 0 means it's flying toward player 1) and angle (-1 means it's aiming 45 degrees left, 1 means it's aiming 45 degrees right, 0 means it's flying straight up or down) of the pong ball in the room state (we added this earlier).
-2. Each update, we move it 4 y pixels in whichever direction it's travelling. This means at 60 updates per second it would move 240 pixels across the canvas in a second. We add (the angle value * 4) to the current x value to get a new x value for the ball.
+2. Each update, we move it (delta/3) y pixels in whichever direction it's travelling. This means it would move 1000 pixels across the canvas in 3 seconds.. We add (the angle value * (delta/3)) to the current x value to get a new x value for the ball.
 3. If we detect the ball has moved within the "goal" area of either player (within 20px of the end), we check to see if it collided with the racket.
 4. If it **did not** collide, we reset the ball and increment the other player's score.
 5. If it **did** collide, we switch the direction of the ball, and calculate the new direction it's flying in using this formula: (center of racket x position - ball x position) / half of racket width (note that there are other ways you could calculate the bounce if you wanted to do it differently).
