@@ -249,6 +249,28 @@ window.onkeyup = function (e) {
 }
 ```
 
+### Communicating with the server
+
+We need to start a connection with the server before we are able to find or join a pong game. We can do this somewhere near the top of `game.js` by adding this line:
+
+```javascript
+// Connect to the colyseus server on port 3000:
+const client = new Colyseus.Client(`ws://${window.location.hostname}:3000`)
+```
+
+Then, we want to find or create a pong game, which is easy thanks to Colyseus's room system:
+
+```
+let room // We'll store the room in this variable
+client.joinOrCreate('pong', { name: userName || 'player'})
+.then(r => { // We successfully found or created a pong game
+  console.log("joined successfully", room)
+  room = r
+}).catch(e => { // Something went wrong
+  console.error("couldn't join room", e)
+})
+```
+
 ## Coding the server logic
 
 Let's move back to the server now and write the Pong server logic.
