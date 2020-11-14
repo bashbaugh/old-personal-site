@@ -270,6 +270,7 @@ client.joinOrCreate('pong', { name: userName || 'player'})
   console.error("couldn't join room", e)
 })
 ```
+Note that this code won't work now, as we haven't yet added the Pong room on the server.
 
 ## Coding the server logic
 
@@ -428,4 +429,24 @@ and define the room for the server, *above* the line that says `app.use('/colyse
 gameServer.define('pong', PongRoom) // Add the pong room to the server
 ```
 
-Congrats!!!! The server is finished!
+The server is almost finished!
+
+## Writing the game
+
+Now it's time to finish writing the game logic and drawing functions that actually draw the rackets and ball to the canvas.
+
+### The rackets
+
+We can easily draw the rackets by getting their positions from `room.state`, which is always up-to-date with the latest state on the server. Add functions to draw the two rectangles to the `draw` function in `game.js`:
+
+```javascript
+function draw () {
+  if (!room) return // If we haven't connected to a game yet, don't draw anything
+  // Draw the rackets
+  ctx.fillColor = 'white' // set the color
+  // Draw the bottom racket with a width of 60 and height of 20 (bottom racket is always this player's racket)
+  ctx.drawRect(isPlayer1 ? room.state.player1.racketX : room.state.player2.pongX, height - 20, 60, 20)
+  // Draw opponent's top racket
+  ctx.drawRect(isPlayer1 ? room.state.player2.racketX : room.state.player1.racketX, 0, 60, 20)
+}
+```
