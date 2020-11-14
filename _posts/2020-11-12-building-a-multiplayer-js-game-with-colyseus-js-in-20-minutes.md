@@ -550,6 +550,35 @@ Here's how it will work:
 Here's the final function:
 
 ```javascript
+  update (delta: number) {
+    if (!this.state.gameStarted) return // Don't update if the game hasn't started
+
+    const speedConstant = delta / 3
+
+    // Update the ball's position:
+    if (this.state.pongDirection == 1) this.state.pongY += speedConstant // Ball is moving TOWARD player 2
+    else this.state.pongY -= speedConstant // ball is moving away from player 2
+
+    this.state.pongX += (speedConstant * this.state.pongAngle) // Change the x value depending on the angle
+
+    if (this.state.pongY + 10 >= 580 || this.state.pongY - 10 <= 20) // If ball is touching goal zone (+- 10 to account for radius)...
+    {
+      const isOnPlayer1Side = this.state.pongY - 10 <= 20 // Is it on player 1's side or player 2's?
+
+      const racketX = isOnPlayer1Side ? this.state.player1.racketX : this.state.player2.racketX
+
+      if (this.state.pongX >= racketX && this.state.pongX <= racketX + 100 ) { // Ball collided with racket!!!
+        this.state.pongDirection = !this.state.pongDirection // Flip the direction
+        this.state.pongAngle = (this.state.pongX - (racketX + 50)) / 50 // Calculate the new angle between -1 and 1
+      } else { // Ball did not collide with racket - SCORE!!!
+        isOnPlayer1Side ? this.state.player2.score += 1 : this.state.player1.score +=1 // Increment the other player's score
+        
+        this.startGame() // We can just reuse the startgame function to start a new round
+      }
+    } else if (this.state.pongX > 590 || this.state.pongX < 10) { // Ball is touching edge of canvas!
+      this.state.pongAngle *= -1 // Flip the angle so the ball bounces back
+    }
+  }
 ```
 
 But this won't work properly in the game, because the pong Y value represents how close the ball is to player 2. So because each player has their own racket on the bottom of the canvas, we have to flip this y coordinate for player 1 in `game.js`. Replace the line that says `ctx.arc` in the `draw` function with this:
