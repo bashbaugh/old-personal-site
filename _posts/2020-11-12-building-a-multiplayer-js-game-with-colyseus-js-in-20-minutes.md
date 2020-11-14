@@ -451,12 +451,12 @@ Now it's time to finish writing the game logic and drawing functions that actual
 
 ### The status text
 
-We need some sort of status text to tell the player whether the game has started and who they're playing against, etc. We could add this as text to the canvas, but I prefer to add UI elements like status text as HTML around the canvas, as it's easier to program and style. So let's add a new `<p>` tag to `game.html`, right between the header and canvas. By default, it will say "Looking for opponent". Let's also update the title:
+We need some sort of status text to tell the player whether the game has started and who they're playing against, etc. We could add this as text to the canvas, but I prefer to add UI elements like status text as HTML around the canvas, as it's easier to program and style. So let's add a new `<p>` tag to `game.html`, right between the header and canvas. By default, it will say "Waiting for opponent". Let's also update the title:
 
 ```html
   <body>
     <h1>Pong</h1>
-    <p id='game-status-text'>Looking for opponent...</p>
+    <p id='game-status-text'>Waiting for opponent...</p>
     <canvas id='game-canvas' width='600' height='600'></canvas>
     
     <script src='/game.js'></script>
