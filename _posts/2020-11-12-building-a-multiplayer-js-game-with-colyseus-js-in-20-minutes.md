@@ -637,6 +637,34 @@ But we don't actually _do_ anything on the server when one player disconnects, s
   }
 ```
 
+### Adding a short delay between rounds
+
+We should also add a short delay between rounds, to give the players time to readjust their rackets. To do this, let's add a new property to the `PongRoom` class (right at the top before any methods):
+
+```
+export default class PongRoom extends Room {
+  roundIsRunning: boolean
+```
+
+Then somewhere in `startGame`, we can add:
+
+```
+this.roundIsRunning = true
+```
+
+And, in `update`, we can replace the line that starts a new round (`this.startGame()`) with:
+
+```
+        this.roundIsRunning = false
+        this.clock.setTimeout(() => this.startGame(), 1000) // Wait 1 second before starting next round
+```
+And finally, we can change the top line in `update` to:
+
+```javascript
+if (!this.state.gameStarted || !this.roundIsRunning) return // Don't update if the game or round hasn't started
+```
+so that it doesn't update unless a round is running.
+
 ### Making it slightly more difficult
 
 There are many ways once could improve this game by making it look better, perform better with less lag, or making it more difficult. Here, we will add one such addition to demonstrate how you can add new features. 
@@ -661,5 +689,7 @@ Now, let's double the speed of the pong every thirty seconds from the `update` f
 const timeMsSinceRoundStart = this.clock.elapsedTime - this.state.roundStartedAt
     const speedConstant = (delta / 3) * (timeMsSinceRoundStart / 30000 + 1) // Calculate the speed constant for the ball. it should gradually increase over time.
 ```
+
+And, that's all for this pong game today!!
 
 ## Conclusion
