@@ -177,7 +177,7 @@ Now let's add a `canvas` element for our game graphics to the `<body>`:
 Now, in `game.js` the first thing we want to do is ask the player to enter a display name to identify themself to other players.
 
 ```javascript
-const userName = prompt("Enter a name:")
+const userName = prompt("Choose a name:") || 'player' // Fall back to "player" if the user doesn't enter a name
 ```
 
 Then, let's get the canvas context:
@@ -293,7 +293,7 @@ export class PongRoom extends Room {
   onCreate (options: any) {
     this.setState(new PongState()) // Set the state for the room
     this.setSimulationInterval(delta => this.update(delta)) // Set a "simulation interval" aka an update function (similar to the loop function in game.js)
-    this.setPatchRate(30) // The patch rate determines the interval (in milliseconds) at which the server sends state updates to the client
+    this.setPatchRate(20) // The patch rate determines the interval (in milliseconds) at which the server sends state updates to the client
     this.maxClients = 2 // Only 2 players per Pong game
   }
 
@@ -420,6 +420,8 @@ Now, we need to add a websocket message handler so that each client can tell the
       const player = (client.sessionId === this.state.player1.clientId) ? this.state.player1 : this.state.player2
 
       player.racketX += data.move // Adjust the player's pong position. data is passed from the player; we'll code that soon.
+
+      player.racketX = Math.min(Math.max(player.racketX, 0), 500) // We clamp the paddle position so the player can't move it off the canvas
     })
   }
 ```
