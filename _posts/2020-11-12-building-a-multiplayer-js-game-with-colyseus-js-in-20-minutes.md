@@ -552,3 +552,9 @@ Here's the final function:
 ```javascript
 ```
 
+But this won't work properly in the game, because the pong Y value represents how close the ball is to player 2. So because each player has their own racket on the bottom of the canvas, we have to flip this y coordinate for player 1 in `game.js`. Replace the line that says `ctx.arc` in the `draw` function with this:
+
+```javascript
+  const pongY = isPlayer1 ? 600 - room.state.pongY : room.state.pongY // For player 1 we should flip the direction of the ball
+  ctx.arc(room.state.pongX, pongY, 10, 0, 2 * Math.PI) // Draw the ball with a radius of 20
+```
