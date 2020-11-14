@@ -380,7 +380,7 @@ Back in the `onJoin` function of `PongRoom`, we need to do two things when a use
 
     if (alreadyHasPlayer1) {
       // We now have 2 players and can start the game!!!
-      setTimeout(this.startGame, 3000) // Wait 3 seconds before starting
+       setTimeout(() => this.startGame, 3000) // Wait 3 seconds before starting
     }
   }
 ```
@@ -435,18 +435,42 @@ The server is almost finished!
 
 Now it's time to finish writing the game logic and drawing functions that actually draw the rackets and ball to the canvas.
 
+### The status text
+
+We need some sort of status text to tell the player whether the game has started and who they're playing against, etc. We could add this as text to the canvas, but I prefer to add UI elements like status text as HTML around the canvas, as it's easier to program and style. So let's add a new `<p>` tag to `game.html`, right between the header and canvas. Let's also update the title:
+
+```html
+  <body>
+    <h1>Pong</h1>
+    <p id='game-status-text'>Loading...</p>
+    <canvas id='game-canvas' width='600' height='600'></canvas>
+    
+    <script src='/game.js'></script>
+  </body>
+```
+
+Now, let's create a reference to this element at the top of `game.js`:
+
+```js
+const gameStatusText = document.getElementById('game-status-text')
+```
+
+In the loop function, let's add a `if/else` block around the `draw` function to make sure it doesn't run unless the game has started, and let's also update the status text to reflect this:
+
+
+
 ### The rackets
 
 We can easily draw the rackets by getting their positions from `room.state`, which is always up-to-date with the latest state on the server. Add functions to draw the two rectangles to the `draw` function in `game.js`:
 
 ```javascript
 function draw () {
-  if (!room) return // If we haven't connected to a game yet, don't draw anything
+  if (!room || !room.state.gameStarted) return // Don't draw anything until the game has started
   // Draw the rackets
-  ctx.fillColor = 'white' // set the color
+  ctx.fillStyle = 'white' // set the color
   // Draw the bottom racket with a width of 60 and height of 20 (bottom racket is always this player's racket)
-  ctx.drawRect(isPlayer1 ? room.state.player1.racketX : room.state.player2.pongX, height - 20, 60, 20)
+  ctx.fillRect(isPlayer1 ? room.state.player1.racketX : room.state.player2.pongX, height - 20, 60, 20)
   // Draw opponent's top racket
-  ctx.drawRect(isPlayer1 ? room.state.player2.racketX : room.state.player1.racketX, 0, 60, 20)
+  ctx.fillRect(isPlayer1 ? room.state.player2.racketX : room.state.player1.racketX, 0, 60, 20)
 }
 ```
