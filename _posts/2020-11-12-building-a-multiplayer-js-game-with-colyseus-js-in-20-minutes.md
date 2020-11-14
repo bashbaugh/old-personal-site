@@ -625,5 +625,12 @@ Now, we can add another listener in the same place (right below the gameStarted 
   })
 ```
 
+But we don't actually _do_ anything on the server when one player disconnects, so if a player disconnects the other player will just be left stranded with a broken game. We can solve this on the server, in `PongRoom.ts`, by disconnecting ALL players from the game as soon as one leaves. We'll add this to the `PongRoom` class's `onLeave` method, which runs whenever a player disconnects from the room:
+
+```javascript
+  onLeave (client: Client, consented: boolean) {
+    this.disconnect() // If a player leaves the game is unplayable, so destroy the room
+  }
+```
 
 ## Conclusion
