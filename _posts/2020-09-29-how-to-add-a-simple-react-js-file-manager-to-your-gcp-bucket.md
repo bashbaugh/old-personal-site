@@ -25,40 +25,21 @@ description: How to add my open-source lightweight React.js file management
   dashboard to your Google Cloud Storage bucket and CDN.  This is the sequel to
   my previous article on setting up a simple CDN with google cloud.
 ---
-In the [previous tutorial](/tutorials/gcp-cdn), we set up a Google Storage bucket with a load balancer and custom subdomain to use as a personal CDN. In this tutorial, we will be making a file management dashboard for our storage bucket, as a simpler alternative to the GCP dashboard.
+In the [previous tutorial](/tutorials/gcp-cdn), I showed you how to set up a Google Cloud Storage bucket with a load balancer, cloud CDN (or Cloudflare) and custom subdomain to use as a personal CDN and file storage system. In this tutorial, I will show you how to add my [lightweight open-source file management dashboard](https://github.com/scitronboy/cloud-storage-dashboard) to your CDN.
 
-You will need a basic understanding of React.js in order to follow along. If you're not interested in the React tutorial or don't know any React, you can just skip to the last section and copy the code from [the GitHub repo](https://github.com/scitronboy/cloud-storage-dashboard).
+### Introduction
 
-I should also mention that we could also do all this using Google's Firebase Storage, however, doing it manually allows for slightly more flexibility and customization of the storage bucket and CDN setup, for example (see the [previous tutorial](/tutorials/gcp-cdn)). Also, Firebase uses the same GCP components (storage, cloud functions, etc.) behind the scenes.
-
-#### Introduction
-
-1. We will create a single-page static react app, with controls allowing users to upload files and folders and see which files and folders are on the CDN.
-2. We will use [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) to authenticate users in our web app
-3. We will create some serverless Node.js functions that run on Google Cloud Functions, and use the Google Storage APIs to interact with our cloud bucket.
-4. We will host this webapp in our bucket and rewrite the root URL of our CDN ([cdn.mywebsite.com](https://cdn.benjaminashbaugh.me/)) to the web app, so that we can easily access it.
-
-Before starting, make sure you have node (10) and yarn (or NPM) installed.
+Before starting, make sure you have node (at least version 10) and yarn (or NPM) installed, so that you can build the app to deploy to your CDN.
 
 ## The React App
-
-You can download the app [template from my CDN](https://cdn.benjaminashbaugh.me/file-dashboard-template.zip) (or [from github](https://github.com/scitronboy/cloud-storage-dashboard/tree/template)). Basically, it's just `create-react-app` plus a few structural changes and a basic [React-Semantic-UI](https://react.semantic-ui.com/) UI with a sidebar and file cards.
-
-Once you unzip it, `cd` into /app and run `yarn install` to install the dependencies, then `yarn start` to start the app in development mode.
-
-After starting the app and navigating to [localhost:3000](http://localhost:3000/), you should see an empty dashboard with a sidebar and title:
-
-![The empty dashboard](/img/uploads/dashboard_template.png "Empty dashboard template")
-
-Before we can program the logic for fetching data from the bucket, we have to add authentication. 
 
 ## Setting it up in GCP
 
 ### Authentication
 
-The google sign-in plugin in our web app will require users to sign into their google account, obtaining an OAuth token for the app to use in it's cloud function requests. The Google sign-in plugin needs to be registered with GCP to work.
+The google sign-in plugin in the web app requires users to sign into their google account, obtaining an OAuth ID token that gets sent to the cloud functions API where it's used to verify the user's email. In order for it to work we need to register an OAuth client on GCP.
 
-1. First, we need to create an OAuth Client ID for the CDN dashboard. You can do this by navigating to the [API credentials](https://console.cloud.google.com/apis/credentials) page -> Create Credentials -> OAuth Client ID. You will be required to create a sign-in consent screen.
+1. First, create an OAuth Client ID. You can do this by navigating to the [API credentials](https://console.cloud.google.com/apis/credentials) page -> Create Credentials -> OAuth Client ID. You will be required to create a sign-in consent screen as well. You don't really have to worry about messing any of this up, as you're the only one who (should) be accessing the app.
 2. Choose "external user" type, enter a name like "my CDN dashboard", and enter the domain of your CDN for "authorized domains" and any other required URLs. **Do not** add any extra scopes, an icon, or extra domains, as that would necessitate a review by Google (which might take a while).
 3. Once you create the consent screen, you might have to choose "Create Credentials" again to get to the application creation page.
 4. Choose web application and add your CDN URL to the Authorized JavaScript origins.
