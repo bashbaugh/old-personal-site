@@ -1,13 +1,14 @@
 ---
 layout: post
 section-type: post
-date: 2020-09-29
-lastmod: 2020-09-29
-title: How to Create a Simple React.js File Manager for your GCP bucket
+date: 2020-11-18
+lastmod: 2020-11-18
+title: Adding a Lightweight React.js File Management Dashboard to your GCP
+  Storage Bucket & CDN
 top-image: /img/uploads/filemanager1.png
 slug: gcp-cdn-file-dashboard
 url_slug: gcp-cdn-file-dashboard
-category: tutorials
+category: code
 tags:
   - javascript
   - project
@@ -15,13 +16,14 @@ tags:
   - tutorial
   - clouds
   - code
-postdescription: Using React.js, create a simple file dashboard for your Google
-  Cloud Storage bucket.
-titletag: How to Create a Simple React.js File Manager Dashboard for your Cloud
-  Storage bucket
-description: Using React.js, create a simple file dashboard for managing Google
-  Cloud Storage CDN files using a Cloud Functions API, and host it on your
-  bucket.
+postdescription: How to add my open-source lightweight React.js file management
+  dashboard to your Google Cloud Storage bucket and CDN.  This is the sequel to
+  my previous article on setting up a simple CDN with google cloud.
+titletag: Adding a Lightweight React.js File Management Dashboard to your GCP
+  Storage Bucket & CDN
+description: How to add my open-source lightweight React.js file management
+  dashboard to your Google Cloud Storage bucket and CDN.  This is the sequel to
+  my previous article on setting up a simple CDN with google cloud.
 ---
 In the [previous tutorial](/tutorials/gcp-cdn), we set up a Google Storage bucket with a load balancer and custom subdomain to use as a personal CDN. In this tutorial, we will be making a file management dashboard for our storage bucket, as a simpler alternative to the GCP dashboard.
 
