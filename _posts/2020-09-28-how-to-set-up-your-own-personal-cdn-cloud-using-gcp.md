@@ -1,17 +1,16 @@
 ---
 layout: post
 section-type: post
-date: 2020-09-28
-lastmod: 2020-09-28
+date: 2020-11-20
+lastmod: 2020-11-20
 title: How to Set Up Your Own Personal CDN & "Cloud" using GCP and Cloudflare
-image: /img/uploads/cdn_xml_thumbnail.png
+image: /img/uploads/gcp-cdn-post-thumbnail.png
 top-image: ""
 slug: gcp-cdn
 url_slug: gcp-cdn
 category: tutorials
 tags:
   - tutorial
-  - javascript
   - clouds
 postdescription: In this tutorial, I will show how to easily set up your own
   "cloud" for file hosting, using Google Cloud Storage, network services and
