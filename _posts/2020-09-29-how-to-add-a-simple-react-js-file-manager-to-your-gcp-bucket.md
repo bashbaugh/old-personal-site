@@ -62,3 +62,4 @@ As of the first version of the Cloud Storage dashboard, there is only one functi
 + `CDN_ADMIN` - The email of your google account. You will be able to add additional CDN admins through the settings page in the app later.
 + `CDN_BUCKET_NAME` - The cloud storage bucket (in the same GCP project) where your CDN's files are stored
 + `CDN_URL` - The base URL to the CDN frontend for your bucket (without an ending slash): `https://cdn.example.com`
++ `DASHBOARD_ORIGIN`
