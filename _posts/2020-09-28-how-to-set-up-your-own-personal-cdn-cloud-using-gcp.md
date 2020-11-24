@@ -1,26 +1,30 @@
 ---
 layout: post
 section-type: post
-date: 2020-11-20
-lastmod: 2020-11-20
-title: How to Set Up Your Own Personal CDN & "Cloud" using GCP and Cloudflare
+date: 2020-11-23
+lastmod: 2020-11-23
+title: How to Set Up Your Own Personal CDN, File Host and Custom File Browser
+  using Google Cloud Platform and Cloudflare
 image: /img/uploads/gcp-cdn-post-thumbnail.png
 top-image: ""
-slug: gcp-cdn
-url_slug: gcp-cdn
+slug: gcp-storage-cdn
+url_slug: gcp-storage-cdn
 category: tutorials
 tags:
   - tutorial
   - clouds
+  - javascript
+  - project
 postdescription: In this tutorial, I will show how to easily set up your own
-  "cloud" for file hosting, using Google Cloud Storage, network services and
-  Cloudflare. I will also explain how to create a simple dashboard for it using
-  Node.js.
-titletag: How to Set Up Your Own Personal CDN & Cloud using Google Cloud Storage
-  and Load Balancing.
+  "cloud" and CDN for file hosting, using Google Cloud Storage, networking
+  services and Cloudflare. I will also explain how to host a custom lightweight
+  React.js file browser for it.
+titletag: How to Set Up Your Own Personal CDN, File Host and Custom File Browser
+  using Google Cloud Platform and Cloudflare
 description: In this tutorial, I will show how to easily set up your own "cloud"
-  for file hosting, using Google Cloud Storage, network services and Cloudflare.
-  I will also explain how to create a simple dashboard for it using Node.js.
+  and CDN for file hosting, using Google Cloud Storage, networking services and
+  Cloudflare. I will also explain how to host a custom lightweight React.js file
+  browser for it.
 ---
 Recently, it occurred to me that it would be cool to have my own CDN subdomain and file sharing service. Of course, there are many easier options for hosting your files online, such as using something like Google Drive or one of the hundreds of free file sharing websites and services out there. However, having a personal cloud with only your own files and sending people links to [cdn.mydomain.com/file.txt](https://cdn.benjaminashbaugh.me/hello.txt) has got to be much cooler than sending people links to "sketchyfilewebsite.com/file/hashthatnoonewillremember.txt". Also, using the CDN layer will also allow you to efficiently host things such as images and JavaScript libraries for your websites, etc. Fortunately, it's super easy to set one up!
 
