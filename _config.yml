@@ -35,6 +35,8 @@ homeButtons:
     href: "#portfolio"
   - name: "Blog"
     href: "blog"
+  - name: "Notes"
+    href: "https://notes.benjaminashbaugh.me"
   - name: "GitHub"
     href: "https://github.com/scitronboy"
     newtab: true
